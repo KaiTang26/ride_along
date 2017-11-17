@@ -17,7 +17,7 @@ class App extends Component {
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
-        <Link to='about'><button>Test React Router</button></Link>
+        <Link to='chat'><button>Chatroom</button></Link>
         <br />
         <br />
         <button onClick={this.props.actions.expressTest}>Test if Express is working</button>
