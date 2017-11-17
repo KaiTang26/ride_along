@@ -4,18 +4,9 @@ const Sequelize = require('sequelize');
 const db = require('../index.js');
 
 const User = db.define('users', {
-  name: {
+  first_name: {
     type: Sequelize.STRING,
-    allowNull: false,
-    validate: {
-      startsWithUpper(name) {
-        const first = string.charAt(0);
-        const startswithUpper = first === first.toUpperCase();
-        if (!startsWithUpper) {
-          throw new Error("First letter must be an uppercase letter.") 
-        }
-      }
-    }
+    allowNull: false
   },
   last_name: {
     type: Sequelize.STRING,
@@ -31,4 +22,4 @@ const User = db.define('users', {
   }
 });
 
-modules.exports = User;
+module.exports = User;

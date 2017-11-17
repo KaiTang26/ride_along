@@ -34,11 +34,20 @@ const seedReviews = () => db.Promise.map([
  {rating: 4, review_text: "just like description",product_id:1}
  ], review => db.model('reviews').create(review));
 
+
+const seedUsers = () => db.Promise.map([
+  {first_name: "Ben", last_name:"Folds", email: "ben@folds.com"},
+  {first_name: "Sara", last_name:"Zak", email: "ben@folds.com"}
+], user => db.model('users').create(user));
+
+
  db.didSync
    .then(() => db.sync({force: true}))
    .then(seedProducts)
    .then(products => console.log(`Seeded ${products.length} products OK`))
    .then(seedReviews)
    .then(reviews => console.log(`Seeded ${reviews.length} reviews OK`))
+   .then(seedUsers)
+   .then(users => console.log(`Seeded ${users.length} users OK`))
    .catch(error => console.error(error))
    .finally(() => db.close())

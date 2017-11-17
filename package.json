@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "chalk": "^2.3.0",
+    "sequelize-cli": "^3.0.0",
     "path": "^0.12.7",
     "react-dev-utils": "^4.2.1"
   },
