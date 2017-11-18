@@ -1,10 +1,10 @@
 const db = require('../db') //this is required
-const User = require('../db/models/user');
+const Trip = require('../db/models/trip');
 
 const router = require('express').Router()
 
 router.get('/', function(req, res, next) {
-  User.findAll()
+  Trip.findAll()
     .then(result => {
         res.status(200).send(result);
     })
@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:id', function(req, res, next) {
-  User.findOne({
+  Trip.findOne({
       where:{id:req.params.id}
     })
     .then(result => {

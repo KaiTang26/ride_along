@@ -37,8 +37,12 @@ const seedReviews = () => db.Promise.map([
 
 const seedUsers = () => db.Promise.map([
   {first_name: "Ben", last_name:"Folds", email: "ben@folds.com"},
-  {first_name: "Sara", last_name:"Zak", email: "ben@folds.com"}
+  {first_name: "Sara", last_name:"Zoo", email: "zoo@sara.com"}
 ], user => db.model('users').create(user));
+
+const seedTrips = () => db.Promise.map([
+  {date: '2017-12-11', time: `22:47:21 GMT`, start_location: "Toronto", end_location: "Ottawa", passengers: 4}
+], trip => db.model('trips').create(trip));
 
 
  db.didSync
@@ -49,5 +53,7 @@ const seedUsers = () => db.Promise.map([
    .then(reviews => console.log(`Seeded ${reviews.length} reviews OK`))
    .then(seedUsers)
    .then(users => console.log(`Seeded ${users.length} users OK`))
+   .then(seedTrips)
+   .then(trips => console.log(`Seeded ${trips.length} trips OK`))
    .catch(error => console.error(error))
    .finally(() => db.close())
