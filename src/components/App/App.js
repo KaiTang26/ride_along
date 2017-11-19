@@ -18,7 +18,7 @@ const Header = styled.section`
 const Darken = styled.div`
   max-width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.66);
+  background-color: rgba(0, 0, 0, 0.6);
 `;
 const SignIn = styled.div`
   float: right;
