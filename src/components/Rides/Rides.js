@@ -21,11 +21,11 @@ export default class Rides extends Component {
   }
 
   render () {
+    const { className, ...props } = this.props;
     return (
-
 // Wrap this in a component to make cleaner
 
-    <div>
+    <div {...props}>
       <h1>Find a Ride</h1>
       <form onSubmit={this._handleSubmit}>
         <label>
@@ -63,7 +63,7 @@ export default class Rides extends Component {
   _handleInputChange=(event)=> {
       const target = event.target;
       const value = target.value;
-      const name = target.name
+      const name = target.name;
       console.log(value);
       this.setState({
         [name]: value,
@@ -71,9 +71,16 @@ export default class Rides extends Component {
   }
 
 // Need to figure out why preventDefualt not working
+// Or maybe I do a fetch with the params and return a list of trips
   _handleSubmit=(event) => {
     alert("start point "+ this.state.start + " endpoint: "+ this.state.end)
-    console.log(this.state)
+    var state = this.state
+    for (var i = 0; i < state.postedTrips.length; i++) {
+        if (state.postedTrips[i].start === state.start && state.postedTrips[i].end === state.end) {
+          alert("hey")
+        }
+    }
     this.event.preventDefualt();
+    alert("ok");
   }
 }
