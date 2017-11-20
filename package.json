@@ -25,7 +25,7 @@
     "yargs": "^10.0.3"
   },
   "scripts": {
-    "start": "concurrently \"react-scripts start\" \"nodemon server\"",
+    "start": "concurrently \"PORT=3006 react-scripts start\" \"nodemon server\"",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",

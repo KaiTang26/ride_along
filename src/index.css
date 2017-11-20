@@ -48,31 +48,5 @@ table {
 }
 
 body {
-  font-family: Merriweather;
-  font-weight: bold;
-  text-align: center
-}
-
-h1 {
-  font-size: 550%;
-  font-style: italic;
-  padding: 2em 0 .6em;
-}
-
-h2 {
-  font-family: Lato;
-  font-weight: 700;
-  font-size: 235%;
-  font-style: italic;
-  margin-right: .25em;
-}
-
-h2 span{
-  font-size: 95%;
-  letter-spacing: -3px;
-  margin-right: 1.25px;
-  font-weight: 900;
-  margin: 0 2px 0 3px;
-  position: relative;
-  top: 2px;
+  font-family: Merriweather, serif;
 }
