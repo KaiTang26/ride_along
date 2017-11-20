@@ -34,11 +34,28 @@ const seedReviews = () => db.Promise.map([
  {rating: 4, review_text: "just like description",product_id:1}
  ], review => db.model('reviews').create(review));
 
+
+const seedUsers = () => db.Promise.map([
+  {first_name: "Ben", last_name:"Folds", email: "ben@folds.com"},
+  {first_name: "Sara", last_name:"Zoo", email: "zoo@sara.com"}
+], user => db.model('users').create(user));
+
+const seedTrips = () => db.Promise.map([
+  {date: '2017-12-11', time: `22:47:21 GMT`, start_location: "Toronto", end_location: "Ottawa", passengers: 4},
+  {date: '2017-12-31', time: `09:00:21 GMT`, start_location: "Montreal", end_location: "Hamilton", passengers: 2},
+  {date: '2017-12-22', time: `18:45:21 GMT`, start_location: "Kingston", end_location: "Toronto", passengers: 3}
+], trip => db.model('trips').create(trip));
+
+
  db.didSync
    .then(() => db.sync({force: true}))
    .then(seedProducts)
    .then(products => console.log(`Seeded ${products.length} products OK`))
    .then(seedReviews)
    .then(reviews => console.log(`Seeded ${reviews.length} reviews OK`))
+   .then(seedUsers)
+   .then(users => console.log(`Seeded ${users.length} users OK`))
+   .then(seedTrips)
+   .then(trips => console.log(`Seeded ${trips.length} trips OK`))
    .catch(error => console.error(error))
    .finally(() => db.close())
