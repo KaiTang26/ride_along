@@ -11,6 +11,10 @@ const Car = db.define('cars', {
   color: {
   	type: Sequelize.STRING,
     defaultValue: false
+  },
+  year: {
+    type: Sequelize.INTEGER,
+    allowNull: false
   }
 });
 

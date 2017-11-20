@@ -6,7 +6,7 @@ const router = require('express').Router()
 router.get('/', function(req, res, next) {
   Trip.findAll()
     .then(result => {
-        res.status(200).send(result);
+      res.status(200).send(result);
     })
     .catch(next);
 });

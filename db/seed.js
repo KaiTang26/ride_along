@@ -41,7 +41,9 @@ const seedUsers = () => db.Promise.map([
 ], user => db.model('users').create(user));
 
 const seedTrips = () => db.Promise.map([
-  {date: '2017-12-11', time: `22:47:21 GMT`, start_location: "Toronto", end_location: "Ottawa", passengers: 4}
+  {date: '2017-12-11', time: `22:47:21 GMT`, start_location: "Toronto", end_location: "Ottawa", passengers: 4},
+  {date: '2017-12-31', time: `09:00:21 GMT`, start_location: "Montreal", end_location: "Hamilton", passengers: 2},
+  {date: '2017-12-22', time: `18:45:21 GMT`, start_location: "Kingston", end_location: "Toronto", passengers: 3}
 ], trip => db.model('trips').create(trip));
 
 

@@ -23,6 +23,7 @@ Chat.belongsTo(User);
 Trip.hasMany(Chat);
 
 Car.belongsTo(User); // Will add DriverID to Car
+User.hasMany(Car);
 
 
 Product.hasMany(Review);
