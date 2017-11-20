@@ -5,29 +5,28 @@ import Map from './map.js';
 
 // import './style.css';
 
-export default class Trip extends Component {
+class CreateTrip extends Component {
 
-  constructor(props){
-      super(props);
-      this.state = {
-          numberOfPassenger: 0,
-        //   city: ["Select City", "Windsor", "Chatham-Kent", "London", "Kitchener", "Waterloo", "Cambridge", "Guelph", "Hamilton", "St.Catharines", "Burlington", "Mississauga", "Toronto", "Kingston", "Ottawa", "Gatineau", "Montreal", "Trois-Riveres", "Quebec"]
-      }
-
-  }
-  render() {
-    const { className, ...props } = this.props;
-    const city = ["Select City", "Windsor", "Chatham-Kent", "London", "Kitchener", "Waterloo", "Cambridge", "Guelph", "Hamilton", "St.Catharines", "Burlington", "Mississauga", "Toronto", "Kingston", "Ottawa", "Gatineau", "Montreal", "Trois-Riveres", "Quebec"];
-    return (
-      <div className={classnames('Trip', className)} {...props}>
-        <form >
+    constructor(props){
+        super(props);
+        this.state={
+            numberOfPassenger:0,
+            time:"",
+            date:""
+            
+        }
+    }
+    render(){
+        const city = ["Select City", "Windsor", "Chatham-Kent", "London", "Kitchener", "Waterloo", "Cambridge", "Guelph", "Hamilton", "St.Catharines", "Burlington", "Mississauga", "Toronto", "Kingston", "Ottawa", "Gatineau", "Montreal", "Trois-Riveres", "Quebec"];
+        return(
+            <form >
             <label>
             Date:
-            <input type="text"  />
+            <input type="date"  name='date' value={this.state.date} onChange={this._handleInputChange}/>
             </label>
             <label>
             Time:
-            <input type="text"  />
+            <input type="time"  name="time" value={this.state.time} onChange={this._handleInputChange}/>
             </label>
 
             <label>
@@ -64,19 +63,36 @@ export default class Trip extends Component {
             </label>
             <input type="submit" value="Submit" />
         </form>
-        <Map/>
+        )
+
+    }
+    _handleInputChange=(event)=>{
+        const target = event.target;
+        const value = target.value; 
+        const name = target.name;
+        console.log(target)
+        this.setState({
+            [name]:value
+        })
+    }
+}
+
+
+export default class Trip extends Component {
+
+  constructor(props){
+      super(props);
+      this.state = {
+      }
+
+  }
+  render() {
+    const { className, ...props } = this.props;
+    return (
+      <div className={classnames('Trip', className)} {...props}>
+        <CreateTrip />       
+        <Map />
       </div>
     );
   }
-
-  _handleInputChange=(event)=>{
-      const target = event.target;
-      const value = target.value; 
-      const name = target.name;
-      this.setState({
-          [name]:value
-      })
-  }
-
-  
 }

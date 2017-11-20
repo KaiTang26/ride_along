@@ -21,7 +21,7 @@ const MapWithADirectionsRenderer = compose(
         const DirectionsService = new window.google.maps.DirectionsService();
         DirectionsService.route({
             origin: new window.google.maps.LatLng(41.8507300, -87.6512600),
-            destination: new window.google.maps.LatLng(41.8525800, -87.6514100),
+            destination: new window.google.maps.LatLng(43.6532, -79.3832),
             travelMode: window.google.maps.TravelMode.DRIVING,
         }, (result, status) => {
             if (status === window.google.maps.DirectionsStatus.OK) {

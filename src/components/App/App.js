@@ -1,15 +1,11 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
-<<<<<<< HEAD
 import { Link } from 'react-router-dom';
-import logo from './logo.svg';
-import './style.css';
+// import logo from './logo.svg';
+// import './style.css';
 import apii from '../utils/apii';
+import FrontHeader from '../Front/FrontHeader.js'
 // var apii = require('../utils/apii')
-=======
-import { Link } from 'react-router-dom'
-import FrontHeader from '../Front/FrontHeader.js';
->>>>>>> 745defa8501ae1f73565ecf8846c151ff3387ba4
 
 class App extends Component {
 
