@@ -20,6 +20,7 @@ const Trip = db.define('trips', {
     type: Sequelize.STRING,
     allowNull: false
   },
+  driver: Sequelize.INTEGER,
   passengers: {
     type: Sequelize.INTEGER,
     allowNull: false

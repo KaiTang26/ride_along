@@ -1,7 +1,7 @@
 const db = require('../db') //this is required
 const Trip = require('../db/models/trip');
 
-const router = require('express').Router()
+const router = require('express').Router();
 
 router.get('/', function(req, res, next) {
   Trip.findAll()

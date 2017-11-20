@@ -19,6 +19,9 @@ const User = db.define('users', {
     validate: {
       isEmail: true
     }
+  },
+  drivers_license: {
+    type: Sequelize.STRING
   }
 });
 

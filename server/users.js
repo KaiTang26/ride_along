@@ -1,9 +1,16 @@
-const db = require('../db') //this is required
+const db = require('../db'); //this is required
 const User = require('../db/models/user');
+const userTrip = require('./userTrip');
 
-const router = require('express').Router()
+const userRouter = require('express').Router();
 
-// router.get('/', function(req, res, next) {
+// const tripRouter = express.Router({mergeParams: true});
+
+// userRouter.use('/:user_id/trip', tripRouter);
+
+userRouter.use('/:user_id/trip', userTrip);
+
+// tripRouter.get('/', function(req, res, next) {
 //   User.findAll()
 //     .then(result => {
 //         res.status(200).send(result);
@@ -11,7 +18,7 @@ const router = require('express').Router()
 //     .catch(next);
 // });
 
-router.post('/', function(req, res, next) {
+userRouter.post('/', function(req, res, next) {
   User.create({
     first_name: req.body.first_name,
     last_name: req.body.last_name,
@@ -23,16 +30,17 @@ router.post('/', function(req, res, next) {
   .then(user => { 
     console.log(user);
   })
-  .save();
+  .save()
+  .catch(next);
+});
 
   // console.log(req.body)
     // .then(result => {
     //     res.status(200).send(result);
     // })
     // .catch(next);
-});
 
-router.get('/:id', function(req, res, next) {
+userRouter.get('/:id', function(req, res, next) {
   User.findOne({
       where:{id:req.params.id}
     })
@@ -44,4 +52,4 @@ router.get('/:id', function(req, res, next) {
 
 
 
-module.exports = router
+module.exports = userRouter
