@@ -10,13 +10,13 @@ const Car = require('./car')
 const Trip = require('./trip')
 const User = require('./user')
 const Chat = require('./chat')
-
+const User_Trip = require('./user_trip')
 
 Trip.hasMany(Agreement);
 Agreement.belongsTo(Trip);
 
-User.belongsToMany(Trip, {through: 'UserTrip'});
-Trip.belongsToMany(User, {through: 'UserTrip'});
+User_Trip.belongsTo(Trip);
+User_Trip.belongsTo(User);
 
 Chat.belongsTo(Trip);
 Chat.belongsTo(User);
