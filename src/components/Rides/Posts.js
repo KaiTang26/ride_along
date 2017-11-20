@@ -4,7 +4,9 @@ class Post extends Component {
   render() {
     return (
       <div className="post">
-        <span >Test</span>
+        <span >From: 'start' To: 'end'</span>
+        <span>User: 'Example' Rating: '1-5'</span>
+        <span>Price: $</span>
       </div>
     );
   }

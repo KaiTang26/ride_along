@@ -30,7 +30,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "seed": "node db/seed.js"
+    "seed": "node db/seed.js",
+    "dev": "webpack-dev-server --content-base src --inline --hot"
   },
   "devDependencies": {
     "chalk": "^2.3.0",

@@ -53,7 +53,9 @@ export default class Rides extends Component {
       </form>
 
       <Posts />
-    {this.state.postedTrips[0].start}
+
+      {/* How to access postedTrips */}
+    {/* {this.state.postedTrips[0].start} */}
 
     </div>
     )
@@ -77,7 +79,7 @@ export default class Rides extends Component {
     var state = this.state
     for (var i = 0; i < state.postedTrips.length; i++) {
         if (state.postedTrips[i].start === state.start && state.postedTrips[i].end === state.end) {
-          alert("hey")
+          alert("hey");
         }
     }
     this.event.preventDefualt();
