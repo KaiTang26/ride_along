@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import { Link } from 'react-router-dom';
 import logo from './logo.svg';
 import FrontHeader from '../Front/FrontHeader.js';
+import RideSearch from '../Front/RideSearch.js';
 
 class App extends Component {
 
@@ -11,6 +12,7 @@ class App extends Component {
     return (
       <div className={classnames('App', className)} {...props}>
         <FrontHeader />
+        <RideSearch />
 
         <Link to='about'><button>Test React Router</button></Link>
         <br />

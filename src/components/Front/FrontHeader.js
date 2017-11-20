@@ -29,7 +29,7 @@ const Logotype = styled.h1`
 `;
 
 const Tagline = styled.h1`
-  font-family: ${gs.sansSerif};
+  ${gs.sansSerif};
   font-weight: 700;
   font-size: 235%;
   font-style: italic;
@@ -42,7 +42,6 @@ const Tagline = styled.h1`
     margin: 0 2px 0 3px;
     position: relative;
     top: 2px;
-    letter-spacing: .5px;
   }
 `;
 
@@ -54,6 +53,6 @@ const FrontHeader = () => (
         <Tagline>Get there <span>>></span> together</Tagline>
     </Darken>
   </Header>
-)
+);
 
 export default FrontHeader;
