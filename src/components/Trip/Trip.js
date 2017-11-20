@@ -11,12 +11,13 @@ export default class Trip extends Component {
       super(props);
       this.state = {
           numberOfPassenger: 0,
-          city: ["Select City", "Windsor", "Chatham-Kent", "London", "Kitchener", "Waterloo", "Cambridge", "Guelph", "Hamilton", "St.Catharines", "Burlington", "Mississauga", "Toronto", "Kingston", "Ottawa", "Gatineau", "Montreal", "Trois-Riveres", "Quebec"]
+        //   city: ["Select City", "Windsor", "Chatham-Kent", "London", "Kitchener", "Waterloo", "Cambridge", "Guelph", "Hamilton", "St.Catharines", "Burlington", "Mississauga", "Toronto", "Kingston", "Ottawa", "Gatineau", "Montreal", "Trois-Riveres", "Quebec"]
       }
 
   }
   render() {
     const { className, ...props } = this.props;
+    const city = ["Select City", "Windsor", "Chatham-Kent", "London", "Kitchener", "Waterloo", "Cambridge", "Guelph", "Hamilton", "St.Catharines", "Burlington", "Mississauga", "Toronto", "Kingston", "Ottawa", "Gatineau", "Montreal", "Trois-Riveres", "Quebec"];
     return (
       <div className={classnames('Trip', className)} {...props}>
         <form >
@@ -32,7 +33,7 @@ export default class Trip extends Component {
             <label>
             From:
             <select placeholder="Select City">
-            { this.state.city.map((ele, i)=>{
+            { city.map((ele, i)=>{
 
                 return <option value={ele} key={i}>{ele}</option>
 
@@ -43,7 +44,7 @@ export default class Trip extends Component {
             <label>
             To:
             <select placeholder="Select City">
-            { this.state.city.map((ele, i)=>{
+            { city.map((ele, i)=>{
 
                 return <option value={ele} key={i}>{ele}</option>
 
@@ -55,17 +56,15 @@ export default class Trip extends Component {
             Number of Passenger:
             <input name="numberOfPassenger"
                    type="number"
+                   min="0"
+                   max="12"
+                   step="1"
                    value={this.state.numberOfPassenger}
                    onChange={this._handleInputChange} />
             </label>
             <input type="submit" value="Submit" />
         </form>
-        <Map
-          googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyAOdJrxTyFGID_cQFGUdskPi77ZQqKxy3c"
-            loadingElement={<div style={{ height: `100%` }} />}
-            containerElement={<div style={{ height: `400px` }} />}
-            mapElement={<div style={{ height: `100%` }} />}
-        />
+        <Map/>
       </div>
     );
   }
