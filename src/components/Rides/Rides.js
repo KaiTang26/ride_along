@@ -15,8 +15,6 @@ export default class Rides extends Component {
         start: "Windsor",
         end: "Windsor",
     }
-
-
   }
 
   componentWillMount(){
@@ -77,7 +75,6 @@ export default class Rides extends Component {
       })
   }
 
-// Need to figure out why preventDefualt not working
 // Or maybe I do a fetch with the params and return a list of trips
   _handleSubmit=(event) => {
     event.preventDefault();
