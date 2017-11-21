@@ -2,7 +2,32 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import Posts from './Posts'
 import api from '../utils/api';
+import { Route, Redirect } from 'react-router'
 
+
+const Search = (props) => (
+  <form onSubmit={props._handleSubmit}>
+    <label>
+    Pickup Location:
+    {console.log(props)}
+      <select name="start"  onChange={props._handleInputChange}>
+        { props.cities.map((ele, i)=>{
+            return <option value={ele} key={i}>{ele}</option>
+        })}
+      </select>
+    </label>
+
+    <label>
+    Drop Off:
+      <select name="end"  onChange={props._handleInputChange}>
+        { props.cities.map((ele, i)=>{
+            return <option value={ele} key={i}>{ele}</option>
+        })}
+      </select>
+    </label>
+    <input type="submit" value="Search Trips" />
+  </form>
+)
 
 export default class Rides extends Component {
 
@@ -16,6 +41,7 @@ export default class Rides extends Component {
         rides: [],
         start: "Windsor",
         end: "Windsor",
+        detail: 'all'
     }
   }
 
@@ -31,37 +57,20 @@ export default class Rides extends Component {
   render () {
     const { className, ...props } = this.props;
     return (
-// Wrap this in a component to make cleaner
 
     <div>
       <h1>Find a Ride</h1>
-      <form onSubmit={this._handleSubmit}>
-        <label>
-        Pickup Location:
-          <select name="start" value={this.state.start} onChange={this._handleInputChange}>
-            { this.state.cities.map((ele, i)=>{
-                return <option value={ele} key={i}>{ele}</option>
-            })}
-          </select>
-        </label>
 
-        <label>
-        Drop Off:
-          <select name="end" value={this.state.end} onChange={this._handleInputChange}>
-            { this.state.cities.map((ele, i)=>{
-                return <option value={ele} key={i}>{ele}</option>
-            })}
-          </select>
-        </label>
-        <input type="submit" value="Search Trips" />
-      </form>
-      <Posts rides = {this.state.rides} onClick={this._details}/>
+      <Search cities = {this.state.cities} _handleInputChange = {this._handleInputChange} _handleSubmit = {this._handleSubmit}/>
+      <Posts rides = {this.state.rides} _details={this._details}/>
+
     </div>
     )
   }
 
   _details=(event) => {
-    alert('you clicked it bravo')
+    api.getRide(1)
+
   }
 
 

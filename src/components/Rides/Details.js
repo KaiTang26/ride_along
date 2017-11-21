@@ -15,7 +15,7 @@ const RideDetailUI = (props) => (
     <br></br>
     <p>Some text in paragraph form</p>
     <br></br>
-    <button type="button">Join Ride</button>
+
   </div>
 )
 

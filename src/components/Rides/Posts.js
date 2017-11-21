@@ -6,7 +6,7 @@ class Post extends Component {
     return (
       <div className="post">
       {this.props.rides.map((ride) => (
-          <div className="ride-container" key={ride.id} onClick={this.props.onClick}>
+          <div className="ride-container" key={ride.id} _details={this.props.onClick}>
             {console.log(this.props)}
             <br></br>
             <div>Leaving {ride.date} at {ride.time}</div>
@@ -14,7 +14,7 @@ class Post extends Component {
             <div>User: 'Example' Rating: '1-5'</div>
             <div>Number of Passengers: {ride.passengers}</div>
             <div>Price: $</div>
-            <Link to={`/trip/${ride.id}`}/>
+            <Link to={`/ride/${ride.id}`}>{`/ride/${ride.id}`}</Link>
             <br></br>
           </div>
       ))}
