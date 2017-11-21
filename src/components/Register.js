@@ -31,6 +31,7 @@ const Button = styled(RaisedButton)`
   }
   > button div div span:hover {
     color: skyblue !important;
+    
   }
 `;
 
@@ -66,12 +67,6 @@ export default class Register extends Component {
       [e.target.name]: e.target.value
     });
   };
-
-  // handleSubmit = e => {
-  //   // e.preventDefault();
-  //   api.register(this.state)
-  //   .then(console.log(this.state))
-  // }
 
   render() {
     
