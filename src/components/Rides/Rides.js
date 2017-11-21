@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import Posts from './Posts'
+import api from '../utils/api';
 
 export default class Rides extends Component {
 
@@ -18,15 +19,13 @@ export default class Rides extends Component {
   }
 
   componentWillMount(){
-      // Ajax requist
-      fetch('/api/trips',{
-        method: 'get'
-      })
-      .then(response => response.json())
-      .then(rides => {
-        this.setState({rides})
-      })
+    api.getRides()
+    .then(result => {
+      let rides = result.data
+      this.setState({rides})
+    })
   }
+
 
   render () {
     const { className, ...props } = this.props;

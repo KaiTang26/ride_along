@@ -4,7 +4,6 @@ class Post extends Component {
   render() {
     return (
       <div className="post">
-
       {this.props.rides.map((ride) => (
           <div className="ride-container">
             <br></br>
