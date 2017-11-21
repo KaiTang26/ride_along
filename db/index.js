@@ -5,7 +5,7 @@ const pkg = require('../package.json')
 
 const name = process.env.DATABASE_NAME || pkg.name;
 
-const url = process.env.DATABASE_URL || `postgres://localhost:5432/${name}`;
+const url = process.env.DATABASE_URL || `postgres://postgres:StClair@localhost:5432/${name}`;
 
 console.log(chalk.yellow(`Opening database connection to ${url}${name}`));
 
@@ -24,7 +24,7 @@ require('./models')
 
 // sync the db, creating it if necessary
 function sync(retries=0, maxRetries=5) {
-  return db.sync({force:false})
+  return db.sync()
     .then(ok => console.log(`Synced models to db ${url}`))
     .catch(fail => {
       console.log(fail)

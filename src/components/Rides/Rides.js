@@ -11,13 +11,23 @@ export default class Rides extends Component {
         "Cambridge", "Guelph", "Hamilton", "St.Catharines", "Burlington",
         "Mississauga", "Toronto", "Kingston", "Ottawa", "Gatineau", "Montreal",
          "Trois-Riveres", "Quebec"],
-
-        postedTrips: [{date: "01-12-2018", time: "12:00pm", start: "Ottawa", end: "Toronto"},
-                    {date: "01-12-2018", time: "12:00pm", start: "Montreal", end: "Toronto"}],
-
-        searchTrip: {start: "", end: ""},
-        test: "something"
+        rides: [],
+        start: "Windsor",
+        end: "Windsor",
     }
+
+
+  }
+
+  componentWillMount(){
+      // Ajax requist
+      fetch('/api/trips',{
+        method: 'get'
+      })
+      .then(response => response.json())
+      .then(rides => {
+        this.setState({rides})
+      })
   }
 
   render () {
@@ -25,7 +35,7 @@ export default class Rides extends Component {
     return (
 // Wrap this in a component to make cleaner
 
-    <div {...props}>
+    <div>
       <h1>Find a Ride</h1>
       <form onSubmit={this._handleSubmit}>
         <label>
@@ -51,12 +61,7 @@ export default class Rides extends Component {
         </label>
         <input type="submit" value="Search Trips" />
       </form>
-
-      <Posts />
-
-      {/* How to access postedTrips */}
-    {/* {this.state.postedTrips[0].start} */}
-
+      <Posts rides = {this.state.rides} />
     </div>
     )
   }
@@ -75,14 +80,19 @@ export default class Rides extends Component {
 // Need to figure out why preventDefualt not working
 // Or maybe I do a fetch with the params and return a list of trips
   _handleSubmit=(event) => {
-    alert("start point "+ this.state.start + " endpoint: "+ this.state.end)
-    var state = this.state
-    for (var i = 0; i < state.postedTrips.length; i++) {
-        if (state.postedTrips[i].start === state.start && state.postedTrips[i].end === state.end) {
-          alert("hey");
-        }
-    }
-    this.event.preventDefualt();
-    alert("ok");
+    event.preventDefault();
+    // alert("start point "+ this.state.start + " endpoint: "+ this.state.end)
+    // fetch('/:id', {
+    //   method: 'get',
+    //   body: {
+    //
+    //   }
+    // })
+    // var state = this.state
+    // for (var i = 0; i < state.postedTrips.length; i++) {
+    //     if (state.postedTrips[i].start === state.start && state.postedTrips[i].end === state.end) {
+    //       alert("hey");
+    //     }
+    // }
   }
 }
