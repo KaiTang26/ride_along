@@ -58,13 +58,17 @@ export default class Rides extends Component {
         </label>
         <input type="submit" value="Search Trips" />
       </form>
-      <Posts rides = {this.state.rides} />
+      <Posts rides = {this.state.rides}/>
     </div>
     )
   }
 
+  _onClick=(event) => {
 
-  _handleInputChange=(event)=> {
+  }
+
+
+  _handleInputChange=(event) => {
       const target = event.target;
       const value = target.value;
       const name = target.name;
