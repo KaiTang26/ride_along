@@ -58,13 +58,13 @@ export default class Rides extends Component {
         </label>
         <input type="submit" value="Search Trips" />
       </form>
-      <Posts rides = {this.state.rides}/>
+      <Posts rides = {this.state.rides} onClick={this._details}/>
     </div>
     )
   }
 
-  _onClick=(event) => {
-
+  _details=(event) => {
+    alert('you clicked it bravo')
   }
 
 

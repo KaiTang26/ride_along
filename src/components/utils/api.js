@@ -32,7 +32,6 @@ export default {
       const encodedURI = window.encodeURI('http://localhost:3000/api/trips');
       return axios.get(encodedURI)
       .then((response) =>{
-        console.log(response);
           return response
       })
     }
