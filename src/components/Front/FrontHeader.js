@@ -20,7 +20,7 @@ const Header = styled.section`
 const Darken = styled.div`
   max-width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.5);
 `;
 
 const Logotype = styled.h1`
