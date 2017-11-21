@@ -22,9 +22,8 @@ export default {
         const encodedURI = window.encodeURI("https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key=AIzaSyAOdJrxTyFGID_cQFGUdskPi77ZQqKxy3c&v");
         return axios.get(encodedURI)
         .then((response)=>{
-            return (
-                console.log("hello")
-            )
+            return response.data.results[0].geometry.location
+            
         })
     }
 

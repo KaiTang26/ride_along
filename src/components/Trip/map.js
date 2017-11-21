@@ -17,12 +17,11 @@ const MapWithADirectionsRenderer = compose(
   withScriptjs,
   withGoogleMap,
   lifecycle({
-    componentDidMount() {
+    componentWillReceiveProps(nextProps) {
         const DirectionsService = new window.google.maps.DirectionsService();
-        
         DirectionsService.route({
-            origin: new window.google.maps.LatLng(43.255203, -79.843826),
-            destination: new window.google.maps.LatLng(43.6532, -79.3832),
+            origin: new window.google.maps.LatLng(nextProps.origin[0], nextProps.origin[1]),
+            destination: new window.google.maps.LatLng(nextProps.destination[0], nextProps.destination[1]),
             travelMode: window.google.maps.TravelMode.DRIVING,
         }, (result, status) => {
             if (status === window.google.maps.DirectionsStatus.OK) {
@@ -30,7 +29,7 @@ const MapWithADirectionsRenderer = compose(
                 directions: result,
             });
             } else {
-            console.error(`error fetching directions ${result}`);
+            // console.error(`error fetching directions ${result}`);
             }
         });
     }
