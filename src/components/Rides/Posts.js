@@ -6,7 +6,7 @@ class Post extends Component {
       <div className="post">
 
       {this.props.rides.map((ride) => (
-          <div>
+          <div className="ride-container">
             <br></br>
             <div>Leaving {ride.date} at {ride.time}</div>
             <div>From: {ride.start_location} To: {ride.end_location} </div>
