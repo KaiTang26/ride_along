@@ -25,7 +25,8 @@ userRouter.post('/', function(req, res, next) {
     password: req.body.password,
     email: req.body.email,
     picture: req.body.picture,
-    drivers_license: req.body.drivers_license
+    drivers_license: req.body.drivers_license,
+    about: req.body.about
   })
   .then(user => { 
     console.log(user);

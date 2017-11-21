@@ -6,8 +6,22 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Menu from './Menu';
 import Road from './cover.jpg';
 
+import UserPic from './Bill.jpg';
+
 const user_id = 1;
 const userInfo = api.userInfo(user_id);
+
+
+const ProfilePic = styled.div`
+  background: url(${UserPic});
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  background-size: cover;
+  margin: .66em;
+  display: inline-block;
+`;
+
 
 const Profile = styled.section`
   max-width: 900px;
@@ -36,6 +50,24 @@ const CoverPic = styled.div`
   max-width: 100%;
 `;
 
+const Section = styled.section`
+  margin: 2em;
+
+`;
+
+const H3 = styled.h3`
+  font-size: 85%;
+  letter-spacing: .5px;
+  font-weight: bold;
+  font-family: Lato;
+  text-transform: uppercase;
+  margin-bottom: .5em;
+`;
+
+const Text = styled.p`
+  
+`;
+
 export default class UserProfile extends Component {
   constructor(props) {
     super(props);
@@ -46,6 +78,7 @@ export default class UserProfile extends Component {
       picture: "",
       email: "",
       drivers_license: "",
+      about: ""
     }
   };
 
@@ -57,7 +90,8 @@ export default class UserProfile extends Component {
         last_name: results.data.last_name,
         picture: results.data.picture,
         email: results.data.email,
-        drivers_license: results.data.drivers_license
+        drivers_license: results.data.drivers_license,
+        about: results.data.about
       })
     );
   }
@@ -74,6 +108,22 @@ export default class UserProfile extends Component {
         <Name>
           Hello {this.state.first_name}!
         </Name>
+
+        <ProfilePic />
+        <Section>
+          <H3>About</H3>
+          <Text>{this.state.about}</Text>
+        </Section>
+
+        <Section>
+          <H3>Ride History</H3>
+          <Text>Past history of rides</Text>
+        </Section>
+
+        <Section>
+          <H3>Testimonials</H3>
+          <Text>Anna: Bill is a really funny ride!</Text>
+        </Section>
 
       </Profile>  
 

@@ -36,6 +36,7 @@ const seedReviews = () => db.Promise.map([
 
 
 const seedUsers = () => db.Promise.map([
+  {first_name: "Bill", last_name:"Murray", email: "bill@billmurray.com", about:"I'm Bill and I love company on long drives."},
   {first_name: "Ben", last_name:"Folds", email: "ben@folds.com"},
   {first_name: "Sara", last_name:"Zoo", email: "zoo@sara.com"}
 ], user => db.model('users').create(user));
