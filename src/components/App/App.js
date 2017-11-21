@@ -3,7 +3,7 @@ import classnames from 'classnames';
 import { Link } from 'react-router-dom';
 // import logo from './logo.svg';
 // import './style.css';
-import apii from '../utils/apii';
+import api from '../utils/api';
 import FrontHeader from '../Front/FrontHeader.js'
 // var apii = require('../utils/apii')
 
@@ -31,7 +31,7 @@ class App extends Component {
   }
 
   expressTest(){
-    apii.fetchExpressTest()
+    api.fetchExpressTest()
       .then((result)=>{
         console.log(result)
       })

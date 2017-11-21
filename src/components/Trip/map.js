@@ -19,8 +19,9 @@ const MapWithADirectionsRenderer = compose(
   lifecycle({
     componentDidMount() {
         const DirectionsService = new window.google.maps.DirectionsService();
+        
         DirectionsService.route({
-            origin: new window.google.maps.LatLng(41.8507300, -87.6512600),
+            origin: new window.google.maps.LatLng(43.255203, -79.843826),
             destination: new window.google.maps.LatLng(43.6532, -79.3832),
             travelMode: window.google.maps.TravelMode.DRIVING,
         }, (result, status) => {

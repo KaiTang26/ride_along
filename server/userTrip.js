@@ -21,6 +21,7 @@ router.post('/:id', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
   console.log(req.params.user_id);
+  console.log(req.body)
   Trip.create({
     date: req.body.date,
     time: req.body.time,
@@ -30,9 +31,11 @@ router.post('/', function(req, res, next) {
     driver: req.params.user_id
   })
   .then(result => { 
-    console.log(result[0]);
+    res.sendStatus(200)
+    // console.log(result[0]);
   })
   .catch(next);
+  // res.sendStatus(200)
 });
 
 module.exports = router
