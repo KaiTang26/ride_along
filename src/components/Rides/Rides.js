@@ -68,6 +68,10 @@ export default class Rides extends Component {
     )
   }
 
+// The nav problem do conditional rendering or do history push, this is an object
+// within props, you cna specify that you want to push a certain url on click and it
+// move you to that page
+
 // If we do conditional rendering change to set the state of Details
 // then put a function into the render that conditionally renders
   // _details=(event) => {
