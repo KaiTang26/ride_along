@@ -14,7 +14,7 @@ class Post extends Component {
             <div>User: 'Example' Rating: '1-5'</div>
             <div>Number of Passengers: {ride.passengers}</div>
             <div>Price: $</div>
-            <Link to={`/ride/${ride.id}`}>{`/ride/${ride.id}`}</Link>
+            <Link to={`/ride/${ride.id}`}><button>View Details</button></Link>
             <br></br>
           </div>
       ))}

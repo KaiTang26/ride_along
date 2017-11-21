@@ -68,10 +68,12 @@ export default class Rides extends Component {
     )
   }
 
-  _details=(event) => {
-    api.getRide(1)
-
-  }
+// If we do conditional rendering change to set the state of Details
+// then put a function into the render that conditionally renders
+  // _details=(event) => {
+  //   api.getRide(1)
+  //
+  // }
 
 
   _handleInputChange=(event) => {
