@@ -3,6 +3,7 @@ import classnames from 'classnames';
 import Posts from './Posts'
 import api from '../utils/api';
 
+
 export default class Rides extends Component {
 
   constructor(props){
@@ -38,22 +39,18 @@ export default class Rides extends Component {
         <label>
         Pickup Location:
           <select name="start" value={this.state.start} onChange={this._handleInputChange}>
-          { this.state.cities.map((ele, i)=>{
-
-              return <option value={ele} key={i}>{ele}</option>
-
-          })}
+            { this.state.cities.map((ele, i)=>{
+                return <option value={ele} key={i}>{ele}</option>
+            })}
           </select>
         </label>
 
         <label>
         Drop Off:
           <select name="end" value={this.state.end} onChange={this._handleInputChange}>
-          { this.state.cities.map((ele, i)=>{
-
-              return <option value={ele} key={i}>{ele}</option>
-
-          })}
+            { this.state.cities.map((ele, i)=>{
+                return <option value={ele} key={i}>{ele}</option>
+            })}
           </select>
         </label>
         <input type="submit" value="Search Trips" />

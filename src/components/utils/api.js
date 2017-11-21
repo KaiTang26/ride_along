@@ -34,6 +34,14 @@ export default {
       .then((response) =>{
           return response
       })
+    },
+
+    getRide: function(trip_id, req){
+      const encodedURI = window.encodeURI(`http://localhost:3000/api/trips/${trip_id}`);
+      return axios.get(encodedURI)
+      .then((response) =>{
+          return response
+      })
     }
 
 }

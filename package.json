@@ -37,9 +37,10 @@
   },
   "devDependencies": {
     "chalk": "^2.3.0",
-    "sequelize-cli": "^3.0.0",
+    "faker": "^4.1.0",
     "path": "^0.12.7",
     "react-dev-utils": "^4.2.1",
+    "sequelize-cli": "^3.0.0",
     "styled-components": "^2.2.3"
   },
   "proxy": "http://localhost:8000"
