@@ -35,3 +35,5 @@ function sync(retries=0, maxRetries=5) {
 }
 
 db.didSync = sync()
+
+// {force:true}

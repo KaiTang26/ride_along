@@ -2,8 +2,64 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import Map from './map.js';
-// import Location from './location.js';
+import CalculateGeocode from './Calculategeo.js';
 import api from '../utils/api';
+
+// class CalculateGrocode extends Component{
+
+//     constructor(props){
+//         super(props);
+//         this.state={
+//             start_location:"",
+//             end_location:"",
+//             origin:['',''],
+//             destination:['','']
+            
+//         }
+//     }
+//     render(){
+//         return(
+//             <div>   
+//                     <label>
+//                         From:
+//                         <input type="text" name="start_location" onChange={this._handleInputChange}/>
+//                     </label>
+//                     <label>
+//                         To:
+//                         <input type="text" name="end_location" onChange={this._handleInputChange}/>
+//                     </label>
+//                     <input type="submit" value="Search" disabled={!( this.state.start_location && this.state.end_location)} onClick={this._submit.bind(this)}/>          
+//             </div>
+//         )
+//     }
+//     _handleInputChange=(event)=>{
+//         const target = event.target;
+//         const value = target.value; 
+//         const name = target.name;
+//         // console.log(target)
+//         this.setState({
+//             [name]:value
+//         })
+//     }
+//     _submit(event){
+//         event.preventDefault();
+
+//         api.fetchGeocode(this.state.start_location)
+//         .then( (response)=>{
+//             let origin = [response.lat,response.lng];
+//             api.fetchGeocode(this.state.end_location)
+//             .then( (response)=>{
+//                 const address = {...this.state, origin: origin, destination: [response.lat,response.lng]}
+//                 this.props.updateAddress(address);  
+//             });
+//         }); 
+//     }
+// }
+
+
+
+
+
 
 export default class Trip extends Component {
 
@@ -14,15 +70,18 @@ export default class Trip extends Component {
         time:"",
         date:"",
         start_location:"",
-        end_location:"" 
+        end_location:"",
+        origin:['',''],
+        destination:['',''] 
     }
   }
   render() {
-    const city = ["Select City", "Windsor", "Chatham-Kent", "London", "Kitchener", "Waterloo", "Cambridge", "Guelph", "Hamilton", "St.Catharines", "Burlington", "Mississauga", "Toronto", "Kingston", "Ottawa", "Gatineau", "Montreal", "Trois-Riveres", "Quebec"];
+    // const city = ["Select City", "Windsor, ON", "Chatham-Kent, ON", "London, ON", "Kitchener, ON", "Waterloo, ON", "Cambridge, ON", "Guelph, ON", "Hamilton, ON", "St.Catharines, ON", "Burlington, ON", "Mississauga, ON", "Toronto, ON", "Kingston, ON", "Ottawa, ON", "Gatineau, QC", "Montreal, QC", "Trois-Riveres, QC", "Quebec, QC"];
     const { className, ...props } = this.props;
     return (
       <div className={classnames('Trip', className)} {...props}>
          <form onSubmit={this._submitForm.bind(this)}>
+            <CalculateGeocode updateAddress={this._handleLocationSearch}/>
             <label>
             Date:
             <input type="date"  name='date' value={this.state.date} onChange={this._handleInputChange}/>
@@ -31,27 +90,6 @@ export default class Trip extends Component {
             Time:
             <input type="time"  name="time" value={this.state.time} onChange={this._handleInputChange}/>
             </label>
-
-            <label>
-            From:
-            <select placeholder="Select City" name="start_location" onChange={this._handleInputChange}>
-            { city.map((ele, i)=>{
-
-                return <option value={ele} key={i}>{ele}</option>
-
-            })}
-            </select>
-            </label>
-
-            <label>
-            To:
-            <select placeholder="Select City" name="end_location" onChange={this._handleInputChange}>
-            { city.map((ele, i)=>{
-                return <option value={ele} key={i}>{ele}</option>
-            })}
-            </select>
-            </label>
-
             <label>
             Number of Passenger:
             <input name="passengers"
@@ -65,11 +103,7 @@ export default class Trip extends Component {
             <button type="submit" disabled={!(this.state.passengers && this.state.time && this.state.date && this.state.start_location && this.state.end_location)}>
                 Submit
             </button>
-
-            {/* <button type="submit">
-                Reset
-            </button> */}
-        </form>      
+        </form> 
         <Map origin={this.state.origin} destination={this.state.destination}/>
       </div>
     );
@@ -79,10 +113,22 @@ export default class Trip extends Component {
         const target = event.target;
         const value = target.value; 
         const name = target.name;
-        console.log(target)
+        // console.log(target)
         this.setState({
             [name]:value
         })
+    }
+
+    
+    _handleLocationSearch=(address)=>{
+
+        this.setState({
+            start_location:address.start_location,
+            end_location:address.end_location,
+            origin:address.origin,
+            destination:address.destination 
+        })
+        
     }
 
     _submitForm(event){
