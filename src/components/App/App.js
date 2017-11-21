@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import { Link } from 'react-router-dom'
 import FrontHeader from '../Front/FrontHeader';
-import SignIn from '../SignIn';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import ExampleCustom from '../ExampleCustom'
 
 const customTheme = {
   palette: { 
@@ -26,7 +26,7 @@ class App extends Component {
         <div className={classnames('App', className)} {...props}>
           <FrontHeader />
 
-          <SignIn />
+        <ExampleCustom />
 
           <Link to='about'><button>Test React Router</button></Link>
           <br />

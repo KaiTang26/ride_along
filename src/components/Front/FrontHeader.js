@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import splash from './splash.jpg';
-import UserNav from '../UserNav.js';
 import gs from '../GlobalStyles.js';
+import Login from '../Login';
+import Register from '../Register';
 
 const Header = styled.section`
   height: 600px;
@@ -46,10 +47,19 @@ const Tagline = styled.h1`
   }
 `;
 
+const UserNav = styled.div`
+  overflow: hidden;
+  > div
+    float: right;
+`;
+
 const FrontHeader = () => (
   <Header>
     <Darken>
-      <UserNav />
+      <UserNav>
+        <Login />
+        <Register />
+      </UserNav>
         <Logotype>Ride Along</Logotype>
         <Tagline>Get there <span>>></span> together</Tagline>
     </Darken>
