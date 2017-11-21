@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import classnames from 'classnames';
 import { Link } from 'react-router-dom'
+import api from '../utils/api';
+// var apii = require('../utils/apii')
+
+
 import FrontHeader from '../Front/FrontHeader';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
+
 
 const customTheme = {
   palette: { 
@@ -14,7 +19,6 @@ const customTheme = {
 };
 
 const theme = getMuiTheme(customTheme);
-
 
 class App extends Component {
 
@@ -27,15 +31,26 @@ class App extends Component {
 
           <Link to='about'><button>Test React Router</button></Link>
           <br />
+         
+          <Link to='trip'><button>Test trip React Router</button></Link>
+          <br />
           <br />
           <button onClick={this.props.actions.expressTest}>Test if Express is working</button>
           <br />
           <br />
-          <button onClick={this.props.actions.dbTest}>Test if Express and Sequelize are working</button>
+          <button onClick={this.expressTest.bind(this)}>Test if Express and Sequelize are working</button>
           <div style={{ padding: '30px' }}>{this.props.results}</div>
         </div>
       </MuiThemeProvider>
+        
     );
+  }
+
+  expressTest(){
+    api.fetchExpressTest()
+      .then((result)=>{
+        console.log(result)
+      })
   }
 }
 
