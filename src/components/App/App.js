@@ -29,13 +29,15 @@ class App extends Component {
         <div className={classnames('App', className)} {...props}>
           <FrontHeader />
 
+          <Link to='profile'><button>USER PROFILE PAGE</button></Link>
+          
           <Link to='about'><button>Test React Router</button></Link>
           <br />
          
           <Link to='trip'><button>Test trip React Router</button></Link>
           <br />
           <br />
-          
+
           <button onClick={this.props.actions.expressTest}>Test if Express is working</button>
           <br />
           <br />
