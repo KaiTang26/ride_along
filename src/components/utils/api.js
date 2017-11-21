@@ -23,7 +23,7 @@ export default {
         return axios.get(encodedURI)
         .then((response)=>{
             return response.data.results[0].geometry.location
-            
+
         })
     },
 
