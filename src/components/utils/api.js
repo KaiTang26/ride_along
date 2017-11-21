@@ -42,6 +42,11 @@ export default {
       .then((response) =>{
           return response
       })
+    },
+
+    filterRides: function() {
+      const encodedURI = window.encodeURI('http://localhost:3000/api/trips');
+      return axios.get(encodedURI)
     }
 
 }

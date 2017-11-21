@@ -8,9 +8,8 @@ const trips = require('./trips');
 // import products from './products';
 api
   .get('/express-test', (req, res) => {
-    
-    console.log(req.headers)
-    res.send({express: 'working!'})}) //demo route to prove api is working
+  console.log(req.headers)
+  res.send({express: 'working!'})}) //demo route to prove api is working
   .use('/products', products)
   .use('/reviews', reviews)
   .use('/users', users)
