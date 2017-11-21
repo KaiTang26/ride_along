@@ -4,13 +4,12 @@ import { Link } from 'react-router-dom'
 import FrontHeader from '../Front/FrontHeader';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import ExampleCustom from '../ExampleCustom'
 
 const customTheme = {
   palette: { 
-    primary1Color: "red",
-    primary2Color: "green",
-    primary3Color: "orange"
+    // primary1Color: "red",
+    // primary2Color: "green",
+    // primary3Color: "orange"
   }
 };
 
@@ -25,8 +24,6 @@ class App extends Component {
       <MuiThemeProvider muiTheme={theme}>
         <div className={classnames('App', className)} {...props}>
           <FrontHeader />
-
-        <ExampleCustom />
 
           <Link to='about'><button>Test React Router</button></Link>
           <br />

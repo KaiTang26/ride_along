@@ -11,6 +11,28 @@ const Form = styled.form`
   margin: 0 auto;
 `;
 
+const Button = styled(RaisedButton)`
+  color: white !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  font-family: Lato !important;
+  float: right;
+  > button {
+    background-color: transparent !important;
+    color: white !important;
+    font-family: Lato !important;
+    padding: .5em !important;
+  }
+  > button div div span {
+    color: white !important;
+    text-transform: none !important;
+    font-size: 1rem !important;
+  }
+  > button div div span:hover {
+    color: skyblue !important;
+  }
+`;
+
 const Input = styled(TextField)`
 `;
 
@@ -61,7 +83,7 @@ export default class Register extends Component {
     return (
 
       <div>
-        <RaisedButton label="Register" onClick={this.handleOpen} />
+        <Button label="Register" onClick={this.handleOpen} />
         
         <Dialog
           title="Register to start your trip!"

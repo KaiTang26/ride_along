@@ -26,7 +26,7 @@ const Darken = styled.div`
 const Logotype = styled.h1`
   font-size: 550%;
   font-style: italic;
-  padding: 2em 0 .6em;
+  padding: 1.5em 0 .6em;
 `;
 
 const Tagline = styled.h1`
@@ -35,6 +35,7 @@ const Tagline = styled.h1`
   font-size: 235%;
   font-style: italic;
   margin-right: .25em;
+  letter-spacing: .5px;
   > span {
     font-size: 95%;
     letter-spacing: -3px;
@@ -43,7 +44,6 @@ const Tagline = styled.h1`
     margin: 0 2px 0 3px;
     position: relative;
     top: 2px;
-    letter-spacing: .5px;
   }
 `;
 

@@ -15,13 +15,26 @@ const Input = styled(TextField)`
 `;
 
 const Button = styled(RaisedButton)`
-  > button
   color: white !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
   font-family: Lato !important;
-  font-size: 1em !important;
-  padding: 1em !important;
-`
-
+  float: right;
+  > button {
+    background-color: transparent !important;
+    color: white !important;
+    padding: .5em !important;
+    font-family: Lato !important;
+  }
+  > button div div span {
+    color: white !important;
+    text-transform: none !important;
+    font-size: 1rem !important;
+  }
+  > button div div span:hover {
+    color: skyblue !important;
+  }
+`;
 export default class Login extends Component {
   constructor(props) {
     super(props);
