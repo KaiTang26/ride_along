@@ -44,10 +44,10 @@ class CalculateGrocode extends Component{
     _submit(event){
         event.preventDefault();
 
-        api.fetchGeocode(this.state.end_location)
+        api.fetchGeocode(this.state.start_location)
         .then( (response)=>{
             let origin = [response.lat,response.lng];
-            api.fetchGeocode(this.state.start_location)
+            api.fetchGeocode(this.state.end_location)
             .then( (response)=>{
                 const address = {...this.state, origin: origin, destination: [response.lat,response.lng]}
                 this.props.updateAddress(address);  
@@ -136,6 +136,7 @@ export default class Trip extends Component {
 
     
     _handleLocationSearch=(address)=>{
+
         this.setState({
             start_location:address.start_location,
             end_location:address.end_location,
