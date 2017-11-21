@@ -35,6 +35,7 @@ class App extends Component {
           <Link to='trip'><button>Test trip React Router</button></Link>
           <br />
           <br />
+          
           <button onClick={this.props.actions.expressTest}>Test if Express is working</button>
           <br />
           <br />

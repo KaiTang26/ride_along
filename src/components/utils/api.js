@@ -26,6 +26,16 @@ export default {
                 console.log("hello")
             )
         })
-    }
+    },
+
+    register: function(req){
+        const encodedURI = window.encodeURI("http://localhost:3000/api/users");
+        console.log(req);
+        console.log(encodedURI);
+        return axios.post(encodedURI, req)
+        .then((response)=> {
+            console.log("User created successfully")
+        })
+    },
 
 }

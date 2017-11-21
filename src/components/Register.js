@@ -5,6 +5,7 @@ import TextField from 'material-ui/TextField';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
+import api from './utils/api';
 
 const Form = styled.form`
   max-width: 800px;
@@ -56,6 +57,8 @@ export default class Register extends Component {
 
   handleClose = () => {
     this.setState({open: false});
+    api.register(this.state)
+    .then(console.log(this.state))
   };
 
   handleChange = e => {
@@ -63,6 +66,12 @@ export default class Register extends Component {
       [e.target.name]: e.target.value
     });
   };
+
+  // handleSubmit = e => {
+  //   // e.preventDefault();
+  //   api.register(this.state)
+  //   .then(console.log(this.state))
+  // }
 
   render() {
     

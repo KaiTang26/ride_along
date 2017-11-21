@@ -10,13 +10,13 @@ const userRouter = require('express').Router();
 
 userRouter.use('/:user_id/trip', userTrip);
 
-// tripRouter.get('/', function(req, res, next) {
-//   User.findAll()
-//     .then(result => {
-//         res.status(200).send(result);
-//     })
-//     .catch(next);
-// });
+userRouter.get('/', function(req, res, next) {
+  User.findAll()
+    .then(result => {
+        res.status(200).send(result);
+    })
+    .catch(next);
+});
 
 userRouter.post('/', function(req, res, next) {
   User.create({
@@ -30,7 +30,6 @@ userRouter.post('/', function(req, res, next) {
   .then(user => { 
     console.log(user);
   })
-  .save()
   .catch(next);
 });
 

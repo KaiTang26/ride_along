@@ -53,7 +53,7 @@ export default class Trip extends Component {
             </label>
 
             <label>
-            Number of Passenger:
+            Number of Passengers:
             <input name="passengers"
                    type="number"
                    min="1"
