@@ -1,17 +1,20 @@
 import React, {Component} from 'react';
+import io from 'socket.io-client';
 
 class ChatContainer extends Component {
+
   constructor(props) {
-  super(props)
+    super(props)
+    var socket =new io("//localhost:3001");
+
   }
 
-  ComponentDidMount() {
-    var socket = io();
-  }
+
 
   render() {
     return (
-      <div>My Chat</div>
+
+      <div>My Chat{this.props.id.id} {console.log(this.props)}</div>
     )
   }
 }

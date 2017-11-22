@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
 import api from '../utils/api';
-import ChatBar from '../Chat/ChatContainer';
+import ChatContainer from '../Chat/ChatContainer';
 
 
 const RideDetailUI = (props) => (
   <div>
-    {console.log(props.id)}
     <h1>Ride from {props.id.start_location} to {props.id.end_location} </h1>
     <h2>Leaving {props.id.date} at {props.id.time}</h2>
     <br></br>
@@ -31,14 +30,14 @@ class Details extends Component {
     .then(result => {
       let ride = result.data
       this.setState({ride})
-      console.log(ride);
+      console.log('Details');
     })
   }
   render() {
     return (
       <div>
         <RideDetailUI id={this.state.ride} />
-        <ChatContainer/>
+        <ChatContainer id={this.state.ride}/>
       </div>
   )}
 }
