@@ -1,9 +1,13 @@
 import React, {Component} from 'react';
 import api from '../utils/api';
+import Map from './map.js';
 
 
-const RideDetailUI = (props) => (
-  <div>
+const RideDetailUI = (props) => {
+  console.log(props.id.origin)
+
+  return(
+    <div>
     {console.log(props.id)}
     <h1>Ride from {props.id.start_location} to {props.id.end_location} </h1>
     <h2>Leaving {props.id.date} at {props.id.time}</h2>
@@ -15,9 +19,12 @@ const RideDetailUI = (props) => (
     <br></br>
     <p>Some text in paragraph form</p>
     <br></br>
-
+    <Map origin={props.id.origin} destination={props.id.destination}/>
   </div>
-)
+  )
+}
+  
+
 
 class Details extends Component {
   constructor(props) {
@@ -25,7 +32,7 @@ class Details extends Component {
     this.state = {ride: {}}
   }
   // Can use if result.status to do condition rendering
-  componentDidMount() {
+  componentWillMount() {
     api.getRide(this.props.match.params.id)
     .then(result => {
       let ride = result.data

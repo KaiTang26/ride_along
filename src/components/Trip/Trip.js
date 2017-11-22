@@ -5,62 +5,6 @@ import Map from './map.js';
 import CalculateGeocode from './Calculategeo.js';
 import api from '../utils/api';
 
-// class CalculateGrocode extends Component{
-
-//     constructor(props){
-//         super(props);
-//         this.state={
-//             start_location:"",
-//             end_location:"",
-//             origin:['',''],
-//             destination:['','']
-            
-//         }
-//     }
-//     render(){
-//         return(
-//             <div>   
-//                     <label>
-//                         From:
-//                         <input type="text" name="start_location" onChange={this._handleInputChange}/>
-//                     </label>
-//                     <label>
-//                         To:
-//                         <input type="text" name="end_location" onChange={this._handleInputChange}/>
-//                     </label>
-//                     <input type="submit" value="Search" disabled={!( this.state.start_location && this.state.end_location)} onClick={this._submit.bind(this)}/>          
-//             </div>
-//         )
-//     }
-//     _handleInputChange=(event)=>{
-//         const target = event.target;
-//         const value = target.value; 
-//         const name = target.name;
-//         // console.log(target)
-//         this.setState({
-//             [name]:value
-//         })
-//     }
-//     _submit(event){
-//         event.preventDefault();
-
-//         api.fetchGeocode(this.state.start_location)
-//         .then( (response)=>{
-//             let origin = [response.lat,response.lng];
-//             api.fetchGeocode(this.state.end_location)
-//             .then( (response)=>{
-//                 const address = {...this.state, origin: origin, destination: [response.lat,response.lng]}
-//                 this.props.updateAddress(address);  
-//             });
-//         }); 
-//     }
-// }
-
-
-
-
-
-
 export default class Trip extends Component {
 
   constructor(props){
@@ -72,7 +16,9 @@ export default class Trip extends Component {
         start_location:"",
         end_location:"",
         origin:['',''],
-        destination:['',''] 
+        destination:['',''],
+        price:'',
+        description:'' 
     }
   }
   render() {
@@ -100,6 +46,17 @@ export default class Trip extends Component {
                    value={this.state.numberOfPassenger}
                    onChange={this._handleInputChange} />
             </label>
+            <label>
+            Price:
+            <input name="price"
+                   type="number"
+                   value={this.state.numberOfPassenger}
+                   onChange={this._handleInputChange} />
+            </label>
+            <label>
+            About:
+            <input type="text" name="description" onChange={this._handleInputChange}/>
+            </label>
             <button type="submit" disabled={!(this.state.passengers && this.state.time && this.state.date && this.state.start_location && this.state.end_location)}>
                 Submit
             </button>
@@ -118,8 +75,7 @@ export default class Trip extends Component {
             [name]:value
         })
     }
-
-    
+  
     _handleLocationSearch=(address)=>{
 
         this.setState({
@@ -127,8 +83,7 @@ export default class Trip extends Component {
             end_location:address.end_location,
             origin:address.origin,
             destination:address.destination 
-        })
-        
+        })      
     }
 
     _submitForm(event){
