@@ -22,6 +22,9 @@ const User = db.define('users', {
   },
   drivers_license: {
     type: Sequelize.STRING
+  },
+  about: {
+    type: Sequelize.TEXT
   }
 });
 

@@ -37,7 +37,7 @@ export default class Trip extends Component {
             <input type="time"  name="time" value={this.state.time} onChange={this._handleInputChange}/>
             </label>
             <label>
-            Number of Passenger:
+            Number of Passengers:
             <input name="passengers"
                    type="number"
                    min="1"
