@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import gs from './GlobalStyles.js';
-import api from './utils/api';
+import gs from '../GlobalStyles';
+import api from '../utils/api';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Menu from './Menu';
+import Menu from '../Menu';
 import Road from './cover.jpg';
+
+import EditProfile from './EditProfile';
 
 import UserPic from './Bill.jpg';
 
@@ -142,7 +144,7 @@ export default class UserProfile extends Component {
           <Left>
 
             <Section>
-              <EditButton>Edit Profile</EditButton>
+              <EditProfile/>
             </Section>
 
             <Section>

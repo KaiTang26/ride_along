@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import gs from './GlobalStyles.js';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import UserPic from './Bill.jpg';
+import UserPic from './UserProfile/Bill.jpg';
 
 const Nav = styled.div`
   overflow: hidden;
