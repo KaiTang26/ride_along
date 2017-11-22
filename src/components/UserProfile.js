@@ -20,23 +20,22 @@ const ProfilePic = styled.div`
   background-size: cover;
   margin: .66em;
   display: inline-block;
+  box-shadow: 1px -1px 20px 1px rgba(0,0,0,0.5);
 `;
 
 
 const Profile = styled.section`
   max-width: 900px;
   margin: 0 auto;
-
+  margin-top: -6em;
 `;
 
 const Name = styled.h2`
-  font-size: 225%;
+  font-size: 275%;
   font-weight: bold;
   margin: 1em;
   text-align: center;
-  max-width: 250px;
-  background: white;
-  margin: -.9em auto 0;
+  margin: -3.25em auto 2em;
   font-weight: 900;
   font-family: Lato;
   padding: .5em;
@@ -45,27 +44,50 @@ const Name = styled.h2`
 const CoverPic = styled.div`
   background: url(${Road});
   background-size: cover;
-  background-position-y: 50%;
+  background-position-y: 45%;
   height: 300px;
   max-width: 100%;
 `;
 
 const Section = styled.section`
-  margin: 2em;
+  margin: 3em 2.7em;
 
 `;
 
 const H3 = styled.h3`
-  font-size: 85%;
+  font-size: 70%;
   letter-spacing: .5px;
-  font-weight: bold;
+  font-weight: 900;
   font-family: Lato;
   text-transform: uppercase;
-  margin-bottom: .5em;
+  margin-bottom: .85em;
+  color: ${gs.golden};
 `;
 
 const Text = styled.p`
-  
+  line-height: 1.5;
+`;
+
+const LeftText = Text.extend`
+  font-style: italic;
+  font-size: 90%;
+`;
+
+const Info = styled.div`
+  overflow: hidden;
+`;
+
+const Left = styled.div`
+  float: left;
+  width: 290px;
+  text-align: center;
+  > section p
+    font-style: italic;
+`;
+
+const Right = styled.div`
+  float: right;
+  width: 65%;
 `;
 
 export default class UserProfile extends Component {
@@ -105,26 +127,46 @@ export default class UserProfile extends Component {
       <Menu/>
       <CoverPic/>
       <Profile>
+        
+        <ProfilePic />
+
         <Name>
           Hello {this.state.first_name}!
         </Name>
 
-        <ProfilePic />
-        <Section>
-          <H3>About</H3>
-          <Text>{this.state.about}</Text>
-        </Section>
+        <Info>
+          <Left>
 
-        <Section>
-          <H3>Ride History</H3>
-          <Text>Past history of rides</Text>
-        </Section>
+            <Section>
+              <H3>Last Login</H3>
+              <LeftText>1 day ago</LeftText>
+            </Section>
 
-        <Section>
-          <H3>Testimonials</H3>
-          <Text>Anna: Bill is a really funny ride!</Text>
-        </Section>
+            <Section>
+              <H3>Response Rate</H3>
+              <LeftText>95%</LeftText>
+            </Section>
 
+            <Section>
+              <H3>Ride History</H3>
+              <LeftText>4 past rides</LeftText>
+            </Section>
+
+          </Left>
+
+          <Right>
+            <Section>
+              <H3>About</H3>
+              <Text>{this.state.about}</Text>
+            </Section>
+
+
+            <Section>
+              <H3>Testimonials</H3>
+              <Text>Anna: Bill is a really funny ride!</Text>
+            </Section>
+          </Right>
+        </Info>
       </Profile>  
 
       </div>

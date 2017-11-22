@@ -48,5 +48,6 @@ table {
 }
 
 body {
-  font-family: Merriweather, serif;
+	font-family: Merriweather, serif;
+	color: #333;
 }

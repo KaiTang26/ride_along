@@ -10,14 +10,15 @@ const Nav = styled.div`
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(255,255,255, .9);
+  background: rgba(255,255,255, .99);
 `;
 
 const Logotype = styled.h1`
   font-size: 150%;
   font-weight: bold;
-  margin: 1em;
+  margin: .85em;
   float: left;
+  color: ${gs.green};
 `;
 
 const UserLinks = styled.div`
@@ -29,7 +30,7 @@ const Li = styled.div`
   font-size: 90%;
   font-family: Lato;
   vertical-align: top;
-  padding: 2em 1em;
+  padding: 1.7em 1em;
 `;
 
 const ProfilePic = styled.div`
