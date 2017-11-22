@@ -5,6 +5,7 @@ import Trip from './components/Trip/Trip';
 import UserProfile from './components/UserProfile';
 import Rides from './components/Rides/Rides';
 import Details from './components/Rides/Details';
+// import Callback from './components/Callback';
 
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 

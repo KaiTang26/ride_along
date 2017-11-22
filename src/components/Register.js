@@ -58,9 +58,13 @@ export default class Register extends Component {
 
   handleClose = () => {
     this.setState({open: false});
+  };
+
+  userSignUp = ()=>{
+    this.setState({open: false});
     api.register(this.state)
     .then(console.log(this.state))
-  };
+  }
 
   handleChange = e => {
     this.setState({
@@ -80,7 +84,7 @@ export default class Register extends Component {
         label="Submit"
         primary={true}
         keyboardFocused={true}
-        onClick={this.handleClose}
+        onClick={this.userSignUp}
       />,
     ];
 

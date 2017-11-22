@@ -3,9 +3,9 @@ const Trip = require('../db/models/trip');
 
 const router = require('express').Router();
 const cors = require('cors');
-const authCheck = require('./auth')
+// const authCheck = require('./auth')
 
-router.use(cors());
+// router.use(cors());
 // router.use(authCheck)
 
 // console.log(authCheck)
@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
     .catch(next);
 });
 
-router.get('/:id',authCheck, function(req, res, next) {
+router.get('/:id',function(req, res, next) {
   Trip.findOne({
       where:{id:req.params.id}
     })

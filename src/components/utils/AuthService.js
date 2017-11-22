@@ -1,9 +1,8 @@
+import browserHistory from '../../history';
 import decode from 'jwt-decode';
-import { browserHistory } from 'react-router';
 import auth0 from 'auth0-js';
 const ID_TOKEN_KEY = 'id_token';
 const ACCESS_TOKEN_KEY = 'access_token';
-
 const CLIENT_ID = '{qebxl0DVq9N7GE84pD6qrM7yyPJBcd1X}';
 const CLIENT_DOMAIN = 'AUTH0_DOMAIN';
 const REDIRECT = 'http://localhost:3000/callback';

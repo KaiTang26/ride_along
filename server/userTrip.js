@@ -5,6 +5,11 @@ const User_Trip = require('../db/models/user_trip');
 
 const router = require('express').Router({mergeParams: true});
 
+// const cors = require('cors');
+// const authCheck = require('./auth')
+
+// router.use(cors());
+
 router.post('/:id', function(req, res, next) {
   console.log(req.params.id);
   console.log(req.params.user_id);
@@ -19,7 +24,7 @@ router.post('/:id', function(req, res, next) {
   .catch(next);
 });
 
-router.post('/', function(req, res, next) {
+router.post('/',function(req, res, next) {
   console.log(req.params.user_id);
   console.log(req.body)
   Trip.create({
