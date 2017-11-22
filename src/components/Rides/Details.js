@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import api from '../utils/api';
+import ChatBar from '../Chat/ChatContainer';
 
 
 const RideDetailUI = (props) => (
@@ -37,6 +38,7 @@ class Details extends Component {
     return (
       <div>
         <RideDetailUI id={this.state.ride} />
+        <ChatContainer/>
       </div>
   )}
 }

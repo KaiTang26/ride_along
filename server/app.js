@@ -3,8 +3,21 @@ const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
 const bodyParser = require('body-parser')
-
 const app = express();
+
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
+
+io.on('connection', function(socket){
+  console.log('a user connected');
+  socket.on('disconnect', function (){
+    console.log('user disconnected');
+  })
+});
+
+http.listen(3001, function(){
+  console.log('listening on *:3000');
+});
 
 // Setup logger
 app.use(morgan(':remote-addr - :remote-user [:date[clf]] ":method :url HTTP/:http-version" :status :res[content-length] :response-time ms'));
