@@ -35,7 +35,7 @@ const Name = styled.h2`
   font-weight: bold;
   margin: 1em;
   text-align: center;
-  margin: -3.25em auto 2em;
+  margin: -3.25em auto 1em;
   font-weight: 900;
   font-family: Lato;
   padding: .5em;
@@ -90,6 +90,10 @@ const Right = styled.div`
   width: 65%;
 `;
 
+const EditButton = styled.button`
+
+`;
+
 export default class UserProfile extends Component {
   constructor(props) {
     super(props);
@@ -136,6 +140,10 @@ export default class UserProfile extends Component {
 
         <Info>
           <Left>
+
+            <Section>
+              <EditButton>Edit Profile</EditButton>
+            </Section>
 
             <Section>
               <H3>Last Login</H3>
