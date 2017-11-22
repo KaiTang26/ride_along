@@ -17,13 +17,14 @@ const MapWithADirectionsRenderer = compose(
   withScriptjs,
   withGoogleMap,
   lifecycle({
-    componentWillReceiveProps(nextProps) {
+    componentDidMount() {
         const DirectionsService = new window.google.maps.DirectionsService();
         DirectionsService.route({
-            origin: new window.google.maps.LatLng(nextProps.origin[0], nextProps.origin[1]),
-            destination: new window.google.maps.LatLng(nextProps.destination[0], nextProps.destination[1]),
+            origin: new window.google.maps.LatLng(this.props.origin[0], this.props.origin[1]),
+            destination: new window.google.maps.LatLng(this.props.destination[0], this.props.destination[1]),
             travelMode: window.google.maps.TravelMode.DRIVING,
         }, (result, status) => {
+          console.log(result.routes[0].legs[0])
             if (status === window.google.maps.DirectionsStatus.OK) {
             this.setState({
                 directions: result,

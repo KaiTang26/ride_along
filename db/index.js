@@ -1,7 +1,10 @@
+require('dotenv').config();
+
 const debug = require('debug')('sql')
 const chalk = require('chalk')
 const Sequelize = require('sequelize')
 const pkg = require('../package.json')
+
 
 const name = process.env.DATABASE_NAME || pkg.name;
 const url = process.env.DATABASE_URL || `postgres://localhost:5432/${name}`;
@@ -39,3 +42,5 @@ function sync(retries=0, maxRetries=5) {
 }
 
 db.didSync = sync()
+
+// {force:true}

@@ -42,9 +42,9 @@ const seedUsers = () => db.Promise.map([
 ], user => db.model('users').create(user));
 
 const seedTrips = () => db.Promise.map([
-  {date: '2017-12-11', time: `22:47:21 GMT`, start_location: "Toronto", end_location: "Ottawa", passengers: 4},
-  {date: '2017-12-31', time: `09:00:21 GMT`, start_location: "Montreal", end_location: "Hamilton", passengers: 2},
-  {date: '2017-12-22', time: `18:45:21 GMT`, start_location: "Kingston", end_location: "Toronto", passengers: 3}
+  {date: '2017-12-11', time: `22:47:21 GMT`, start_location: "Toronto", end_location: "Ottawa", passengers: 4, origin:[43.761539,-79.411079], destination:[45.420315,-75.695419] , price:30.30, description:'Great trip pls join us', driver:1},
+  {date: '2017-12-31', time: `09:00:21 GMT`, start_location: "Montreal", end_location: "Hamilton", passengers: 2, origin:[45.5017,-73.5673], destination:[43.255203,-79.843826] , price:55.30, description:'good trip pls join us', driver:2},
+  {date: '2017-12-22', time: `18:45:21 GMT`, start_location: "Kingston", end_location: "Toronto", passengers: 3, origin:[44.22914,-76.48079], destination:[43.761539,-79.411079] , price:25.30, description:'good trip pls join us', driver:1}
 ], trip => db.model('trips').create(trip));
 
 
