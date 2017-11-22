@@ -6,13 +6,13 @@ class Message extends Component {
         // console.log("message");
         // console.log(this.props);
         // if (this.props.type === "msg") {
-        //   var message = <span className="message-username">{this.props.userName}</span>
-        //   + <span className="message-content">{this.props.content}</span>;
+        //   var message = <div className="message-username">{this.props.userName}</div>
+        //   + <div className="message-content">{this.props.content}</div>;
         // }
       return (
         <div className="message">
-          <span className="message-username">{this.props.userName}</span>
-          <span className="message-content">{this.props.content}</span>
+          <div className="message-username">{this.props.userName}</div>
+          <div className="message-content">{this.props.content}</div>
         </div>
       );
   }

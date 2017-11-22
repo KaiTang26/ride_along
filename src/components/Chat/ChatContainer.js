@@ -8,18 +8,24 @@ class ChatContainer extends Component {
 
   constructor(props) {
     super(props)
+    console.log("in props");
     this.state = {
-      currentUser: "Anonymous",
-      messages: ["What's up"],
+      currentUser: 'Seb',
+      messages: ["What's up", "very cool"]
     }
   }
 
   componentDidMount(){
     this.socket = new io("//localhost:3001");
-    console.log(this.socket);
+    console.log('did mount');
+    this.socket.on('reply', function(msg){
+      console.log(msg.content+" returned from server");
+      this.setState({
+        messages: [...msg.content]
+      })
+    })
   }
 
-  break;
 
   sendMessage (e) {
     if (e.key === "Enter"){
@@ -30,7 +36,7 @@ class ChatContainer extends Component {
         content: e.target.value
       };
       console.log(msg.content);
-      this.socket.emit("reply", JSON.stringify(msg))
+      this.socket.emit("reply", msg)
       e.target.value = "";
     }
   }
@@ -39,9 +45,10 @@ class ChatContainer extends Component {
     return (
 
       <div>
-        {/* <MessageList currentUser = 'Seb'
-          messages = {this.state.messages} type = {this.state.type}/> */}
-        <ChatBar currentUser = 'Seb' currentMessage = {this.state.currentMessage}
+        {console.log(this.state)}
+        <MessageList currentUser = {this.state.currentUser}
+          messages = {this.state.messages} type = {this.state.type}/>
+        <ChatBar currentUser = {this.state.currentUser} currentMessage = {this.state.messages}
           sendMessage = {this.sendMessage.bind(this)} />
       </div>
     )
