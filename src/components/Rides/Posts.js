@@ -13,7 +13,7 @@ class Post extends Component {
             <div>From: {ride.start_location} To: {ride.end_location} </div>
             <div>User: 'Example' Rating: '1-5'</div>
             <div>Number of Passengers: {ride.passengers}</div>
-            <div>Price: $</div>
+            <div>Price: ${ride.price}</div>
             <Link to={`/ride/${ride.id}`}><button>View Details</button></Link>
             <br></br>
           </div>

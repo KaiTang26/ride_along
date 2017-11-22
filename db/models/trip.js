@@ -24,7 +24,24 @@ const Trip = db.define('trips', {
   passengers: {
     type: Sequelize.INTEGER,
     allowNull: false
+  },
+  origin: {
+    type: Sequelize.ARRAY(Sequelize.FLOAT),
+    allowNull: false
+  },
+  destination: {
+    type: Sequelize.ARRAY(Sequelize.FLOAT),
+    allowNull: false
+  },
+  price:{
+    type:Sequelize.FLOAT,
+    allowNull: false
+  },
+  description:{
+    type: Sequelize.STRING,
+    allowNull: false
   }
+
 });
 
 module.exports = Trip;
