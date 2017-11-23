@@ -5,6 +5,7 @@ import api from '../utils/api';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Menu from '../Menu';
 import Road from './cover.jpg';
+import ProfileRides from './ProfileRides'
 
 import EditProfile from './EditProfile';
 
@@ -95,6 +96,15 @@ const Right = styled.div`
 const EditButton = styled.button`
 
 `;
+//
+// function hasRides(props) {
+//   if () {
+//     return <profileRides rides={this.state.trip}/>;
+//   }
+//   console.log("no rides");
+//   return null;
+// }
+
 
 export default class UserProfile extends Component {
 
@@ -114,16 +124,16 @@ export default class UserProfile extends Component {
 // userTrips
 
   componentDidMount() {
-    (api.userInfo(user_id))
+    (api.userTrips(user_id))
     .then(results =>
-
       this.setState({
         first_name: results.data.first_name,
         last_name: results.data.last_name,
         picture: results.data.picture,
         email: results.data.email,
         drivers_license: results.data.drivers_license,
-        about: results.data.about
+        about: results.data.about,
+        trip: results.data.user_trips
       })
     );
   }
@@ -140,6 +150,7 @@ export default class UserProfile extends Component {
 
         <Name>
           Hello {this.state.first_name}!
+          {console.log(this.state)}
         </Name>
 
         <Info>
@@ -161,7 +172,11 @@ export default class UserProfile extends Component {
 
             <Section>
               <H3>Active Rides</H3>
-              <LeftText>4 past rides</LeftText>
+              {/* <LeftText>{hasRides(this.state)}</LeftText> */}
+              <LeftText>
+                {this.state.trip? <ProfileRides rides={this.state.trip} />
+                  : <h1>Loading </h1>}
+              </LeftText>
             </Section>
 
             <Section>

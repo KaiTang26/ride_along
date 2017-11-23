@@ -63,7 +63,7 @@ userRouter.get('/:id/trips', function(req, res, next){
           attributes:['trip_id'],
           include: {
             model: trip,
-            attributes:['date','start_location','end_location','driver']
+            attributes:['id','date','time','start_location','end_location','driver']
           }
         }
       ]
