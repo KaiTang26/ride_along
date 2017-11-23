@@ -11,7 +11,8 @@ class ChatContainer extends Component {
     console.log("in props");
     this.state = {
       currentUser: 'Seb',
-      messages: ["What's up", "very cool"]
+      messages: ["What's up", "very cool"],
+      trip: ""
     }
   }
 
@@ -32,12 +33,11 @@ class ChatContainer extends Component {
   sendMessage (e) {
     if (e.key === "Enter"){
       var msg = {
-        type: "postMessage",
+        user: this.state.currentUser,
         id: "",
         // currentUser: this.state.currentUser,
         content: e.target.value
       };
-      console.log(msg.content);
       this.socket.emit("reply", msg)
       e.target.value = "";
     }
@@ -46,7 +46,7 @@ class ChatContainer extends Component {
   render() {
     return (
 
-      <div>
+      <div className="ChatContainer">
         {console.log(this.state)}
         <MessageList currentUser = {this.state.currentUser}
           messages = {this.state.messages} type = {this.state.type}/>

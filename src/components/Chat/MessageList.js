@@ -3,7 +3,6 @@ import Message from './Message';
 
 class MessageList extends Component {
   render() {
-    console.log('MessageList');
     return (
       <div className="message system">
       <main className="messages">
