@@ -33,6 +33,11 @@ const Button = styled(RaisedButton)`
     font-size: 1rem !important;
 `;
 
+const ButtonAction = styled(FlatButton)`
+  > div span {
+    text-transform: none !important;
+  }
+`;
 /**
  * A modal dialog can only be closed by selecting one of the actions.
  */
@@ -76,12 +81,12 @@ export default class EditProfile extends React.Component {
   render() {
 
     const actions = [
-      <FlatButton
+      <ButtonAction
         label="Cancel"
         primary={true}
         onClick={this.handleClose}
       />,
-      <FlatButton
+      <ButtonAction
         label="Submit"
         primary={true}
         onClick={this.handleClose}
@@ -92,7 +97,7 @@ export default class EditProfile extends React.Component {
         <div>
           <Button label="Edit Profile" onClick={this.handleOpen} />
           <Dialog
-            title="Dialog With Actions"
+            title="Edit your user profile >>"
             actions={actions}
             modal={true}
             open={this.state.open}
@@ -109,7 +114,8 @@ export default class EditProfile extends React.Component {
             <Input name="drivers_license" floatingLabelText="Driver's Licence #" type="text" defaultValue={this.props.info.drivers_license} onChange={e => this.handleChange(e)}/>
             
             <Input name="email" floatingLabelText="Email" type="email" defaultValue={this.props.info.email} onChange={e => this.handleChange(e)}/>
-            <Input name="about" fullWidth={true}floatingLabelText="A bit about you" type="text" value={this.state.about} multiLine={true} rows={4} onChange={e => this.handleChange(e)}/>
+
+            <Input name="about" floatingLabelText="A bit about you" type="text" defaultValue={this.props.info.about} multiLine={true} rows={2} onChange={e => this.handleChange(e)}/>
           </Form>
 
 

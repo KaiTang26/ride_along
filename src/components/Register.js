@@ -109,7 +109,7 @@ export default class Register extends Component {
           <Input name="drivers_license" floatingLabelText="Driver's Licence #" type="text" value={this.state.drivers_license} onChange={e => this.handleChange(e)}/>
           
           <Input name="email" floatingLabelText="Email" type="email" value={this.state.email} onChange={e => this.handleChange(e)}/>
-          <Input name="about" fullWidth={true}floatingLabelText="A bit about you" type="text" value={this.state.about} multiLine={true} rows={4} onChange={e => this.handleChange(e)}/>
+          <Input name="about" floatingLabelText="A bit about you" type="text" value={this.state.about} multiLine={true} rows={2} onChange={e => this.handleChange(e)}/>
         </Form>
 
         </Dialog>
