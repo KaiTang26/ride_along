@@ -16,6 +16,8 @@
     "pg": "^7.4.0",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
+    "react-google-map": "^3.1.0",
+    "react-google-maps": "^9.2.2",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^4.0.8",
@@ -24,6 +26,7 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
     "sequelize": "^4.22.7",
+    "socket.io": "^2.0.4",
     "yargs": "^10.0.3"
   },
   "scripts": {

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import api from '../utils/api';
 import Map from './map.js';
-
+import ChatContainer from '../Chat/ChatContainer';
 
 const RideDetailUI = (props) => {
   // console.log(props.id.origin)
@@ -9,7 +9,7 @@ const RideDetailUI = (props) => {
   return(
 
     <div>
-   
+
     <h1>Ride from {props.id.start_location} to {props.id.end_location} </h1>
     <h2>Leaving {props.id.date} at {props.id.time}</h2>
     <br></br>
@@ -24,7 +24,7 @@ const RideDetailUI = (props) => {
   </div>
   )
 }
-  
+
 class Details extends Component {
   constructor(props) {
     super(props);
@@ -34,20 +34,22 @@ class Details extends Component {
     .then(result => {
       let ride = result.data
       this.setState({ride})
-      console.log(ride);
+      console.log('Details');
     })
 
   }
   // Can use if result.status to do condition rendering
   // componentWillMount() {
-    
+
   // }
   render() {
     return (
       <div>
         {this.state? <RideDetailUI id={this.state.ride} />
           : <h1>Loading </h1>}
-        
+
+          {this.state? <ChatContainer id={this.state.ride} />
+            : <h1>Loading </h1>}
       </div>
   )}
 }
