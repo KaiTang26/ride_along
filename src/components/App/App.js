@@ -6,7 +6,7 @@ import api from '../utils/api';
 
 
 import FrontHeader from '../Front/FrontHeader';
-import gs from '../GlobalStyles.js'
+import gs from '../GlobalStyles.js';
 
 
 class App extends Component {

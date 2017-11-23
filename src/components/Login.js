@@ -32,7 +32,7 @@ const Button = styled(RaisedButton)`
     font-size: 1rem !important;
   }
   > button div div span:hover {
-    color: skyblue !important;
+    color: ${gs.green} !important;
   }
 `;
 export default class Login extends Component {

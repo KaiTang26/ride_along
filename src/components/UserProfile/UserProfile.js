@@ -97,6 +97,7 @@ const EditButton = styled.button`
 `;
 
 export default class UserProfile extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -123,8 +124,6 @@ export default class UserProfile extends Component {
       })
     );
   }
-  
-
 
   render() {
     
@@ -144,7 +143,7 @@ export default class UserProfile extends Component {
           <Left>
 
             <Section>
-              <EditProfile/>
+              <EditProfile info={this.state}/>
             </Section>
 
             <Section>

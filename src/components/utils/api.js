@@ -67,5 +67,14 @@ export default {
         .then(response => {
             return response;
         })
+    },
+
+    updateUserInfo: function(user_id, req){
+        const encodedURI = window.encodeURI("http://localhost:3000/api/users/"+user_id);
+        return axios.post(encodedURI, req)
+        .then(response => {
+            console.log("User info updated ", response);
+        })
     }
+
 }
