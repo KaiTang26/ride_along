@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import Posts from './Posts'
+import Posts from './Posts';
+import SearchResults from './SearchResults';
 import api from '../utils/api';
 import { Route, Redirect } from 'react-router'
 
@@ -57,28 +58,6 @@ export default class Rides extends Component {
   render () {
     const { className, ...props } = this.props;
 
-    // Find matching routes
-    const start = this.state.start;
-    const end = this.state.end;
-    const availableRides = this.state.rides;
-    const cities = this.state.cities;
-    
-    // Get array position of starting and end points
-    const startPos = cities.indexOf(start);
-    const endPos = cities.indexOf(end);
-
-    
-    // Find matches based on array positions
-    const matchArr = [];
-    availableRides.forEach(function(ride) {
-      if (cities.indexOf(ride.start_location) <= startPos
-          && cities.indexOf(ride.end_location >= endPos)) {
-        matchArr.push(ride);
-      }
-    });
-
-    console.log("MATCH ARR: ", matchArr);
-
     const Button = styled.button`
     `;
 
@@ -92,10 +71,12 @@ export default class Rides extends Component {
       
       {this.state.showAll 
         ? <Posts rides = {this.state.rides} _details={this._details} />
-        : null
+        : <Button onClick={this._handleAll}>Show All</Button>
       }
       <br /> 
-      <Button onClick={this._handleAll}>Show All</Button>
+      
+      <SearchResults params={this.state} end={this.state.end} />
+
 
     </div>
     );
@@ -106,20 +87,17 @@ export default class Rides extends Component {
   }
 
   _handleInputChange=(event) => {
-      const target = event.target;
-      const value = target.value;
-      const name = target.name;
-      console.log(value);
-      this.setState({
-        [name]: value,
-      });
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+    console.log(value);
+    this.setState({
+      [name]: value,
+    });
   }
 
   _handleSubmit=(event) => {
     event.preventDefault();
-
-    alert("start point "+ this.state.start + " endpoint: "+ this.state.end);
-
     this.setState({
       showAll: false
     });
