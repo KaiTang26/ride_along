@@ -11,6 +11,7 @@ import TextField from 'material-ui/TextField';
 const Form = styled.form`
   max-width: 800px;
   margin: 0 auto;
+  max-height: auto !important;
 `;
 
 const Input = styled(TextField)`
@@ -36,6 +37,20 @@ const Button = styled(RaisedButton)`
 const ButtonAction = styled(FlatButton)`
   > div span {
     text-transform: none !important;
+  }
+`;
+
+const Title = styled.h2`
+  font-family: Merriweather;
+  font-weight: bold;;
+  color: ${gs.golden};
+  > span {
+    letter-spacing: -3px;
+    font-weight: 900;
+    font-family: Lato;
+    font-size: 115%;
+    position: relative;
+    top: 2px;
   }
 `;
 /**
@@ -97,19 +112,19 @@ export default class EditProfile extends React.Component {
         <div>
           <Button label="Edit Profile" onClick={this.handleOpen} />
           <Dialog
-            title="Edit your user profile >>"
             actions={actions}
             modal={true}
             open={this.state.open}
           >
+          <Title>Edit your user profile <span>>></span></Title>
             
           <Form>
             <Input name="first_name" floatingLabelText="First name" type="text" defaultValue={this.props.info.first_name} onChange={e => this.handleChange(e)}/>
             <Input name="last_name" floatingLabelText="Last name" type="text" defaultValue={this.props.info.last_name} onChange={e => this.handleChange(e)}/>
 
-            <Input name="password" floatingLabelText="Password" type="password" onChange={e => this.handleChange(e)}/>
+            <Input name="password" floatingLabelText="New Password" type="password" onChange={e => this.handleChange(e)}/>
 
-            <Input name="confirm_password" floatingLabelText="Confirm Password" type="password" /*value={this.state.password} onChange={e => this.handleChange(e)} */ />
+            <Input name="confirm_password" floatingLabelText="Confirm New Password" type="password" /*value={this.state.password} onChange={e => this.handleChange(e)} */ />
 
             <Input name="drivers_license" floatingLabelText="Driver's Licence #" type="text" defaultValue={this.props.info.drivers_license} onChange={e => this.handleChange(e)}/>
             
