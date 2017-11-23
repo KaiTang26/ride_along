@@ -4,37 +4,15 @@ import { Route, Redirect } from 'react-router'
 
 
 export default class Search extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      start: "Toronto",
-      end: "Windsor"
-    }
-  };
-
-  render () {
-
-
-  // Find matching routes
-  // const start = this.state.start;
-  // const end = this.state.end;
-  // const availableRides = this.props.params.rides;
-  // const cities = this.props.params.cities;
-  
-  // // // Get array position of starting and end points
-  // const startPos = cities.indexOf(start);
-  // const endPos = cities.indexOf(end);
-
-  // // // Find matches based on array positions
-  // const matchArr = [];
-  // availableRides.forEach(function(ride) {
-  //   if (cities.indexOf(ride.start_location) <= startPos
-  //       && cities.indexOf(ride.end_location >= endPos)) {
-  //     matchArr.push(ride);
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     start: "Toronto",
+  //     end: "Windsor"
   //   }
-  // });
-  // console.log("MATCH ARR: ", matchArr);    
-  
+  // };
+
+  render () {  
 
   return (
   <div>
@@ -59,7 +37,7 @@ export default class Search extends Component {
           })}
         </select>
       </label>
-      <input type="submit" value="Search Trips" />
+      {/* <input type="submit" value="Search Trips" /> */}
     </form>
 
       {/* <Search cities = {cities} _handleInputChange = {this._handleInputChange} _handleSubmit = {this._handleSubmit}/> */}

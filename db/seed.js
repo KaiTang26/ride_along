@@ -46,7 +46,8 @@ const seedTrips = () => db.Promise.map([
   {date: '2017-12-31', time: `09:00:21 GMT`, start_location: "Montreal", end_location: "Hamilton", passengers: 2, origin:[45.5017,-73.5673], destination:[43.255203,-79.843826] , price:55.30, description:'good trip pls join us', driver:2},
   {date: '2017-12-22', time: `18:45:21 GMT`, start_location: "Kingston", end_location: "Toronto", passengers: 3, origin:[44.22914,-76.48079], destination:[43.761539,-79.411079] , price:25.30, description:'good trip pls join us', driver:1},
   {date: '2017-12-30', time: `16:30:00 GMT`, start_location: "Waterloo", end_location: "Montreal", passengers: 2, origin:[43.4643, 80.5204], destination:[45.5017, 73.5673] , price:30.00, description:"I'm a slow driver", driver:2},
-  {date: '2017-12-31', time: `01:00:00 GMT`, start_location: "Windsor", end_location: "Quebec", passengers: 4, origin:[42.3149, 83.0364], destination:[52.9399, 73.5491] , price:60.00, description:'Will be a fun ride with great tunes', driver:1}
+  {date: '2017-12-31', time: `01:00:00 GMT`, start_location: "Windsor", end_location: "Quebec", passengers: 4, origin:[42.3149, 83.0364], destination:[52.9399, 73.5491] , price:60.00, description:'Will be a fun ride with great tunes', driver:1},
+  {date: '2017-12-1', time: `01:00:00 GMT`, start_location: "Quebec", end_location: "Toronto", passengers: 4, origin:[42.3149, 83.0364], destination:[52.9399, 73.5491] , price:60.00, description:'I am moving back to Toronto', driver:1}
 ], trip => db.model('trips').create(trip));
 
 

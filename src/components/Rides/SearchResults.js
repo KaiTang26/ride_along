@@ -23,6 +23,8 @@ const Label = styled.h4`
   margin: 2em 0 .5em;
   font-style: Lato;
 `
+const ResultsText = styled.div`
+`;
 
 const SearchResults = (props) => {
 
@@ -35,7 +37,7 @@ const SearchResults = (props) => {
   // Get array position of starting and end points
   const startPos = cities.indexOf(start);
   const endPos = cities.indexOf(end);
-
+  
   // Find matches based on array positions
   const matchArr = [];
   availableRides.forEach(function(ride) {
@@ -48,33 +50,43 @@ const SearchResults = (props) => {
   
   const resultsNum = matchArr.length;
   
-  return (
-    <div>
-      <Text>You searched for start point {props.params.start}  endpoint: {props.params.end}
-      </Text>
+  if (start === "" || end === "") {
+    return (
+    <Text>Please select your starting and ending points.</Text> 
+  )} else {
 
-      { (resultsNum === 1) 
-        ? <Text>There is 1 available ride that overlaps with your trip! </Text>
-        : <Text>There are {resultsNum} available rides that overlap with your trip! </Text>
-      }
+    return (
+      <div>
+        
+        <ResultsText>
+          <Text>You searched for start point {props.params.start}  endpoint: {props.params.end}
+          </Text>
 
-      <Text>
-        Contact the driver on the trip's page to negotiate arrangements.
-      </Text>
+          { (resultsNum === 1) 
+            ? <Text>There is 1 available ride that overlaps with your trip! </Text>
+            : <Text>There are {resultsNum} available rides that overlap with your trip! </Text>
+          }
 
-      <Results>
+          <Text>
+            Contact the driver on the trip's page to negotiate arrangements.
+          </Text>
+        
+        </ResultsText>
 
-        {matchArr.map((ride) => (
-          <Ride key={ride.id}>
-            <Label>Leaving:</Label> {ride.date}
-            <Label>Time</Label> {ride.time}
-            <Label>From:</Label> {ride.start_location} To: {ride.end_location}
-          </Ride>
-        ))}
-      </Results>
+        <Results>
 
-  </div>
-  );
+          {matchArr.map((ride) => (
+            <Ride key={ride.id}>
+              <Label>Leaving:</Label> {ride.date}
+              <Label>Time</Label> {ride.time}
+              <Label>From:</Label> {ride.start_location} To: {ride.end_location}
+            </Ride>
+          ))}
+        </Results>
+          
+    </div>
+    );
+  }
 }
 
 export default SearchResults;

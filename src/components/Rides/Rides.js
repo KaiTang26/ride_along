@@ -9,7 +9,6 @@ const Search = (props) => (
   <form onSubmit={props._handleSubmit}>
     <label>
     Pickup Location:
-    {console.log(props)}
       <select name="start"  onChange={props._handleInputChange}>
         { props.cities.map((ele, i)=>{
             return <option value={ele} key={i}>{ele}</option>
@@ -34,13 +33,13 @@ export default class Rides extends Component {
   constructor(props){
     super(props);
     this.state = {
-        cities: ["Windsor", "Chatham-Kent", "London", "Kitchener", "Waterloo",
+        cities: ["", "Windsor", "Chatham-Kent", "London", "Kitchener", "Waterloo",
         "Cambridge", "Guelph", "Hamilton", "St.Catharines", "Burlington",
         "Mississauga", "Toronto", "Kingston", "Ottawa", "Gatineau", "Montreal",
          "Trois-Riveres", "Quebec"],
         rides: [],
-        start: "Windsor",
-        end: "Quebec",
+        start: "",
+        end: "",
         detail: 'all',
         showAll: true
     }
@@ -69,14 +68,17 @@ export default class Rides extends Component {
 
       <Search cities = {this.state.cities} _handleInputChange = {this._handleInputChange} _handleSubmit = {this._handleSubmit}/>
       
-      {this.state.showAll 
-        ? <Posts rides = {this.state.rides} _details={this._details} />
-        : <Button onClick={this._handleAll}>Show All</Button>
-      }
+    
       <br /> 
       
-      <SearchResults params={this.state}/>
 
+      {this.state.showAll 
+        ? <Posts rides = {this.state.rides} />
+        : <div>
+         <SearchResults params={this.state}/> 
+          <Button onClick={this._handleAll}>Show All</Button>
+          </div>
+      }
 
     </div>
     );
