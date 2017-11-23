@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import gs from './GlobalStyles.js';
-import api from './utils/api';
+import gs from '../GlobalStyles';
+import api from '../utils/api';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Menu from './Menu';
+import Menu from '../Menu';
 import Road from './cover.jpg';
+
+import EditProfile from './EditProfile';
 
 import UserPic from './Bill.jpg';
 
@@ -35,7 +37,7 @@ const Name = styled.h2`
   font-weight: bold;
   margin: 1em;
   text-align: center;
-  margin: -3.25em auto 2em;
+  margin: -3.25em auto 1em;
   font-weight: 900;
   font-family: Lato;
   padding: .5em;
@@ -90,7 +92,12 @@ const Right = styled.div`
   width: 65%;
 `;
 
+const EditButton = styled.button`
+
+`;
+
 export default class UserProfile extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -117,8 +124,6 @@ export default class UserProfile extends Component {
       })
     );
   }
-  
-
 
   render() {
     
@@ -136,6 +141,10 @@ export default class UserProfile extends Component {
 
         <Info>
           <Left>
+
+            <Section>
+              <EditProfile info={this.state}/>
+            </Section>
 
             <Section>
               <H3>Last Login</H3>

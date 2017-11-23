@@ -27,6 +27,7 @@ const Logotype = styled.h1`
   font-size: 550%;
   font-style: italic;
   padding: 1.5em 0 .6em;
+  font-weight: bold;
 `;
 
 const Tagline = styled.h1`
