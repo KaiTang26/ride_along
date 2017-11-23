@@ -1,9 +1,12 @@
 const api = module.exports = require('express').Router();
+
 const products = require('./products');
 const reviews = require('./reviews');
 
 const users = require('./users');
 const trips = require('./trips');
+
+
 
 // import products from './products';
 api

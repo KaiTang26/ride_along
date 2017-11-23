@@ -5,6 +5,7 @@ import TextField from 'material-ui/TextField';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
+import api from './utils/api';
 
 const Form = styled.form`
   max-width: 800px;
@@ -53,6 +54,21 @@ export default class Login extends Component {
     this.setState({open: false});
   };
 
+  userLogin = ()=>{
+    // debugger
+    // this.setState({open: false});
+    api.login(this.state)
+    .then(res=>{
+      if(res.data){
+        this.setState({open: false});
+        console.log(res.data)
+      }else{
+        this.setState({open: true});
+        console.log('###res', res.data);
+      } 
+    })
+  }
+
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
@@ -71,7 +87,7 @@ export default class Login extends Component {
         label="Submit"
         primary={true}
         keyboardFocused={true}
-        onClick={this.handleClose}
+        onClick={this.userLogin}
       />,
     ];
 
