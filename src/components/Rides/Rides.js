@@ -38,7 +38,7 @@ export default class Rides extends Component {
         "Mississauga", "Toronto", "Kingston", "Ottawa", "Gatineau", "Montreal",
          "Trois-Riveres", "Quebec"],
         rides: [],
-        start: "Windsor",
+        start: "Toronto",
         end: "Windsor",
         detail: 'all'
     }
@@ -49,11 +49,31 @@ export default class Rides extends Component {
     .then(result => {
       let rides = result.data
       this.setState({rides})
+      console.log(rides);
     })
   }
 
   render () {
     const { className, ...props } = this.props;
+
+
+  // // Find matching routes
+  
+  const start = this.state.start;
+  const end = this.state.end;
+  const availableRides = this.state.rides;
+  console.log("AVAILBLE RIDES ", availableRides);
+  
+  const find = availableRides.filter(function(ride) {
+    return (ride.start_location === start) 
+  })
+  console.log("MATCH", find)
+
+  // get array position
+
+
+
+
     return (
     <div>
       <h1>Find a Ride</h1>
@@ -87,10 +107,14 @@ export default class Rides extends Component {
       })
   }
 
+
 // Or maybe I do a fetch with the params and return a list of trips
   _handleSubmit=(event) => {
     event.preventDefault();
-    // alert("start point "+ this.state.start + " endpoint: "+ this.state.end)
+
+    alert("start point "+ this.state.start + " endpoint: "+ this.state.end);
+
+
     // fetch('/:id', {
     //   method: 'get',
     //   body: {
