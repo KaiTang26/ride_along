@@ -5,8 +5,7 @@ class ChatBar extends Component {
     console.log("chatbar", this.props);
     return (
         <footer className="chatbar">
-          <input className="chatbar-message"
-            onKeyPress={this.props.sendMessage} />
+          <input className="chatbar-message" onKeyPress={this.props.sendMessage} />
         </footer>
     );
   }
