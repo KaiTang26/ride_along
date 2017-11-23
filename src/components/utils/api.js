@@ -75,7 +75,7 @@ export default {
         return axios.post(encodedURI, req)
         .then((response) => {
             // console.log("hello",response)
-            return response;
+            return response
         })
     }
 

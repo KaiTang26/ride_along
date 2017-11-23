@@ -8,10 +8,6 @@ import Road from './cover.jpg';
 
 import UserPic from './Bill.jpg';
 
-const user_id = 1;
-const userInfo = api.userInfo(user_id);
-
-
 const ProfilePic = styled.div`
   background: url(${UserPic});
   width: 250px;
@@ -105,6 +101,7 @@ export default class UserProfile extends Component {
   };
 
   componentDidMount() {
+    const user_id = localStorage.getItem("user_id");
     (api.userInfo(user_id))
     .then(results => 
       this.setState({

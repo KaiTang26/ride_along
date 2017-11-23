@@ -6,6 +6,9 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import api from './utils/api';
+import Profile from './UserProfile.js'
+import { Link } from 'react-router-dom';
+import browserHistory from '../history';
 
 const Form = styled.form`
   max-width: 800px;
@@ -61,10 +64,17 @@ export default class Login extends Component {
     .then(res=>{
       if(res.data){
         this.setState({open: false});
-        console.log(res.data)
+        const id = res.data.id
+        localStorage.setItem("user_id", id);
+        localStorage.setItem("drivers_license", res.data.drivers_license);
+        
+        browserHistory.push("/profile/"+id)
+
+        console.log(browserHistory)
       }else{
         this.setState({open: true});
-        console.log('###res', res.data);
+        console.log('###res', res.data.id);
+        //         
       } 
     })
   }
@@ -88,6 +98,7 @@ export default class Login extends Component {
         primary={true}
         keyboardFocused={true}
         onClick={this.userLogin}
+        
       />,
     ];
 
@@ -110,7 +121,17 @@ export default class Login extends Component {
         </Form>
 
         </Dialog>
+        {/* {localStorage.getItem("user_id") && <Link to = "/profile/1" />} */}
+
+        {/* <Profile /> */}
       </div>  
     );
   }
+
+
+
+
+
+
+
 }

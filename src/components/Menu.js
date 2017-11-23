@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import gs from './GlobalStyles.js';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import UserPic from './Bill.jpg';
 
 const Nav = styled.div`
@@ -48,8 +48,8 @@ const Menu = () => (
   <Nav>
     <Logotype>Ride Along</Logotype>
     <UserLinks>
-      <Li>Find Ride</Li>
-      <Li>Post Ride</Li>
+      <Li><Link to='/ride'>Find Ride</Link></Li>
+      <Li><Link to='/trip'>Post Ride</Link></Li>
       <ProfilePic/>
     </UserLinks>
   </Nav>

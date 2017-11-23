@@ -27,10 +27,11 @@ userRouter.post('/login', function(req, res, next) {
       })
     .then(result => {
       if(result){
-        console.log(result.password)
+        // console.log(result.password)
         if(bcrypt.compareSync(password,result.password)){
           req.session.user_id=result.id;
-          res.send("login");
+          console.log(result)
+          res.status(200).send(result);
         }else{
           res.status(200).send(null);
         }
