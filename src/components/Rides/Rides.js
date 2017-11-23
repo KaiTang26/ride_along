@@ -39,8 +39,8 @@ export default class Rides extends Component {
         "Mississauga", "Toronto", "Kingston", "Ottawa", "Gatineau", "Montreal",
          "Trois-Riveres", "Quebec"],
         rides: [],
-        start: "Toronto",
-        end: "Windsor",
+        start: "Windsor",
+        end: "Quebec",
         detail: 'all',
         showAll: true
     }
@@ -75,7 +75,7 @@ export default class Rides extends Component {
       }
       <br /> 
       
-      <SearchResults params={this.state} end={this.state.end} />
+      <SearchResults params={this.state}/>
 
 
     </div>
