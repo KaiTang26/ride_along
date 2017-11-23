@@ -57,21 +57,32 @@ export default class Rides extends Component {
     const { className, ...props } = this.props;
 
 
-  // // Find matching routes
+  // Find matching routes
   
   const start = this.state.start;
   const end = this.state.end;
   const availableRides = this.state.rides;
   console.log("AVAILBLE RIDES ", availableRides);
-  
+  const cities = this.state.cities;
   const find = availableRides.filter(function(ride) {
     return (ride.start_location === start) 
   })
   console.log("MATCH", find)
 
-  // get array position
+  // get array position of starting and end points
+  const startPos = cities.indexOf(start);
+    console.log(startPos);
+  const endPos = cities.indexOf(end);
 
+  const matchArr = [];
+  availableRides.forEach(function(ride) {
+    if (cities.indexOf(ride.start_location) <= startPos
+        && cities.indexOf(ride.end_location >= endPos)) {
+      matchArr.push(ride);
+    }
+  });
 
+  console.log("MATCH ARR: ", matchArr);
 
 
     return (
