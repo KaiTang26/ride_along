@@ -2,8 +2,31 @@ import React, { Component } from 'react';
 import classnames from 'classnames';
 import Posts from './Posts'
 import api from '../utils/api';
-import { Route, Redirect } from 'react-router';
-import Search from './Search';
+import { Route, Redirect } from 'react-router'
+
+const Search = (props) => (
+  <form onSubmit={props._handleSubmit}>
+    <label>
+    Pickup Location:
+    {console.log(props)}
+      <select name="start"  onChange={props._handleInputChange}>
+        { props.cities.map((ele, i)=>{
+            return <option value={ele} key={i}>{ele}</option>
+        })}
+      </select>
+    </label>
+
+    <label>
+    Drop Off:
+      <select name="end"  onChange={props._handleInputChange}>
+        { props.cities.map((ele, i)=>{
+            return <option value={ele} key={i}>{ele}</option>
+        })}
+      </select>
+    </label>
+    <input type="submit" value="Search Trips" />
+  </form>
+)
 
 export default class Rides extends Component {
 
@@ -33,11 +56,34 @@ export default class Rides extends Component {
   render () {
     const { className, ...props } = this.props;
 
+    // Find matching routes
+    const start = this.state.start;
+    const end = this.state.end;
+    const availableRides = this.state.rides;
+    const cities = this.state.cities;
+    
+    // Get array position of starting and end points
+    const startPos = cities.indexOf(start);
+    const endPos = cities.indexOf(end);
+
+    
+    // Find matches based on array positions
+    const matchArr = [];
+    availableRides.forEach(function(ride) {
+      if (cities.indexOf(ride.start_location) <= startPos
+          && cities.indexOf(ride.end_location >= endPos)) {
+        matchArr.push(ride);
+      }
+    });
+
+    console.log("MATCH ARR: ", matchArr);
+
+
     return (
     <div>
       <h1>Find a Ride</h1>
 
-      <Search params={this.state} _handleInputChange = {this._handleInputChange} _handleSubmit = {this._handleSubmit}/>
+      <Search cities = {this.state.cities} _handleInputChange = {this._handleInputChange} _handleSubmit = {this._handleSubmit}/>
       <Posts rides = {this.state.rides} _details={this._details}/>
 
     </div>
