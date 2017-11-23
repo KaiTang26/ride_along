@@ -111,9 +111,12 @@ export default class UserProfile extends Component {
     }
   };
 
+// userTrips
+
   componentDidMount() {
     (api.userInfo(user_id))
-    .then(results => 
+    .then(results =>
+
       this.setState({
         first_name: results.data.first_name,
         last_name: results.data.last_name,
@@ -126,13 +129,13 @@ export default class UserProfile extends Component {
   }
 
   render() {
-    
+
     return (
       <div>
       <Menu/>
       <CoverPic/>
       <Profile>
-        
+
         <ProfilePic />
 
         <Name>
@@ -157,7 +160,12 @@ export default class UserProfile extends Component {
             </Section>
 
             <Section>
-              <H3>Ride History</H3>
+              <H3>Active Rides</H3>
+              <LeftText>4 past rides</LeftText>
+            </Section>
+
+            <Section>
+              <H3>Completed Rides</H3>
               <LeftText>4 past rides</LeftText>
             </Section>
 
@@ -176,7 +184,7 @@ export default class UserProfile extends Component {
             </Section>
           </Right>
         </Info>
-      </Profile>  
+      </Profile>
 
       </div>
     );

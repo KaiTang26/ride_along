@@ -1,7 +1,8 @@
 const db = require('../db'); //this is required
 const User = require('../db/models/user');
 const userTrip = require('./userTrip');
-
+const userTripModel = require('../db/models/user_trip');
+const trip = require('../db/models/trip');
 const userRouter = require('express').Router();
 
 // const tripRouter = express.Router({mergeParams: true});
@@ -28,7 +29,7 @@ userRouter.post('/', function(req, res, next) {
     drivers_license: req.body.drivers_license,
     about: req.body.about
   })
-  .then(user => { 
+  .then(user => {
     console.log(user);
   })
   .catch(next);
@@ -49,6 +50,29 @@ userRouter.get('/:id', function(req, res, next) {
     })
     .catch(next);
 });
+
+userRouter.get('/:id/trips', function(req, res, next){
+  User.findOne({
+      where:{
+        id:req.params.id
+      },
+      include: [
+        {
+          model: userTripModel,
+          where: { user_id: req.params.id },
+          attributes:['trip_id'],
+          include: {
+            model: trip,
+            attributes:['date','start_location','end_location','driver']
+          }
+        }
+      ]
+    })
+    .then(result => {
+      res.status(200).send(result);
+    })
+    .catch(next);
+})
 
 
 

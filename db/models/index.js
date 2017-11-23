@@ -15,8 +15,10 @@ const User_Trip = require('./user_trip')
 Trip.hasMany(Agreement);
 Agreement.belongsTo(Trip);
 
+User.hasMany(User_Trip);
 User_Trip.belongsTo(Trip);
 User_Trip.belongsTo(User);
+Trip.hasMany(User_Trip);
 
 Chat.belongsTo(Trip);
 Chat.belongsTo(User);
