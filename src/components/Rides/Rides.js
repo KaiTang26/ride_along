@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import classnames from 'classnames';
+import styled from 'styled-components';
 import Posts from './Posts'
 import api from '../utils/api';
 import { Route, Redirect } from 'react-router'
@@ -40,7 +40,8 @@ export default class Rides extends Component {
         rides: [],
         start: "Toronto",
         end: "Windsor",
-        detail: 'all'
+        detail: 'all',
+        showAll: true
     }
   }
 
@@ -78,29 +79,31 @@ export default class Rides extends Component {
 
     console.log("MATCH ARR: ", matchArr);
 
+    const Button = styled.button`
+    `;
 
     return (
     <div>
       <h1>Find a Ride</h1>
+      <br />
+      <br />
 
       <Search cities = {this.state.cities} _handleInputChange = {this._handleInputChange} _handleSubmit = {this._handleSubmit}/>
-      <Posts rides = {this.state.rides} _details={this._details}/>
+      
+      {this.state.showAll 
+        ? <Posts rides = {this.state.rides} _details={this._details} />
+        : null
+      }
+      <br /> 
+      <Button onClick={this._handleAll}>Show All</Button>
 
     </div>
-    )
+    );
   }
 
-// The nav problem do conditional rendering or do history push, this is an object
-// within props, you cna specify that you want to push a certain url on click and it
-// move you to that page
-
-// If we do conditional rendering change to set the state of Details
-// then put a function into the render that conditionally renders
-  // _details=(event) => {
-  //   api.getRide(1)
-  //
-  // }
-
+  _handleAll = e => {
+    this.setState({ showAll: true });
+  }
 
   _handleInputChange=(event) => {
       const target = event.target;
@@ -109,28 +112,19 @@ export default class Rides extends Component {
       console.log(value);
       this.setState({
         [name]: value,
-      })
+      });
   }
 
-
-// Or maybe I do a fetch with the params and return a list of trips
   _handleSubmit=(event) => {
     event.preventDefault();
 
     alert("start point "+ this.state.start + " endpoint: "+ this.state.end);
 
+    this.setState({
+      showAll: false
+    });
 
-    // fetch('/:id', {
-    //   method: 'get',
-    //   body: {
-    //
-    //   }
-    // })
-    // var state = this.state
-    // for (var i = 0; i < state.postedTrips.length; i++) {
-    //     if (state.postedTrips[i].start === state.start && state.postedTrips[i].end === state.end) {
-    //       alert("hey");
-    //     }
-    // }
+
+
   }
 }
