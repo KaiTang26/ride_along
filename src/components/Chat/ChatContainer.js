@@ -18,10 +18,12 @@ class ChatContainer extends Component {
   componentDidMount(){
     this.socket = new io("//localhost:3001");
     console.log('did mount');
+    const self = this;
     this.socket.on('reply', function(msg){
       console.log(msg.content+" returned from server");
-      this.setState({
-        messages: [...msg.content]
+      const messages = self.state.messages
+      self.setState({
+        messages: messages.concat(msg.content)
       })
     })
   }
