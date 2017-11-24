@@ -1,6 +1,5 @@
 'use strict';
 
-const Product = require('./product')
 const Review = require('./review');
 
 
@@ -26,7 +25,7 @@ Car.belongsTo(User); // Will add DriverID to Car
 User.hasMany(Car);
 
 
-Product.hasMany(Review);
-Review.belongsTo(Product);
+Trip.hasMany(Review);
+Review.belongsTo(Trip);
 
-module.exports = {Product, Review};
+module.exports = {Review};

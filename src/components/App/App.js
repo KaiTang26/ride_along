@@ -10,15 +10,6 @@ class App extends Component {
     return (
       <div className={classnames('App', className)} {...props}>
         <FrontHeader />
-
-        <Link to='about'><button>Test React Router</button></Link>
-        <br />
-        <br />
-        <button onClick={this.props.actions.expressTest}>Test if Express is working</button>
-        <br />
-        <br />
-        <button onClick={this.props.actions.dbTest}>Test if Express and Sequelize are working</button>
-        <div style={{ padding: '30px' }}>{this.props.results}</div>
       </div>
     );
   }
