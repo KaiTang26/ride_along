@@ -8,12 +8,16 @@
     "classnames": "^2.2.5",
     "concurrently": "^3.5.0",
     "debug": "^3.1.0",
+    "dotenv": "^4.0.0",
     "express": "^4.16.2",
+    "material-ui": "^0.19.4",
     "morgan": "^1.9.0",
     "nodemon": "^1.12.1",
     "pg": "^7.4.0",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
+    "react-google-map": "^3.1.0",
+    "react-google-maps": "^9.2.2",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
     "react-router-redux": "^4.0.8",
@@ -22,6 +26,7 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
     "sequelize": "^4.22.7",
+    "socket.io": "^2.0.4",
     "yargs": "^10.0.3"
   },
   "scripts": {
@@ -29,13 +34,15 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "seed": "node db/seed.js"
+    "seed": "node db/seed.js",
+    "dev": "webpack-dev-server --content-base src --inline --hot"
   },
   "devDependencies": {
     "chalk": "^2.3.0",
-    "sequelize-cli": "^3.0.0",
+    "faker": "^4.1.0",
     "path": "^0.12.7",
     "react-dev-utils": "^4.2.1",
+    "sequelize-cli": "^3.0.0",
     "styled-components": "^2.2.3"
   },
   "proxy": "http://localhost:8000"
