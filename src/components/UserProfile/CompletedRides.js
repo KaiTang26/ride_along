@@ -4,6 +4,8 @@ import RideReview from './RideReview';
 
 class CompletedRides extends Component {
 
+
+
   render() {
     return (
       <div className="completed-rides">
