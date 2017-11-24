@@ -58,7 +58,7 @@ const SearchResults = (props) => {
   } else if (direction === "west") {
     availableRides.forEach(function(ride) {
       if (cities.indexOf(ride.start_location) >= startPos
-          && cities.indexOf(ride.end_location <= endPos)) {
+          && cities.indexOf(ride.end_location) <= endPos) {
         matchArr.push(ride);
         console.log("Result: start location ", ride.start_location, cities.indexOf(ride.start_location), "end location ", ride.end_location, cities.indexOf(ride.end_location))
       }
@@ -68,6 +68,18 @@ const SearchResults = (props) => {
   
   const resultsNum = matchArr.length;
   
+  let introText;
+  if (resultsNum === 0) {
+    introText =
+    (<Text>There are currently no rides that overlap with your trip. Please try another search term. </Text>)
+  } else if (resultsNum === 1) {
+    introText =
+    <Text>There is 1 available ride that overlaps with your trip! </Text> 
+  } else {
+    introText =
+    <Text>There are {resultsNum} available rides that overlap with your trip! </Text> }
+
+
   if (start === "" || end === "") {
     return (
     <Text>Please select your starting and ending points.</Text> 
@@ -82,11 +94,7 @@ const SearchResults = (props) => {
           <br/>endpoint ------ {props.params.end}
           </Text>
 
-          { (resultsNum === 1) 
-            ? <Text>There is 1 available ride that overlaps with your trip! </Text>
-            : <Text>There are {resultsNum} available rides that overlap with your trip! </Text>
-          }
-
+          {introText}
           <Text>
             Contact the driver on the trip's page to negotiate arrangements.
           </Text>

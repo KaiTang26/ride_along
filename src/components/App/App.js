@@ -17,12 +17,21 @@ class App extends Component {
 
         <div className={classnames('App', className)} {...props}>
           <FrontHeader />
-          <br/>
-          <Link to='profile'><button>USER PROFILE PAGE</button></Link>
-          <br/>
-          <Link to='about'><button>Test React Router</button></Link>
-          <br/>
-          <Link to='trip'><button>Test trip React Router</button></Link>
+
+          {/* <Link to='profile'><button>USER PROFILE PAGE</button></Link> */}
+          
+          <Link to='/ride'><button>Find Ride</button></Link>
+          <br />
+         
+          <Link to='/trip'><button>Post Trip</button></Link>
+          <br />
+          <br />
+
+          {/* <button onClick={this.props.actions.expressTest}>Test if Express is working</button> */}
+          <br />
+          <br />
+          {/* <button onClick={this.expressTest.bind(this)}>Test if Express and Sequelize are working</button> */}
+          <div style={{ padding: '30px' }}>{this.props.results}</div>
         </div>
 
 

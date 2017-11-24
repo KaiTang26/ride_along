@@ -6,6 +6,8 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import api from './utils/api';
+// import { Redirect } from 'react-router-dom';
+import Message from './Message.js';
 
 const Form = styled.form`
   max-width: 800px;
@@ -48,8 +50,10 @@ export default class Register extends Component {
       picture: "",
       email: "",
       drivers_license: "",
+      open: false,
+      signUP:false,
       about: "",
-      open: false
+     
     }
   };
 
@@ -59,9 +63,22 @@ export default class Register extends Component {
 
   handleClose = () => {
     this.setState({open: false});
-    api.register(this.state)
-    .then(console.log(this.state))
   };
+
+  userSignUp = ()=>{
+    api.register(this.state)
+    .then(res => {
+      if(res.data){
+        this.setState(
+          {open: false,
+           signUp:true});
+        console.log(this.state)
+      }else{
+        this.setState({open: true});
+        // console.log('###res', res.data);
+      } 
+    })
+  }
 
   handleChange = e => {
     this.setState({
@@ -81,7 +98,7 @@ export default class Register extends Component {
         label="Submit"
         primary={true}
         keyboardFocused={true}
-        onClick={this.handleClose}
+        onClick={this.userSignUp}
       />,
     ];
 
@@ -99,20 +116,59 @@ export default class Register extends Component {
         >   
 
         <Form>
-          <Input name="first_name" floatingLabelText="First name" type="text" value={this.state.first_name} onChange={e => this.handleChange(e)}/>
-          <Input name="last_name" floatingLabelText="Last name" type="text" value={this.state.last_name} onChange={e => this.handleChange(e)}/>
-
-          <Input name="password" floatingLabelText="Password" type="password" value={this.state.password} onChange={e => this.handleChange(e)}/>
-          
-          <Input name="confirm_password" floatingLabelText="Confirm Password" type="password" /*value={this.state.password} onChange={e => this.handleChange(e)} */ />
-
-          <Input name="drivers_license" floatingLabelText="Driver's Licence #" type="text" value={this.state.drivers_license} onChange={e => this.handleChange(e)}/>
-          
-          <Input name="email" floatingLabelText="Email" type="email" value={this.state.email} onChange={e => this.handleChange(e)}/>
-          <Input name="about" fullWidth={true}floatingLabelText="A bit about you" type="text" value={this.state.about} multiLine={true} rows={4} onChange={e => this.handleChange(e)}/>
+          <Input
+            name="first_name"
+            floatingLabelText="First name"
+            type="text"
+            value={this.state.first_name}
+            onChange={e => this.handleChange(e)}
+          />
+          <Input
+            name="last_name"
+            floatingLabelText="Last name"
+            type="text"
+            value={this.state.last_name}
+            onChange={e => this.handleChange(e)}
+          />
+          <Input
+            name="email"
+            floatingLabelText="Email"
+            type="email"
+            value={this.state.email}
+            onChange={e => this.handleChange(e)}
+          />
+          <Input
+            name="password"
+            floatingLabelText="Password"
+            type="password"
+            value={this.state.password}
+            onChange={e => this.handleChange(e)}
+          />
+          <Input name="confirm_password" 
+                 floatingLabelText="Confirm Password" 
+                 type="password" /*value={this.state.password} onChange={e => this.handleChange(e)} */ />
+          <Input
+            name="drivers_license"
+            floatingLabelText="Driver's Licence Number"
+            type="text"
+            value={this.state.drivers_license}
+            onChange={e => this.handleChange(e)}
+          />
+      
+          <Input name="about" 
+                 fullWidth={true}floatingLabelText="A bit about you" 
+                 type="text" 
+                 value={this.state.about} 
+                 multiLine={true} 
+                 rows={4} 
+                 onChange={e => this.handleChange(e)}/>
         </Form>
-
         </Dialog>
+
+       
+
+        { this.state.signUp && <Message />}
+        
       </div>  
     );
   }

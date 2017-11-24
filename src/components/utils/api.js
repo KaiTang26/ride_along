@@ -57,7 +57,8 @@ export default {
         console.log(encodedURI);
         return axios.post(encodedURI, req)
         .then((response)=> {
-            console.log("User created successfully")
+            console.log(response.data)
+            return response;
         })
     },
 
@@ -69,7 +70,14 @@ export default {
         })
     },
 
-
+    login: function(req){
+        const encodedURI = window.encodeURI("http://localhost:3000/api/users/login");
+        return axios.post(encodedURI, req)
+        .then((response) => {
+            // console.log("hello",response)
+            return response
+        })
+    },
     userTrips: function(user_id){
         const encodedURI = window.encodeURI(`http://localhost:3000/api/users/${user_id}/trips`);
         return axios.get(encodedURI)

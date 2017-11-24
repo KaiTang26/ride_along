@@ -3,6 +3,8 @@ const reviews = require('./reviews');
 const users = require('./users');
 const trips = require('./trips');
 
+
+
 // import products from './products';
 api
   .get('/express-test', (req, res) => {
