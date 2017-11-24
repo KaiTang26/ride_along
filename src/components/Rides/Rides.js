@@ -70,7 +70,6 @@ export default class Rides extends Component {
       
     
       <br /> 
-      
 
       {this.state.showAll 
         ? <Posts rides = {this.state.rides} />

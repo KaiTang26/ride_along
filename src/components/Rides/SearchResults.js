@@ -38,14 +38,30 @@ const SearchResults = (props) => {
   const startPos = cities.indexOf(start);
   const endPos = cities.indexOf(end);
   
+  // If travelling Eastward or Westward
+  let direction = "";
+  (startPos - endPos) > 0 ? direction = "west" : direction = "east";
+console.log(direction);
+console.log("START: ", startPos, "END ", endPos);
+
   // Find matches based on array positions
   const matchArr = [];
-  availableRides.forEach(function(ride) {
-    if (cities.indexOf(ride.start_location) <= startPos
-        && cities.indexOf(ride.end_location >= endPos)) {
-      matchArr.push(ride);
-    }
-  });
+
+  if (direction === "east") {
+    availableRides.forEach(function(ride) {
+      if (cities.indexOf(ride.start_location) <= startPos
+          && cities.indexOf(ride.end_location >= endPos)) {
+        matchArr.push(ride);
+      }
+    });
+  } else if (direction === "west") {
+    availableRides.forEach(function(ride) {
+      if (cities.indexOf(ride.start_location) >= startPos
+          && cities.indexOf(ride.end_location <= endPos)) {
+        matchArr.push(ride);
+      }
+    });
+  } 
   console.log("MATCH ARR: ", matchArr);
   
   const resultsNum = matchArr.length;
