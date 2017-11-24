@@ -70,7 +70,7 @@ export default class Login extends Component {
         
         browserHistory.push("/profile/"+id)
 
-        console.log(browserHistory)
+        console.log(browserHistory.location.pathname)
       }else{
         this.setState({open: true});
         console.log('###res', res.data.id);
@@ -83,6 +83,11 @@ export default class Login extends Component {
     this.setState({
       [e.target.name]: e.target.value
     });
+  };
+
+  handleLogout = e => {
+    localStorage.clear();
+    browserHistory.push("/")
   };
 
   render() {
@@ -98,14 +103,16 @@ export default class Login extends Component {
         primary={true}
         keyboardFocused={true}
         onClick={this.userLogin}
-        
       />,
     ];
 
     return (
 
       <div>
-        <Button label="Login" onClick={this.handleOpen} />
+
+        { localStorage.getItem("user_id")?
+          <Button label="Logout" onClick={this.handleLogout} />:
+          <Button label="Login" onClick={this.handleOpen} />}
         
         <Dialog
           title="Login to start your trip!"

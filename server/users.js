@@ -1,6 +1,7 @@
 const db = require('../db'); //this is required
 const User = require('../db/models/user');
 const userTrip = require('./userTrip');
+// const flash = require('connect-flash');
 
 const userRouter = require('express').Router();
 
@@ -18,6 +19,8 @@ userRouter.use(cookieSession({
 // userRouter.use('/:user_id/trip', tripRouter);
 
 userRouter.use('/:user_id/trip', userTrip);
+
+// userRouter.use(flash());
 
 userRouter.post('/login', function(req, res, next) {
   // console.log(req.body.password);
@@ -48,6 +51,7 @@ userRouter.post('/login', function(req, res, next) {
 userRouter.post('/', function(req, res, next) {
 
   const email = req.body.email;
+  console.log(email)
 
   User.findOne({
         where: {email:req.body.email}
@@ -55,8 +59,10 @@ userRouter.post('/', function(req, res, next) {
       .then(result => {
         if(result){
           res.status(200).send(null);
-          console.log(":")
+          console.log(result)
         }else{
+          console.log(result)
+          console.log(req.body)
           const passwordDigest = req.body.password;
           User.create({
             first_name: req.body.first_name,
@@ -68,7 +74,8 @@ userRouter.post('/', function(req, res, next) {
             about: req.body.about
           })
           .then(user => { 
-            req.session.user_id=user.id;
+            // req.session.user_id=user.id;
+            // req.flash('success', {msg: 'Sign Up Success'})
             console.log(user.id);
             res.status(200).send("Sign Up");
           })

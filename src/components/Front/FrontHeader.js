@@ -57,6 +57,9 @@ const FrontHeader = () => (
   <Header>
     <Darken>
       <UserNav>
+      {/* { localStorage.getItem("user_id")&&
+       <Link to="/">Post Trip</Link>
+          } */}
         <Login />
         <Register />
       </UserNav>

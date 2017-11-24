@@ -18,22 +18,35 @@ const Routes = () => {
         <Route exact path="/" component={App} />
         <Route exact path="/about" component={About} />
         {/* <Route exact path="/trip" component={Trip} /> */}
-        <PrivateRoute exact path="/profile/:id" component={UserProfile} />
+        <PrivateUser exact path="/profile/:id" component={UserProfile} />
         <Route exact path="/ride" component={Rides} />
         <Route exact path="/ride/:id" component={Details}/>
         {/* <Route exact path="/login" component={Details}/> */}
-        <PrivateRoute exact path="/trip" component={Trip} />
+        <PrivateDriver exact path="/trip" component={Trip} />
       </div>
     </Router>
   )
 };
-const PrivateRoute = ({ component: Component, ...rest }) => (
+const PrivateUser = ({ component: Component, ...rest }) => (
   <Route {...rest} render={props => (
     localStorage.getItem("user_id") ? (
       <Component {...props}/>
     ) : (
       <Redirect to={{
-        pathname: '/',
+        pathname: "/",
+        state: { from: props.location }
+      }}/>
+    )
+  )}/>
+)
+
+const PrivateDriver = ({ component: Component, ...rest }) => (
+  <Route {...rest} render={props => (
+    localStorage.getItem("drivers_license") ? (
+      <Component {...props}/>
+    ) : (
+      <Redirect to={{
+        pathname: "/",
         state: { from: props.location }
       }}/>
     )

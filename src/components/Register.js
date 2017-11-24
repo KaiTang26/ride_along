@@ -6,7 +6,8 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 import api from './utils/api';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
+import Message from './Message.js';
 
 const Form = styled.form`
   max-width: 800px;
@@ -50,7 +51,8 @@ export default class Register extends Component {
       email: "",
       drivers_license: "",
       open: false,
-      Authenticated: false
+      signUP:false
+      
     }
   };
 
@@ -66,13 +68,12 @@ export default class Register extends Component {
     api.register(this.state)
     .then(res => {
       if(res.data){
-        this.setState({open: false});
-        // console.log("null")
-      }else{
         this.setState(
-          {open: true,
-            Authenticated: true
-          });
+          {open: false,
+           signUp:true});
+        console.log(this.state)
+      }else{
+        this.setState({open: true});
         // console.log('###res', res.data);
       } 
     })
@@ -150,9 +151,12 @@ export default class Register extends Component {
             onChange={e => this.handleChange(e)}
           />
         </Form>
-
         </Dialog>
-        {this.Authenticated&& <Redirect to='/profile/2'/>}
+
+       
+
+        { this.state.signUp && <Message />}
+        
       </div>  
     );
   }
