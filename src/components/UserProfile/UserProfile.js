@@ -98,13 +98,14 @@ const EditButton = styled.button`
 
 `;
 //
-// function hasRides(props) {
-//   if () {
-//     return <profileRides rides={this.state.trip}/>;
-//   }
-//   console.log("no rides");
-//   return null;
-// }
+function HasRides(props) {
+  if (true) {
+    console.log("has rides");
+    return <profileRides rides={props}/>;
+  }
+  console.log("no rides");
+  return null;
+}
 
 
 export default class UserProfile extends Component {
@@ -172,16 +173,25 @@ export default class UserProfile extends Component {
             </Section>
 
             <Section>
-              <H3>Active Rides</H3>
               <LeftText>
-                {this.state.trip? <ProfileRides rides={this.state.trip}  />
+                {this.state.trip?
+                  <div>
+                    <H3>Active Rides</H3>
+                    <ProfileRides rides={this.state.trip}  />
+                  </div>
                   : <h1>Loading </h1>}
               </LeftText>
             </Section>
 
             <Section>
-              <H3>Completed Rides</H3>
-              <LeftText>4 past rides</LeftText>
+              <LeftText>
+                {/* {this.state.trip?
+                  <div>
+                    <H3>Completed Rides</H3>
+                    <ProfileRides rides={this.state.trip}  />
+                  </div>
+                  : <h1>Loading </h1>} */}
+              </LeftText>
             </Section>
 
           </Left>
