@@ -88,8 +88,9 @@ export default class Trip extends Component {
 
     _submitForm(event){
         event.preventDefault();
+        const id = localStorage.getItem("user_id")
         const tripInfor = this.state;
-        api.postTrip(1,tripInfor)
+        api.postTrip(id,tripInfor)
         .then()
     }
 }

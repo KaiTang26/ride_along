@@ -33,7 +33,11 @@ router.post('/',function(req, res, next) {
     start_location: req.body.start_location,
     end_location: req.body.end_location,
     passengers: req.body.passengers,
-    driver: req.params.user_id
+    driver: req.params.user_id,
+    origin: req.body.origin,
+    destination: req.body.destination,
+    price: req.body.price,
+    description: req.body.description
   })
   .then(result => {
     res.sendStatus(200)
