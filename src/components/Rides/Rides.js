@@ -33,15 +33,15 @@ export default class Rides extends Component {
   constructor(props){
     super(props);
     this.state = {
-        cities: ["", "Windsor", "Chatham-Kent", "London", "Kitchener", "Waterloo",
-        "Cambridge", "Guelph", "Hamilton", "St.Catharines", "Burlington",
-        "Mississauga", "Toronto", "Kingston", "Ottawa", "Gatineau", "Montreal",
-         "Trois-Riveres", "Quebec"],
-        rides: [],
-        start: "",
-        end: "",
-        detail: 'all',
-        showAll: true
+      cities: ["", "Windsor", "Chatham-Kent", "London", "Kitchener", "Waterloo",
+      "Cambridge", "Guelph", "Hamilton", "St.Catharines", "Burlington",
+      "Mississauga", "Toronto", "Kingston", "Ottawa", "Gatineau", "Montreal",
+        "Trois-Riveres", "Quebec"],
+      rides: [],
+      start: "",
+      end: "",
+      detail: 'all',
+      showAll: true
     }
   }
 
@@ -67,7 +67,6 @@ export default class Rides extends Component {
       <br />
 
       <Search cities = {this.state.cities} _handleInputChange = {this._handleInputChange} _handleSubmit = {this._handleSubmit}/>
-      
     
       <br /> 
 
@@ -102,8 +101,6 @@ export default class Rides extends Component {
     this.setState({
       showAll: false
     });
-
-
 
   }
 }

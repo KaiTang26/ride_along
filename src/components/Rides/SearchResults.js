@@ -39,10 +39,11 @@ const SearchResults = (props) => {
   const endPos = cities.indexOf(end);
   
   // If travelling Eastward or Westward
-  let direction = "";
+  let direction;
   (startPos - endPos) > 0 ? direction = "west" : direction = "east";
-console.log(direction);
-console.log("START: ", startPos, "END ", endPos);
+
+  // console.log(direction);
+  // console.log("START: ", startPos, "END ", end, endPos);
 
   // Find matches based on array positions
   const matchArr = [];
@@ -50,7 +51,7 @@ console.log("START: ", startPos, "END ", endPos);
   if (direction === "east") {
     availableRides.forEach(function(ride) {
       if (cities.indexOf(ride.start_location) <= startPos
-          && cities.indexOf(ride.end_location >= endPos)) {
+          && cities.indexOf(ride.end_location) >= endPos) {
         matchArr.push(ride);
       }
     });
@@ -59,6 +60,7 @@ console.log("START: ", startPos, "END ", endPos);
       if (cities.indexOf(ride.start_location) >= startPos
           && cities.indexOf(ride.end_location <= endPos)) {
         matchArr.push(ride);
+        console.log("Result: start location ", ride.start_location, cities.indexOf(ride.start_location), "end location ", ride.end_location, cities.indexOf(ride.end_location))
       }
     });
   } 
@@ -75,7 +77,9 @@ console.log("START: ", startPos, "END ", endPos);
       <div>
         
         <ResultsText>
-          <Text>You searched for start point {props.params.start}  endpoint: {props.params.end}
+          <Text>You searched for 
+          <br/>start point ----- {props.params.start}
+          <br/>endpoint ------ {props.params.end}
           </Text>
 
           { (resultsNum === 1) 
