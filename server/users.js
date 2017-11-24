@@ -18,7 +18,7 @@ userRouter.use(cookieSession({
 
 // userRouter.use('/:user_id/trip', tripRouter);
 
-userRouter.use('/:user_id/trip', userTrip);
+userRouter.use('/:user_id/trips', userTrip);
 
 // userRouter.use(flash());
 
@@ -38,7 +38,7 @@ userRouter.post('/login', function(req, res, next) {
         }else{
           res.status(200).send(null);
         }
-        
+
       }else{
         res.status(200).send(null);
       }
@@ -73,7 +73,7 @@ userRouter.post('/', function(req, res, next) {
             drivers_license: req.body.drivers_license,
             about: req.body.about
           })
-          .then(user => { 
+          .then(user => {
             // req.session.user_id=user.id;
             // req.flash('success', {msg: 'Sign Up Success'})
             console.log(user.id);
@@ -83,7 +83,7 @@ userRouter.post('/', function(req, res, next) {
         }
     // res.status(200).send(result);
       })
-      .catch(next);  
+      .catch(next);
 });
 
   // console.log(req.body)
