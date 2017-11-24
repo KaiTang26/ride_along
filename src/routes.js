@@ -15,7 +15,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 
 const customTheme = {
-  palette: { 
+  palette: {
     primary1Color: `${gs.green}`,
     primary2Color: `${gs.orange}`,
     primary3Color: "orange"

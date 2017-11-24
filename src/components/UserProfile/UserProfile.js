@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 import styled from 'styled-components';
 import gs from '../GlobalStyles';
 import api from '../utils/api';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+
 import Menu from '../Menu';
 import Road from './cover.jpg';
+
 import ProfileRides from './ProfileRides'
-
 import EditProfile from './EditProfile';
-
 import UserPic from './Bill.jpg';
 
 const user_id = 1;
@@ -172,7 +173,6 @@ export default class UserProfile extends Component {
 
             <Section>
               <H3>Active Rides</H3>
-              {/* <LeftText>{hasRides(this.state)}</LeftText> */}
               <LeftText>
                 {this.state.trip? <ProfileRides rides={this.state.trip}  />
                   : <h1>Loading </h1>}
