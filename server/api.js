@@ -1,8 +1,5 @@
 const api = module.exports = require('express').Router();
-
-const products = require('./products');
 const reviews = require('./reviews');
-
 const users = require('./users');
 const trips = require('./trips');
 
@@ -11,9 +8,7 @@ const trips = require('./trips');
 // import products from './products';
 api
   .get('/express-test', (req, res) => {
-  console.log(req.headers)
   res.send({express: 'working!'})}) //demo route to prove api is working
-  .use('/products', products)
   .use('/reviews', reviews)
   .use('/users', users)
   .use('/trips', trips)

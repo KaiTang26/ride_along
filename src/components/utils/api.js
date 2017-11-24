@@ -61,7 +61,7 @@ export default {
             return response;
         })
     },
-    
+
     userInfo: function(user_id){
         const encodedURI = window.encodeURI("http://localhost:3000/api/users/"+user_id);
         return axios.get(encodedURI)
@@ -77,7 +77,21 @@ export default {
             // console.log("hello",response)
             return response
         })
-    }
+    },
+    userTrips: function(user_id){
+        const encodedURI = window.encodeURI(`http://localhost:3000/api/users/${user_id}/trips`);
+        return axios.get(encodedURI)
+        .then(response => {
+            return response;
+        })
+    },
 
+    updateUserInfo: function(user_id, req){
+        const encodedURI = window.encodeURI("http://localhost:3000/api/users/"+user_id);
+        return axios.post(encodedURI, req)
+        .then(response => {
+            console.log("User info updated ", response);
+        })
+    }
 
 }

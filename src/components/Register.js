@@ -51,8 +51,9 @@ export default class Register extends Component {
       email: "",
       drivers_license: "",
       open: false,
-      signUP:false
-      
+      signUP:false,
+      about: "",
+     
     }
   };
 
@@ -143,6 +144,9 @@ export default class Register extends Component {
             value={this.state.password}
             onChange={e => this.handleChange(e)}
           />
+          <Input name="confirm_password" 
+                 floatingLabelText="Confirm Password" 
+                 type="password" /*value={this.state.password} onChange={e => this.handleChange(e)} */ />
           <Input
             name="drivers_license"
             floatingLabelText="Driver's Licence Number"
@@ -150,6 +154,14 @@ export default class Register extends Component {
             value={this.state.drivers_license}
             onChange={e => this.handleChange(e)}
           />
+      
+          <Input name="about" 
+                 fullWidth={true}floatingLabelText="A bit about you" 
+                 type="text" 
+                 value={this.state.about} 
+                 multiLine={true} 
+                 rows={4} 
+                 onChange={e => this.handleChange(e)}/>
         </Form>
         </Dialog>
 

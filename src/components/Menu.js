@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import gs from './GlobalStyles.js';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-import UserPic from './Bill.jpg';
+import UserPic from './UserProfile/Bill.jpg';
 
 const Nav = styled.div`
   overflow: hidden;
@@ -10,7 +10,7 @@ const Nav = styled.div`
   position: fixed;
   top: 0;
   width: 100%;
-  background: rgba(255,255,255, .99);
+  background: rgba(255,255,255, .97);
 `;
 
 const Logotype = styled.h1`
@@ -18,6 +18,7 @@ const Logotype = styled.h1`
   font-weight: bold;
   margin: .85em;
   float: left;
+  font-style: italic;
   color: ${gs.green};
 `;
 

@@ -18,7 +18,7 @@ router.post('/:id', function(req, res, next) {
     user_id: req.params.user_id,
     trip_id: req.params.id
   })
-  .then(result => { 
+  .then(result => {
     console.log(result);
   })
   .catch(next);
@@ -35,7 +35,7 @@ router.post('/',function(req, res, next) {
     passengers: req.body.passengers,
     driver: req.params.user_id
   })
-  .then(result => { 
+  .then(result => {
     res.sendStatus(200)
     // console.log(result[0]);
   })

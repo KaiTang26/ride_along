@@ -20,13 +20,14 @@ const Header = styled.section`
 const Darken = styled.div`
   max-width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.4);
 `;
 
 const Logotype = styled.h1`
   font-size: 550%;
   font-style: italic;
-  padding: 1.5em 0 .6em;
+  padding: 1.75em 0 .5em;
+  font-weight: bold;
 `;
 
 const Tagline = styled.h1`

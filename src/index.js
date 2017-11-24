@@ -10,8 +10,11 @@ import { createLogger } from 'redux-logger';
 import thunk from 'redux-thunk';
 import rootReducer from './reducers';
 
+
+
 const middleware = applyMiddleware(thunk, createLogger());
 export const store = createStore(rootReducer, middleware);
+
 
 document.addEventListener("DOMContentLoaded", () => {
   ReactDOM.render(

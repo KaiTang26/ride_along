@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import gs from './GlobalStyles.js';
+import gs from '../GlobalStyles.js';
 import TextField from 'material-ui/TextField';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
-import api from './utils/api';
-import Profile from './UserProfile/UserProfile.js'
-import { Link } from 'react-router-dom';
-import browserHistory from '../history';
 
 const Form = styled.form`
   max-width: 800px;
@@ -31,7 +27,7 @@ const Button = styled(RaisedButton)`
     font-family: Lato !important;
   }
   > button div div span {
-    color: white !important;
+    color: black !important;
     text-transform: none !important;
     font-size: 1rem !important;
   }
@@ -43,8 +39,9 @@ export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      password: "",
-      email: "",
+      rating: "",
+      content: "",
+      trip_id: this.props.trip_id,
       open: false
     }
   };
@@ -57,41 +54,14 @@ export default class Login extends Component {
     this.setState({open: false});
   };
 
-  userLogin = ()=>{
-    // debugger
-    // this.setState({open: false});
-    api.login(this.state)
-    .then(res=>{
-      if(res.data){
-        this.setState({open: false});
-        const id = res.data.id
-        localStorage.setItem("user_id", id);
-        localStorage.setItem("drivers_license", res.data.drivers_license);
-        
-        browserHistory.push("/profile/"+id)
-
-        console.log(browserHistory.location.pathname)
-      }else{
-        this.setState({open: true});
-        console.log('###res', res.data.id);
-        //         
-      } 
-    })
-  }
-
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value
     });
   };
 
-  handleLogout = e => {
-    localStorage.clear();
-    browserHistory.push("/")
-  };
-
   render() {
-    
+
     const actions = [
       <FlatButton
         label="Cancel"
@@ -102,43 +72,30 @@ export default class Login extends Component {
         label="Submit"
         primary={true}
         keyboardFocused={true}
-        onClick={this.userLogin}
+        onClick={this.handleClose}
       />,
     ];
 
     return (
 
       <div>
+        <Button label="Review this Trip" onClick={this.handleOpen} />
 
-        { localStorage.getItem("user_id")?
-          <Button label="Logout" onClick={this.handleLogout} />:
-          <Button label="Login" onClick={this.handleOpen} />}
-        
         <Dialog
-          title="Login to start your trip!"
+          title="Tell us about your trip!"
           actions={actions}
           modal={false}
           open={this.state.open}
           onRequestClose={this.handleClose}
-        >   
+        >
 
         <Form>
-          <Input name="email" floatingLabelText="Email" type="email" value={this.state.email} onChange={e => this.handleChange(e)}/>
-          <Input name="password" floatingLabelText="Password" type="password" value={this.state.password} onChange={e => this.handleChange(e)}/>
+          <Input name="rating" floatingLabelText="Rating" type="text" value={this.state.rating} onChange={e => this.handleChange(e)}/>
+          <Input name="content" floatingLabelText="Review" type="textarea" value={this.state.content} onChange={e => this.handleChange(e)}/>
         </Form>
 
         </Dialog>
-        {/* {localStorage.getItem("user_id") && <Link to = "/profile/1" />} */}
-
-        {/* <Profile /> */}
-      </div>  
+      </div>
     );
   }
-
-
-
-
-
-
-
 }

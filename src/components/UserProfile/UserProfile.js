@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
-import styled from 'styled-components';
-import gs from './GlobalStyles.js';
-import api from './utils/api';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Menu from './Menu';
+
+import styled from 'styled-components';
+import gs from '../GlobalStyles';
+import api from '../utils/api';
+
+import Menu from '../Menu';
 import Road from './cover.jpg';
 
+import ProfileRides from './ProfileRides'
+import EditProfile from './EditProfile';
 import UserPic from './Bill.jpg';
 
 const ProfilePic = styled.div`
@@ -31,7 +35,7 @@ const Name = styled.h2`
   font-weight: bold;
   margin: 1em;
   text-align: center;
-  margin: -3.25em auto 2em;
+  margin: -3.25em auto 1em;
   font-weight: 900;
   font-family: Lato;
   padding: .5em;
@@ -86,7 +90,21 @@ const Right = styled.div`
   width: 65%;
 `;
 
+const EditButton = styled.button`
+
+`;
+//
+// function hasRides(props) {
+//   if () {
+//     return <profileRides rides={this.state.trip}/>;
+//   }
+//   console.log("no rides");
+//   return null;
+// }
+
+
 export default class UserProfile extends Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -100,39 +118,45 @@ export default class UserProfile extends Component {
     }
   };
 
+// userTrips
+
   componentDidMount() {
     const user_id = localStorage.getItem("user_id");
-    (api.userInfo(user_id))
-    .then(results => 
+    (api.userTrips(user_id))
+    .then(results =>
       this.setState({
         first_name: results.data.first_name,
         last_name: results.data.last_name,
         picture: results.data.picture,
         email: results.data.email,
         drivers_license: results.data.drivers_license,
-        about: results.data.about
+        about: results.data.about,
+        trip: results.data.user_trips
       })
     );
   }
-  
-
 
   render() {
-    
+
     return (
       <div>
       <Menu/>
       <CoverPic/>
       <Profile>
-        
+
         <ProfilePic />
 
         <Name>
           Hello {this.state.first_name}!
+          {console.log(this.state)}
         </Name>
 
         <Info>
           <Left>
+
+            <Section>
+              <EditProfile info={this.state}/>
+            </Section>
 
             <Section>
               <H3>Last Login</H3>
@@ -145,7 +169,15 @@ export default class UserProfile extends Component {
             </Section>
 
             <Section>
-              <H3>Ride History</H3>
+              <H3>Active Rides</H3>
+              <LeftText>
+                {this.state.trip? <ProfileRides rides={this.state.trip}  />
+                  : <h1>Loading </h1>}
+              </LeftText>
+            </Section>
+
+            <Section>
+              <H3>Completed Rides</H3>
               <LeftText>4 past rides</LeftText>
             </Section>
 
@@ -164,7 +196,7 @@ export default class UserProfile extends Component {
             </Section>
           </Right>
         </Info>
-      </Profile>  
+      </Profile>
 
       </div>
     );
