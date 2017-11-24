@@ -30,9 +30,7 @@ const seedTrips = () => db.Promise.map([
 
 
  db.didSync
-   .then(() => db.sync({force: true}))
-   .then(seedProducts)
-   .then(products => console.log(`Seeded ${products.length} products OK`))
+   .then(() => db.sync())
    .then(seedReviews)
    .then(reviews => console.log(`Seeded ${reviews.length} reviews OK`))
    .then(seedUsers)
