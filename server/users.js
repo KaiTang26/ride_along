@@ -59,7 +59,7 @@ userRouter.get('/:id/trips', function(req, res, next){
       include: [
         {
           model: userTripModel,
-          // where: { user_id: req.params.id },
+          where: { user_id: req.params.id },
           attributes:['trip_id'],
           include: {
             model: trip,
