@@ -58,7 +58,7 @@ const SearchResults = (props) => {
   } else if (direction === "west") {
     availableRides.forEach(function(ride) {
       if (cities.indexOf(ride.start_location) >= startPos
-          && cities.indexOf(ride.end_location <= endPos)) {
+          && cities.indexOf(ride.end_location) <= endPos) {
         matchArr.push(ride);
         console.log("Result: start location ", ride.start_location, cities.indexOf(ride.start_location), "end location ", ride.end_location, cities.indexOf(ride.end_location))
       }
