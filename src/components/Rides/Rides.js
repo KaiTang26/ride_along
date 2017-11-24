@@ -51,7 +51,7 @@ export default class Rides extends Component {
       let rides = result.data
       this.setState({rides})
       console.log(rides);
-    })
+    });
   }
 
   render () {
