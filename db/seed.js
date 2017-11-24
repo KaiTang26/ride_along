@@ -25,6 +25,7 @@ const seedReviews = () => db.Promise.map([
 
 const seedUserTrips = () => db.Promise.map([
   {user_id: 1, trip_id: 1},
+  {user_id: 1, trip_id: 3},
 ], user_trip => db.model('user_trips').create(user_trip));
 
 

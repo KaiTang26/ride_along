@@ -12,7 +12,7 @@ class CompletedRides extends Component {
         {console.log(new Date())}
         {this.props.rides.map((ride) => (
          <div>
-          {new Date(this.props.rides[0].trip.date) < new Date()?
+          {new Date(ride.trip.date) < new Date()?
 
             <div className="profileRide-container" key={ride.trip.id}>
               {console.log(this.props)}
