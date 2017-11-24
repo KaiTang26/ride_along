@@ -9,11 +9,16 @@ import { Button, Header, Icon, Image, Modal } from 'semantic-ui-react'
 
 const RideDetailUI = (props) => {
   // console.log(props.id.origin)
+  const currentUser = localStorage.getItem("user_id");
+  console.log("current", currentUser, "driver", props.id.driver)
 
   return(
 
     <div>
-
+    {currentUser === props.id.driver
+      ? <Condition /> 
+      : null}
+    
     <h1>Ride from {props.id.start_location} to {props.id.end_location} </h1>
     <h2>Leaving {props.id.date} at {props.id.time}</h2>
     <br></br>
@@ -38,7 +43,7 @@ class Details extends Component {
     .then(result => {
       let ride = result.data
       this.setState({ride})
-      console.log('Details');
+      console.log('Details', ride);
     })
 
   }
@@ -52,7 +57,6 @@ class Details extends Component {
         {this.state? <RideDetailUI id={this.state.ride} />
           : <h1>Loading </h1>}
 
-        <Condition />
 
           {this.state? <ChatContainer id={this.state.ride} />
             : <h1>Loading </h1>}

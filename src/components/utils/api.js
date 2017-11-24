@@ -93,5 +93,4 @@ export default {
             console.log("User info updated ", response);
         })
     }
-
 }
