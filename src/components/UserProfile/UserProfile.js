@@ -8,7 +8,8 @@ import api from '../utils/api';
 import Menu from '../Menu';
 import Road from './cover.jpg';
 
-import ProfileRides from './ProfileRides'
+import ActiveRides from './ActiveRides'
+import CompletedRides from './CompletedRides'
 import EditProfile from './EditProfile';
 import UserPic from './Bill.jpg';
 
@@ -98,14 +99,14 @@ const EditButton = styled.button`
 
 `;
 //
-function HasRides(props) {
-  if (true) {
-    console.log("has rides");
-    return <profileRides rides={props}/>;
-  }
-  console.log("no rides");
-  return null;
-}
+// function HasRides(props) {
+//   if (true) {
+//     console.log("has rides");
+//     return <profileRides rides={props}/>;
+//   }
+//   console.log("no rides");
+//   return null;
+// }
 
 
 export default class UserProfile extends Component {
@@ -177,7 +178,7 @@ export default class UserProfile extends Component {
                 {this.state.trip?
                   <div>
                     <H3>Active Rides</H3>
-                    <ProfileRides rides={this.state.trip}  />
+                    <ActiveRides rides={this.state.trip}  />
                   </div>
                   : <h1>Loading </h1>}
               </LeftText>
@@ -185,12 +186,12 @@ export default class UserProfile extends Component {
 
             <Section>
               <LeftText>
-                {/* {this.state.trip?
+                {this.state.trip?
                   <div>
                     <H3>Completed Rides</H3>
-                    <ProfileRides rides={this.state.trip}  />
+                    <CompletedRides rides={this.state.trip}  />
                   </div>
-                  : <h1>Loading </h1>} */}
+                  : <h1>Loading </h1>}
               </LeftText>
             </Section>
 

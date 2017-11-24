@@ -2,17 +2,17 @@ import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import RideReview from './RideReview';
 
-class ProfileRides extends Component {
+class CompletedRides extends Component {
 
   render() {
     return (
-      <div className="profileRides">
+      <div className="completed-rides">
         {console.log(this.props.rides)}
         {console.log(this.props.rides[0].trip.date)}
         {console.log(new Date())}
         {this.props.rides.map((ride) => (
          <div>
-          {new Date(this.props.rides[0].trip.date) > new Date()?
+          {new Date(this.props.rides[0].trip.date) < new Date()?
 
             <div className="profileRide-container" key={ride.trip.id}>
               {console.log(this.props)}
@@ -23,7 +23,7 @@ class ProfileRides extends Component {
               <RideReview trip_id={ride.trip.id}/>
               <br></br>
             </div>
-            
+
             : null}
           </div>
         ))
@@ -33,4 +33,4 @@ class ProfileRides extends Component {
     );
   }
 }
-export default ProfileRides;
+export default CompletedRides;
