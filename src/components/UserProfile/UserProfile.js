@@ -174,7 +174,7 @@ export default class UserProfile extends Component {
               <H3>Active Rides</H3>
               {/* <LeftText>{hasRides(this.state)}</LeftText> */}
               <LeftText>
-                {this.state.trip? <ProfileRides rides={this.state.trip} />
+                {this.state.trip? <ProfileRides rides={this.state.trip}  />
                   : <h1>Loading </h1>}
               </LeftText>
             </Section>
