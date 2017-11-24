@@ -2,6 +2,10 @@ import React, {Component} from 'react';
 import api from '../utils/api';
 import Map from './map.js';
 import ChatContainer from '../Chat/ChatContainer';
+import Condition from '../Agreement/Condition'
+  
+import { Button, Header, Icon, Image, Modal } from 'semantic-ui-react'
+
 
 const RideDetailUI = (props) => {
   // console.log(props.id.origin)
@@ -48,8 +52,12 @@ class Details extends Component {
         {this.state? <RideDetailUI id={this.state.ride} />
           : <h1>Loading </h1>}
 
+        <Condition />
+
           {this.state? <ChatContainer id={this.state.ride} />
             : <h1>Loading </h1>}
+
+            
       </div>
   )}
 }

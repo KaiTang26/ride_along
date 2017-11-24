@@ -156,7 +156,8 @@ export default class Register extends Component {
           />
       
           <Input name="about" 
-                 fullWidth={true}floatingLabelText="A bit about you" 
+                 fullWidth={true}
+                 floatingLabelText="A bit about you" 
                  type="text" 
                  value={this.state.about} 
                  multiLine={true} 
