@@ -150,7 +150,6 @@ export default class UserProfile extends Component {
 
         <Name>
           Hello {this.state.first_name}!
-          {console.log(this.state)}
         </Name>
 
         <Info>
