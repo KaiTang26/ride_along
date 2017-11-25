@@ -3,7 +3,7 @@ const Agreement = require('../db/models/agreement');
 
 const router = require('express').Router()
 
-router.get('/', function(req, res, next) {
+router.get('/:id', function(req, res, next) {
   Agreement.findAll({
     where: {trip_id: req.params.id}
   })
@@ -12,6 +12,13 @@ router.get('/', function(req, res, next) {
     })
     .catch(next);
 });
+
+// router.post('/:id', function(req,res, next) {
+//   Agreement.findOne({
+//     where: {trip_id: req.params.id}
+//   }).
+//   .then()
+// })
 
 // router.post('/:id', function(req, res, next) {
 //   Agreement.findAll({

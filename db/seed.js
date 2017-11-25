@@ -23,6 +23,10 @@ const seedReviews = () => db.Promise.map([
   {rating: 4, review_text: "Had a great time with Bill",trip_id:1}
 ], review => db.model('reviews').create(review));
 
+const seedAgreements = () => db.Promise.map([
+  {statement: "No food or drinks in the car", trip_id:1}
+], agreement => db.model('agreements').create(agreement));
+
 
  db.didSync
    .then(() => db.sync())
@@ -32,5 +36,7 @@ const seedReviews = () => db.Promise.map([
    .then(trips => console.log(`Seeded ${trips.length} trips OK`))
    .then(seedReviews)
    .then(reviews => console.log(`Seeded ${reviews.length} reviews OK`))
+   .then(seedAgreements)
+   .then(agreements => console.log(`Seeded ${agreements.length} agreements OK`))   
    .catch(error => console.error(error))
    .finally(() => db.close())

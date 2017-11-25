@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import api from '../utils/api';
 import Map from './map.js';
 import ChatContainer from '../Chat/ChatContainer';
-import Condition from '../Agreement/Condition'
+import AddCondition from '../Agreement/AddCondition';
+import DisplayCondition from '../Agreement/DisplayCondition';
   
 import { Button, Header, Icon, Image, Modal } from 'semantic-ui-react'
 
@@ -15,7 +16,7 @@ const RideDetailUI = (props) => {
 
   <div>
     {currentUser === props.id.driver
-      ? <Condition />
+      ? <AddCondition />
       : null}
     
     <h1>Ride from {props.id.start_location} to {props.id.end_location} </h1>
@@ -28,6 +29,7 @@ const RideDetailUI = (props) => {
     <br></br>
     <p>Some text in paragraph form</p>
     <br></br>
+    <DisplayCondition statements={props.id.agreements}/>
     <Map origin={props.id.origin} destination={props.id.destination}/>
   </div>
   )

@@ -1,5 +1,6 @@
 const db = require('../db') //this is required
 const Trip = require('../db/models/trip');
+const Agreement = require('../db/models/agreement');
 
 const router = require('express').Router();
 const cors = require('cors');
@@ -20,7 +21,8 @@ router.get('/', function(req, res, next) {
 
 router.get('/:id',function(req, res, next) {
   Trip.findOne({
-      where:{id:req.params.id}
+      where:{id:req.params.id},
+      include: [Agreement]
     })
     .then(result => {
       res.status(200).send(result);

@@ -18,7 +18,7 @@ const Input = styled(TextField)`
 `;
 
 
-export default class Condition extends Component {
+export default class AddCondition extends Component {
   
   constructor(props) {
     super(props);
