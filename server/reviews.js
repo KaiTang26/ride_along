@@ -3,23 +3,26 @@ const Review = require('../db/models/review');
 
 const router = require('express').Router()
 
-router.get('/', function(req, res, next) {
-  Review.findAll()
-    .then(result => {
-      res.status(200).send(result);
-    })
-    .catch(next);
-});
 
-router.get('/:id', function(req, res, next) {
-  Review.findOne({
-    where:{id:req.params.id},
-    include: [Product]
-    })
-    .then(result => {
-        res.status(200).send(result);
-    })
-    .catch(next);
+// router.get('/:id', function(req, res, next) {
+//   Review.findOne({
+//     where:{id:req.params.id},
+//     include: [Product]
+//     })
+//     .then(result => {
+//         res.status(200).send(result);
+//     })
+//     .catch(next);
+// });
+
+router.get('/:trip_id', function(req, res, next) {
+  Review.findAll({
+    where:{trip_id:req.params.id}
+  })
+  .then(result => {
+    res.status(200).send(result);
+  })
+  .catch(next);
 });
 
 router.post('/:trip_id', function(req, res, next) {

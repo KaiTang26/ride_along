@@ -136,6 +136,8 @@ export default class UserProfile extends Component {
         trip: results.data.user_trips
       })
     );
+    (api.getReviews(user_id))
+    .then(results => console.log(results))
   }
 
   render() {

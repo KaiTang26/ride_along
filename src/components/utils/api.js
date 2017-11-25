@@ -27,6 +27,15 @@ export default {
       })
     },
 
+    getReviews: function(trip_id, req){
+      const encodedURI = window.encodeURI("http://localhost:3000/api/reviews/"+trip_id);
+      console.log(encodedURI)
+      return axios.get(encodedURI, req)
+      .then((response)=> {
+        console.log('reviews found');
+      })
+    },
+
     fetchGeocode: function(address){
       const encodedURI = window.encodeURI("https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key=AIzaSyAOdJrxTyFGID_cQFGUdskPi77ZQqKxy3c&v");
       return axios.get(encodedURI)
