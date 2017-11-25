@@ -18,7 +18,9 @@ export default class Trip extends Component {
         origin:['',''],
         destination:['',''],
         price:'',
-        description:'' 
+        description:'',
+        polygon:[],
+        direction:'' 
     }
   }
   render() {
@@ -78,11 +80,15 @@ export default class Trip extends Component {
   
     _handleLocationSearch=(address)=>{
 
+        console.log(address)
+
         this.setState({
             start_location:address.start_location,
             end_location:address.end_location,
             origin:address.origin,
-            destination:address.destination 
+            destination:address.destination,
+            polygon: address.polygon,
+            direction: address.direction
         })      
     }
 
