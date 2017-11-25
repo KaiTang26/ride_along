@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Route, Redirect } from 'react-router'
-import CalculateGeocode from '../Trip/Calculategeo.js';
+// import CalculateGeocode from '../Trip/Calculategeo.js';
 
 const Text = styled.p`
   margin: 1em;
@@ -26,40 +26,34 @@ const Label = styled.h4`
 const ResultsText = styled.div`
 `;
 
+function testInside (point, vs) {
+  
+      var x = point[0], y = point[1];
+  
+      var inside = false;
+  
+      for (var i = 0, j = vs.length - 1; i < vs.length; j = i++) {
+          var xi = vs[i][0], yi = vs[i][1];
+          var xj = vs[j][0], yj = vs[j][1];
+  
+          var intersect = ((yi > y) != (yj > y))
+              && (x < (xj - xi) * (y - yi) / (yj - yi) + xi);
+  
+          if (intersect) {
+              inside = !inside
+          };
+      }
+      return inside;
+  };
+
+
+
 const SearchResults = (props) => {
-
-//   // Find matching routes
-//   constructor(props) {
-//       super(props);
-//       this.state = {
-//         start_location:"",
-//         end_location:"",
-//         origin:['',''],
-//         destination:['',''],
-//         polygon:[],
-//         direction:'' 
-//       }
-//     };
-
-  const start = props.params.start;
-  const end = props.params.end;
+  const origin = props.params.origin;
+  const destination = props.params.destination;
+  const direction = props.params.direction;
   const availableRides = props.params.rides;
-  const cities = props.params.cities;
-
-  api.fetchGeocode(start)
-  .then( (response)=>{
-      let origin = [response.lat,response.lng];
-      api.fetchGeocode(this.state.end_location)
-      .then( (response)=>{
-          let destination= [response.lat,response.lng]
-          let polygon = this._makePolygon(origin, destination)
-          let direction = this._direction(polygon, origin)
-          console.log(direction)
-          console.log(this._direction(polygon, origin))
-          const address = {...this.state, origin: origin, destination: destination, polygon:polygon, direction:direction}
-          this.props.updateAddress(address);  
-      });
-  }); 
+  // const cities = props.params.cities;
 
   // Get array position of starting and end points
 //   const startPos = cities.indexOf(start);
@@ -92,65 +86,74 @@ const SearchResults = (props) => {
 //     });
 //   } 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  availableRides.forEach((ele)=>{
+    console.log("user diresction", direction)
+    console.log("dirver diresction", ele.direction)
+    if(direction===ele.direction){
+      console.log("true")
+      console.log("origin", testInside(origin, ele.polygon))
+      if(testInside(origin, ele.polygon) && testInside(destination, ele.polygon)){
+        matchArr.push(ele);
+        
+      }
+    }
+  })
 
 
   console.log("MATCH ARR: ", matchArr);
   
   const resultsNum = matchArr.length;
-  
-  if (start === "" || end === "") {
-    return (
-    <Text>Please select your starting and ending points.</Text> 
-  )} else {
 
-    return (
-      <div>
-        
-        <ResultsText>
-          <Text>You searched for 
-          <br/>start point ----- {props.params.start}
-          <br/>endpoint ------ {props.params.end}
-          </Text>
+  return (
 
-          { (resultsNum === 1) 
-            ? <Text>There is 1 available ride that overlaps with your trip! </Text>
-            : <Text>There are {resultsNum} available rides that overlap with your trip! </Text>
-          }
-
-          <Text>
-            Contact the driver on the trip's page to negotiate arrangements.
-          </Text>
-        
-        </ResultsText>
-
-        <Results>
-
-          {matchArr.map((ride) => (
-            <Ride key={ride.id}>
-              <Label>Leaving:</Label> {ride.date}
-              <Label>Time</Label> {ride.time}
-              <Label>From:</Label> {ride.start_location} To: {ride.end_location}
-            </Ride>
-          ))}
-        </Results>
-          
+    <div> 
+      
+      
+      Hello
+      
+      
     </div>
-    );
-  }
+  )
+  
+  // if (start === "" || end === "") {
+  //   return (
+  //   <Text>Please select your starting and ending points.</Text> 
+  // )} else {
+
+  //   return (
+  //     <div>
+        
+  //       <ResultsText>
+  //         <Text>You searched for 
+  //         <br/>start point ----- {props.params.start}
+  //         <br/>endpoint ------ {props.params.end}
+  //         </Text>
+
+  //         { (resultsNum === 1) 
+  //           ? <Text>There is 1 available ride that overlaps with your trip! </Text>
+  //           : <Text>There are {resultsNum} available rides that overlap with your trip! </Text>
+  //         }
+
+  //         <Text>
+  //           Contact the driver on the trip's page to negotiate arrangements.
+  //         </Text>
+        
+  //       </ResultsText>
+
+  //       <Results>
+
+  //         {matchArr.map((ride) => (
+  //           <Ride key={ride.id}>
+  //             <Label>Leaving:</Label> {ride.date}
+  //             <Label>Time</Label> {ride.time}
+  //             <Label>From:</Label> {ride.start_location} To: {ride.end_location}
+  //           </Ride>
+  //         ))}
+  //       </Results>
+          
+  //   </div>
+  //   );
+  // }
 }
 
-// export default SearchResults;
+export default SearchResults;

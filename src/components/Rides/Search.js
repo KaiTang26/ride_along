@@ -4,13 +4,14 @@ import { Route, Redirect } from 'react-router'
 
 
 export default class Search extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     start: "Toronto",
-  //     end: "Windsor"
-  //   }
-  // };
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      start: "Tang",
+      end: ""
+    }
+  }
 
   render () {  
 

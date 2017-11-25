@@ -7,9 +7,7 @@ export default class CalculateGeocode extends Component {
         super(props);
         this.state={
             start_location:"",
-            end_location:"",
-            origin:['',''],
-            destination:['','']
+            end_location:""
         }
     }
 

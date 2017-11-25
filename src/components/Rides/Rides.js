@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Posts from './Posts';
-import SearchResults from './SearchResults';
+import SearchResults from './SearchP';
 import api from '../utils/api';
-import { Route, Redirect } from 'react-router'
+import { Route, Redirect } from 'react-router';
+import CalculateGeocode from '../Trip/Calculategeo.js';
 
 const Search = (props) => (
   <form onSubmit={props._handleSubmit}>
@@ -33,13 +34,10 @@ export default class Rides extends Component {
   constructor(props){
     super(props);
     this.state = {
-      cities: ["", "Windsor", "Chatham-Kent", "London", "Kitchener", "Waterloo",
-      "Cambridge", "Guelph", "Hamilton", "St.Catharines", "Burlington",
-      "Mississauga", "Toronto", "Kingston", "Ottawa", "Gatineau", "Montreal",
-        "Trois-Riveres", "Quebec"],
       rides: [],
-      start: "",
-      end: "",
+      origin:[],
+      destination:[],
+      direction: '',
       detail: 'all',
       showAll: true
     }
@@ -65,8 +63,9 @@ export default class Rides extends Component {
       <h1>Find a Ride</h1>
       <br />
       <br />
+      <CalculateGeocode updateAddress={this._handleLocationSearch}/>
 
-      <Search cities = {this.state.cities} _handleInputChange = {this._handleInputChange} _handleSubmit = {this._handleSubmit}/>
+      {/* <Search cities = {this.state.cities} _handleSubmit = {this._handleSubmit}/> */}
     
       <br /> 
 
@@ -83,7 +82,9 @@ export default class Rides extends Component {
   }
 
   _handleAll = e => {
-    this.setState({ showAll: true });
+    this.setState({ 
+      showAll: true
+    });
   }
 
   _handleInputChange=(event) => {
@@ -96,11 +97,29 @@ export default class Rides extends Component {
     });
   }
 
-  _handleSubmit=(event) => {
-    event.preventDefault();
-    this.setState({
-      showAll: false
-    });
+  // _handleSubmit=(event) => {
+  //   event.preventDefault();
+  //   this.setState({
+  //     showAll: false
+  //   });
+  // }
 
+  _handleLocationSearch=(address)=>{
+    console.log(address)
+    this.setState({
+    origin:address.origin,
+    destination:address.destination,
+    direction: address.direction,
+    showAll: false
+    })      
   }
+
+
+
+
+
+
+
+
+
 }
