@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import gs from '../GlobalStyles.js';
 import TextField from 'material-ui/TextField';
-import { Button, Header, Icon, Image, Modal } from 'semantic-ui-react'
+import { Button, Modal } from 'semantic-ui-react'
 
 
 const Container = styled.div`
@@ -23,7 +23,8 @@ export default class Condition extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      condition: ""
+      condition: "",
+      open: false
     }
   };
 
@@ -34,17 +35,34 @@ export default class Condition extends Component {
   };
 
   handleSubmit = e => {
+    // api.
+  };
 
+
+  closeConfigShow = (closeOnEscape, closeOnRootNodeClick) => () => {
+    this.setState({ closeOnEscape, closeOnRootNodeClick, open: true })
   }
 
+  close = () => this.setState({ open: false })
+
   render() {
+    const { open, closeOnEscape, closeOnRootNodeClick } = this.state
 
     return (
-    
-      <Modal trigger={<Button>Add Condition</Button>}>
-        <Modal.Content image>
+      <div>
+        <Button onClick={this.closeConfigShow(true, false)}>Add Condition</Button>
+
+        <Modal
+          open={open}
+          closeOnEscape={closeOnEscape}
+          closeOnRootNodeClick={closeOnRootNodeClick}
+          onClose={this.close}
+        >
+          <Modal.Header>
+          Add a Condition
+          </Modal.Header>
+          <Modal.Content>
           <Modal.Description>
-            <Header>Add a Condition</Header>
             <p>State one condition you would like your passengers to agree to:</p>
             <Input 
               name="condition" 
@@ -54,15 +72,14 @@ export default class Condition extends Component {
               value={this.state.condition} 
               onChange={e => this.handleChange(e)}/>
           </Modal.Description>
-        </Modal.Content>
-        <Modal.Actions>
-          <Button primary >
-            Submit <Icon name='right chevron' onClick={this.handleSubmit}/>
-          </Button>
-        </Modal.Actions>
-      </Modal>
-      
+          </Modal.Content>
+          <Modal.Actions>
+            <Button negative onClick={this.close}>Cancel</Button>
+            <Button positive labelPosition='right' icon='checkmark' content='Submit' onClick={this.handleSubmit} />
+          </Modal.Actions>
+        </Modal>
+      </div>
     )
-
   }
 }
+
