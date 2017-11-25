@@ -92,5 +92,14 @@ export default {
         .then(response => {
             console.log("User info updated ", response);
         })
+    },
+
+    addCondition: function(trip_id, req) {
+        const encodedURI = window.encodeURI        ("http://localhost:3000/api/agreements/ride/"+trip_id);
+        console.log("ADDCOND ",req)
+        return axios.post(encodedURI, req)
+        .then(response => {
+            console.log("Condition added", response)
+        })
     }
 }

@@ -3,6 +3,17 @@ const Agreement = require('../db/models/agreement');
 
 const router = require('express').Router()
 
+// router.get('/:id', function(req, res, next) {
+//   Agreement.findAll({
+//     where: {trip_id: req.params.id}
+//   })
+//     .then(result => {
+//         res.status(200).send(result);
+//     })
+//     .catch(next);
+// });
+
+// All conditions for a trip
 router.get('/:id', function(req, res, next) {
   Agreement.findAll({
     where: {trip_id: req.params.id}
@@ -13,12 +24,18 @@ router.get('/:id', function(req, res, next) {
     .catch(next);
 });
 
-// router.post('/:id', function(req,res, next) {
-//   Agreement.findOne({
-//     where: {trip_id: req.params.id}
-//   }).
-//   .then()
-// })
+// Add one condition
+router.post('/ride/:id', function(req,res, next) {
+  // Agreement.findOne({
+  //   where: {trip_id: req.params.id}
+  // }).
+  console.log("ROUTER REQ",req.body, req.params.id)
+  Agreement.create({
+    statement: req.body.condition,
+    trip_id: req.params.id
+  })
+  .catch(next);
+})
 
 // router.post('/:id', function(req, res, next) {
 //   Agreement.findAll({
@@ -30,14 +47,5 @@ router.get('/:id', function(req, res, next) {
 //     .catch(next);
 // });
 
-// router.get('/:id', function(req, res, next) {
-//   Driver.findOne({
-//       where:{id:req.params.id}
-//     })
-//     .then(result => {
-//       res.status(200).send(result);
-//     })
-//     .catch(next);
-// });
 
 module.exports = router

@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import gs from '../GlobalStyles.js';
 
 const DisplayCondition = (props) => {
-  console.log("STATES" ,props.statements);
   return (
     <div>
     <p>HI</p>

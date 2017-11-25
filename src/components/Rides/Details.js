@@ -16,7 +16,7 @@ const RideDetailUI = (props) => {
 
   <div>
     {currentUser === props.id.driver
-      ? <AddCondition />
+      ? <AddCondition tripId={props.id.id}/>
       : null}
     
     <h1>Ride from {props.id.start_location} to {props.id.end_location} </h1>

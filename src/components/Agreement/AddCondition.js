@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import gs from '../GlobalStyles.js';
 import TextField from 'material-ui/TextField';
-import { Button, Modal } from 'semantic-ui-react'
-
+import { Button, Modal } from 'semantic-ui-react';
+import api from '../utils/api';
 
 const Container = styled.div`
   max-width: 500px;
@@ -35,7 +35,9 @@ export default class AddCondition extends Component {
   };
 
   handleSubmit = e => {
-    // api.
+    console.log("ID", this.props.tripId, "CONDITION", this.state.condition)
+    api.addCondition(this.props.tripId, this.state);
+    this.setState({open: false});
   };
 
 

@@ -12,6 +12,6 @@ api
   .use('/reviews', reviews)
   .use('/users', users)
   .use('/trips', trips)
-  .use('/agreement', agreements)
+  .use('/agreements', agreements)
 // No routes matched? 404.
 api.use((req, res) => res.status(404).end())
