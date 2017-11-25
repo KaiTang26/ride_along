@@ -60,6 +60,11 @@ export default class Login extends Component {
     });
   };
 
+// Uncomment and work on this tomorrow
+  // postReview = () => {
+  //   api.postReview
+  // }
+
   render() {
 
     const actions = [

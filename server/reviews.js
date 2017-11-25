@@ -12,21 +12,21 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/:id', function(req, res, next) {
-    Review.findOne({
-            where:{id:req.params.id},
-            include: [Product]
-        })
-        .then(result => {
-            res.status(200).send(result);
-        })
-        .catch(next);
+  Review.findOne({
+    where:{id:req.params.id},
+    include: [Product]
+    })
+    .then(result => {
+        res.status(200).send(result);
+    })
+    .catch(next);
 });
 
-router.post('/:id', function(req, res, next) {
+router.post('/:trip_id', function(req, res, next) {
   Review.create({
     review_text: req.body.review_text,
     rating: req.body.rating,
-    trip_id:req.params.id
+    trip_id:req.params.trip_id
   })
   .then(review => {
     console.log(review);

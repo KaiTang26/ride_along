@@ -18,7 +18,7 @@ userRouter.use(cookieSession({
 
 // userRouter.use('/:user_id/trip', tripRouter);
 
-userRouter.use('/:user_id/trips', userTrip);
+userRouter.use('/:user_id/trip', userTrip);
 
 // userRouter.use(flash());
 
