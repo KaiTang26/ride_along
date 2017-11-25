@@ -23,8 +23,7 @@ export default class Condition extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      condition: "",
-      name: "bill"
+      condition: ""
     }
   };
 
@@ -34,6 +33,9 @@ export default class Condition extends Component {
     });
   };
 
+  handleSubmit = e => {
+
+  }
 
   render() {
 
@@ -54,8 +56,8 @@ export default class Condition extends Component {
           </Modal.Description>
         </Modal.Content>
         <Modal.Actions>
-          <Button primary>
-            Submit <Icon name='right chevron' />
+          <Button primary >
+            Submit <Icon name='right chevron' onClick={this.handleSubmit}/>
           </Button>
         </Modal.Actions>
       </Modal>

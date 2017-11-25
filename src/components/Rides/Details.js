@@ -9,13 +9,13 @@ import { Button, Header, Icon, Image, Modal } from 'semantic-ui-react'
 
 const RideDetailUI = (props) => {
   // console.log(props.id.origin)
-  const currentUser = localStorage.getItem("user_id");
-  // const currentUser = 2;
+  // const currentUser = localStorage.getItem("user_id");
+  const currentUser = 2;
   return(
 
-    <div>
+  <div>
     {currentUser === props.id.driver
-      ? <Condition /> 
+      ? <Condition />
       : null}
     
     <h1>Ride from {props.id.start_location} to {props.id.end_location} </h1>
