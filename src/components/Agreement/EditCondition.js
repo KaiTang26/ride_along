@@ -26,19 +26,19 @@ export default class EditCondition extends Component {
       condition: this.props.statement,
       open: false
     }
-  };
+  }
 
   handleChange = e => {
     this.setState({
       condition: e.target.value
     });
-  };
+  }
 
   handleSubmit = e => {
     api.editCondition(this.props.tripId, this.props.id, this.state);
     this.setState({open: false});
-    // window.location.reload();
-  };
+    window.location.reload();
+  }
 
 
   closeConfigShow = (closeOnEscape, closeOnRootNodeClick) => () => {

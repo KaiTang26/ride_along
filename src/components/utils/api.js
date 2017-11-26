@@ -102,5 +102,10 @@ export default {
     editCondition: function(trip_id, id, req) {
         const encodedURI = window.encodeURI        ("http://localhost:3000/api/agreements/ride/"+trip_id+"/"+id);
         return axios.put(encodedURI, req);
+    },
+
+    deleteCondition: function(trip_id, id, req) {
+        const encodedURI = window.encodeURI        ("http://localhost:3000/api/agreements/ride/"+trip_id+"/"+id);
+        return axios.delete(encodedURI, req);
     }
 }

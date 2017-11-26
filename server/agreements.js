@@ -48,6 +48,19 @@ router.put('/ride/:id/:agreementId', function(req,res, next) {
   .catch(next);
 })
 
+// Edit a condition
+router.delete('/ride/:id/:agreementId', function(req,res, next) {
+  Agreement.destroy({
+    where: {
+      trip_id: req.params.id,
+      id: req.params.agreementId
+    }
+  }).then(deleted => {
+    return deleted, console.log(`Delete successful? 1 means yes, 0 means no: ${deleted}`);
+  })
+  .catch(next);
+})
+
 // router.post('/:id', function(req, res, next) {
 //   Agreement.findAll({
 //     where: {trip_id: req.params.id}
