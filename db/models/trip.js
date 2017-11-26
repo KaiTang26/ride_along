@@ -48,6 +48,14 @@ const Trip = db.define('trips', {
   direction:{
     type: Sequelize.INTEGER,
     allowNull: false
+  },
+  distance:{
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  duration:{
+    type: Sequelize.STRING,
+    allowNull: false
   }
 
 });

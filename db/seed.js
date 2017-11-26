@@ -12,19 +12,19 @@ const seedTrips = () => db.Promise.map([
             [43.653226, -75.69719309999999],
             [45.4215296, -75.69719309999999],
             [45.4215296, -79.3831843] ],
-            direction: 0},
+            direction: 0, distance:'449 km', duration:'4 hours 18 mins'},
   {date: new Date(2017, 11, 22), time: `09:00:21 GMT`, start_location: "Montreal", end_location: "Hamilton", passengers: 2, origin:[45.5016889, -73.567256], destination:[43.2557206, -79.8711024] , price:55.30, description:'good trip pls join us', driver:2,
   polygon:[ [43.2557206, -79.8711024],
             [43.2557206, -73.567256],
             [45.5016889, -73.567256],
             [45.5016889, -79.8711024]],
-            direction: 2},
+            direction: 2, distance:'608 km', duration:'5 hours 48 mins'},
   {date: new Date(2017, 6, 04), time: `18:45:21 GMT`, start_location: "Kingston", end_location: "Toronto", passengers: 3, origin:[44.2311717, -76.4859544], destination:[43.653226, -79.3831843] , price:25.30, description:'good trip pls join us', driver:1,
   polygon:[ [43.653226, -79.3831843],
             [43.653226, -76.4859544],
             [44.2311717, -76.4859544],
             [44.2311717, -79.3831843] ],
-            direction: 2}
+            direction: 2, distance:'265 km', duration:'2 hours 42 mins'}
 ], trip => db.model('trips').create(trip));
 
 const seedReviews = () => db.Promise.map([

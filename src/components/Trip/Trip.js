@@ -20,7 +20,9 @@ export default class Trip extends Component {
         price:'',
         description:'',
         polygon:[],
-        direction:'' 
+        direction:'',
+        distance:'0 km',
+        duration:'0 hr' 
     }
   }
   render() {
@@ -30,6 +32,12 @@ export default class Trip extends Component {
       <div className={classnames('Trip', className)} {...props}>
          <form onSubmit={this._submitForm.bind(this)}>
             <CalculateGeocode updateAddress={this._handleLocationSearch}/>
+            <label>
+                Total Distance: {this.state.distance}
+            </label>
+            <label>
+                Total Duration: {this.state.duration}
+            </label>
             <label>
             Date:
             <input type="date"  name='date' value={this.state.date} onChange={this._handleInputChange}/>
@@ -63,7 +71,7 @@ export default class Trip extends Component {
                 Submit
             </button>
         </form> 
-        <Map origin={this.state.origin} destination={this.state.destination}/>
+        <Map origin={this.state.origin} destination={this.state.destination} handleDistanceDuration={this._handleDistanceDuration}/>
       </div>
     );
   }
@@ -98,5 +106,12 @@ export default class Trip extends Component {
         const tripInfor = this.state;
         api.postTrip(id,tripInfor)
         .then()
+    }
+
+    _handleDistanceDuration=(event)=>{
+        this.setState({
+            distance:event.distance.text,
+            duration:event.duration.text
+        })
     }
 }
