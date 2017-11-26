@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { Route, Redirect } from 'react-router'
+import { Route } from 'react-router'
+import { Link } from 'react-router-dom';
+
 // import CalculateGeocode from '../Trip/Calculategeo.js';
 
 const Text = styled.p`
@@ -98,6 +100,7 @@ const SearchResults = (props) => {
               <Label>Leaving:</Label> {ride.date}
               <Label>Time</Label> {ride.time}
               <Label>From:</Label> {ride.start_location} To: {ride.end_location}
+              <Link to={`/ride/${ride.id}`}><button>View Details</button></Link>
             </Ride>
           ))}
         </Results>

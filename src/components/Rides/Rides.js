@@ -66,9 +66,6 @@ export default class Rides extends Component {
       <br />
       <br />
       <CalculateGeocode updateAddress={this._handleLocationSearch}/>
-
-      {/* <Search cities = {this.state.cities} _handleSubmit = {this._handleSubmit}/> */}
-    
       <br /> 
 
       {this.state.showAll 
@@ -98,13 +95,6 @@ export default class Rides extends Component {
       [name]: value,
     });
   }
-
-  // _handleSubmit=(event) => {
-  //   event.preventDefault();
-  //   this.setState({
-  //     showAll: false
-  //   });
-  // }
 
   _handleLocationSearch=(address)=>{
     this.setState({
