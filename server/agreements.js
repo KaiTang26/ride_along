@@ -13,7 +13,7 @@ const router = require('express').Router()
 //     .catch(next);
 // });
 
-// All conditions for a trip
+// Display all conditions for a trip
 router.get('/:id', function(req, res, next) {
   Agreement.findAll({
     where: {trip_id: req.params.id}
@@ -29,7 +29,6 @@ router.post('/ride/:id', function(req,res, next) {
   // Agreement.findOne({
   //   where: {trip_id: req.params.id}
   // }).
-  console.log("ROUTER REQ",req.body, req.params.id)
   Agreement.create({
     statement: req.body.condition,
     trip_id: req.params.id

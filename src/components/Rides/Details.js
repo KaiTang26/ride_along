@@ -12,13 +12,14 @@ const RideDetailUI = (props) => {
   // console.log(props.id.origin)
   // const currentUser = localStorage.getItem("user_id");
   const currentUser = 2;
+  let isDriver;
+  {currentUser === props.id.driver
+    ? isDriver = true
+    : isDriver = false}
+
   return(
 
   <div>
-    {currentUser === props.id.driver
-      ? <AddCondition tripId={props.id.id}/>
-      : null}
-    
     <h1>Ride from {props.id.start_location} to {props.id.end_location} </h1>
     <h2>Leaving {props.id.date} at {props.id.time}</h2>
     <br></br>
@@ -29,7 +30,11 @@ const RideDetailUI = (props) => {
     <br></br>
     <p>Some text in paragraph form</p>
     <br></br>
-    <DisplayCondition statements={props.id.agreements}/>
+    <DisplayCondition statements={props.id.agreements} isDriver={isDriver}/>
+    {isDriver
+      ? <AddCondition tripId={props.id.id}/>
+      : null}
+    
     <Map origin={props.id.origin} destination={props.id.destination}/>
   </div>
   )

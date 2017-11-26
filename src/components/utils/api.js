@@ -88,7 +88,7 @@ export default {
 
     updateUserInfo: function(user_id, req){
         const encodedURI = window.encodeURI("http://localhost:3000/api/users/"+user_id);
-        return axios.post(encodedURI, req)
+        return axios.put(encodedURI, req)
         .then(response => {
             console.log("User info updated ", response);
         })
@@ -96,10 +96,11 @@ export default {
 
     addCondition: function(trip_id, req) {
         const encodedURI = window.encodeURI        ("http://localhost:3000/api/agreements/ride/"+trip_id);
-        console.log("ADDCOND ",req)
-        return axios.post(encodedURI, req)
-        .then(response => {
-            console.log("Condition added", response)
-        })
+        return axios.post(encodedURI, req);
+    },
+
+    editCondition: function(trip_id, req) {
+        const encodedURI = window.encodeURI        ("http://localhost:3000/api/agreements/ride/"+trip_id);
+        return axios.put(encodedURI, req);
     }
 }

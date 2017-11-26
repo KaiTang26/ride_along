@@ -18,12 +18,12 @@ const Input = styled(TextField)`
 `;
 
 
-export default class AddCondition extends Component {
+export default class EditCondition extends Component {
   
   constructor(props) {
     super(props);
     this.state = {
-      condition: "",
+      condition: this.props.statement,
       open: false
     }
   };
@@ -35,9 +35,9 @@ export default class AddCondition extends Component {
   };
 
   handleSubmit = e => {
-    api.addCondition(this.props.tripId, this.state);
-    this.setState({open: false});
-    window.location.reload();
+    // api.addCondition(this.props.tripId, this.state);
+    // this.setState({open: false});
+    // window.location.reload();
   };
 
 
@@ -52,7 +52,7 @@ export default class AddCondition extends Component {
 
     return (
       <div>
-        <Button onClick={this.closeConfigShow(true, false)}>Add Condition</Button>
+        <Button onClick={this.closeConfigShow(true, false)}>Edit Condition</Button>
 
         <Modal
           open={open}
@@ -61,11 +61,10 @@ export default class AddCondition extends Component {
           onClose={this.close}
         >
           <Modal.Header>
-          Add a Condition
+          Edit Your Condition
           </Modal.Header>
           <Modal.Content>
           <Modal.Description>
-            <p>State one condition you would like your passengers to agree to:</p>
             <Input 
               name="condition" 
               floatingLabelText="Condition" 
