@@ -105,6 +105,7 @@ const EditButton = styled.button`
 //   return null;
 // }
 
+const user_id = localStorage.getItem("user_id");
 
 export default class UserProfile extends Component {
 
@@ -125,7 +126,7 @@ export default class UserProfile extends Component {
 
   componentDidMount() {
     // This is how you get the user from cookie
-    const user_id = localStorage.getItem("user_id");
+    // const user_id = localStorage.getItem("user_id");
     // const params = req.params.id;
     // console.log(params);
 
@@ -139,6 +140,7 @@ export default class UserProfile extends Component {
     (api.userTrips(this.props.match.params.id))
     .then(results =>
       this.setState({
+        id: results.data.id,
         first_name: results.data.first_name,
         last_name: results.data.last_name,
         picture: results.data.picture,
@@ -162,16 +164,27 @@ export default class UserProfile extends Component {
 
         <ProfilePic />
 
-        <Name>
-          Hello {this.state.first_name}!
-        </Name>
+        {user_id == this.props.match.params.id?
+
+          <Name>
+            Hello {this.state.first_name}!
+          </Name>
+        :
+          <Name>
+            Welcome to {this.state.first_name}'s profile'!
+          </Name>
+        }
 
         <Info>
           <Left>
 
+          {user_id == this.props.match.params.id?
             <Section>
               <EditProfile info={this.state}/>
             </Section>
+          :
+          <div></div>
+          }
 
             <Section>
               <H3>Last Login</H3>
