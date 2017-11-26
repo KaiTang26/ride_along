@@ -26,12 +26,24 @@ router.get('/:id', function(req, res, next) {
 
 // Add one condition
 router.post('/ride/:id', function(req,res, next) {
-  // Agreement.findOne({
-  //   where: {trip_id: req.params.id}
-  // }).
   Agreement.create({
     statement: req.body.condition,
     trip_id: req.params.id
+  })
+  .catch(next);
+})
+
+// Edit a condition
+router.put('/ride/:id/:agreementId', function(req,res, next) {
+  Agreement.findOne({
+    where: {
+      trip_id: req.params.id,
+      id: req.params.agreementId
+    }
+  }).then(condition => {
+    condition.updateAttributes({
+      statement: req.body.condition
+    })
   })
   .catch(next);
 })

@@ -99,8 +99,8 @@ export default {
         return axios.post(encodedURI, req);
     },
 
-    editCondition: function(trip_id, req) {
-        const encodedURI = window.encodeURI        ("http://localhost:3000/api/agreements/ride/"+trip_id);
+    editCondition: function(trip_id, id, req) {
+        const encodedURI = window.encodeURI        ("http://localhost:3000/api/agreements/ride/"+trip_id+"/"+id);
         return axios.put(encodedURI, req);
     }
 }

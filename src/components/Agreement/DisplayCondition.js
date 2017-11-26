@@ -12,6 +12,9 @@ export default class DisplayCondition extends Component {
     }
   }
 
+  handleEdit = e => {
+    // api.editCondition()
+  }
 
   render() {
     return (
@@ -19,9 +22,13 @@ export default class DisplayCondition extends Component {
       <p>HI</p>
       {this.props.statements.map((condition) => (
         <div>
+          {console.log(condition)}
           <p>{condition.statement}</p> 
           {this.props.isDriver
-            ? <EditCondition statement={condition.statement}/>
+            ? <EditCondition 
+                tripId={condition.trip_id} 
+                id={condition.id} 
+                statement={condition.statement}/>
             : null }
         </div>
       ))}

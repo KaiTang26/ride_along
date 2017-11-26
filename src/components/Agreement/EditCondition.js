@@ -35,8 +35,8 @@ export default class EditCondition extends Component {
   };
 
   handleSubmit = e => {
-    // api.addCondition(this.props.tripId, this.state);
-    // this.setState({open: false});
+    api.editCondition(this.props.tripId, this.props.id, this.state);
+    this.setState({open: false});
     // window.location.reload();
   };
 
