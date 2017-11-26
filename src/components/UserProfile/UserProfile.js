@@ -11,6 +11,7 @@ import Road from './cover.jpg';
 import ActiveRides from './ActiveRides'
 import CompletedRides from './CompletedRides'
 import EditProfile from './EditProfile';
+import Reviews from './Reviews';
 import UserPic from './Bill.jpg';
 
 const ProfilePic = styled.div`
@@ -136,8 +137,9 @@ export default class UserProfile extends Component {
         trip: results.data.user_trips
       })
     );
+// Do something with the results but it looks like the call works fine
     (api.getReviews(user_id))
-    .then(results => console.log(results))
+    .then(results => console.log('myresults',results))
   }
 
   render() {
@@ -205,6 +207,11 @@ export default class UserProfile extends Component {
             <Section>
               <H3>Testimonials</H3>
               <Text>Anna: Bill is a really funny ride!</Text>
+              {this.state?
+                <div>
+                  <Reviews />
+                </div>
+                : <h1>Loading </h1>}
             </Section>
           </Right>
         </Info>
