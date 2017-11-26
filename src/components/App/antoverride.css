@@ -1,0 +1,29 @@
+body {
+  font-size: 1rem;
+}
+
+.ant-btn-primary {
+  background-color: #eca835;
+  border-color: #eca835;
+}
+
+.ant-btn-primary:hover {
+  background-color: #29b37e;
+  border-color: #29b37e;
+}
+
+a {
+  color: #29b37e;
+}
+
+a:hover {
+  color: #eca835;
+}
+
+.ant-popover-inner {
+  box-shadow: 0 1px 30px rgba(0, 0, 0, 0.4);  
+}
+
+.ant-popover {
+  font-size: 1rem;
+}

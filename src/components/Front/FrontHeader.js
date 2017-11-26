@@ -6,6 +6,8 @@ import gs from '../GlobalStyles.js';
 import Login from '../Login';
 import Register from '../Register';
 
+import LoginEx from '../LoginEx';
+
 const Header = styled.section`
   height: 600px;
   background: url(${splash});
@@ -63,6 +65,8 @@ const FrontHeader = () => (
           } */}
         <Login />
         <Register />
+
+        <LoginEx />
       </UserNav>
         <Logotype>Ride Along</Logotype>
         <Tagline>Get there <span>>></span> together</Tagline>

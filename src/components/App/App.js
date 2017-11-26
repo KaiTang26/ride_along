@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import api from '../utils/api';
 // var apii = require('../utils/apii')
 import 'antd/dist/antd.css';
+import './antoverride.css';
 
 import FrontHeader from '../Front/FrontHeader';
 import gs from '../GlobalStyles.js';
