@@ -124,16 +124,19 @@ export default class UserProfile extends Component {
 // userTrips
 
   componentDidMount() {
-    (api.getReviews(4))
+    // This is how you get the user from cookie
+    const user_id = localStorage.getItem("user_id");
+    // const params = req.params.id;
+    // console.log(params);
+
+    (api.getReviews(this.props.match.params.id))
     .then(results =>
       this.setState({
         reviews:results
       })
-    )
-    // This is how you get the user from cookie
-    const user_id = localStorage.getItem("user_id");
-    // const user_id = req.params.id;
-    (api.userTrips(user_id))
+    );
+
+    (api.userTrips(this.props.match.params.id))
     .then(results =>
       this.setState({
         first_name: results.data.first_name,
