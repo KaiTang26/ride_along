@@ -3,8 +3,6 @@ import classnames from 'classnames';
 import { Link } from 'react-router-dom'
 import api from '../utils/api';
 // var apii = require('../utils/apii')
-import 'antd/dist/antd.css';
-import './antoverride.css';
 
 // import 'semantic-ui-css/semantic.min.css';
 import FrontHeader from '../Front/FrontHeader';
