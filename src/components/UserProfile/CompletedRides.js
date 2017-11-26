@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import ReviewForm from './ReviewForm';
 
+const user_id = localStorage.getItem("user_id");
+
 class CompletedRides extends Component {
-
-
 
   render() {
     return (
@@ -19,7 +19,14 @@ class CompletedRides extends Component {
               <div>{ride.trip.date}</div>
               <div>From: {ride.trip.start_location} To: {ride.trip.end_location} </div>
               <div>Driver: {ride.trip.driver}</div>
-              <ReviewForm trip_id={ride.trip.id}/>
+              {user_id == this.props.param?
+                <div>
+                  {console.log(this.props.param)}
+                <ReviewForm trip_id={ride.trip.id}/>
+                </div>
+              :
+                <div>{console.log(this.props)}</div>
+              }
               <br></br>
             </div>
 

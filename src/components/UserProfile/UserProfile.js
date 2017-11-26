@@ -125,10 +125,6 @@ export default class UserProfile extends Component {
 // userTrips
 
   componentDidMount() {
-    // This is how you get the user from cookie
-    // const user_id = localStorage.getItem("user_id");
-    // const params = req.params.id;
-    // console.log(params);
 
     (api.getReviews(this.props.match.params.id))
     .then(results =>
@@ -147,7 +143,7 @@ export default class UserProfile extends Component {
         email: results.data.email,
         drivers_license: results.data.drivers_license,
         about: results.data.about,
-        trip: results.data.user_trips
+        trip: results.data.user_trips,
       })
     );
 // Do something with the results but it looks like the call works fine
@@ -212,7 +208,7 @@ export default class UserProfile extends Component {
                 {this.state.trip?
                   <div>
                     <H3>Completed Rides</H3>
-                    <CompletedRides rides={this.state.trip}  />
+                    <CompletedRides param={this.props.match.params.id} rides={this.state.trip}  />
                   </div>
                   : <h1>Loading </h1>}
               </LeftText>
