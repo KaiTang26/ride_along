@@ -107,5 +107,11 @@ export default {
     deleteCondition: function(trip_id, id, req) {
         const encodedURI = window.encodeURI        ("http://localhost:3000/api/agreements/ride/"+trip_id+"/"+id);
         return axios.delete(encodedURI, req);
+    },
+
+    passengerAgree: function(trip_id, agreement_id, user_id, req) {
+        const encodedURI = window.encodeURI        ("http://localhost:3000/api/agreements/"+trip_id+"/"+agreement_id+"/"+user_id);
+        return axios.put(encodedURI, req);
     }
+
 }

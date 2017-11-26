@@ -30,7 +30,7 @@ const RideDetailUI = (props) => {
     <br></br>
     <p>Some text in paragraph form</p>
     <br></br>
-    <DisplayCondition statements={props.id.agreements} isDriver={isDriver}/>
+    <DisplayCondition user={currentUser} statements={props.id.agreements} isDriver={isDriver}/>
     {isDriver
       ? <AddCondition tripId={props.id.id}/>
       : null}

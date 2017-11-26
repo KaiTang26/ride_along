@@ -48,7 +48,7 @@ export default class DisplayCondition extends Component {
                 }
                 >Delete</Delete>
               </div>
-            : <RadioToggle toggle tripId={condition.trip_id} 
+            : <RadioToggle toggle user={this.props.user} tripId={condition.trip_id} condition={condition.id} 
             id={condition.id} /> }
         </div>
       ))}
