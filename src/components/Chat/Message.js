@@ -10,18 +10,20 @@ const ChatMessage = styled.div`
 `;
 const ProfilePic = styled.div`
   background: url(${UserPic});
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   border-radius: 2px;
   background-size: cover;
-  float: left;
+  float: left
 `;
 const Content = styled.div`
-  float: left;
-  margin-left: .5em;
+  margin-left: 50px;
+  width: auto;
+  line-height: 1.15;
 `;
 const Username = styled.h3`
   font-weight: bold;
+  margin-bottom: .2em;
 `;
 
 

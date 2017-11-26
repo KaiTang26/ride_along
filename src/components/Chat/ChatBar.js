@@ -6,10 +6,9 @@ class ChatBar extends Component {
   render() {
     console.log("chatbar", this.props);
     return (
-        <footer className="chatbar">
+        <footer>
           <TextField 
-            placeholder="join the conversation"
-            className="chatbar-message" 
+            placeholder="Enter a message to join the conversation"
             fullWidth={true}
             onKeyPress={this.props.sendMessage} />
         </footer>
