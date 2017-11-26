@@ -37,7 +37,11 @@ router.post('/',function(req, res, next) {
     origin: req.body.origin,
     destination: req.body.destination,
     price: req.body.price,
-    description: req.body.description
+    description: req.body.description,
+    polygon: req.body.polygon,
+    direction:req.body.direction,
+    distance: req.body.distance,
+    duration: req.body.duration
   })
   .then(result => {
     res.sendStatus(200)
