@@ -6,6 +6,7 @@ import api from '../utils/api';
 import 'antd/dist/antd.css';
 import './antoverride.css';
 
+// import 'semantic-ui-css/semantic.min.css';
 import FrontHeader from '../Front/FrontHeader';
 import gs from '../GlobalStyles.js';
 

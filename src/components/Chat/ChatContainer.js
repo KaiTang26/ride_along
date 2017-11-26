@@ -3,6 +3,12 @@ import io from 'socket.io-client';
 import ChatBar from './ChatBar';
 import Message from './Message';
 import MessageList from './MessageList';
+import styled from 'styled-components';
+import gs from '../GlobalStyles';
+
+const Container = styled.div`
+  margin: 1em;
+`;
 
 class ChatContainer extends Component {
 
@@ -46,13 +52,13 @@ class ChatContainer extends Component {
   render() {
     return (
 
-      <div className="ChatContainer">
+      <Container>
         {console.log(this.state)}
         <MessageList currentUser = {this.state.currentUser}
           messages = {this.state.messages} type = {this.state.type}/>
         <ChatBar currentUser = {this.state.currentUser} currentMessage = {this.state.messages}
           sendMessage = {this.sendMessage.bind(this)} />
-      </div>
+      </Container>
     )
   }
 }
