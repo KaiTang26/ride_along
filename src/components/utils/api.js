@@ -92,15 +92,15 @@ export default {
         .then(response => {
             console.log("User info updated ", response);
         })
-    },
-
-    fetchWayPoint: function(start, end){
-        const encodedURI = window.encodeURI("https://maps.googleapis.com/maps/api/directions/json?origin="+start+"&destination="+end+"&key=AIzaSyAOdJrxTyFGID_cQFGUdskPi77ZQqKxy3c&v");
-        return axios.get(encodedURI, {headers: {'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json',}})
-        .then((response)=>{
-            return response.data
-        })
     }
+
+    // fetchWayPoint: function(start, end){
+    //     const encodedURI = window.encodeURI("https://maps.googleapis.com/maps/api/directions/json?origin="+start+"&destination="+end+"&key=AIzaSyAOdJrxTyFGID_cQFGUdskPi77ZQqKxy3c&v");
+    //     return axios.get(encodedURI, {headers: {'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json',}})
+    //     .then((response)=>{
+    //         return response.data
+    //     })
+    // }
 
 
 

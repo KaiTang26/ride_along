@@ -38,10 +38,10 @@ class Details extends Component {
       this.setState({ride})
       console.log(ride);
 
-      api.fetchWayPoint(ride.start_location, ride.end_location)
-      .then( (response)=>{
-          console.log(response) 
-      });
+      // api.fetchWayPoint(ride.start_location, ride.end_location)
+      // .then( (response)=>{
+      //     console.log(response) 
+      // });
 
     })
 
