@@ -5,11 +5,8 @@ const User_Trip = require('../db/models/user_trip');
 
 const router = require('express').Router({mergeParams: true});
 
-// const cors = require('cors');
-// const authCheck = require('./auth')
 
-// router.use(cors());
-
+// endpoint for user join trip
 router.post('/:id', function(req, res, next) {
   console.log(req.params.id);
   console.log(req.params.user_id);
