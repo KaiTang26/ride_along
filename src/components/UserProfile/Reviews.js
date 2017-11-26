@@ -10,13 +10,15 @@ export default class Reviews extends Component {
     <div>
       {this.props.reviews
         ?
-        <div>
-          {console.log(this.props.reviews)}
-          {console.log(this.props.reviews[0].trip.reviews)}
-          { this.props.reviews[0].trip.reviews.map((ele, i)=>{
-            return <div key={i}>{ele.review_text}</div>
-          })}
-        </div>
+          <div>
+            {console.log(this.props.reviews)}
+            {console.log(this.props.reviews[0].trip.reviews)}
+            {this.props.reviews.map((key)=>
+              key.trip.reviews.map((ele, i)=>{
+                return <div key={i}>{ele.review_text}</div>
+              })
+            )}
+          </div>
         : null}
     </div>
     );
