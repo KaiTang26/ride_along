@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "antd": "^2.13.10",
     "auth0-js": "^8.11.3",
     "axios": "^0.17.1",
     "bcrypt": "^1.0.3",

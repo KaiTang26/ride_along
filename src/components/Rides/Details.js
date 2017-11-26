@@ -11,7 +11,7 @@ import { Button, Header, Icon, Image, Modal } from 'semantic-ui-react'
 const RideDetailUI = (props) => {
   // console.log(props.id.origin)
   // const currentUser = localStorage.getItem("user_id");
-  const currentUser = 2;
+  const currentUser = 1;
   let isDriver;
   {currentUser === props.id.driver
     ? isDriver = true

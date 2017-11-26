@@ -15,7 +15,7 @@ Agreement.belongsTo(Trip);
 
 Agreement_User.belongsTo(User);
 Agreement_User.belongsTo(Trip);
-Agreement_User.belongsTo(Agreement);
+// Agreement_User.belongsTo(Agreement);
 
 User.hasMany(User_Trip);
 User_Trip.belongsTo(Trip);

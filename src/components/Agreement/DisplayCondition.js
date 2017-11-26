@@ -6,9 +6,10 @@ import api from '../utils/api';
 import RadioToggle from './RadioToggle';
 import { Radio } from 'semantic-ui-react';
 import CheckAgree from './Toggled'
-const Delete = styled.button`
+import { Popconfirm, message } from 'antd';
 
-`;
+import Delete from './Delete'
+
 
 
 export default class DisplayCondition extends Component {
@@ -20,14 +21,16 @@ export default class DisplayCondition extends Component {
     }
   }
 
-  handleEdit = e => {
-    // api.editCondition()
-  }
+  // handleEdit = e => {
+  //   // api.editCondition()
+  // }
  
-  handleDelete = (trip, id) => {
-    api.deleteCondition(trip, id);
-    window.location.reload();
-  }
+  // handleDelete = (trip, id) => {
+  //   api.deleteCondition(trip, id);
+  //   window.location.reload();
+  // }
+
+  
 
   render() {
     return (
@@ -41,12 +44,21 @@ export default class DisplayCondition extends Component {
                   tripId={condition.trip_id} 
                   id={condition.id} 
                   statement={condition.statement}/>
-                <Delete 
+                {/* <Delete 
                   onClick={ e => {
                     this.handleDelete(condition.trip_id, condition.id)
                   }
                 }
-                >Delete</Delete>
+                >Delete</Delete> */}
+                <Delete 
+                  tripId={condition.trip_id} 
+                  id={condition.id} 
+                />
+
+                {/* <Popconfirm title="Are you sure you want to delete this condition?" onConfirm={confirm} onCancel={cancel} okText="Yes" cancelText="No">
+                    <a href="#">Delete</a>
+                  </Popconfirm> */}
+
               </div>
             :<CheckAgree user={this.props.user} tripId={condition.trip_id} condition={condition.id} 
             id={condition.id}/>
