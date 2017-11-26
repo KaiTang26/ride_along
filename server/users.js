@@ -1,8 +1,10 @@
 const db = require('../db'); //this is required
 const User = require('../db/models/user');
-const userTrip = require('./userTrip');
-const userTripModel = require('../db/models/user_trip');
 const trip = require('../db/models/trip');
+const userTripModel = require('../db/models/user_trip');
+const review = require('../db/models/review')
+
+const userTrip = require('./userTrip');
 const userRouter = require('express').Router();
 
 const cookieSession = require('cookie-session')
@@ -115,6 +117,33 @@ userRouter.get('/:id/trips', function(req, res, next){
           include: {
             model: trip,
             attributes:['id','date','time','start_location','end_location','driver']
+          }
+        }
+      ]
+    })
+    .then(result => {
+      res.status(200).send(result);
+    })
+    .catch(next);
+})
+
+userRouter.get('/:id/reviews', function(req, res, next){
+  User.findOne({
+      where:{
+        id:req.params.id
+      },
+      include: [
+        {
+          model: userTripModel,
+          where: { user_id: req.params.id },
+          attributes:['trip_id'],
+          include: {
+            model: trip,
+            where: {driver: req.params.id},
+            attributes:['id','date','time','start_location','end_location','driver'],
+            include:{
+              model: review
+            }
           }
         }
       ]

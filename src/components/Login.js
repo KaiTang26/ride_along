@@ -67,15 +67,15 @@ export default class Login extends Component {
         const id = res.data.id
         localStorage.setItem("user_id", id);
         localStorage.setItem("drivers_license", res.data.drivers_license);
-        
+
         browserHistory.push("/profile/"+id)
 
         console.log(browserHistory.location.pathname)
       }else{
         this.setState({open: true});
         console.log('###res', res.data.id);
-        //         
-      } 
+        //
+      }
     })
   }
 
@@ -91,7 +91,7 @@ export default class Login extends Component {
   };
 
   render() {
-    
+
     const actions = [
       <FlatButton
         label="Cancel"
@@ -113,14 +113,14 @@ export default class Login extends Component {
         { localStorage.getItem("user_id")?
           <Button label="Logout" onClick={this.handleLogout} />:
           <Button label="Login" onClick={this.handleOpen} />}
-        
+
         <Dialog
           title="Login to start your trip!"
           actions={actions}
           modal={false}
           open={this.state.open}
           onRequestClose={this.handleClose}
-        >   
+        >
 
         <Form>
           <Input name="email" floatingLabelText="Email" type="email" value={this.state.email} onChange={e => this.handleChange(e)}/>
@@ -131,7 +131,7 @@ export default class Login extends Component {
         {/* {localStorage.getItem("user_id") && <Link to = "/profile/1" />} */}
 
         {/* <Profile /> */}
-      </div>  
+      </div>
     );
   }
 

@@ -28,7 +28,7 @@ export default {
     },
 
     getReviews: function(trip_id, req){
-      const encodedURI = window.encodeURI("http://localhost:3000/api/reviews/"+trip_id);
+      const encodedURI = window.encodeURI("http://localhost:3000/api/users/"+trip_id+"/reviews");
       console.log(encodedURI)
       return axios.get(encodedURI, req)
       .then((response)=> {

@@ -15,15 +15,17 @@ const router = require('express').Router()
 //     .catch(next);
 // });
 
-router.get('/:trip_id', function(req, res, next) {
-  Review.findAll({
-    where:{trip_id:req.params.id}
-  })
-  .then(result => {
-    res.status(200).send(result);
-  })
-  .catch(next);
-});
+// Don't think I need this, should be replaced by user/:id/reviews
+
+// router.get('/:trip_id', function(req, res, next) {
+//   Review.findAll({
+//     where:{trip_id:req.params.id}
+//   })
+//   .then(result => {
+//     res.status(200).send(result);
+//   })
+//   .catch(next);
+// });
 
 router.post('/:trip_id', function(req, res, next) {
   // console.log("req",req);
