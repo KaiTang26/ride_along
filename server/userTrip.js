@@ -24,6 +24,8 @@ router.post('/:id', function(req, res, next) {
   .catch(next);
 });
 
+
+// the endpoint for post trip for each driver
 router.post('/',function(req, res, next) {
   console.log(req.params.user_id);
   console.log(req.body)
