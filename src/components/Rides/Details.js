@@ -22,7 +22,7 @@ const RideDetailUI = (props) => {
     <br></br>
     <p>Some text in paragraph form</p>
     <br></br>
-    <Map origin={props.id.origin} destination={props.id.destination}/>
+    <Map origin={props.id.origin} destination={props.id.destination} start_location={props.id.start_location} end_location={props.id.end_location}/>
   </div>
   )
 }

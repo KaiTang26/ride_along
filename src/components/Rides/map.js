@@ -1,4 +1,5 @@
 import React from 'react';
+import api from '../utils/api';
 const { compose, withProps, lifecycle } = require("recompose");
 const {
   withScriptjs,
@@ -38,7 +39,7 @@ const MapWithADirectionsRenderer = compose(
         });
     },
     componentWillMount(){
-      
+
     }
   })
 )(props =>
