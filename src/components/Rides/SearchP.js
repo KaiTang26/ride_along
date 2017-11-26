@@ -57,6 +57,7 @@ const SearchResults = (props) => {
   const availableRides = props.params.rides;
   const matchArr = [];
 
+  // the boundary condition is set in here
   availableRides.forEach((ele)=>{
     console.log("user diresction", direction)
     console.log("dirver diresction", ele.direction)
