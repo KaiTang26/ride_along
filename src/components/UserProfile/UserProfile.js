@@ -124,7 +124,15 @@ export default class UserProfile extends Component {
 // userTrips
 
   componentDidMount() {
+    (api.getReviews(4))
+    .then(results =>
+      this.setState({
+        reviews:results
+      })
+    )
+    // This is how you get the user from cookie
     const user_id = localStorage.getItem("user_id");
+    // const user_id = req.params.id;
     (api.userTrips(user_id))
     .then(results =>
       this.setState({
@@ -138,8 +146,7 @@ export default class UserProfile extends Component {
       })
     );
 // Do something with the results but it looks like the call works fine
-    (api.getReviews(user_id))
-    .then(results => console.log('myresults',results))
+
   }
 
   render() {
@@ -205,11 +212,10 @@ export default class UserProfile extends Component {
 
 
             <Section>
-              <H3>Testimonials</H3>
-              <Text>Anna: Bill is a really funny ride!</Text>
+              <H3>Reviews</H3>
               {this.state?
                 <div>
-                  <Reviews />
+                  <Reviews reviews={this.state.reviews}/>
                 </div>
                 : <h1>Loading </h1>}
             </Section>

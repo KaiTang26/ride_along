@@ -27,12 +27,13 @@ export default {
       })
     },
 
-    getReviews: function(trip_id, req){
-      const encodedURI = window.encodeURI("http://localhost:3000/api/users/"+trip_id+"/reviews");
+    getReviews: function(user_id, req){
+      const encodedURI = window.encodeURI("http://localhost:3000/api/users/"+user_id+"/reviews");
       console.log(encodedURI)
       return axios.get(encodedURI, req)
       .then((response)=> {
         console.log('reviews found');
+        return response.data.user_trips;
       })
     },
 
@@ -66,7 +67,7 @@ export default {
       return axios.get(encodedURI)
       .then((response) =>{
         return response
-    })
+      })
     },
 
     register: function(req){

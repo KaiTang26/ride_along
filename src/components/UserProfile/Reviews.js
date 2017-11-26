@@ -5,37 +5,18 @@ import { Route, Redirect } from 'react-router'
 
 export default class Reviews extends Component {
 
-  constructor(props){
-    super(props);
-    this.state = {
-      cities: ["", "Windsor", "Chatham-Kent", "London", "Kitchener", "Waterloo",
-      "Cambridge", "Guelph", "Hamilton", "St.Catharines", "Burlington",
-      "Mississauga", "Toronto", "Kingston", "Ottawa", "Gatineau", "Montreal",
-        "Trois-Riveres", "Quebec"],
-      rides: [],
-      start: "",
-      end: "",
-      detail: 'all',
-      showAll: true
-    }
-  }
-
-  componentWillMount(){
-    // api.getRides()
-    // .then(result => {
-    //   let rides = result.data
-    //   this.setState({rides})
-    //   console.log(rides);
-    // });
-  }
-
   render () {
-    const { className, ...props } = this.props;
-
     return (
     <div>
-      {this.state.showAll
-        ? <h1>Reviews</h1>
+      {this.props.reviews
+        ?
+        <div>
+          {console.log(this.props.reviews)}
+          {console.log(this.props.reviews[0].trip.reviews)}
+          { this.props.reviews[0].trip.reviews.map((ele, i)=>{
+            return <div key={i}>{ele.review_text}</div>
+          })}
+        </div>
         : null}
     </div>
     );
