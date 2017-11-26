@@ -4,10 +4,21 @@ import Map from './map.js';
 import ChatContainer from '../Chat/ChatContainer';
 import AddCondition from '../Agreement/AddCondition';
 import DisplayCondition from '../Agreement/DisplayCondition';
-  
-import { Button, Header, Icon, Image, Modal } from 'semantic-ui-react'
+import Menu from '../Menu';  
+import styled from 'styled-components';
+import gs from '../GlobalStyles.js';
 
-
+const Container = styled.div`
+  margin-top: 65px;
+  overflow: hidden;
+`
+const Left = styled.div`
+  float: left;
+  width: 50%;
+`
+const Right = styled.div`
+  float: left;
+`
 const RideDetailUI = (props) => {
   // console.log(props.id.origin)
   // const currentUser = localStorage.getItem("user_id");
@@ -20,6 +31,7 @@ const RideDetailUI = (props) => {
   return(
 
   <div>
+    <Map origin={props.id.origin} destination={props.id.destination}/>
     <h1>Ride from {props.id.start_location} to {props.id.end_location} </h1>
     <h2>Leaving {props.id.date} at {props.id.time}</h2>
     <br></br>
@@ -35,7 +47,7 @@ const RideDetailUI = (props) => {
       ? <AddCondition tripId={props.id.id}/>
       : null}
     
-    <Map origin={props.id.origin} destination={props.id.destination}/>
+
   </div>
   )
 }
@@ -60,17 +72,23 @@ class Details extends Component {
   render() {
     return (
       <div>
+        <Menu />
+        <Container>
         {/* {this.state? <RideDetailUI id={this.state.ride} />
           : <h1>Loading </h1>}
           {this.state? <ChatContainer id={this.state.ride} />
             : <h1>Loading </h1>} */}
+
+          <Left>
         {this.state? <RideDetailUI id={this.state.ride} />
           : ""}
-
+</Left>
+<Right>
         {this.state? <ChatContainer id={this.state.ride} />
           :"" }
-
+</Right>
             
+        </Container>
       </div>
   )}
 }
