@@ -28,6 +28,7 @@ const Label = styled.h4`
 const ResultsText = styled.div`
 `;
 
+// the pnpoly algorithm
 function testInside (point, vs) {
   var x = point[0], y = point[1];
   
