@@ -5,7 +5,7 @@ import EditCondition from './EditCondition';
 import api from '../utils/api';
 import RadioToggle from './RadioToggle';
 import { Radio } from 'semantic-ui-react';
-
+import CheckAgree from './Toggled'
 const Delete = styled.button`
 
 `;
@@ -48,8 +48,13 @@ export default class DisplayCondition extends Component {
                 }
                 >Delete</Delete>
               </div>
-            : <RadioToggle toggle user={this.props.user} tripId={condition.trip_id} condition={condition.id} 
-            id={condition.id} /> }
+            :<CheckAgree user={this.props.user} tripId={condition.trip_id} condition={condition.id} 
+            id={condition.id}/>
+            // <RadioToggle toggle user={this.props.user} tripId={condition.trip_id} condition={condition.id} 
+            // id={condition.id} /> 
+            }
+
+
         </div>
       ))}
     </div>  

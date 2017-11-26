@@ -62,13 +62,13 @@ router.delete('/ride/:id/:agreementId', function(req,res, next) {
 })
 
 // Passengers agree to a Condition
-router.put('/:id/:agreementId/:userId', function(req,res,next) {
+router.post('/:id/:agreementId/:userId', function(req,res,next) {
   Agreement_User.findOrCreate({
     where: {
     trip_id: req.params.id,
     agreement_id: req.params.agreementId,
     user_id: req.params.userId,
-    agree: false
+    agree: req.body.checked
     }
   })
   .spread((user, created) => {
@@ -80,6 +80,24 @@ router.put('/:id/:agreementId/:userId', function(req,res,next) {
   .then(
     console.log("it worked")
   )
+  .catch(next);
+})
+
+// Passenger updates agreement to a Condition
+router.put('/:id/:agreementId/:userId', function(req,res,next) {
+  Agreement_User.findOne({
+    where: {
+    trip_id: req.params.id,
+    agreement_id: req.params.agreementId,
+    user_id: req.params.userId
+    }
+  })
+  .then(condition => {
+    condition.updateAttributes({
+      agree: req.body.checked
+    })
+  })
+  .then(console.log("it updated!"))
   .catch(next);
 })
 

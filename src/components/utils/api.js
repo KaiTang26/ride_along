@@ -111,7 +111,12 @@ export default {
 
     passengerAgree: function(trip_id, agreement_id, user_id, req) {
         const encodedURI = window.encodeURI        ("http://localhost:3000/api/agreements/"+trip_id+"/"+agreement_id+"/"+user_id);
+        return axios.post(encodedURI, req);
+    },
+    updateAgree: function(trip_id, agreement_id, user_id, req) {
+        const encodedURI = window.encodeURI        ("http://localhost:3000/api/agreements/"+trip_id+"/"+agreement_id+"/"+user_id);
         return axios.put(encodedURI, req);
     }
+
 
 }
