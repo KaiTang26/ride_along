@@ -77,8 +77,7 @@ export default class Rides extends Component {
       }
 
     </div>
-    );
-  }
+    );}
 
   _handleAll = e => {
     this.setState({ 
@@ -107,13 +106,5 @@ export default class Rides extends Component {
     })
     console.log(this.state)
   }
-
-
-
-
-
-
-
-
 
 }
