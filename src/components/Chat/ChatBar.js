@@ -1,11 +1,17 @@
 import React, {Component} from 'react';
+import TextField from 'material-ui/TextField';
+
 
 class ChatBar extends Component {
   render() {
     console.log("chatbar", this.props);
     return (
         <footer className="chatbar">
-          <input className="chatbar-message" onKeyPress={this.props.sendMessage} />
+          <TextField 
+            placeholder="join the conversation"
+            className="chatbar-message" 
+            fullWidth={true}
+            onKeyPress={this.props.sendMessage} />
         </footer>
     );
   }

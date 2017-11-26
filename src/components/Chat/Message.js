@@ -6,7 +6,7 @@ import UserPic from '../UserProfile/Bill.jpg';
 
 const ChatMessage = styled.div`
   overflow: hidden;
-  font-family: Lato;
+  margin: 1em 0;
 `;
 const ProfilePic = styled.div`
   background: url(${UserPic});

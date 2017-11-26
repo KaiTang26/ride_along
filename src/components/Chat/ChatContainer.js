@@ -8,6 +8,7 @@ import gs from '../GlobalStyles';
 
 const Container = styled.div`
   margin: 1em;
+  font-family: Lato;
 `;
 
 class ChatContainer extends Component {

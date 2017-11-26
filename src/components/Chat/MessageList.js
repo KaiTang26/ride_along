@@ -12,7 +12,6 @@ const Header = styled.h2`
   font-weight: 900;
   font-family: Lato;
   text-transform: uppercase;
-  margin: 1em;
   color: ${gs.golden};
   border-bottom: 1px solid;
 `;
@@ -20,14 +19,14 @@ const Header = styled.h2`
 class MessageList extends Component {
   render() {
     return (
-      <Container>
+      <div>
       <Header>Ride Chat</Header>
       <main className="messages">
         {this.props.messages.map((message, index) => (
             <Message key={message.index} content={message} userName={this.props.currentUser}/>
         ))}
       </main>
-      </Container>
+      </div>
     );
   }
 }
