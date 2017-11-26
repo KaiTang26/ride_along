@@ -11,6 +11,8 @@ const RideDetailUI = (props) => {
     <div>
 
     <h1>Ride from {props.id.start_location} to {props.id.end_location} </h1>
+    <h2>Total distance: {props.id.distance}</h2>
+    <h2>Total duration: {props.id.duration}</h2>
     <h2>Leaving {props.id.date} at {props.id.time}</h2>
     <br></br>
     <h2>Name: {props.id.driver}</h2>
