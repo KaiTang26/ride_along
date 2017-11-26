@@ -99,8 +99,8 @@ export default class Rides extends Component {
     this.setState({
     start_location: address.start_location,
     end_location: address.end_location,
-    origin:[address.origin[0]-0.3,address.origin[1]-0.3],
-    destination:[address.destination[0]+0.3,address.destination[1]+0.3],
+    origin:address.origin,
+    destination:address.destination,
     direction: address.direction,
     showAll: false
     })

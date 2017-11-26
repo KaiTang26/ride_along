@@ -29,13 +29,17 @@ const ResultsText = styled.div`
 `;
 
 function testInside (point, vs) {
-      var x = point[0], y = point[1];
+  var x = point[0], y = point[1];
+  
       var inside = false;
+  
       for (var i = 0, j = vs.length - 1; i < vs.length; j = i++) {
           var xi = vs[i][0], yi = vs[i][1];
           var xj = vs[j][0], yj = vs[j][1];
+  
           var intersect = ((yi > y) != (yj > y))
               && (x < (xj - xi) * (y - yi) / (yj - yi) + xi);
+  
           if (intersect) {
               inside = !inside
           };
@@ -57,9 +61,17 @@ const SearchResults = (props) => {
     console.log("dirver diresction", ele.direction)
     if(direction===ele.direction){
       console.log("true")
-      console.log("origin", testInside(origin, ele.polygon))
-      console.log("destination", testInside(destination, ele.polygon))
-      if(testInside(origin, ele.polygon) && testInside(destination, ele.polygon)){
+
+      console.log(testInside(origin, ele.polygon), testInside(destination, ele.polygon))
+      
+      const originTest = testInside(origin, ele.polygon) || ((Math.abs(origin[0]-ele.origin[0])<0.03)&&(Math.abs(origin[1]-ele.origin[1])<0.03))
+
+      const destinationTest = testInside(destination, ele.polygon) || ((Math.abs(destination[0]-ele.destination[0])<0.03)&&(Math.abs(destination[1]-ele.destination[1])<0.03))
+  
+      console.log("origin", originTest)
+      console.log("destination", destinationTest)
+
+      if(originTest && destinationTest){
         matchArr.push(ele);
         
       }
