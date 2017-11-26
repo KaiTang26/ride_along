@@ -35,6 +35,8 @@ export default class Rides extends Component {
     super(props);
     this.state = {
       rides: [],
+      start_location:'',
+      end_location:'',
       origin:[],
       destination:[],
       direction: '',
@@ -105,13 +107,15 @@ export default class Rides extends Component {
   // }
 
   _handleLocationSearch=(address)=>{
-    console.log(address)
     this.setState({
+    start_location: address.start_location,
+    end_location: address.end_location,
     origin:address.origin,
     destination:address.destination,
     direction: address.direction,
     showAll: false
-    })      
+    })
+    console.log(this.state)
   }
 
 
