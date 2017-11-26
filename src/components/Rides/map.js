@@ -6,6 +6,7 @@ const {
   GoogleMap,
   DirectionsRenderer,
 } = require("react-google-maps");
+const { MarkerWithLabel } = require("react-google-maps/lib/components/addons/MarkerWithLabel");
 
 const MapWithADirectionsRenderer = compose(
   withProps({
@@ -24,7 +25,7 @@ const MapWithADirectionsRenderer = compose(
             destination: new window.google.maps.LatLng(this.props.destination[0], this.props.destination[1]),
             travelMode: window.google.maps.TravelMode.DRIVING,
         }, (result, status) => {
-          console.log(result.routes[0].legs[0])
+          console.log(result.routes[0].log[0])
             if (status === window.google.maps.DirectionsStatus.OK) {
             this.setState({
                 directions: result,
@@ -40,6 +41,13 @@ const MapWithADirectionsRenderer = compose(
     defaultZoom={7}
     defaultCenter={new window.google.maps.LatLng(44.22914,-76.48079)}
   >
+    <MarkerWithLabel
+      position={{ lat: 43.942487, lng: -78.4312877 }}
+      labelAnchor={new window.google.maps.Point(0, 0)}
+      labelStyle={{backgroundColor: "yellow", fontSize: "32px", padding: "16px"}}
+    >
+      <div>Free Coffee!</div>
+      </MarkerWithLabel>
     {props.directions && <DirectionsRenderer directions={props.directions} />}
   </GoogleMap>
 );
