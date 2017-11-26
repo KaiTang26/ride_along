@@ -27,8 +27,8 @@ const MapWithADirectionsRenderer = compose(
             travelMode: window.google.maps.TravelMode.DRIVING,
         }, (result, status) => {
 
-          let wayPoint = Math.round(result.routes[0].legs[0].steps.length/2)
-          console.log(result.routes[0].legs[0])
+          // let wayPoint = Math.round(result.routes[0].legs[0].steps.length/2)
+          // console.log(result.routes[0].legs[0])
             if (status === window.google.maps.DirectionsStatus.OK) {
             this.setState({
                 directions: result,
@@ -37,9 +37,6 @@ const MapWithADirectionsRenderer = compose(
             // console.error(`error fetching directions ${result}`);
             }
         });
-    },
-    componentWillMount(){
-
     }
   })
 )(props =>
