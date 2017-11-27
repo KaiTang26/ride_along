@@ -10,28 +10,24 @@ import Menu from '../Menu';
 
 const Container = styled.div`
   margin-top: 65px;
+  margin-bottom: -65px;
 `;
 const Left = styled.div`
   float: left;
-  width: 50%;
+  width: 40%;
   z-index: 1;
   position: relative;
 `;
 const Right = styled.div`
   float: right;
-  width: 50%;
+  width: 60%;
+  position: fixed;
+  right: 0;
 
 `;
 
 const RideMap = (props) => {
   // console.log(props.id.origin)
-  // const currentUser = localStorage.getItem("user_id");
-  const currentUser = 1;
-  let isDriver;
-  {currentUser === props.id.driver
-    ? isDriver = true
-    : isDriver = false}
-
   return(
     <Map origin={props.id.origin} destination={props.id.destination}/>
   )
@@ -89,22 +85,25 @@ class Details extends Component {
         <Menu/>
         <Container>
           <Left>
+          {this.state?
+              <div>
+                <RideDetailUI id={this.state.ride} />
+                <ChatContainer id={this.state.ride} />
+              </div>
+              :"" }
+          </Left>
+
+          <Right>
+
+
           {/* {this.state? <RideDetailUI id={this.state.ride} />
             : <h1>Loading </h1>}
             {this.state? <ChatContainer id={this.state.ride} />
               : <h1>Loading </h1>} */}
           {this.state? 
           <RideMap id={this.state.ride} />
-            : ""}
-          </Left>
+            : ""}            
 
-          <Right>
-            {this.state?
-              <div>
-                <RideDetailUI id={this.state.ride} />
-                <ChatContainer id={this.state.ride} />
-              </div>
-              :"" }
           </Right>
         </Container>
       </div>
