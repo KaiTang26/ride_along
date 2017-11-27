@@ -6,10 +6,53 @@ import api from '../utils/api';
 import { Route, Redirect } from 'react-router';
 import CalculateGeocode from '../Trip/Calculategeo.js';
 import Menu from '../Menu';
+import gs from '../GlobalStyles.js';
+import road from './road.gif';
+import roadpic from './road2.jpg';
 
+const Background = styled.div`
+  // background: url(${roadpic}) no-repeat;
+  // background-size: cover;
+  background: #dfe7e3;
+  width: 100%;
+  height: auto;
+  padding-bottom: 13em;
+`;
 
 const Container = styled.div`
-  margin-top: 65px;
+  margin-top: 60px;
+  padding: 3em;
+  overflow: hidden;
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+`;
+
+const Left = styled.div`
+  float: left;
+  width: 50%;
+`;
+
+const Right = styled.div`
+
+// background: url(${roadpic}) no-repeat;
+// background-size: cover;
+  background: url(${road}) no-repeat;
+  width: 50%;
+  height: 500px;
+  float: right;
+  background-position: center;
+  padding: 5em;
+  // position: fixed;
+`;
+
+const H1 = styled.h1`
+  font-weight: 900;
+  // color: #444;
+  // color: ${gs.red};
+  font-size: 145%;
+  margin: 3em 0 1.5em !important;
+
 `;
 
 const Search = (props) => (
@@ -67,24 +110,31 @@ export default class Rides extends Component {
     `;
 
     return (
-    <div>
+    <Background>
       <Menu />
       <Container>
-        <h1>Find a Ride</h1>
-        <br />
-        <br />
-        <CalculateGeocode updateAddress={this._handleLocationSearch}/>
-        <br /> 
+        <Left>
+          <H1>Find a Ride</H1>
+          <br />
+          <br />
+          <CalculateGeocode updateAddress={this._handleLocationSearch}/>
+          <br /> 
 
-        {this.state.showAll 
-          ? <Posts rides = {this.state.rides} />
-          : <div>
-          <SearchResults params={this.state}/> 
-            <Button onClick={this._handleAll}>Show All</Button>
-            </div>
-        }
+          {this.state.showAll 
+            ? <Posts rides = {this.state.rides} />
+            : <div>
+            <SearchResults params={this.state}/> 
+              <Button onClick={this._handleAll}>Show All</Button>
+              </div>
+          }
+        </Left>
+
+        <Right>
+
+        </Right>
+
       </Container>
-    </div>
+    </Background>
     );}
 
   _handleAll = e => {

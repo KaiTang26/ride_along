@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import gs from './GlobalStyles.js';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import UserPic from './UserProfile/Bill.jpg';
+import { Icon } from 'semantic-ui-react';
 
 const Nav = styled.div`
   overflow: hidden;
@@ -36,7 +37,10 @@ const Li = styled.div`
   letter-spacing: .1px;
   font-size: 90%;
   vertical-align: top;
-  padding: 1.5em 1em;
+  padding: 1.55em 1em;
+  > a:hover {
+    color: ${gs.coral};
+  } 
 `;
 
 const ProfilePic = styled.div`
@@ -49,13 +53,24 @@ const ProfilePic = styled.div`
   display: inline-block;
 `;
 
+const Icons = styled(Icon)`
+  color: ${gs.blue};
+  position: relative;
+  bottom: 2px;
+`
+
 const Menu = () => (
 
   <Nav>
     <Logotype>Ride Along</Logotype>
     <UserLinks>
-      <Li><Link to='/ride'>Find Ride</Link></Li>
-      <Li><Link to='/trip'>Post Ride</Link></Li>
+      <Li>
+      <Link to='/ride'>
+      <Icons fitted name='chevron right' size='tiny'/>
+        <Icons fitted name='chevron right' size='tiny'/> Find Ride</Link></Li>
+      <Li><Link to='/trip'>
+      <Icons fitted name='chevron right' size='tiny'/>
+        <Icons fitted name='chevron right' size='tiny'/> Post Ride</Link></Li>
       <ProfilePic/>
     </UserLinks>
   </Nav>
