@@ -8,10 +8,30 @@ const seedUsers = () => db.Promise.map([
 ], user => db.model('users').create(user));
 
 const seedTrips = () => db.Promise.map([
-  {date: new Date(2017, 02, 25), time: `22:47:21 GMT`, start_location: "Toronto", end_location: "Ottawa", passengers: 4, origin:[43.761539,-79.411079], destination:[45.420315,-75.695419] , price:30.30, description:'Great trip pls join us', driver:1},
-  {date: new Date(2017, 11, 22), time: `09:00:21 GMT`, start_location: "Montreal", end_location: "Hamilton", passengers: 2, origin:[45.5017,-73.5673], destination:[43.255203,-79.843826] , price:55.30, description:'good trip pls join us', driver:2},
-  {date: new Date(2017, 6, 04), time: `18:45:21 GMT`, start_location: "Kingston", end_location: "Toronto", passengers: 3, origin:[44.22914,-76.48079], destination:[43.761539,-79.411079] , price:25.30, description:'good trip pls join us', driver:1},
-  {date: new Date(2017, 6, 04), time: `18:45:21 GMT`, start_location: "Kingston", end_location: "Toronto", passengers: 3, origin:[44.22914,-76.48079], destination:[43.761539,-79.411079] , price:25.30, description:'My test trip', driver:4},
+  {date: new Date(2017, 02, 25), time: `22:47:21 GMT`, start_location: "Toronto", end_location: "Ottawa", passengers: 4, origin:[43.653226, -79.3831843], destination:[45.4215296, -75.69719309999999] , price:30.30, description:'Great trip pls join us', driver:1, 
+  polygon:[ [43.653226, -79.3831843],
+            [43.653226, -75.69719309999999],
+            [45.4215296, -75.69719309999999],
+            [45.4215296, -79.3831843] ],
+            direction: 0, distance:'449 km', duration:'4 hours 18 mins'},
+  {date: new Date(2017, 11, 22), time: `09:00:21 GMT`, start_location: "Montreal", end_location: "Hamilton", passengers: 2, origin:[45.5016889, -73.567256], destination:[43.2557206, -79.8711024] , price:55.30, description:'good trip pls join us', driver:2,
+  polygon:[ [43.2557206, -79.8711024],
+            [43.2557206, -73.567256],
+            [45.5016889, -73.567256],
+            [45.5016889, -79.8711024]],
+            direction: 2, distance:'608 km', duration:'5 hours 48 mins'},
+  {date: new Date(2017, 6, 04), time: `18:45:21 GMT`, start_location: "Kingston", end_location: "Toronto", passengers: 3, origin:[44.2311717, -76.4859544], destination:[43.653226, -79.3831843] , price:25.30, description:'good trip pls join us', driver:1,
+  polygon:[ [43.653226, -79.3831843],
+            [43.653226, -76.4859544],
+            [44.2311717, -76.4859544],
+            [44.2311717, -79.3831843] ],
+            direction: 2, distance:'265 km', duration:'2 hours 42 mins'},
+  {date: new Date(2017, 6, 04), time: `18:45:21 GMT`, start_location: "Kingston", end_location: "Toronto", passengers: 3, origin:[44.2311717, -76.4859544], destination:[43.653226, -79.3831843] , price:25.30, description:'good trip pls join us', driver:4,
+  polygon:[ [43.653226, -79.3831843],
+            [43.653226, -76.4859544],
+            [44.2311717, -76.4859544],
+            [44.2311717, -79.3831843] ],
+            direction: 2, distance:'265 km', duration:'2 hours 42 mins'}
 ], trip => db.model('trips').create(trip));
 
 const seedReviews = () => db.Promise.map([
@@ -32,6 +52,7 @@ const seedUserTrips = () => db.Promise.map([
   {user_id: 4, trip_id: 2},
   {user_id: 4, trip_id: 3},
   {user_id: 4, trip_id: 4}
+  
 ], user_trip => db.model('user_trips').create(user_trip));
 const seedAgreements = () => db.Promise.map([
   {statement: "No food or drinks in the car", trip_id:1}
@@ -44,10 +65,17 @@ const seedAgreements = () => db.Promise.map([
    .then(users => console.log(`Seeded ${users.length} users OK`))
    .then(seedTrips)
    .then(trips => console.log(`Seeded ${trips.length} trips OK`))
+<<<<<<< HEAD
    .then(seedReviews)
    .then(reviews => console.log(`Seeded ${reviews.length} reviews OK`))
    .then(seedUserTrips)
    .then(userTrip => console.log(`Seeded ${userTrip.length} trips OK`))
+=======
+   .then(seedUserTrips)
+   .then(userTrip => console.log(`Seeded ${userTrip.length} trips OK`))
+   .then(seedReviews)
+   .then(reviews => console.log(`Seeded ${reviews.length} reviews OK`))
+>>>>>>> 87e252a6a5250864bd46c2748cba22c71ba4f9b8
    .then(seedAgreements)
    .then(agreements => console.log(`Seeded ${agreements.length} agreements OK`))   
    .catch(error => console.error(error))

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Posts from './Posts';
-import SearchResults from './SearchResults';
+import SearchResults from './SearchP';
 import api from '../utils/api';
-import { Route, Redirect } from 'react-router'
+import { Route, Redirect } from 'react-router';
+import CalculateGeocode from '../Trip/Calculategeo.js';
 
 const Search = (props) => (
   <form onSubmit={props._handleSubmit}>
@@ -33,13 +34,12 @@ export default class Rides extends Component {
   constructor(props){
     super(props);
     this.state = {
-      cities: ["", "Windsor", "Chatham-Kent", "London", "Kitchener", "Waterloo",
-      "Cambridge", "Guelph", "Hamilton", "St.Catharines", "Burlington",
-      "Mississauga", "Toronto", "Kingston", "Ottawa", "Gatineau", "Montreal",
-        "Trois-Riveres", "Quebec"],
       rides: [],
-      start: "",
-      end: "",
+      start_location:'',
+      end_location:'',
+      origin:[],
+      destination:[],
+      direction: '',
       detail: 'all',
       showAll: true
     }
@@ -65,9 +65,7 @@ export default class Rides extends Component {
       <h1>Find a Ride</h1>
       <br />
       <br />
-
-      <Search cities = {this.state.cities} _handleInputChange = {this._handleInputChange} _handleSubmit = {this._handleSubmit}/>
-    
+      <CalculateGeocode updateAddress={this._handleLocationSearch}/>
       <br /> 
 
       {this.state.showAll 
@@ -79,11 +77,12 @@ export default class Rides extends Component {
       }
 
     </div>
-    );
-  }
+    );}
 
   _handleAll = e => {
-    this.setState({ showAll: true });
+    this.setState({ 
+      showAll: true
+    });
   }
 
   _handleInputChange=(event) => {
@@ -96,11 +95,16 @@ export default class Rides extends Component {
     });
   }
 
-  _handleSubmit=(event) => {
-    event.preventDefault();
+  _handleLocationSearch=(address)=>{
     this.setState({
-      showAll: false
-    });
-
+    start_location: address.start_location,
+    end_location: address.end_location,
+    origin:address.origin,
+    destination:address.destination,
+    direction: address.direction,
+    showAll: false
+    })
+    console.log(this.state)
   }
+
 }

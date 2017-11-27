@@ -40,6 +40,22 @@ const Trip = db.define('trips', {
   description:{
     type: Sequelize.STRING,
     allowNull: false
+  },
+  polygon:{
+    type: Sequelize.ARRAY(Sequelize.ARRAY(Sequelize.FLOAT)),
+    allowNull: false
+  },
+  direction:{
+    type: Sequelize.INTEGER,
+    allowNull: false
+  },
+  distance:{
+    type: Sequelize.STRING,
+    allowNull: false
+  },
+  duration:{
+    type: Sequelize.STRING,
+    allowNull: false
   }
 
 });

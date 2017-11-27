@@ -18,7 +18,11 @@ export default class Trip extends Component {
         origin:['',''],
         destination:['',''],
         price:'',
-        description:'' 
+        description:'',
+        polygon:[],
+        direction:'',
+        distance:'0 km',
+        duration:'0 hr' 
     }
   }
   render() {
@@ -28,6 +32,12 @@ export default class Trip extends Component {
       <div className={classnames('Trip', className)} {...props}>
          <form onSubmit={this._submitForm.bind(this)}>
             <CalculateGeocode updateAddress={this._handleLocationSearch}/>
+            <label>
+                Total Distance: {this.state.distance}
+            </label>
+            <label>
+                Total Duration: {this.state.duration}
+            </label>
             <label>
             Date:
             <input type="date"  name='date' value={this.state.date} onChange={this._handleInputChange}/>
@@ -61,7 +71,7 @@ export default class Trip extends Component {
                 Submit
             </button>
         </form> 
-        <Map origin={this.state.origin} destination={this.state.destination}/>
+        <Map origin={this.state.origin} destination={this.state.destination} handleDistanceDuration={this._handleDistanceDuration}/>
       </div>
     );
   }
@@ -78,18 +88,30 @@ export default class Trip extends Component {
   
     _handleLocationSearch=(address)=>{
 
+        console.log(address)
+
         this.setState({
             start_location:address.start_location,
             end_location:address.end_location,
             origin:address.origin,
-            destination:address.destination 
+            destination:address.destination,
+            polygon: address.polygon,
+            direction: address.direction
         })      
     }
 
     _submitForm(event){
         event.preventDefault();
+        const id = localStorage.getItem("user_id")
         const tripInfor = this.state;
-        api.postTrip(1,tripInfor)
+        api.postTrip(id,tripInfor)
         .then()
+    }
+
+    _handleDistanceDuration=(event)=>{
+        this.setState({
+            distance:event.distance.text,
+            duration:event.duration.text
+        })
     }
 }

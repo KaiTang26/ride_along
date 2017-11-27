@@ -23,7 +23,7 @@ class MessageList extends Component {
       <Header>Ride Chat</Header>
       <main className="messages">
         {this.props.messages.map((message, index) => (
-            <Message key={message.index} content={message} userName={this.props.currentUser}/>
+            <Message key={index} content={message} userName={this.props.currentUser}/>
         ))}
       </main>
       </div>
