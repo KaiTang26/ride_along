@@ -105,6 +105,9 @@ const EditButton = styled.button`
 //   return null;
 // }
 
+// For whatever reason when redirected the value below is wrong but if you just
+// enter the localStorage bit instead of user_id it works
+
 const user_id = localStorage.getItem("user_id");
 
 export default class UserProfile extends Component {
@@ -168,13 +171,16 @@ export default class UserProfile extends Component {
 
         <ProfilePic />
 
-        {user_id == this.props.match.params.id?
+        {localStorage.getItem("user_id") == this.props.match.params.id?
 
           <Name>
             Hello {this.state.first_name}!
           </Name>
         :
           <Name>
+            {console.log('state',this.state)}
+            {/* {console.log('user_id', localStorage.getItem("user_id")} */}
+            {console.log('params', this.props.match.params.id)}
             Welcome to {this.state.first_name}'s profile'!
           </Name>
         }
@@ -182,7 +188,7 @@ export default class UserProfile extends Component {
         <Info>
           <Left>
 
-          {user_id == this.props.match.params.id?
+          {localStorage.getItem("user_id") == this.props.match.params.id?
             <Section>
               <EditProfile info={this.state}/>
             </Section>
@@ -207,7 +213,7 @@ export default class UserProfile extends Component {
                     <H3>Active Rides</H3>
                     <ActiveRides rides={this.state.trip}  />
                   </div>
-                  : <h1>Loading </h1>}
+                  : null}
               </LeftText>
             </Section>
 
@@ -218,7 +224,7 @@ export default class UserProfile extends Component {
                     <H3>Completed Rides</H3>
                     <CompletedRides param={this.props.match.params.id} rides={this.state.trip}  />
                   </div>
-                  : <h1>Loading </h1>}
+                  : null}
               </LeftText>
             </Section>
 
@@ -237,7 +243,7 @@ export default class UserProfile extends Component {
                 <div>
                   <Reviews reviews={this.state.reviews}/>
                 </div>
-                : <h1>Loading </h1>}
+                : null}
             </Section>
           </Right>
         </Info>
