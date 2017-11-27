@@ -25,7 +25,6 @@ const seedReviews = () => db.Promise.map([
   {rating: 4, review_text: "Had a great time with Bill", trip_id:1, user_id: 4}
 ], review => db.model('reviews').create(review));
 
-<<<<<<< HEAD
 const seedUserTrips = () => db.Promise.map([
   {user_id: 1, trip_id: 1},
   {user_id: 1, trip_id: 3},
@@ -34,11 +33,9 @@ const seedUserTrips = () => db.Promise.map([
   {user_id: 4, trip_id: 3},
   {user_id: 4, trip_id: 4}
 ], user_trip => db.model('user_trips').create(user_trip));
-=======
 const seedAgreements = () => db.Promise.map([
   {statement: "No food or drinks in the car", trip_id:1}
 ], agreement => db.model('agreements').create(agreement));
->>>>>>> 8d99d8d85fcf7708a22a3d592c1ef2a65d2e2ade
 
 
  db.didSync
@@ -49,12 +46,9 @@ const seedAgreements = () => db.Promise.map([
    .then(trips => console.log(`Seeded ${trips.length} trips OK`))
    .then(seedReviews)
    .then(reviews => console.log(`Seeded ${reviews.length} reviews OK`))
-<<<<<<< HEAD
    .then(seedUserTrips)
    .then(userTrip => console.log(`Seeded ${userTrip.length} trips OK`))
-=======
    .then(seedAgreements)
    .then(agreements => console.log(`Seeded ${agreements.length} agreements OK`))   
->>>>>>> 8d99d8d85fcf7708a22a3d592c1ef2a65d2e2ade
    .catch(error => console.error(error))
    .finally(() => db.close())
