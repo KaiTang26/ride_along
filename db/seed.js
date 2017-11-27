@@ -8,7 +8,7 @@ const seedUsers = () => db.Promise.map([
 ], user => db.model('users').create(user));
 
 const seedTrips = () => db.Promise.map([
-  {date: new Date(2017, 02, 25), time: `22:47:21 GMT`, start_location: "Toronto", end_location: "Ottawa", passengers: 4, origin:[43.653226, -79.3831843], destination:[45.4215296, -75.69719309999999] , price:30.30, description:'Great trip pls join us', driver:1, 
+  {date: new Date(2017, 02, 25), time: `22:47:21 GMT`, start_location: "Toronto", end_location: "Ottawa", passengers: 4, origin:[43.653226, -79.3831843], destination:[45.4215296, -75.69719309999999] , price:30.30, description:'Great trip pls join us', driver:1,
   polygon:[ [43.653226, -79.3831843],
             [43.653226, -75.69719309999999],
             [45.4215296, -75.69719309999999],
@@ -48,11 +48,15 @@ const seedReviews = () => db.Promise.map([
 const seedUserTrips = () => db.Promise.map([
   {user_id: 1, trip_id: 1},
   {user_id: 1, trip_id: 3},
+  {user_id: 1, trip_id: 4},
+  {user_id: 1, trip_id: 2},
+  {user_id: 2, trip_id: 1},
+  {user_id: 3, trip_id: 3},
   {user_id: 4, trip_id: 1},
   {user_id: 4, trip_id: 2},
   {user_id: 4, trip_id: 3},
   {user_id: 4, trip_id: 4}
-  
+
 ], user_trip => db.model('user_trips').create(user_trip));
 const seedAgreements = () => db.Promise.map([
   {statement: "No food or drinks in the car", trip_id:1}
@@ -70,6 +74,6 @@ const seedAgreements = () => db.Promise.map([
    .then(seedReviews)
    .then(reviews => console.log(`Seeded ${reviews.length} reviews OK`))
    .then(seedAgreements)
-   .then(agreements => console.log(`Seeded ${agreements.length} agreements OK`))   
+   .then(agreements => console.log(`Seeded ${agreements.length} agreements OK`))
    .catch(error => console.error(error))
    .finally(() => db.close())

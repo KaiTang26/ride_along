@@ -66,21 +66,22 @@ export default class Rides extends Component {
       <br />
       <br />
       <CalculateGeocode updateAddress={this._handleLocationSearch}/>
-      <br /> 
+      <br />
 
-      {this.state.showAll 
-        ? <Posts rides = {this.state.rides} />
-        : <div>
-         <SearchResults params={this.state}/> 
-          <Button onClick={this._handleAll}>Show All</Button>
-          </div>
+      {this.state.showAll?
+        <Posts rides = {this.state.rides} />
+      :
+        <div>
+         <SearchResults params={this.state}/>
+         <Button onClick={this._handleAll}>Show All</Button>
+        </div>
       }
 
     </div>
     );}
 
   _handleAll = e => {
-    this.setState({ 
+    this.setState({
       showAll: true
     });
   }

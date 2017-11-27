@@ -27,13 +27,14 @@ const router = require('express').Router()
 //   .catch(next);
 // });
 
-router.post('/:trip_id', function(req, res, next) {
+router.post('/:trip_id/:user_id', function(req, res, next) {
   // console.log("req",req);
   console.log("req",req.body);
   Review.create({
     review_text: req.body.review_text,
     rating: req.body.rating,
-    trip_id:req.params.trip_id
+    trip_id:req.params.trip_id,
+    user_id:req.params.user_id
   })
   .then(review => {
     console.log(review);
