@@ -21,6 +21,7 @@ const Logotype = styled.h1`
   float: left;
   font-style: italic;
   color: ${gs.green};
+  font-family: Merriweather;
 `;
 
 const UserLinks = styled.div`

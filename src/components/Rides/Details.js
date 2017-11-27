@@ -16,6 +16,8 @@ const Left = styled.div`
   width: 40%;
   z-index: 1;
   position: relative;
+  padding-left: 1.25em;
+  line-height: 1.5;
 `;
 const Right = styled.div`
   float: right;
@@ -24,6 +26,33 @@ const Right = styled.div`
   right: 0;
 
 `;
+
+const H1 = styled.h1`
+  font-weight: bold;
+  // color: ${gs.blue};
+  font-size: 110%;
+  margin: 1em 0 !important;
+
+`;
+
+const Label = styled.p`
+  font-size: 75%;
+  // letter-spacing: .5px;
+  font-family: Lato;
+  text-transform: uppercase;
+  margin-bottom: .85em;
+  color: ${gs.blue};
+  display: inline-block;
+  margin-right: .5em;
+`;
+ const P = styled.p`
+  display: inline-block;
+ `;
+
+ const Field = styled.div`
+  margin: .5em 0;
+`;
+
 
 const RideMap = (props) => {
   // console.log(props.id.origin)
@@ -44,12 +73,21 @@ const RideDetailUI = (props) => {
   return(
     <div>
 
-    <h1>Ride from {props.id.start_location} to {props.id.end_location} </h1>
-    <h2>Total distance: {props.id.distance}</h2>
-    <h2>Total duration: {props.id.duration}</h2>
-    <h2>Leaving {props.id.date} at {props.id.time}</h2>
-    <br></br>
-    <h2>Name: {props.id.driver}</h2>
+    <H1>{props.id.start_location} to {props.id.end_location} </H1>
+    <Field>
+    <Label>Total distance:</Label> <P>{props.id.distance}</P>
+    </Field>
+    <Field>
+    <Label>Total duration:</Label> <P>{props.id.duration}</P>
+    </Field>
+    <Field>
+    <Label>Leaving:</Label> <P>{props.id.date} </P>
+    </Field>
+    <Field>
+    <Label>Time:</Label><P>{props.id.time}</P>
+    </Field>
+    {/* <Field> */}
+    <Label>Name</Label> <P>{props.id.driver}></P>
     <div>Image placeholder</div>
     <br></br>
     <h3>{props.id.driver} is looking to have {props.id.passengers} passengers join the ride.</h3>
