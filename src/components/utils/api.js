@@ -14,7 +14,7 @@ export default {
       console.log(encodedURI)
       return axios.post(encodedURI, req)
       .then((response)=> {
-          console.log("saved successfully")
+          return response;
       })
     },
 

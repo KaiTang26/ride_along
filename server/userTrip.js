@@ -43,7 +43,7 @@ router.post('/',function(req, res, next) {
     duration: req.body.duration
   })
   .then(result => {
-    res.sendStatus(200)
+    res.send(result)
     // console.log(result[0]);
   })
   .catch(next);

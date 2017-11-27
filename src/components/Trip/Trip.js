@@ -4,6 +4,7 @@ import classnames from 'classnames';
 import Map from './map.js';
 import CalculateGeocode from './Calculategeo.js';
 import api from '../utils/api';
+import browserHistory from '../../history';
 
 export default class Trip extends Component {
 
@@ -105,7 +106,15 @@ export default class Trip extends Component {
         const id = localStorage.getItem("user_id")
         const tripInfor = this.state;
         api.postTrip(id,tripInfor)
-        .then()
+        .then((response)=>{
+            if(response.status===200){
+                browserHistory.push("/ride/"+response.data.id)
+            }
+
+            console.log(response.data)
+
+
+        })
     }
 
     _handleDistanceDuration=(event)=>{
