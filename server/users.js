@@ -165,25 +165,35 @@ userRouter.get('/:id/reviews', function(req, res, next){
 
 
 // Don't ge this problem
+// 
+// // Second stab
+//
 // userRouter.get('/:id/rating', function(req, res, next){
-//   User.sum('rating', {
-//       where:{
-//         id:req.params.id
-//       },
-//       include: [
-//         {
-//           model: userTripModel,
-//           where: { user_id: req.params.id },
-//           include: {
-//             model: trip,
-//             where: {driver: req.params.id},
-//             include:{
-//               model: review,
-//               // attributes: [[Sequelize.fn('COUNT', Sequelize.col('rating')), 'no_ratings']]
-//             }
-//           }
-//         }
-//       ]
+//   User.findOne({
+//     where: { user_id: req.params.id },
+//     attributes: ['review.user_id', [Sequelize.fn("AVG", Sequelize.col('review.rating')), 'rating_Count']],
+//     group: 'review.user_id'
+//
+// // First attempt
+//
+//     // order: [[Sequelize.fn('AVG', Sequelize.col('user'))]]
+//       // where:{
+//       //   id:req.params.id
+//       // },
+//       // include: [
+//       //   {
+//       //     model: userTripModel,
+//       //     where: { user_id: req.params.id },
+//       //     include: {
+//       //       model: trip,
+//       //       where: {driver: req.params.id},
+//       //       include:{
+//       //         model: review,
+//       //         attributes: [[Sequelize.fn('COUNT', Sequelize.col('review.rating')), 'no_ratings']]
+//       //       }
+//       //     }
+//       //   }
+//       // ]
 //     })
 //     .then(result => {
 //       res.status(200).send(result);
