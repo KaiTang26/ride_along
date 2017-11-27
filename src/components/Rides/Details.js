@@ -41,38 +41,33 @@ class Jointrip extends Component{
   render(){
     return(
       <div>
-
         <form onSubmit={this._submitForm.bind(this)}>
-
           <button type="submit" >
             Join Trip
           </button>
-
         </form>
-
       </div>
     )
   }
 
   _submitForm(event){
     event.preventDefault();
-    const user_id = Number(localStorage.getItem("user_id"))
-    const trip_id = this.props.id.id
-
-    console.log(user_id)
-    console.log(trip_id)
-    // const tripInfor = this.state;
-    // api.postTrip(id,tripInfor)
-    // .then((response)=>{
-    //     if(response.status===200){
-
-    //         browserHistory.push("/ride/"+response.data.id)
-    //     }
-
-    //     console.log(response.data)
-
-
-    // })
+    const id = Number(localStorage.getItem("user_id"))
+    
+    const joinTrip ={
+      user_id:id,
+      trip_id: this.props.id.id,
+      start: localStorage.getItem("start"),
+      end: localStorage.getItem("end")
+    };
+    console.log(joinTrip)
+    
+    api.postJoin(id,joinTrip)
+    .then((response)=>{
+        if(response.status===200){
+          console.log(response.data)     
+        }
+    })
   }
 
 }

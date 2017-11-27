@@ -7,16 +7,16 @@ const router = require('express').Router({mergeParams: true});
 
 
 // endpoint for user join trip
-router.post('/:id', function(req, res, next) {
-  console.log(req.params.id);
-  console.log(req.params.user_id);
-
+router.post('/join', function(req, res, next) {
+ 
   User_Trip.create({
-    user_id: req.params.user_id,
-    trip_id: req.params.id
+    user_id: req.body.user_id,
+    trip_id: req.body.trip_id,
+    start: req.body.start,
+    end: req.body.end
   })
   .then(result => {
-    console.log(result);
+    res.send(result)
   })
   .catch(next);
 });

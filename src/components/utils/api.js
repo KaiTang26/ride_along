@@ -158,16 +158,19 @@ export default {
     passengerAgree: function(trip_id, agreement_id, user_id, boolean, req) {
         const encodedURI = window.encodeURI        ("http://localhost:3000/api/agreements/"+trip_id+"/"+agreement_id+"/"+user_id+"/"+boolean);
         return axios.put(encodedURI, req);
-    }
+    },
 
-    // fetchWayPoint: function(start, end){
-    //     const encodedURI = window.encodeURI("https://maps.googleapis.com/maps/api/directions/json?origin="+start+"&destination="+end+"&key=AIzaSyAOdJrxTyFGID_cQFGUdskPi77ZQqKxy3c&v");
-    //     return axios.get(encodedURI, {headers: {'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json',}})
-    //     .then((response)=>{
-    //         return response.data
-    //     })
-    // }
+    postJoin: function(user_id, req){
+        const encodedURI = window.encodeURI("http://localhost:3000/api/users/"+user_id+"/trip/join");
+        console.log(encodedURI)
+        return axios.post(encodedURI, req)
+        .then((response)=> {
+            return response;
+        })
+      }
+      
 
+    
 
 
 }
