@@ -65,17 +65,10 @@ const seedAgreements = () => db.Promise.map([
    .then(users => console.log(`Seeded ${users.length} users OK`))
    .then(seedTrips)
    .then(trips => console.log(`Seeded ${trips.length} trips OK`))
-<<<<<<< HEAD
-   .then(seedReviews)
-   .then(reviews => console.log(`Seeded ${reviews.length} reviews OK`))
-   .then(seedUserTrips)
-   .then(userTrip => console.log(`Seeded ${userTrip.length} trips OK`))
-=======
    .then(seedUserTrips)
    .then(userTrip => console.log(`Seeded ${userTrip.length} trips OK`))
    .then(seedReviews)
    .then(reviews => console.log(`Seeded ${reviews.length} reviews OK`))
->>>>>>> 87e252a6a5250864bd46c2748cba22c71ba4f9b8
    .then(seedAgreements)
    .then(agreements => console.log(`Seeded ${agreements.length} agreements OK`))   
    .catch(error => console.error(error))
