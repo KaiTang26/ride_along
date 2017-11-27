@@ -24,6 +24,8 @@ Trip.hasMany(Chat);
 Car.belongsTo(User); // Will add DriverID to Car
 User.hasMany(Car);
 
+User.hasMany(Review);
+Review.belongsTo(User);
 
 Trip.hasMany(Review);
 Review.belongsTo(Trip);

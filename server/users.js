@@ -6,6 +6,7 @@ const review = require('../db/models/review')
 
 const userTrip = require('./userTrip');
 const userRouter = require('express').Router();
+const Sequelize = require('sequelize');
 
 const cookieSession = require('cookie-session')
 const bcrypt = require('bcrypt');
@@ -153,6 +154,34 @@ userRouter.get('/:id/reviews', function(req, res, next){
     })
     .catch(next);
 })
+
+
+// Don't ge this problem
+// userRouter.get('/:id/rating', function(req, res, next){
+//   User.sum('rating', {
+//       where:{
+//         id:req.params.id
+//       },
+//       include: [
+//         {
+//           model: userTripModel,
+//           where: { user_id: req.params.id },
+//           include: {
+//             model: trip,
+//             where: {driver: req.params.id},
+//             include:{
+//               model: review,
+//               // attributes: [[Sequelize.fn('COUNT', Sequelize.col('rating')), 'no_ratings']]
+//             }
+//           }
+//         }
+//       ]
+//     })
+//     .then(result => {
+//       res.status(200).send(result);
+//     })
+//     .catch(next);
+// })
 
 
 

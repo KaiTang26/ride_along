@@ -15,14 +15,14 @@ const seedTrips = () => db.Promise.map([
 ], trip => db.model('trips').create(trip));
 
 const seedReviews = () => db.Promise.map([
-  {rating: 1, review_text: "Really rude, bad taste in music",trip_id:2},
-  {rating: 1, review_text: "Was late and dropped me off far from agreed point ",trip_id:1},
-  {rating: 5, review_text: "Amazing trip. Nice, funny and on time!",trip_id:2},
-  {rating: 2, review_text: "It was okay. Nothing special but good enough",trip_id:3},
-  {rating: 3, review_text: "Could have been better",trip_id:4},
-  {rating: 3, review_text: "Drove pretty slow",trip_id:4},
-  {rating: 4, review_text: "Nice guy and fair price for the ride",trip_id:4},
-  {rating: 4, review_text: "Had a great time with Bill",trip_id:1}
+  {rating: 1, review_text: "Really rude, bad taste in music", trip_id:2, user_id: 1},
+  {rating: 1, review_text: "Was late and dropped me off far from agreed point ", trip_id:1, user_id: 2},
+  {rating: 5, review_text: "Amazing trip. Nice, funny and on time!", trip_id:2, user_id: 3},
+  {rating: 2, review_text: "It was okay. Nothing special but good enough", trip_id:3, user_id: 4},
+  {rating: 3, review_text: "Could have been better", trip_id:4, user_id: 1},
+  {rating: 3, review_text: "Drove pretty slow", trip_id:4, user_id: 2},
+  {rating: 4, review_text: "Nice guy and fair price for the ride", trip_id:4, user_id: 1},
+  {rating: 4, review_text: "Had a great time with Bill", trip_id:1, user_id: 4}
 ], review => db.model('reviews').create(review));
 
 const seedUserTrips = () => db.Promise.map([

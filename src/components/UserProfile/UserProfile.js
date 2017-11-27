@@ -133,6 +133,13 @@ export default class UserProfile extends Component {
       })
     );
 
+    // (api.averageRating(this.props.match.params.id))
+    // .then(results =>
+    //   this.setState({
+    //     reviews:results
+    //   })
+    // );
+
     (api.userTrips(this.props.match.params.id))
     .then(results =>
       this.setState({
@@ -146,7 +153,8 @@ export default class UserProfile extends Component {
         trip: results.data.user_trips,
       })
     );
-// Do something with the results but it looks like the call works fine
+
+
 
   }
 
