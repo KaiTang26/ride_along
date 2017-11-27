@@ -68,6 +68,10 @@ export default class CalculateGeocode extends Component {
     _submit(event){
         event.preventDefault();
 
+        localStorage.setItem("start", this.state.start_location);
+        localStorage.setItem("end", this.state.end_location);
+
+
         api.fetchGeocode(this.state.start_location)
         .then( (response)=>{
             let origin = [response.lat,response.lng];
