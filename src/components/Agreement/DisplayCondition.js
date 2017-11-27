@@ -7,7 +7,8 @@ import RadioToggle from './RadioToggle';
 import { Radio } from 'semantic-ui-react';
 import CheckAgree from './Toggled'
 
-import Delete from './Delete'
+import EditEx from './EditEx';
+import Delete from './Delete';
 
 
 
@@ -32,6 +33,8 @@ export default class DisplayCondition extends Component {
   
 
   render() {
+
+
     return (
       <div>
         {this.props.statements.map((condition) => (
@@ -43,6 +46,8 @@ export default class DisplayCondition extends Component {
                   tripId={condition.trip_id} 
                   id={condition.id} 
                   statement={condition.statement}/>
+
+
                 {/* <Delete 
                   onClick={ e => {
                     this.handleDelete(condition.trip_id, condition.id)
@@ -55,8 +60,16 @@ export default class DisplayCondition extends Component {
                 />
 
               </div>
-            :<CheckAgree user={this.props.user} tripId={condition.trip_id} condition={condition.id} 
-            id={condition.id}/>
+            :
+            // <CheckAgree user={this.props.user} tripId={condition.trip_id} condition={condition.id} 
+            // id={condition.id}/>
+
+            <EditEx
+            user={this.props.user} tripId={condition.trip_id} condition={condition.id} 
+            id={condition.id}         
+            
+            // find={api.findPassengerAgreement(condition.trip_id, condition.id, this.props.user)}    
+          />
             // <RadioToggle toggle user={this.props.user} tripId={condition.trip_id} condition={condition.id} 
             // id={condition.id} /> 
             }

@@ -109,14 +109,19 @@ export default {
         return axios.delete(encodedURI, req);
     },
 
-    passengerAgree: function(trip_id, agreement_id, user_id, req) {
+    findPassengerAgreement: function(trip_id, agreement_id, user_id) {
         const encodedURI = window.encodeURI        ("http://localhost:3000/api/agreements/"+trip_id+"/"+agreement_id+"/"+user_id);
-        return axios.post(encodedURI, req);
+        return axios.get(encodedURI)
+        .then(response => {
+            console.log("User info found ", response);
+        })
     },
-    updateAgree: function(trip_id, agreement_id, user_id, req) {
-        const encodedURI = window.encodeURI        ("http://localhost:3000/api/agreements/"+trip_id+"/"+agreement_id+"/"+user_id);
+
+    passengerAgree: function(trip_id, agreement_id, user_id, boolean, req) {
+        const encodedURI = window.encodeURI        ("http://localhost:3000/api/agreements/"+trip_id+"/"+agreement_id+"/"+user_id+"/"+boolean);
         return axios.put(encodedURI, req);
     }
+
 
 
 }
