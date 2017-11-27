@@ -25,6 +25,14 @@ userRouter.use('/:user_id/trip', userTrip);
 
 // userRouter.use(flash());
 
+userRouter.get('/', function(req, res, next) {
+  User.findAll()
+    .then(result => {
+        res.status(200).send(result);
+      })
+  .catch(next);
+});
+
 userRouter.post('/login', function(req, res, next) {
   // console.log(req.body.password);
   const password = req.body.password
