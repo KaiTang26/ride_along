@@ -121,13 +121,21 @@ export default class UserProfile extends Component {
       picture: "",
       email: "",
       drivers_license: "",
-      about: ""
+      about: "",
+      users:""
     }
   };
 
 // userTrips
 
   componentDidMount() {
+
+    api.getUsers()
+    .then(results =>
+      this.setState({
+        users: results
+      })
+    );
 
     (api.getReviews(this.props.match.params.id))
     .then(results =>
@@ -170,7 +178,7 @@ export default class UserProfile extends Component {
       <Profile>
 
         <ProfilePic />
-
+        {console.log(this.state)}
         {localStorage.getItem("user_id") == this.props.match.params.id?
 
           <Name>
@@ -178,9 +186,6 @@ export default class UserProfile extends Component {
           </Name>
         :
           <Name>
-            {console.log('state',this.state)}
-            {/* {console.log('user_id', localStorage.getItem("user_id")} */}
-            {console.log('params', this.props.match.params.id)}
             Welcome to {this.state.first_name}'s profile'!
           </Name>
         }
@@ -211,7 +216,7 @@ export default class UserProfile extends Component {
                 {this.state.trip?
                   <div>
                     <H3>Active Rides</H3>
-                    <ActiveRides rides={this.state.trip}  />
+                    <ActiveRides rides={this.state.trip} users={this.state.users.data}  />
                   </div>
                   : null}
               </LeftText>
@@ -222,7 +227,7 @@ export default class UserProfile extends Component {
                 {this.state.trip?
                   <div>
                     <H3>Completed Rides</H3>
-                    <CompletedRides param={this.props.match.params.id} rides={this.state.trip}  />
+                    <CompletedRides param={this.props.match.params.id} rides={this.state.trip} users={this.state.users.data}  />
                   </div>
                   : null}
               </LeftText>

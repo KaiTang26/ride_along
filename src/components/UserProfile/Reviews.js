@@ -34,6 +34,7 @@ export default class Reviews extends Component {
     <div>
       {this.props.reviews?
           <div>
+            {console.log(this.props)}
             {console.log(this.props.reviews)}
             {console.log(this.props.reviews[0].trip.reviews)}
             {this.props.reviews.map((key)=>
