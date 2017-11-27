@@ -5,6 +5,12 @@ import SearchResults from './SearchP';
 import api from '../utils/api';
 import { Route, Redirect } from 'react-router';
 import CalculateGeocode from '../Trip/Calculategeo.js';
+import Menu from '../Menu';
+
+
+const Container = styled.div`
+  margin-top: 65px;
+`;
 
 const Search = (props) => (
   <form onSubmit={props._handleSubmit}>
@@ -62,20 +68,22 @@ export default class Rides extends Component {
 
     return (
     <div>
-      <h1>Find a Ride</h1>
-      <br />
-      <br />
-      <CalculateGeocode updateAddress={this._handleLocationSearch}/>
-      <br /> 
+      <Menu />
+      <Container>
+        <h1>Find a Ride</h1>
+        <br />
+        <br />
+        <CalculateGeocode updateAddress={this._handleLocationSearch}/>
+        <br /> 
 
-      {this.state.showAll 
-        ? <Posts rides = {this.state.rides} />
-        : <div>
-         <SearchResults params={this.state}/> 
-          <Button onClick={this._handleAll}>Show All</Button>
-          </div>
-      }
-
+        {this.state.showAll 
+          ? <Posts rides = {this.state.rides} />
+          : <div>
+          <SearchResults params={this.state}/> 
+            <Button onClick={this._handleAll}>Show All</Button>
+            </div>
+        }
+      </Container>
     </div>
     );}
 

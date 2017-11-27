@@ -17,7 +17,7 @@ const Nav = styled.div`
 const Logotype = styled.h1`
   font-size: 150%;
   font-weight: bold;
-  margin: .85em;
+  margin: .85em !important;
   float: left;
   font-style: italic;
   color: ${gs.green};
