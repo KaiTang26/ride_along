@@ -108,6 +108,11 @@ export default class Trip extends Component {
         api.postTrip(id,tripInfor)
         .then((response)=>{
             if(response.status===200){
+
+
+
+
+                
                 browserHistory.push("/ride/"+response.data.id)
             }
 
