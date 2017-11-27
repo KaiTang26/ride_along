@@ -5,6 +5,7 @@ import TextField from 'material-ui/TextField';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
+import api from '../utils/api'
 
 const Form = styled.form`
   max-width: 800px;
@@ -38,9 +39,11 @@ const Button = styled(RaisedButton)`
 export default class Login extends Component {
   constructor(props) {
     super(props);
+// Need to change content to review_text so
+// the post works
     this.state = {
       rating: "",
-      content: "",
+      review_text: "",
       trip_id: this.props.trip_id,
       open: false
     }
@@ -60,6 +63,12 @@ export default class Login extends Component {
     });
   };
 
+  handleSubmit = () => {
+    this.handleClose();
+    api.postReview(this.state.trip_id, this.state)
+    .then()
+  }
+
   render() {
 
     const actions = [
@@ -72,7 +81,7 @@ export default class Login extends Component {
         label="Submit"
         primary={true}
         keyboardFocused={true}
-        onClick={this.handleClose}
+        onClick={this.handleSubmit}
       />,
     ];
 
@@ -90,8 +99,16 @@ export default class Login extends Component {
         >
 
         <Form>
-          <Input name="rating" floatingLabelText="Rating" type="text" value={this.state.rating} onChange={e => this.handleChange(e)}/>
-          <Input name="content" floatingLabelText="Review" type="textarea" value={this.state.content} onChange={e => this.handleChange(e)}/>
+          <Input name="rating"
+            floatingLabelText="Rating"
+            type="text"
+            value={this.state.rating}
+            onChange={e => this.handleChange(e)}/>
+          <Input name="review_text"
+            floatingLabelText="Review"
+            type="textarea"
+            value={this.state.review_text}
+            onChange={e => this.handleChange(e)}/>
         </Form>
 
         </Dialog>

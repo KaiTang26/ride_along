@@ -1,17 +1,32 @@
 import React, {Component} from 'react';
 import Message from './Message';
+import styled from 'styled-components';
+import gs from '../GlobalStyles';
+
+const Container = styled.div`
+  margin: 1em 0;
+`;
+const Header = styled.h2`
+  font-size: 75%;
+  letter-spacing: .5px;
+  font-weight: 900;
+  font-family: Lato;
+  text-transform: uppercase;
+  color: ${gs.golden};
+  border-bottom: 1px solid;
+`;
 
 class MessageList extends Component {
   render() {
     return (
-      <div className="message system">
+      <div>
+      <Header>Ride Chat</Header>
       <main className="messages">
-        {console.log(this.props.messages)}
         {this.props.messages.map((message, index) => (
             <Message key={index} content={message} userName={this.props.currentUser}/>
         ))}
       </main>
-    </div>
+      </div>
     );
   }
 }

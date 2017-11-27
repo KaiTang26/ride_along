@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import api from '../utils/api';
 // var apii = require('../utils/apii')
 
-
+import './overrides.css';
 import FrontHeader from '../Front/FrontHeader';
 import gs from '../GlobalStyles.js';
 
@@ -12,18 +12,20 @@ import gs from '../GlobalStyles.js';
 class App extends Component {
 
   render() {
-    const { className, ...props } = this.props;
+    // const { className, ...props } = this.props;
     return (
 
-        <div className={classnames('App', className)} {...props}>
+        // <div className={classnames('App', className)} {...props}>
+        <div>
           <FrontHeader />
 
           {/* <Link to='profile'><button>USER PROFILE PAGE</button></Link> */}
-          
+
           <Link to='/ride'><button>Find Ride</button></Link>
           <br />
-         
+
           <Link to='/trip'><button>Post Trip</button></Link>
+
           <br />
           <br />
 

@@ -2,12 +2,46 @@ import React, {Component} from 'react';
 import api from '../utils/api';
 import Map from './map.js';
 import ChatContainer from '../Chat/ChatContainer';
+import AddCondition from '../Agreement/AddCondition';
+import DisplayCondition from '../Agreement/DisplayCondition';
+import styled from 'styled-components';
+import gs from '../GlobalStyles.js';
+import Menu from '../Menu';
+
+const Container = styled.div`
+  padding-top: 65px;
+`;
+const Left = styled.div`
+  float: left;
+  width: 40%;
+  z-index: 1;
+  position: relative;
+`;
+const Right = styled.div`
+  float: right;
+  width: 60%;
+  position: fixed;
+  right: 0;
+
+`;
+
+const RideMap = (props) => {
+  // console.log(props.id.origin)
+  return(
+    <Map origin={props.id.origin} destination={props.id.destination} start_location={props.id.start_location} end_location={props.id.end_location}/>
+  )
+}
 
 const RideDetailUI = (props) => {
   // console.log(props.id.origin)
+  // const currentUser = localStorage.getItem("user_id");
+  const currentUser = 1;
+  let isDriver;
+  {currentUser === props.id.driver
+    ? isDriver = true
+    : isDriver = false}
 
   return(
-
     <div>
 
     <h1>Ride from {props.id.start_location} to {props.id.end_location} </h1>
@@ -22,8 +56,11 @@ const RideDetailUI = (props) => {
     <br></br>
     <p>Some text in paragraph form</p>
     <br></br>
-    <Map origin={props.id.origin} destination={props.id.destination} start_location={props.id.start_location} end_location={props.id.end_location}/>
-  </div>
+      <DisplayCondition user={currentUser} statements={props.id.agreements} isDriver={isDriver}/>
+      {isDriver
+        ? <AddCondition tripId={props.id.id}/>
+        : null}
+    </div>
   )
 }
 
@@ -36,7 +73,8 @@ class Details extends Component {
     .then(result => {
       let ride = result.data
       this.setState({ride})
-      console.log(ride);
+      // console.log(ride);
+      // console.log('Details', ride);
     })
 
   }
@@ -47,11 +85,30 @@ class Details extends Component {
   render() {
     return (
       <div>
-        {this.state? <RideDetailUI id={this.state.ride} />
-          : <h1>Loading </h1>}
+        <Menu/>
+        <Container>
+          <Left>
+          {this.state?
+              <div>
+                <RideDetailUI id={this.state.ride} />
+                <ChatContainer id={this.state.ride} />
+              </div>
+              :"" }
+          </Left>
 
-          {this.state? <ChatContainer id={this.state.ride} />
+          <Right>
+
+
+          {/* {this.state? <RideDetailUI id={this.state.ride} />
             : <h1>Loading </h1>}
+            {this.state? <ChatContainer id={this.state.ride} />
+              : <h1>Loading </h1>} */}
+          {this.state? 
+          <RideMap id={this.state.ride} />
+            : ""}            
+
+          </Right>
+        </Container>
       </div>
   )}
 }

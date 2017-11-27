@@ -8,8 +8,10 @@ import api from '../utils/api';
 import Menu from '../Menu';
 import Road from './cover.jpg';
 
-import ProfileRides from './ProfileRides'
+import ActiveRides from './ActiveRides'
+import CompletedRides from './CompletedRides'
 import EditProfile from './EditProfile';
+import Reviews from './Reviews';
 import UserPic from './Bill.jpg';
 
 const ProfilePic = styled.div`
@@ -94,14 +96,16 @@ const EditButton = styled.button`
 
 `;
 //
-// function hasRides(props) {
-//   if () {
-//     return <profileRides rides={this.state.trip}/>;
+// function HasRides(props) {
+//   if (true) {
+//     console.log("has rides");
+//     return <profileRides rides={props}/>;
 //   }
 //   console.log("no rides");
 //   return null;
 // }
 
+const user_id = localStorage.getItem("user_id");
 
 export default class UserProfile extends Component {
 
@@ -121,19 +125,37 @@ export default class UserProfile extends Component {
 // userTrips
 
   componentDidMount() {
-    const user_id = localStorage.getItem("user_id");
-    (api.userTrips(user_id))
+
+    (api.getReviews(this.props.match.params.id))
     .then(results =>
       this.setState({
+        reviews:results
+      })
+    );
+
+    // (api.averageRating(this.props.match.params.id))
+    // .then(results =>
+    //   this.setState({
+    //     reviews:results
+    //   })
+    // );
+
+    (api.userTrips(this.props.match.params.id))
+    .then(results =>
+      this.setState({
+        id: results.data.id,
         first_name: results.data.first_name,
         last_name: results.data.last_name,
         picture: results.data.picture,
         email: results.data.email,
         drivers_license: results.data.drivers_license,
         about: results.data.about,
-        trip: results.data.user_trips
+        trip: results.data.user_trips,
       })
     );
+
+
+
   }
 
   render() {
@@ -146,17 +168,27 @@ export default class UserProfile extends Component {
 
         <ProfilePic />
 
-        <Name>
-          Hello {this.state.first_name}!
-          {console.log(this.state)}
-        </Name>
+        {user_id == this.props.match.params.id?
+
+          <Name>
+            Hello {this.state.first_name}!
+          </Name>
+        :
+          <Name>
+            Welcome to {this.state.first_name}'s profile'!
+          </Name>
+        }
 
         <Info>
           <Left>
 
+          {user_id == this.props.match.params.id?
             <Section>
               <EditProfile info={this.state}/>
             </Section>
+          :
+          <div></div>
+          }
 
             <Section>
               <H3>Last Login</H3>
@@ -169,16 +201,25 @@ export default class UserProfile extends Component {
             </Section>
 
             <Section>
-              <H3>Active Rides</H3>
               <LeftText>
-                {this.state.trip? <ProfileRides rides={this.state.trip}  />
+                {this.state.trip?
+                  <div>
+                    <H3>Active Rides</H3>
+                    <ActiveRides rides={this.state.trip}  />
+                  </div>
                   : <h1>Loading </h1>}
               </LeftText>
             </Section>
 
             <Section>
-              <H3>Completed Rides</H3>
-              <LeftText>4 past rides</LeftText>
+              <LeftText>
+                {this.state.trip?
+                  <div>
+                    <H3>Completed Rides</H3>
+                    <CompletedRides param={this.props.match.params.id} rides={this.state.trip}  />
+                  </div>
+                  : <h1>Loading </h1>}
+              </LeftText>
             </Section>
 
           </Left>
@@ -191,8 +232,12 @@ export default class UserProfile extends Component {
 
 
             <Section>
-              <H3>Testimonials</H3>
-              <Text>Anna: Bill is a really funny ride!</Text>
+              <H3>Reviews</H3>
+              {this.state?
+                <div>
+                  <Reviews reviews={this.state.reviews}/>
+                </div>
+                : <h1>Loading </h1>}
             </Section>
           </Right>
         </Info>

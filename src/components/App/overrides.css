@@ -1,0 +1,6 @@
+.ui.positive.button:focus, .ui.positive.buttons .button:focus,
+.ui.positive.button:hover, .ui.positive.buttons .button:hover,
+.ui.positive.button, .ui.positive.buttons .button,
+.ui.negative.button:focus, .ui.negative.buttons .button:focus {
+  background-color: grey ;
+}

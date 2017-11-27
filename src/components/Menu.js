@@ -11,6 +11,7 @@ const Nav = styled.div`
   top: 0;
   width: 100%;
   background: rgba(255,255,255, .97);
+  z-index: 100;
 `;
 
 const Logotype = styled.h1`

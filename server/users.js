@@ -1,9 +1,12 @@
 const db = require('../db'); //this is required
 const User = require('../db/models/user');
-const userTrip = require('./userTrip');
-const userTripModel = require('../db/models/user_trip');
 const trip = require('../db/models/trip');
+const userTripModel = require('../db/models/user_trip');
+const review = require('../db/models/review')
+
+const userTrip = require('./userTrip');
 const userRouter = require('express').Router();
+const Sequelize = require('sequelize');
 
 const cookieSession = require('cookie-session')
 const bcrypt = require('bcrypt');
@@ -22,6 +25,14 @@ userRouter.use('/:user_id/trip', userTrip);
 
 // userRouter.use(flash());
 
+userRouter.get('/', function(req, res, next) {
+  User.findAll()
+    .then(result => {
+        res.status(200).send(result);
+      })
+  .catch(next);
+});
+
 userRouter.post('/login', function(req, res, next) {
   // console.log(req.body.password);
   const password = req.body.password
@@ -38,7 +49,7 @@ userRouter.post('/login', function(req, res, next) {
         }else{
           res.status(200).send(null);
         }
-        
+
       }else{
         res.status(200).send(null);
       }
@@ -73,7 +84,7 @@ userRouter.post('/', function(req, res, next) {
             drivers_license: req.body.drivers_license,
             about: req.body.about
           })
-          .then(user => { 
+          .then(user => {
             // req.session.user_id=user.id;
             // req.flash('success', {msg: 'Sign Up Success'})
             console.log(user.id);
@@ -83,7 +94,7 @@ userRouter.post('/', function(req, res, next) {
         }
     // res.status(200).send(result);
       })
-      .catch(next);  
+      .catch(next);
 });
 
   // console.log(req.body)
@@ -124,6 +135,71 @@ userRouter.get('/:id/trips', function(req, res, next){
     })
     .catch(next);
 })
+
+userRouter.get('/:id/reviews', function(req, res, next){
+  User.findOne({
+      where:{
+        id:req.params.id
+      },
+      include: [
+        {
+          model: userTripModel,
+          where: { user_id: req.params.id },
+          attributes:['trip_id'],
+          include: {
+            model: trip,
+            where: {driver: req.params.id},
+            attributes:['id','date','time','start_location','end_location','driver'],
+            include:{
+              model: review
+            }
+          }
+        }
+      ]
+    })
+    .then(result => {
+      res.status(200).send(result);
+    })
+    .catch(next);
+})
+
+
+// Don't ge this problem
+// 
+// // Second stab
+//
+// userRouter.get('/:id/rating', function(req, res, next){
+//   User.findOne({
+//     where: { user_id: req.params.id },
+//     attributes: ['review.user_id', [Sequelize.fn("AVG", Sequelize.col('review.rating')), 'rating_Count']],
+//     group: 'review.user_id'
+//
+// // First attempt
+//
+//     // order: [[Sequelize.fn('AVG', Sequelize.col('user'))]]
+//       // where:{
+//       //   id:req.params.id
+//       // },
+//       // include: [
+//       //   {
+//       //     model: userTripModel,
+//       //     where: { user_id: req.params.id },
+//       //     include: {
+//       //       model: trip,
+//       //       where: {driver: req.params.id},
+//       //       include:{
+//       //         model: review,
+//       //         attributes: [[Sequelize.fn('COUNT', Sequelize.col('review.rating')), 'no_ratings']]
+//       //       }
+//       //     }
+//       //   }
+//       // ]
+//     })
+//     .then(result => {
+//       res.status(200).send(result);
+//     })
+//     .catch(next);
+// })
 
 
 
