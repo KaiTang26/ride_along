@@ -9,8 +9,7 @@ import gs from '../GlobalStyles.js';
 import Menu from '../Menu';
 
 const Container = styled.div`
-  margin-top: 65px;
-  margin-bottom: -65px;
+  padding-top: 65px;
 `;
 const Left = styled.div`
   float: left;
