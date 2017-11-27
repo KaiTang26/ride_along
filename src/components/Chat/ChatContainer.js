@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import io from 'socket.io-client';
+
 import ChatBar from './ChatBar';
 import Message from './Message';
 import MessageList from './MessageList';
@@ -11,14 +12,15 @@ const Container = styled.div`
   font-family: Lato;
 `;
 
+const user_id = localStorage.getItem("user_id");
+
 class ChatContainer extends Component {
 
   constructor(props) {
     super(props)
-    console.log("in props");
     this.state = {
-      currentUser: 'Seb',
-      messages: ["What's up", "very cool"],
+      currentUser: user_id,
+      messages: [],
       trip: ""
     }
   }
@@ -54,7 +56,6 @@ class ChatContainer extends Component {
     return (
 
       <Container>
-        {console.log(this.state)}
         <MessageList currentUser = {this.state.currentUser}
           messages = {this.state.messages} type = {this.state.type}/>
         <ChatBar currentUser = {this.state.currentUser} currentMessage = {this.state.messages}

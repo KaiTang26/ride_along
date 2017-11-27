@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import styled from 'styled-components';
 import gs from '../GlobalStyles.js';
 import UserPic from '../UserProfile/Bill.jpg';
+import api from '../utils/api';
 
+let current = new Date();
 
 const ChatMessage = styled.div`
   overflow: hidden;
@@ -29,15 +31,28 @@ const Username = styled.h3`
 
 console.log(this.props);
 class Message extends Component {
+
+  componentDidMount() {
+    (api.userInfo(this.props.userName))
+    .then(results =>
+      this.setState({
+        user:results.data
+      }),
+    );
+  }
+
   render() {
       return (
 
         <ChatMessage>
           <ProfilePic />
-          <Content>
-            <Username>{this.props.userName}</Username>
-            <div className="message-content">{this.props.content}</div>
-          </Content>
+          {this.state?
+            <Content>
+              <Username>{this.state.user.first_name}</Username>
+              <div className="message-content">{this.props.content}</div>
+            </Content>
+          :null
+          }
         </ChatMessage>
 
       );
