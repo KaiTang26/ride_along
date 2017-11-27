@@ -25,6 +25,12 @@ const seedTrips = () => db.Promise.map([
             [43.653226, -76.4859544],
             [44.2311717, -76.4859544],
             [44.2311717, -79.3831843] ],
+            direction: 2, distance:'265 km', duration:'2 hours 42 mins'},
+  {date: new Date(2017, 6, 04), time: `18:45:21 GMT`, start_location: "Kingston", end_location: "Toronto", passengers: 3, origin:[44.2311717, -76.4859544], destination:[43.653226, -79.3831843] , price:25.30, description:'good trip pls join us', driver:4,
+  polygon:[ [43.653226, -79.3831843],
+            [43.653226, -76.4859544],
+            [44.2311717, -76.4859544],
+            [44.2311717, -79.3831843] ],
             direction: 2, distance:'265 km', duration:'2 hours 42 mins'}
 ], trip => db.model('trips').create(trip));
 
@@ -46,6 +52,7 @@ const seedUserTrips = () => db.Promise.map([
   {user_id: 4, trip_id: 2},
   {user_id: 4, trip_id: 3},
   {user_id: 4, trip_id: 4}
+  
 ], user_trip => db.model('user_trips').create(user_trip));
 const seedAgreements = () => db.Promise.map([
   {statement: "No food or drinks in the car", trip_id:1}
@@ -58,10 +65,10 @@ const seedAgreements = () => db.Promise.map([
    .then(users => console.log(`Seeded ${users.length} users OK`))
    .then(seedTrips)
    .then(trips => console.log(`Seeded ${trips.length} trips OK`))
-   .then(seedReviews)
-   .then(reviews => console.log(`Seeded ${reviews.length} reviews OK`))
    .then(seedUserTrips)
    .then(userTrip => console.log(`Seeded ${userTrip.length} trips OK`))
+   .then(seedReviews)
+   .then(reviews => console.log(`Seeded ${reviews.length} reviews OK`))
    .then(seedAgreements)
    .then(agreements => console.log(`Seeded ${agreements.length} agreements OK`))   
    .catch(error => console.error(error))
