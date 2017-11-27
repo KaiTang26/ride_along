@@ -126,10 +126,40 @@ export default {
 
     updateUserInfo: function(user_id, req){
         const encodedURI = window.encodeURI("http://localhost:3000/api/users/"+user_id);
-        return axios.post(encodedURI, req)
+        return axios.put(encodedURI, req)
         .then(response => {
             console.log("User info updated ", response);
         })
+    },
+
+    addCondition: function(trip_id, req) {
+        const encodedURI = window.encodeURI        ("http://localhost:3000/api/agreements/ride/"+trip_id);
+        return axios.post(encodedURI, req);
+    },
+
+    editCondition: function(trip_id, id, req) {
+        const encodedURI = window.encodeURI        ("http://localhost:3000/api/agreements/ride/"+trip_id+"/"+id);
+        return axios.put(encodedURI, req);
+    },
+
+    deleteCondition: function(trip_id, id, req) {
+        const encodedURI = window.encodeURI        ("http://localhost:3000/api/agreements/ride/"+trip_id+"/"+id);
+        return axios.delete(encodedURI, req);
+    },
+
+    findPassengerAgreement: function(trip_id, agreement_id, user_id) {
+        const encodedURI = window.encodeURI        ("http://localhost:3000/api/agreements/"+trip_id+"/"+agreement_id+"/"+user_id);
+        return axios.get(encodedURI)
+        .then(response => {
+            console.log("User info found ", response);
+        })
+    },
+
+    passengerAgree: function(trip_id, agreement_id, user_id, boolean, req) {
+        const encodedURI = window.encodeURI        ("http://localhost:3000/api/agreements/"+trip_id+"/"+agreement_id+"/"+user_id+"/"+boolean);
+        return axios.put(encodedURI, req);
     }
+
+
 
 }
