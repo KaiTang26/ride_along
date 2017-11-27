@@ -32,15 +32,62 @@ const RideMap = (props) => {
   )
 }
 
+class Jointrip extends Component{
+
+  constructor(props){
+    super(props);
+  }
+
+  render(){
+    return(
+      <div>
+
+        <form onSubmit={this._submitForm.bind(this)}>
+
+          <button type="submit" >
+            Join Trip
+          </button>
+
+        </form>
+
+      </div>
+    )
+  }
+
+  _submitForm(event){
+    event.preventDefault();
+    const user_id = Number(localStorage.getItem("user_id"))
+    const trip_id = this.props.id.id
+
+    console.log(user_id)
+    console.log(trip_id)
+    // const tripInfor = this.state;
+    // api.postTrip(id,tripInfor)
+    // .then((response)=>{
+    //     if(response.status===200){
+
+    //         browserHistory.push("/ride/"+response.data.id)
+    //     }
+
+    //     console.log(response.data)
+
+
+    // })
+  }
+
+}
+
+
 const RideDetailUI = (props) => {
   // console.log(props.id.origin)
   // const currentUser = localStorage.getItem("user_id");
-  const currentUser = 1;
-  let isDriver;
+  const currentUser = Number(localStorage.getItem("user_id"));
+  let isDriver=false;
+  
   {currentUser === props.id.driver
     ? isDriver = true
     : isDriver = false}
-
+    console.log(props.id.id)
   return(
     <div>
 
@@ -92,6 +139,7 @@ class Details extends Component {
               <div>
                 <RideDetailUI id={this.state.ride} />
                 <ChatContainer id={this.state.ride} />
+                <Jointrip id={this.state.ride}/>
               </div>
               :"" }
           </Left>
