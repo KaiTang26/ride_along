@@ -9,10 +9,10 @@ const Container = styled.div`
 const Header = styled.h2`
   font-size: 75%;
   letter-spacing: .5px;
-  font-weight: 900;
+  font-weight: bold;
   font-family: Lato;
   text-transform: uppercase;
-  color: ${gs.golden};
+  color: ${gs.coral};
   border-bottom: 1px solid;
 `;
 

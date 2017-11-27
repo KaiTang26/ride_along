@@ -7,7 +7,7 @@ import styled from 'styled-components';
 import gs from '../GlobalStyles';
 
 const Container = styled.div`
-  margin: 1em;
+  margin: 1em 1.5em 1em 0;
   font-family: Lato;
 `;
 

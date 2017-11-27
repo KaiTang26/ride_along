@@ -9,7 +9,7 @@ import gs from '../GlobalStyles.js';
 import Menu from '../Menu';
 
 const Container = styled.div`
-  padding-top: 65px;
+  padding-top: 60px;
 `;
 const Left = styled.div`
   float: left;
@@ -28,10 +28,11 @@ const Right = styled.div`
 `;
 
 const H1 = styled.h1`
-  font-weight: bold;
+  font-weight: 900;
+  color: #444;
   // color: ${gs.blue};
-  font-size: 110%;
-  margin: 1em 0 !important;
+  font-size: 111%;
+  margin: 2em 0 1.5em !important;
 
 `;
 
@@ -41,9 +42,10 @@ const Label = styled.p`
   font-family: Lato;
   text-transform: uppercase;
   margin-bottom: .85em;
-  color: ${gs.blue};
+  color: ${gs.golden};
   display: inline-block;
-  margin-right: .5em;
+  margin-right: .25em;
+  font-weight: bold;
 `;
  const P = styled.p`
   display: inline-block;

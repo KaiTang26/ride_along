@@ -6,18 +6,20 @@ import UserPic from './UserProfile/Bill.jpg';
 
 const Nav = styled.div`
   overflow: hidden;
-  height: 65px;
+  height: 60px;
   position: fixed;
   top: 0;
   width: 100%;
   background: rgba(255,255,255, .97);
   z-index: 100;
+  box-shadow: 0px 5px 6px -6px #9c9b9b;
+  box-shadow: 0px 0px 8px 0px #c3c2c2;
 `;
 
 const Logotype = styled.h1`
   font-size: 150%;
   font-weight: bold;
-  margin: .85em !important;
+  margin: .75em .85em !important;
   float: left;
   font-style: italic;
   color: ${gs.green};
@@ -30,10 +32,11 @@ const UserLinks = styled.div`
 
 const Li = styled.div`
   display: inline-block;
+  font-weight: bold;
+  letter-spacing: .1px;
   font-size: 90%;
-  font-family: Lato;
   vertical-align: top;
-  padding: 1.7em 1em;
+  padding: 1.5em 1em;
 `;
 
 const ProfilePic = styled.div`
@@ -42,7 +45,7 @@ const ProfilePic = styled.div`
   height: 45px;
   border-radius: 50%;
   background-size: cover;
-  margin: .66em;
+  margin: .5em;
   display: inline-block;
 `;
 
