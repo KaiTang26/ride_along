@@ -9,6 +9,7 @@ import Menu from '../Menu';
 import gs from '../GlobalStyles.js';
 import road from './road.gif';
 import roadpic from './road2.jpg';
+import { Icon } from 'semantic-ui-react';
 
 const Background = styled.div`
   // background: url(${roadpic}) no-repeat;
@@ -24,7 +25,7 @@ const Container = styled.div`
   padding: 3em;
   overflow: hidden;
   max-width: 900px;
-  margin: 0 auto;
+  margin: 0 auto 4em;
   background: white;
   min-height: 900px;
 `;
@@ -80,6 +81,42 @@ const Button = styled.button`
     border-top: 1px solid white;
   }
 `;
+
+const Footer = styled.div`
+background: ${gs.green};
+color: white;
+font-family: Merriweather;
+font-weight: bold;
+width: 100%;
+padding: 1.15em 1.5em;
+overflow: hidden;
+position: relative;
+z-index: 6;
+text-align: center;
+>ul {
+  margin: .8em 0 1.15em; 
+  font-family: Lato;}
+>ul li {
+  display: inline-block;
+  margin: 0.5em 1em;
+  font-style: italic;}
+  >li:hover {
+    // color: $green;
+    cursor: pointer;}
+>p {
+  font-size: 90%}
+`
+const A = styled.a` 
+margin: 0 .25em 0 .5em;
+>a {
+color: ${gs.green} !important;
+}
+// font-style: italic;
+`;
+
+const Iconss = styled(Icon)`
+margin: 0.25em 1em  0 !important;
+`
 const Search = (props) => (
   <form onSubmit={props._handleSubmit}>
     <label>
@@ -160,6 +197,35 @@ export default class Rides extends Component {
 
         </Bottom>
       </Container>
+                
+{/* <Footer>
+  <Iconss  name='facebook square ' size='large'/>
+  <Iconss  name='twitter ' size='large'/>
+  <Iconss  name='instagram' size='large'/>
+  <Iconss  name='snapchat ' size='large'/>
+  <ul>
+    <li>
+        FAQ
+    </li>
+    <li>
+        Contact
+    </li>
+    <li>
+      T&Cs
+    </li>
+    <li>
+        Press
+    </li>    
+    <li>
+        Jobs
+    </li>
+    <li>
+        Privacy
+    </li>
+  </ul>
+
+  <p>© 2017  Ride Along Inc.</p>
+</Footer>  */}
     </Background>
     );}
 
