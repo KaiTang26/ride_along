@@ -186,7 +186,7 @@ export default class UserProfile extends Component {
           </Name>
         :
           <Name>
-            Welcome to {this.state.first_name}'s profile'!
+            {this.state.first_name}
           </Name>
         }
 
@@ -211,28 +211,7 @@ export default class UserProfile extends Component {
               <LeftText>95%</LeftText>
             </Section>
 
-            <Section>
-              <LeftText>
-                {this.state.trip?
-                  <div>
-                    <H3>Active Rides</H3>
-                    <ActiveRides rides={this.state.trip} users={this.state.users.data}  />
-                  </div>
-                  : null}
-              </LeftText>
-            </Section>
-
-            <Section>
-              <LeftText>
-                {this.state.trip?
-                  <div>
-                    <H3>Completed Rides</H3>
-                    <CompletedRides param={this.props.match.params.id} rides={this.state.trip} users={this.state.users.data}  />
-                  </div>
-                  : null}
-              </LeftText>
-            </Section>
-
+          
           </Left>
 
           <Right>
@@ -250,6 +229,30 @@ export default class UserProfile extends Component {
                 </div>
                 : null}
             </Section>
+
+            <Section>
+              
+                {this.state.trip?
+                  <div>
+                    <H3>Active Rides</H3>
+                    <ActiveRides rides={this.state.trip} users={this.state.users.data}  />
+                  </div>
+                  : null}
+              
+            </Section>
+
+            <Section>
+              
+                {this.state.trip?
+                  <div>
+                    <H3>Completed Rides</H3>
+                    <CompletedRides param={this.props.match.params.id} rides={this.state.trip} users={this.state.users.data}  />
+                  </div>
+                  : null}
+              
+            </Section>
+
+
           </Right>
         </Info>
       </Profile>

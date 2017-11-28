@@ -65,3 +65,7 @@ h1, h2, h3, h4, h5 {
 	font-family: Merriweather, serif;
 }
 
+.ui.star.rating .active.icon {
+	color: #ea9e1a !important;
+	text-shadow: none !important;
+}

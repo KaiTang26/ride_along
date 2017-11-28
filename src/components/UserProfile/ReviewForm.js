@@ -20,7 +20,7 @@ const Button = styled(RaisedButton)`
   background-color: transparent !important;
   box-shadow: none !important;
   font-family: Lato !important;
-  float: right;
+  
   > button {
     background-color: transparent !important;
     color: white !important;
@@ -28,7 +28,7 @@ const Button = styled(RaisedButton)`
     font-family: Lato !important;
   }
   > button div div span {
-    color: black !important;
+    color: ${gs.green} !important;
     text-transform: none !important;
     font-size: 1rem !important;
   }
