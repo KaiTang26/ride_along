@@ -8,6 +8,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import api from './utils/api';
 // import { Redirect } from 'react-router-dom';
 import Message from './Message.js';
+import browserHistory from '../history';
 
 const Form = styled.form`
   max-width: 800px;
@@ -86,6 +87,10 @@ export default class Register extends Component {
     });
   };
 
+  handleProfile = e => {
+    browserHistory.push("/profile/"+localStorage.getItem("user_id"))
+  };
+
   render() {
     
     const actions = [
@@ -105,7 +110,10 @@ export default class Register extends Component {
     return (
 
       <div>
-        <Button label="Register" onClick={this.handleOpen} />
+        { localStorage.getItem("user_id")?
+          <Button label="Profile" onClick={this.handleProfile} />:
+          <Button label="Register" onClick={this.handleOpen} />}
+        
         
         <Dialog
           title="Register to start your trip!"
