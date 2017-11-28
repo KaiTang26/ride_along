@@ -11,11 +11,11 @@ const Container = styled.div`
 const Header = styled.h2`
   font-size: 75%;
   letter-spacing: .5px;
-  font-weight: 900;
+  font-weight: bold;
   font-family: Lato;
   text-transform: uppercase;
-  color: ${gs.golden};
-  border-bottom: 1px solid;
+  color: ${gs.coral};
+  border-bottom: 2px solid;
 `;
 
 const ProfilePic = styled.div`
@@ -34,6 +34,8 @@ const Content = styled.div`
 `;
 const Username = styled.h3`
   font-weight: bold;
+  font-style: italic;
+  color: ${gs.blue};
   margin-bottom: .2em;
 `;
 
