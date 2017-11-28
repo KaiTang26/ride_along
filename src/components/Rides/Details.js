@@ -55,7 +55,7 @@ const RideDetailUI = (props) => {
     <h2>{props.driver.first_name}</h2>
     <img src={`/images/${props.driver.picture}`}/>
     <br></br>
-    <h3>{props.id.driver} is looking to have {props.id.passengers} passengers join the ride.</h3>
+    <h3>{props.driver.first_name} is looking to have {props.id.passengers} passengers join the ride.</h3>
     <br></br>
     <p>Some text in paragraph form</p>
     <br></br>
