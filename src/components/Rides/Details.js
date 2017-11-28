@@ -18,6 +18,7 @@ const Container = styled.div`
 const Left = styled.div`
   float: left;
   width: 40%;
+  padding: 0 1.5em;
   z-index: 1;
   position: relative;
 `;
@@ -139,8 +140,29 @@ const Icons = styled(Icon)`
 vertical-align: top !important;
 margin-right: .55em !important;
 `
+const Driver = styled.h2`
+// display: inline-block;
+font-weight: bold;
+font-size: 120%;
+font-style: italic;
+`;
 
+const IMG = styled.img`
+  width: 100px;
+  margin-top: .65em;
+`;
 
+const RideContainer = styled.div`
+  overflow: hidden;
+`;
+
+const Leftside = styled.div`
+  float: left;
+  width: 140px;
+`;
+const Rightside = styled.div`
+  float: left;
+`;
 const RideDetailUI = (props) => {
   // console.log(props.id.origin)
   // const currentUser = localStorage.getItem("user_id");
@@ -155,15 +177,17 @@ const RideDetailUI = (props) => {
     <div>
     <H1>{props.id.start_location} to {props.id.end_location} </H1>
 
-
+    <RideContainer>
+    <Leftside>
+    <IMG src={`/images/Bill.jpg`}/>
     <Field>
-      <Label>Name:</Label> <P>{props.id.driver}></P>
-      <div>Image placeholder</div>
-      <h2>{props.driver.first_name}</h2>
-      <img src={`/images/Bill.jpg`}/>
+     
+      <Label>Driver:</Label> 
+      <Driver>{props.driver.first_name}</Driver>
+      
     </Field>
-
-
+    </Leftside>
+    <Rightside>
     <Field>
       <Label>
       <Icons fitted name='calendar' size='large'/>
@@ -202,6 +226,8 @@ const RideDetailUI = (props) => {
         ? <AddCondition tripId={props.id.id}/>
         : null}
       </Field>
+      </Rightside>
+      </RideContainer>
     </div>
   )
 }
