@@ -157,10 +157,9 @@ const RideDetailUI = (props) => {
 
 
     <Field>
-      <Label>Name:</Label> <P>{props.id.driver}></P>
-      <div>Image placeholder</div>
+      <Label>Name:</Label> <P>{props.driver.first_name}</P>
       <h2>{props.driver.first_name}</h2>
-      <img src={`/images/Bill.jpg`}/>
+      <img src={'/images/'+props.driver.picture}/>
     </Field>
 
 
