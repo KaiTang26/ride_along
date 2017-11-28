@@ -36,11 +36,6 @@ const RideMap = (props) => {
 const RideDetailUI = (props) => {
 
 
-
-
-  // console.log(props.id.origin)
-  // const currentUser = localStorage.getItem("user_id");
-
 // const currentUser = 1;
   let isDriver;
   {currentUser === props.id.driver
@@ -56,6 +51,7 @@ const RideDetailUI = (props) => {
     <h2>Total duration: {props.id.duration}</h2>
     <h2>Leaving {props.id.date} at {props.id.time}</h2>
     <br></br>
+    {/* <getDriverName/> */}
     <h2>Name: {props.id.driver}</h2>
     <div>Image placeholder</div>
     <br></br>
@@ -76,28 +72,24 @@ class Details extends Component {
     super(props);
     this.state = {
       users: "",
-      driver: "",
       ride:{driver:0}
     };
 
     api.getRide(this.props.match.params.id)
     .then(result => {
       let ride = result.data
-      this.setState({ride})
-    })
-    .then(api.userInfo(this.state.ride.driver)
+      // alert(result.data.driver)
+      // this.setState({ride})
+      api.userInfo(result.data.driver)
       .then(results => {
-        console.log('results', results)
         this.setState({
-          users:results
+          ride:results
         })
       })
-    )
-
-  }
-
-  componentDidMount() {
-
+    })
+    // .then(result => {
+    //
+    // })
   }
 
 
@@ -109,25 +101,19 @@ class Details extends Component {
         <Menu/>
         <Container>
           <Left>
-          {this.state?
+            {console.log(this.state)}
+          {/* {this.state?
               <div>
-                {console.log(this.state)}
-                <RideDetailUI id={this.state.ride}/>
+                <RideDetailUI id={this.state.ride} />
                 <ChatContainer id={this.state.ride} />
               </div>
-              :"" }
+              :"" } */}
           </Left>
 
           <Right>
-
-
-          {/* {this.state? <RideDetailUI id={this.state.ride} />
-            : <h1>Loading </h1>}
-            {this.state? <ChatContainer id={this.state.ride} />
-              : <h1>Loading </h1>} */}
-          {this.state?
+          {/* {this.state.ride?
           <RideMap id={this.state.ride} />
-            : ""}
+            : ""} */}
 
           </Right>
         </Container>
