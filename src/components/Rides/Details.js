@@ -7,13 +7,10 @@ import DisplayCondition from '../Agreement/DisplayCondition';
 import styled from 'styled-components';
 import gs from '../GlobalStyles.js';
 import Menu from '../Menu';
-<<<<<<< HEAD
 import { Icon } from 'semantic-ui-react';
-=======
 import { join } from 'path';
 import Message from './Message.js';
 
->>>>>>> 3c01509cb2e79a2e8ae7f88a50046c3860bcbe71
 
 const Container = styled.div`
   padding-top: 65px;
