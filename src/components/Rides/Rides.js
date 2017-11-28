@@ -5,7 +5,118 @@ import SearchResults from './SearchP';
 import api from '../utils/api';
 import { Route, Redirect } from 'react-router';
 import CalculateGeocode from '../Trip/Calculategeo.js';
+import Menu from '../Menu';
+import gs from '../GlobalStyles.js';
+import road from './road.gif';
+import roadpic from './road2.jpg';
+import { Icon } from 'semantic-ui-react';
 
+const Background = styled.div`
+  // background: url(${roadpic}) no-repeat;
+  // background-size: cover;
+  background: #dfe7e3;
+  width: 100%;
+  height: auto;
+  // padding-bottom: 13em;
+`;
+
+const Container = styled.div`
+  margin-top: 60px;
+  padding: 3em;
+  overflow: hidden;
+  max-width: 900px;
+  margin: 0 auto 4em;
+  background: white;
+  min-height: 900px;
+`;
+
+const Left = styled.div`
+  float: left;
+  width: 55%;
+`;
+
+const Right = styled.div`
+// background: url(${roadpic}) no-repeat;
+// background-size: cover;
+  background: url(${road}) no-repeat;
+  width: 45%;
+  height: 400px;
+  background-position: right;
+  position: absolute;
+  right: -3.5em;
+`;
+const Find = styled.div`
+  overflow: hidden;
+  position: relative;
+  min-height: 400px;
+  padding-top: 1em;
+`;
+const H1 = styled.h1`
+  font-weight: 900;
+  // color: #444;
+  // color: ${gs.red};
+  font-size: 150%;
+  margin: 3em 0 1.5em !important;
+`;
+const Bottom = styled.div`
+  overflow: hidden;
+  position: relative;
+  min-height: 400px;
+`;
+const Button = styled.button`
+  margin-top: 4em;
+  background: ${gs.green};
+  color: white;
+  border: none;
+  font-family: Lato;
+  font-size: 75%;
+  padding: .75em .8em;
+  border-radius: 5px;
+  font-weight: bold;
+  border-bottom: 1px solid #155b40;
+  &:hover {
+    cursor: pointer;
+    background: #239a6c;
+    border-bottom: #155b40;
+    border-top: 1px solid white;
+  }
+`;
+
+const Footer = styled.div`
+background: ${gs.green};
+color: white;
+font-family: Merriweather;
+font-weight: bold;
+width: 100%;
+padding: 1.15em 1.5em;
+overflow: hidden;
+position: relative;
+z-index: 6;
+text-align: center;
+>ul {
+  margin: .8em 0 1.15em; 
+  font-family: Lato;}
+>ul li {
+  display: inline-block;
+  margin: 0.5em 1em;
+  font-style: italic;}
+  >li:hover {
+    // color: $green;
+    cursor: pointer;}
+>p {
+  font-size: 90%}
+`
+const A = styled.a` 
+margin: 0 .25em 0 .5em;
+>a {
+color: ${gs.green} !important;
+}
+// font-style: italic;
+`;
+
+const Iconss = styled(Icon)`
+margin: 0.25em 1em  0 !important;
+`
 const Search = (props) => (
   <form onSubmit={props._handleSubmit}>
     <label>
@@ -57,30 +168,69 @@ export default class Rides extends Component {
   render () {
     const { className, ...props } = this.props;
 
-    const Button = styled.button`
-    `;
 
     return (
-    <div>
-      <h1>Find a Ride</h1>
-      <br />
-      <br />
-      <CalculateGeocode updateAddress={this._handleLocationSearch}/>
-      <br /> 
+    <Background>
+      <Menu />
+      <Container>
 
-      {this.state.showAll 
-        ? <Posts rides = {this.state.rides} />
-        : <div>
-         <SearchResults params={this.state}/> 
-          <Button onClick={this._handleAll}>Show All</Button>
-          </div>
-      }
+        <Find>
+          <Left>
 
-    </div>
+          <H1>Find a Ride</H1>          
+          <CalculateGeocode updateAddress={this._handleLocationSearch}/>        </Left>
+
+        <Right>
+            {/* image */}
+        </Right>
+
+          </Find>
+        <Bottom>
+          {this.state.showAll 
+            ? <Posts rides = {this.state.rides} />
+            : <div>
+            <SearchResults params={this.state}/> 
+              <Button onClick={this._handleAll}>Show All</Button>
+              </div>
+          }
+         
+
+        </Bottom>
+      </Container>
+                
+{/* <Footer>
+  <Iconss  name='facebook square ' size='large'/>
+  <Iconss  name='twitter ' size='large'/>
+  <Iconss  name='instagram' size='large'/>
+  <Iconss  name='snapchat ' size='large'/>
+  <ul>
+    <li>
+        FAQ
+    </li>
+    <li>
+        Contact
+    </li>
+    <li>
+      T&Cs
+    </li>
+    <li>
+        Press
+    </li>    
+    <li>
+        Jobs
+    </li>
+    <li>
+        Privacy
+    </li>
+  </ul>
+
+  <p>© 2017  Ride Along Inc.</p>
+</Footer>  */}
+    </Background>
     );}
 
   _handleAll = e => {
-    this.setState({ 
+    this.setState({
       showAll: true
     });
   }

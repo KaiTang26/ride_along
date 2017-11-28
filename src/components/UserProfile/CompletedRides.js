@@ -12,29 +12,30 @@ class CompletedRides extends Component {
         {this.props.rides.map((ride) => (
          <div>
           {new Date(ride.trip.date) < new Date()?
-
             <div className="profileRide-container" key={ride.trip.id}>
-              {console.log(this.props)}
               <br></br>
               <div>{ride.trip.date}</div>
               <div>From: {ride.trip.start_location} To: {ride.trip.end_location} </div>
-              <div>Driver: {ride.trip.driver}</div>
+              {this.props.users?
+                <div>Driver: {this.props.users[ride.trip.driver-1].first_name}</div>
+              :
+                null
+              }
               {user_id == this.props.param?
                 <div>
-                  {console.log(this.props.param)}
                 <ReviewForm trip_id={ride.trip.id}/>
                 </div>
               :
-                <div>{console.log(this.props)}</div>
+                null
               }
               <br></br>
             </div>
 
-            : null}
+            :
+              null
+            }
           </div>
-        ))
-        }
-
+        ))}
       </div>
     );
   }

@@ -105,6 +105,9 @@ const EditButton = styled.button`
 //   return null;
 // }
 
+// For whatever reason when redirected the value below is wrong but if you just
+// enter the localStorage bit instead of user_id it works
+
 const user_id = localStorage.getItem("user_id");
 
 export default class UserProfile extends Component {
@@ -118,13 +121,21 @@ export default class UserProfile extends Component {
       picture: "",
       email: "",
       drivers_license: "",
-      about: ""
+      about: "",
+      users:""
     }
   };
 
 // userTrips
 
   componentDidMount() {
+
+    api.getUsers()
+    .then(results =>
+      this.setState({
+        users: results
+      })
+    );
 
     (api.getReviews(this.props.match.params.id))
     .then(results =>
@@ -167,8 +178,8 @@ export default class UserProfile extends Component {
       <Profile>
 
         <ProfilePic />
-
-        {user_id == this.props.match.params.id?
+        {console.log(this.state)}
+        {localStorage.getItem("user_id") == this.props.match.params.id?
 
           <Name>
             Hello {this.state.first_name}!
@@ -182,7 +193,7 @@ export default class UserProfile extends Component {
         <Info>
           <Left>
 
-          {user_id == this.props.match.params.id?
+          {localStorage.getItem("user_id") == this.props.match.params.id?
             <Section>
               <EditProfile info={this.state}/>
             </Section>
@@ -205,9 +216,9 @@ export default class UserProfile extends Component {
                 {this.state.trip?
                   <div>
                     <H3>Active Rides</H3>
-                    <ActiveRides rides={this.state.trip}  />
+                    <ActiveRides rides={this.state.trip} users={this.state.users.data}  />
                   </div>
-                  : <h1>Loading </h1>}
+                  : null}
               </LeftText>
             </Section>
 
@@ -216,9 +227,9 @@ export default class UserProfile extends Component {
                 {this.state.trip?
                   <div>
                     <H3>Completed Rides</H3>
-                    <CompletedRides param={this.props.match.params.id} rides={this.state.trip}  />
+                    <CompletedRides param={this.props.match.params.id} rides={this.state.trip} users={this.state.users.data}  />
                   </div>
-                  : <h1>Loading </h1>}
+                  : null}
               </LeftText>
             </Section>
 
@@ -237,7 +248,7 @@ export default class UserProfile extends Component {
                 <div>
                   <Reviews reviews={this.state.reviews}/>
                 </div>
-                : <h1>Loading </h1>}
+                : null}
             </Section>
           </Right>
         </Info>

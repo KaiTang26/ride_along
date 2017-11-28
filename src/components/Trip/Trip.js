@@ -5,6 +5,12 @@ import Map from './map.js';
 import CalculateGeocode from './Calculategeo.js';
 import api from '../utils/api';
 import browserHistory from '../../history';
+import Menu from '../Menu';
+import styled from 'styled-components';
+
+const Container = styled.div`
+    margin-top: 65px;
+`;
 
 export default class Trip extends Component {
 
@@ -31,6 +37,9 @@ export default class Trip extends Component {
     const { className, ...props } = this.props;
     return (
       <div className={classnames('Trip', className)} {...props}>
+
+    <Menu />
+      <Container>
          <form onSubmit={this._submitForm.bind(this)}>
             <CalculateGeocode updateAddress={this._handleLocationSearch}/>
             <label>
@@ -73,6 +82,7 @@ export default class Trip extends Component {
             </button>
         </form> 
         <Map origin={this.state.origin} destination={this.state.destination} handleDistanceDuration={this._handleDistanceDuration}/>
+        </Container>
       </div>
     );
   }

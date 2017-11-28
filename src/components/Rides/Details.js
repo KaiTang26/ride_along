@@ -29,11 +29,12 @@ const Right = styled.div`
 `;
 
 
-
 const RideMap = (props) => {
-  // console.log(props.id.origin)
-  return(
-    <Map origin={props.id.origin} destination={props.id.destination} start_location={props.id.start_location} end_location={props.id.end_location}/>
+    return(
+          <Map origin={props.id.origin} 
+                destination={props.id.destination} 
+                start_location={props.id.start_location} 
+                end_location={props.id.end_location}/> 
   )
 }
 
@@ -121,20 +122,21 @@ const RideDetailUI = (props) => {
     console.log(props.id.id)
   return(
     <div>
-
+    {console.log(props)}
     <h1>Ride from {props.id.start_location} to {props.id.end_location} </h1>
     <h2>Total distance: {props.id.distance}</h2>
     <h2>Total duration: {props.id.duration}</h2>
     <h2>Leaving {props.id.date} at {props.id.time}</h2>
     <br></br>
-    <h2>Name: {props.id.driver}</h2>
-    <div>Image placeholder</div>
+    {/* <getDriverName/> */}
+    <h2>{props.driver.first_name}</h2>
+    <img src={`/images/${props.driver.picture}`}/>
     <br></br>
-    <h3>{props.id.driver} is looking to have {props.id.passengers} passengers join the ride.</h3>
+    <h3>{props.driver.first_name} is looking to have {props.id.passengers} passengers join the ride.</h3>
     <br></br>
     <p>Some text in paragraph form</p>
     <br></br>
-      <DisplayCondition user={currentUser} statements={props.id.agreements} isDriver={isDriver}/>
+      {/* <DisplayCondition user={currentUser} statements={props.id.agreements} isDriver={isDriver}/> */}
       {isDriver
         ? <AddCondition tripId={props.id.id}/>
         : null}
@@ -145,11 +147,15 @@ const RideDetailUI = (props) => {
 class Details extends Component {
   constructor(props) {
     super(props);
-    // this.state = {ride: {}};
-    // console.log(this.state)
+    this.state = {
+      user: "",
+      ride:{driver:0}
+    };
+
     api.getRide(this.props.match.params.id)
     .then(result => {
       let ride = result.data
+      // alert(result.data.driver)
       this.setState({ride})
       api.fetchJoin(ride.id)
       .then(result => {
@@ -163,10 +169,9 @@ class Details extends Component {
         
       })
     })
-
   }
-  // Can use if result.status to do condition rendering
-  // componentWillMount() {
+
+
 
   // }
   render() {
@@ -177,7 +182,7 @@ class Details extends Component {
           <Left>
           {this.state?
               <div>
-                <RideDetailUI id={this.state.ride} />
+                <RideDetailUI id={this.state.ride} driver={this.state.user} />
                 <ChatContainer id={this.state.ride} />
                 <Jointrip id={this.state.ride} detial={this.state.detial} user={this.state.user}/>
               </div>
