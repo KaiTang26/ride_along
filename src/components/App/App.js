@@ -97,6 +97,9 @@ const A = styled.a`
   >a {
   color: ${gs.green} !important;
   }
+  >a:hover {
+    color: ${gs.coral}!important;
+  }
   // font-style: italic;
 `;
 
@@ -115,27 +118,30 @@ class App extends Component {
           <FrontHeader />
 
           {/* <Link to='profile'><button>USER PROFILE PAGE</button></Link> */}
-          <Container>
+          {/* <Container>
             <SearchGif/>
-            <A><Link to='/ride'>
-            {/* <Icons fitted name='chevron right' size='tiny'/>
-        <Icons fitted name='chevron right' size='tiny'/>  */}
-        Find Ride</Link></A> or  
+            
+            
+        <A><Icons fitted name='chevron right' size='tiny'/>
+        <Icons fitted name='chevron right' size='tiny'/>  <Link to='/ride'>
+  
+         Find Ride</Link></A> or  
             <A><Link to='/trip'>
-            {/* <Icons fitted name='chevron right' size='tiny'/>
-        <Icons fitted name='chevron right' size='tiny'/>  */}
+   
         Post a Ride</Link></A>
 
           </Container>
         <Container>
           <Chat/>
-          <P>Negotiate the terms with your fellow travellers</P>
+          <P><Icons fitted name='chevron right' size='tiny'/>
+        <Icons fitted name='chevron right' size='tiny'/>  Negotiate the terms with your fellow travellers</P>
         </Container>
         <Container>
           <Car/>
-          <P>Enjoy the ride!</P>
+          <P><Icons fitted name='chevron right' size='tiny'/>
+        <Icons fitted name='chevron right' size='tiny'/>  Enjoy the ride!</P>
         </Container>
-        
+         */}
 
           
 {/* <Footer>
