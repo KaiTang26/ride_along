@@ -28,7 +28,7 @@ class Post extends Component {
             {console.log(ride)}
             {this.state.users?
               <div>
-                <img src={`../../assets/${this.state.users.data[ride.driver-1].picture}`}/>
+                <img src={`images/${this.state.users.data[ride.driver-1].picture}`}/> 
               </div>
             :  
               null
