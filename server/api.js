@@ -2,6 +2,7 @@ const api = module.exports = require('express').Router();
 const reviews = require('./reviews');
 const users = require('./users');
 const trips = require('./trips');
+const join = require('./join');
 const agreements = require('./agreements');
 
 
@@ -13,5 +14,6 @@ api
   .use('/users', users)
   .use('/trips', trips)
   .use('/agreements', agreements)
+  .use('/join', join)
 // No routes matched? 404.
 api.use((req, res) => res.status(404).end())

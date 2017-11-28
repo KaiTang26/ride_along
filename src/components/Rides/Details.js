@@ -7,18 +7,22 @@ import DisplayCondition from '../Agreement/DisplayCondition';
 import styled from 'styled-components';
 import gs from '../GlobalStyles.js';
 import Menu from '../Menu';
+<<<<<<< HEAD
 import { Icon } from 'semantic-ui-react';
+=======
+import { join } from 'path';
+import Message from './Message.js';
+
+>>>>>>> 3c01509cb2e79a2e8ae7f88a50046c3860bcbe71
 
 const Container = styled.div`
-  padding-top: 60px;
+  padding-top: 65px;
 `;
 const Left = styled.div`
   float: left;
   width: 40%;
   z-index: 1;
   position: relative;
-  padding: 0px 1.75em 0 1.45em;
-  line-height: 1.5;
 `;
 const Right = styled.div`
   float: right;
@@ -28,38 +32,85 @@ const Right = styled.div`
 
 `;
 
-const H1 = styled.h1`
-  font-weight: 900;
-  font-size: 120%;
-  margin: 2em 0 1.5em !important;
-
-`;
-
-const Label = styled.p`
-  font-size: 75%;
-  // letter-spacing: .5px;
-  font-family: Lato;
-  text-transform: uppercase;
-  margin-bottom: .85em;
-  color: ${gs.golden};
-  display: inline-block;
-  margin-right: .25em;
-  font-weight: bold;
-`;
- const P = styled.p`
-  display: inline-block;
- `;
-
- const Field = styled.div`
-  margin: .5em 0;
-`;
-
-const currentUser = localStorage.getItem("user_id");
 
 const RideMap = (props) => {
     return(
-    <Map origin={props.id.origin} destination={props.id.destination} start_location={props.id.start_location} end_location={props.id.end_location}/>
+          <Map origin={props.id.origin} 
+                destination={props.id.destination} 
+                start_location={props.id.start_location} 
+                end_location={props.id.end_location}/> 
   )
+}
+
+
+class Jointrip extends Component{
+
+  constructor(props){
+    super(props);
+    this.state={
+      open: false
+    }
+  }
+
+  render(){
+    // console.log(this.props.id.driver)
+
+    const currentUser = Number(localStorage.getItem("user_id"))
+    let showJoin = false;
+    if(this.props.user){
+      const numberOfUser = this.props.user.length
+      const testOfcurrentUser = this.props.user.indexOf(currentUser)
+      const location = localStorage.getItem("end") && localStorage.getItem("start")
+      const notDriver = !(this.props.id.driver === currentUser)
+      if(currentUser && (testOfcurrentUser === -1) && (numberOfUser<this.props.id.passengers)&&location&&notDriver){
+        showJoin = true;
+      }
+    }
+
+    return(
+      <div>
+        { this.props.detial && this.props.detial.map((ele, i)=>(
+          <div className="joinUser" key={i}>
+          <h1>{ele.user.first_name} joined this trip from {ele.start} to {ele.end} </h1>
+          </div>))}
+
+        { showJoin && 
+          <form onSubmit={this._submitForm.bind(this)}>
+            <button type="submit" >
+              Join Trip
+            </button>
+          </form>
+        } 
+
+        {this.state.open && <Message id={this.props.id.id}/>}       
+      </div>
+    )
+  }
+
+  _submitForm(event){
+    event.preventDefault();
+    const id = Number(localStorage.getItem("user_id"))
+    
+    const joinTrip ={
+      user_id:id,
+      trip_id: this.props.id.id,
+      start: localStorage.getItem("start"),
+      end: localStorage.getItem("end")
+    };
+    console.log(joinTrip)
+    
+    api.postJoin(id,joinTrip)
+    .then((response)=>{
+        if(response.status===200){
+          console.log(response.data) 
+          
+          this.setState({
+            open:true
+          })
+        }
+    })
+  }
+
 }
 
 const Icons = styled(Icon)`
@@ -71,13 +122,13 @@ margin-right: .55em !important;
 const RideDetailUI = (props) => {
   // console.log(props.id.origin)
   // const currentUser = localStorage.getItem("user_id");
-
-// const currentUser = 2;
-  let isDriver;
+  const currentUser = Number(localStorage.getItem("user_id"));
+  let isDriver=false;
+  
   {currentUser === props.id.driver
     ? isDriver = true
     : isDriver = false}
-
+    console.log(props.id.id)
   return(
     <div>
     <H1>{props.id.start_location} to {props.id.end_location} </H1>
@@ -86,6 +137,8 @@ const RideDetailUI = (props) => {
     <Field>
       <Label>Name:</Label> <P>{props.id.driver}></P>
       <div>Image placeholder</div>
+      <h2>{props.driver.first_name}</h2>
+      <img src={`/images/Bill.jpg`}/>
     </Field>
 
 
@@ -126,28 +179,45 @@ const RideDetailUI = (props) => {
       {isDriver
         ? <AddCondition tripId={props.id.id}/>
         : null}
-     </Field>
+      </Field>
     </div>
-
   )
 }
 
 class Details extends Component {
   constructor(props) {
     super(props);
-    // this.state = {ride: {}};
-    // console.log(this.state)
+    this.state = {
+      userInfo: "",
+      ride:{driver:0}
+    };
+
     api.getRide(this.props.match.params.id)
     .then(result => {
       let ride = result.data
+      // console.log(result.data)
       this.setState({ride})
-      // console.log(ride);
-      // console.log('Details', ride);
-    })
 
+      api.userInfo(ride.driver)
+      .then(results => {
+        this.setState({
+          userInfo:results.data
+        })
+      })
+      api.fetchJoin(ride.id)
+      .then(result => {
+        let joinUsers = result.data
+        // console.log(typeof joinUsers )
+        this.setState({
+          user: joinUsers.userList,
+          detial: joinUsers.detial
+          })
+        console.log("state",this.state)
+        
+      })
+    })
   }
-  // Can use if result.status to do condition rendering
-  // componentWillMount() {
+
 
   // }
   render() {
@@ -156,10 +226,11 @@ class Details extends Component {
         <Menu/>
         <Container>
           <Left>
-          {this.state?
+          {this.state.ride.agreements?
               <div>
-                <RideDetailUI id={this.state.ride} />
+                <RideDetailUI id={this.state.ride} driver={this.state.userInfo} />
                 <ChatContainer id={this.state.ride} />
+                <Jointrip id={this.state.ride} detial={this.state.detial} user={this.state.user}/>
               </div>
               :"" }
           </Left>
@@ -171,9 +242,9 @@ class Details extends Component {
             : <h1>Loading </h1>}
             {this.state? <ChatContainer id={this.state.ride} />
               : <h1>Loading </h1>} */}
-          {this.state?
+          {this.state.ride.origin &&
           <RideMap id={this.state.ride} />
-            : ""}
+            }            
 
           </Right>
         </Container>
