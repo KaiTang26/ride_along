@@ -26,8 +26,14 @@ const Header = styled.div`
   overflow: hidden;
 `;
 
+const Img = styled.img`
+float: left;
+width: 100px;
+margin-right: .5em;
+`;
 const Container = styled.div`
 margin: 1.65em 0;
+overflow: hidden;
 `;
 
 const Text = styled.p`
@@ -39,7 +45,9 @@ const ReviewUI = (props) => {
   return(
 
     <Container>
+      <Img src={`/images/${props.users[props.data.user_id-1].picture}`}/>
       <Header>
+      
       <User>{props.users[props.data.user_id-1].first_name}</User>
       <Stars>
       
