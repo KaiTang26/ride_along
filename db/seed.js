@@ -48,16 +48,16 @@ const seedReviews = () => db.Promise.map([
 ], review => db.model('reviews').create(review));
 
 const seedUserTrips = () => db.Promise.map([
-  {user_id: 5, trip_id: 1},
-  {user_id: 1, trip_id: 3},
-  {user_id: 6, trip_id: 4},
-  {user_id: 1, trip_id: 2},
-  {user_id: 2, trip_id: 1},
-  {user_id: 3, trip_id: 3},
-  {user_id: 4, trip_id: 1},
-  {user_id: 4, trip_id: 2},
-  {user_id: 4, trip_id: 3},
-  {user_id: 4, trip_id: 4}
+  {user_id: 5, trip_id: 1, start: "Toronto" , end: "Ottawa"},
+  {user_id: 1, trip_id: 3, start: "Kingston", end: "Toronto"},
+  {user_id: 6, trip_id: 4, start: "Kingston", end: "Toronto"},
+  {user_id: 1, trip_id: 2, start: "Montreal", end: "Hamilton"},
+  {user_id: 2, trip_id: 1, start: "Toronto", end: "Ottawa"},
+  {user_id: 3, trip_id: 3, start: "Kingston", end: "Toronto"},
+  {user_id: 4, trip_id: 1, start: "Toronto" , end: "Ottawa"},
+  {user_id: 4, trip_id: 2, start: "Montreal", end: "Hamilton"},
+  {user_id: 4, trip_id: 3, start: "Kingston", end: "Toronto"},
+  {user_id: 4, trip_id: 4, start: "Kingston", end: "Toronto" }
 
 ], user_trip => db.model('user_trips').create(user_trip));
 const seedAgreements = () => db.Promise.map([

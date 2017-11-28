@@ -67,6 +67,8 @@ const FrontHeader = () => (
 
       </UserNav>
         <Logotype>Ride Along</Logotype>
+
+        
         <Tagline>Get there <span>>></span> together</Tagline>
     </Darken>
   </Header>

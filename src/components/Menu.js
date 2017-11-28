@@ -62,7 +62,9 @@ const Icons = styled(Icon)`
 const Menu = () => (
 
   <Nav>
+    <Link to='/'>
     <Logotype>Ride Along</Logotype>
+    </Link>
     <UserLinks>
       <Li>
       <Link to='/ride'>
@@ -72,7 +74,10 @@ const Menu = () => (
       <Li><Link to='/trip'>
       <Icons fitted name='chevron right' size='tiny'/>
         <Icons fitted name='chevron right' size='tiny'/> Post Ride</Link></Li>
-      <ProfilePic/>
+        <Link to={'/profile/'+localStorage.getItem("user_id")}>
+          <ProfilePic/>
+        </Link>
+     
     </UserLinks>
   </Nav>
 );
