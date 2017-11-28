@@ -8,6 +8,7 @@ import browserHistory from '../../history';
 import Menu from '../Menu';
 import styled from 'styled-components';
 import gs from '../GlobalStyles.js';
+import TextField from 'material-ui/TextField';
 
 const Container = styled.div`
     margin-top: 60px;
@@ -28,10 +29,10 @@ const Right = styled.div`
 
 `;
 const Form = styled.div`
-    margin: 2em 0;
+    margin: 3em 0;
 `;
 const Info = styled.div`
-margin: 2em 0;
+margin: 5em 0;
 `;
 
 const Label = styled.p`
@@ -47,8 +48,46 @@ font-weight: bold;
 `;
 
 const Field = styled.div`
-margin: .5em 0;
+margin: 1.75em 0;
 `;
+
+const Input = styled.input`
+    padding: .25em;
+    margin-left: .25em;
+    font-size: 140%;
+    font-weight: bold;
+    font-family: Lato;
+    border: none;
+    border-bottom: 1px solid #ddd;
+    // border-bottom: 1px solid ${gs.golden};
+`;
+const About = styled.input`
+padding: .25em;
+margin-left: .25em;
+font-size: 150%;
+font-family: Lato;
+border: none;
+border-bottom: 1px solid #ddd;
+// border-bottom: 1px solid ${gs.golden};
+`;
+const Button = styled.button`
+background: #eba224;
+color: white;
+border: none;
+font-family: Lato;
+// margin: 0em 0 2em 1.75em;
+padding: .5em .75em;
+border-radius: 5px;
+font-weight: bold;
+border-bottom: 2px solid #c98613;
+&:hover {
+  cursor: pointer;
+  background: #db9214;
+  border-bottom: #c98613;
+  border-top: 1px solid white;
+}
+`;
+
 export default class Trip extends Component {
 
   constructor(props){
@@ -86,30 +125,30 @@ export default class Trip extends Component {
 
                 <Field>
             <Label>
-                Total Distance: {this.state.distance}
-            </Label>
+                Total Distance:</Label> {this.state.distance}
+            
             </Field>
             <Field>
             <Label>
-                Total Duration: {this.state.duration}
-            </Label></Field>
+                Total Duration:</Label> {this.state.duration}
+            </Field>
             <Field>
             
             <Label>
             Date:
-            <input type="date"  name='date' value={this.state.date} onChange={this._handleInputChange}/>
+            <Input type="date"  name='date' value={this.state.date} onChange={this._handleInputChange}/>
             </Label></Field>
             <Field>
             
             <Label>
             Time:
-            <input type="time"  name="time" value={this.state.time} onChange={this._handleInputChange}/>
+            <Input type="time"  name="time" value={this.state.time} onChange={this._handleInputChange}/>
             </Label></Field>
             <Field>
             
             <Label>
             Number of Passengers:
-            <input name="passengers"
+            <Input name="passengers"
                    type="number"
                    min="1"
                    max="12"
@@ -121,7 +160,7 @@ export default class Trip extends Component {
             
             <Label>
             Price:
-            <input name="price"
+            <Input name="price"
                    type="number"
                    value={this.state.numberOfPassenger}
                    onChange={this._handleInputChange} />
@@ -130,13 +169,13 @@ export default class Trip extends Component {
             
             <Label>
             About:
-            <input type="text" name="description" onChange={this._handleInputChange}/>
+            <About type="text" name="description" onChange={this._handleInputChange}/>
             </Label></Field>
             <Field>
             
-            <button type="submit" disabled={!(this.state.passengers && this.state.time && this.state.date && this.state.start_location && this.state.end_location)}>
+            <Button type="submit" disabled={!(this.state.passengers && this.state.time && this.state.date && this.state.start_location && this.state.end_location)}>
                 Submit
-            </button>
+            </Button>
             </Field>
             
             
