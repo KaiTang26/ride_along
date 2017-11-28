@@ -117,7 +117,7 @@ const RideDetailUI = (props) => {
     <Field>
       <Label>
       <Icons fitted name='users' size='large'/>
-     Seats available:</Label> <P>Looking for {props.id.passengers} passengers to join</P>
+     Seats:</Label> <P>Looking for {props.id.passengers} passengers to join</P>
      
     </Field>
 
