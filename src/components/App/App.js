@@ -117,8 +117,7 @@ class App extends Component {
         <div>
           <FrontHeader />
 
-          {/* <Link to='profile'><button>USER PROFILE PAGE</button></Link> */}
-          <Container>
+          {/* <Container>
             <SearchGif/>
             
             
@@ -140,7 +139,7 @@ class App extends Component {
           <Car/>
           <P><Icons fitted name='chevron right' size='tiny'/>
         <Icons fitted name='chevron right' size='tiny'/>  Enjoy the ride!</P>
-        </Container>
+        </Container> */}
          
 
           

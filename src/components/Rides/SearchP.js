@@ -22,7 +22,7 @@ const H2 = styled.h2`
   color: ${gs.golden};
   font-size: 110%;
   font-style: italic;
-  margin: 3em 0 1.5em !important;
+  margin: 1em 0 1.5em !important;
 `;
 
 const Ride = styled.div`

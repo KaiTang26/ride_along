@@ -35,11 +35,13 @@ const Label = styled.p`
 
  const Container = styled.div`
   margin: 0 0 .5em;
+  overflow: hidden;
  `;
  const Iconb = styled(Icon)`
  vertical-align: top !important;
  margin-right: .35em !important;
  `
+
 export default class DisplayCondition extends Component {
 
   constructor(props) {
@@ -66,7 +68,7 @@ export default class DisplayCondition extends Component {
     return (
       <div>
         <Label>
-        <Iconb fitted name='checkmark box' size='large'/>        
+        <Iconb fitted name='check square' size='large'/>        
           Conditions:
         </Label>
         {this.props.statements.map((condition) => (
@@ -74,7 +76,9 @@ export default class DisplayCondition extends Component {
             <Float>
               <p><Icons fitted name='chevron right' size='tiny'/>
               <Icons fitted name='chevron right' size='tiny'/>  {condition.statement}</p> 
-        </Float>
+            </Float>
+
+
             {this.props.isDriver
               ? <div>
                 <Float>

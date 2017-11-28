@@ -72,7 +72,7 @@ const RideDetailUI = (props) => {
   // console.log(props.id.origin)
   // const currentUser = localStorage.getItem("user_id");
 
-const currentUser = 2;
+// const currentUser = 2;
   let isDriver;
   {currentUser === props.id.driver
     ? isDriver = true
@@ -117,8 +117,7 @@ const currentUser = 2;
     <Field>
       <Label>
       <Icons fitted name='users' size='large'/>
-     Passengers:</Label>
-     <P>Looking for {props.id.passengers} passengers to join</P>
+     Seats available:</Label> <P>Looking for {props.id.passengers} passengers to join</P>
      
     </Field>
 
