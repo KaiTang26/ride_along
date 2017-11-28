@@ -19,6 +19,9 @@ const Field = styled.div`
     font-weight: bold;
     width: 100%
     }
+    width: 45%;
+    padding-right: 1em;
+    float: left;
 `;
 
 const Button = styled.button`
@@ -28,6 +31,8 @@ const Button = styled.button`
     font-family: Lato;
     padding: .5em .75em;
     border-radius: 5px;
+    position: relative;
+    top: 1em;
     font-weight: bold;
     border-bottom: 2px solid #b91329;
     &:hover {

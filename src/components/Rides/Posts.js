@@ -36,9 +36,10 @@ const Field = styled.div`
 `;
 
 const RideInfo = styled.div`
-  margin: 2em 0;
+  margin: 3em 0;
   // background-color: ${gs.golden};
   // padding: 0 1em;
+  overflow: hidden;
 `;
 
 const Button = styled.button`
@@ -58,23 +59,31 @@ const Button = styled.button`
     border-top: 2px solid white;
   }
 `;
+const Section = styled.div`
+  // width: 30%;
+  // float: left;
+`;
 class Post extends Component {
   render() {
     return (
       <div className="post">
-      <H1>All Available Rides: </H1>
+      <H1>Currently Available Rides </H1>
       {this.props.rides.map((ride) => (
           <RideInfo key={ride.id} _details={this.props.onClick}>
             {console.log(this.props)}
+          <Section>
             <Field>
               <Label>Leaving</Label><P> {ride.date}</P>
-            </Field>              
+            </Field>        
             <Field>
               <Label>From</Label> <P><em>{ride.start_location}  <Label> to</Label> {ride.end_location}</em></P> 
             </Field>
             <Field>
               <Label>Time</Label><P>{ride.time}</P>
             </Field>
+
+          </Section>
+          <Section>
             <Field>            
             <Label>User</Label> <P>'Example' Rating: '1-5'</P>
             </Field>
@@ -83,8 +92,11 @@ class Post extends Component {
             </Field>
             <Field>            
               <Label>Price</Label> <P>${ride.price}</P>
-            </Field>            
+            </Field>      
+          
             <Link to={`/ride/${ride.id}`}><Button>View Details</Button></Link>
+
+          </Section>
           </RideInfo>
       ))}
       </div>

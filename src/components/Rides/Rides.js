@@ -26,35 +26,39 @@ const Container = styled.div`
   max-width: 900px;
   margin: 0 auto;
   background: white;
+  min-height: 900px;
 `;
 
 const Left = styled.div`
   float: left;
-  width: 50%;
+  width: 55%;
 `;
 
 const Right = styled.div`
-
 // background: url(${roadpic}) no-repeat;
 // background-size: cover;
   background: url(${road}) no-repeat;
-  width: 50%;
-  height: 500px;
-  float: right;
-  background-position: center;
-  padding: 5em;
-  // position: fixed;
+  width: 45%;
+  height: 66%;
+  background-position: right;
+  position: fixed;
+  right: 0;
+  margin-right: -3em;
 `;
-
+const Find = styled.div`
+  overflow: hidden;
+`;
 const H1 = styled.h1`
   font-weight: 900;
   // color: #444;
   // color: ${gs.red};
-  font-size: 145%;
+  font-size: 150%;
   margin: 3em 0 1.5em !important;
-
 `;
-
+const Bottom = styled.div`
+  overflow: hidden;
+  position: relative;
+`;
 const Search = (props) => (
   <form onSubmit={props._handleSubmit}>
     <label>
@@ -113,13 +117,14 @@ export default class Rides extends Component {
     <Background>
       <Menu />
       <Container>
-        <Left>
+        <Find>
           <H1>Find a Ride</H1>
-          <br />
-          <br />
+          
           <CalculateGeocode updateAddress={this._handleLocationSearch}/>
-          <br /> 
 
+          </Find>
+        <Bottom>
+          <Left>
           {this.state.showAll 
             ? <Posts rides = {this.state.rides} />
             : <div>
@@ -127,12 +132,13 @@ export default class Rides extends Component {
               <Button onClick={this._handleAll}>Show All</Button>
               </div>
           }
+         
         </Left>
 
         <Right>
-
+            {/* image */}
         </Right>
-
+        </Bottom>
       </Container>
     </Background>
     );}

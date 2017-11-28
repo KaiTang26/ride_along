@@ -6,13 +6,16 @@ import { Link } from 'react-router-dom';
 // import CalculateGeocode from '../Trip/Calculategeo.js';
 
 const Text = styled.p`
-  margin: 1em;
+  margin: 1em 0;
 `;
 
 const Results = styled.div`
+  margin-top: 2em;
 `;
 
 const Info = styled.p`
+`;
+const H2 = styled.h2`
 `;
 
 const Ride = styled.div`
@@ -90,19 +93,22 @@ const SearchResults = (props) => {
     <div> 
 
       <ResultsText>
-        <Text>You searched for 
+        <H2>Search Results:</H2>
+        {/* <Text>You searched for 
           <br/>From ----- {props.params.start_location}
           <br/>To ------ {props.params.end_location}
-        </Text>
+        </Text> */}
 
           { !(resultsNum) 
-            ? <Text>There is no available ride that overlaps with your trip! </Text>
-            : <Text>There are {resultsNum} available rides that overlap with your trip! </Text>
-          }
-
-          <Text>
+            ? <div><Text>There is no available ride that overlaps with your trip! </Text>
+            <Text>
+            Please try another search.
+          </Text></div>
+            : <div><Text>There are {resultsNum} available rides that overlap with your trip! </Text>
+            <Text>
             Contact the driver on the trip's page to negotiate arrangements.
-          </Text>
+          </Text></div>
+          }
         
         </ResultsText>
 
