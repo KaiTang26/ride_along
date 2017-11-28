@@ -110,7 +110,7 @@ class Details extends Component {
           </Left>
 
           <Right>
-          {this.state.ride?
+          {this.state.ride.origin?
           <RideMap id={this.state.ride} />
             : ""}
 
