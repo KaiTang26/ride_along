@@ -44,6 +44,7 @@ const RideInfo = styled.div`
   // background-color: ${gs.golden};
   // padding: 0 1em;
   border-top: 1px solid #f5d398;
+  // max-width: 580px;
   overflow: hidden;
 `;
 
@@ -66,8 +67,31 @@ const Button = styled.button`
 `;
 const Section = styled.div`
   // width: 30%;
-  // float: left;
+  float: left;
+  margin-right: 2em;
 `;
+const Pic = styled.div`
+  width: 100px;
+  height: 150px;
+  // float: left;
+  >img {
+    width: 120px;
+    height: auto;
+    border-radius: 4px;
+    background-size: cover;
+  }
+float: left;
+`;
+const Info = styled.div`
+  margin-left: 150px;
+`;
+
+const Inner = styled.div`
+  // max-width: 580px;
+  margin: 3.2em auto 2em;
+  overflow: hidden;
+`;
+
 class Post extends Component {
   constructor(props) {
     super(props);
@@ -92,15 +116,18 @@ class Post extends Component {
       <H1>Currently Available Rides </H1>
       {this.props.rides.map((ride) => (
           <RideInfo key={ride.id} _details={this.props.onClick}>
+          <Inner>
             {console.log(this.props)}
-          <Section>
+          
                 {this.state.users?
-                    <div>
+                    <Pic>
                       <img src={`images/${this.state.users.data[ride.driver-1].picture}`}/> 
-                    </div>
+                    </Pic>
                   :  
                     null
                   }
+                  <Info>
+                    <Section>
             <Field>
               <Label>From:</Label> <P><em>{ride.start_location}  <To> to</To> {ride.end_location}</em></P> 
             </Field>
@@ -110,22 +137,23 @@ class Post extends Component {
             <Field>
               <Label>Time:</Label><P>{ride.time}</P>
             </Field>
-
-          </Section>
-          <Section>
-            <Field>            
+            </Section>
+            {/* <Field>            
             <Label>User</Label> <P>'Example' Rating: '1-5'</P>
-            </Field>
+            </Field> */}
+          <Section>
             <Field>            
               <Label>Number of Passengers: </Label><P>{ride.passengers}</P>
             </Field>
             <Field>            
               <Label>Price:</Label> <P>${ride.price}</P>
             </Field>      
-          
+            
             <Link to={`/ride/${ride.id}`}><Button>View Details</Button></Link>
-
-          </Section>
+            </Section>
+          
+          </Info>
+          </Inner>
           </RideInfo>
       ))}
       </div>
