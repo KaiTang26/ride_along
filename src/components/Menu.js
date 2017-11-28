@@ -67,7 +67,8 @@ const Menu = () => (
       <Li>
       <Link to='/ride'>
       <Icons fitted name='chevron right' size='tiny'/>
-        <Icons fitted name='chevron right' size='tiny'/> Find Ride</Link></Li>
+        <Icons fitted name='chevron right' size='tiny'/> 
+        Find Ride</Link></Li>
       <Li><Link to='/trip'>
       <Icons fitted name='chevron right' size='tiny'/>
         <Icons fitted name='chevron right' size='tiny'/> Post Ride</Link></Li>
