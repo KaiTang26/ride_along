@@ -29,6 +29,31 @@ const Right = styled.div`
 
 `;
 
+const H1 = styled.h1`
+font-weight: 900;
+font-size: 120%;
+margin: 2em 0 1.5em !important;
+`;
+
+const Label = styled.p`
+font-size: 75%;
+// letter-spacing: .5px;
+font-family: Lato;
+text-transform: uppercase;
+margin-bottom: .85em;
+color: ${gs.golden};
+display: inline-block;
+margin-right: .25em;
+font-weight: bold;
+`;
+const P = styled.p`
+display: inline-block;
+`;
+
+const Field = styled.div`
+margin: .5em 0;
+`;
+
 
 const RideMap = (props) => {
     return(
