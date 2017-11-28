@@ -167,10 +167,14 @@ export default {
         .then((response)=> {
             return response;
         })
-      }
+      },
+
+    fetchJoin: function(trip_id){
+        const encodedURI = window.encodeURI("http://localhost:3000/api/join/"+trip_id)
+        return axios.get(encodedURI)
+        .then((res)=>{
+            return res
+        })
+    }
       
-
-    
-
-
 }

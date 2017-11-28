@@ -7,6 +7,7 @@ import DisplayCondition from '../Agreement/DisplayCondition';
 import styled from 'styled-components';
 import gs from '../GlobalStyles.js';
 import Menu from '../Menu';
+import { join } from 'path';
 
 const Container = styled.div`
   padding-top: 65px;
@@ -25,6 +26,8 @@ const Right = styled.div`
 
 `;
 
+
+
 const RideMap = (props) => {
   // console.log(props.id.origin)
   return(
@@ -32,20 +35,41 @@ const RideMap = (props) => {
   )
 }
 
+
 class Jointrip extends Component{
 
   constructor(props){
     super(props);
+    this.state={
+      open: false
+    }
   }
 
   render(){
+    const currentUser = Number(localStorage.getItem("user_id"))
+    let showJoin = false;
+    if(this.props.user){
+      const numberOfUser = this.props.user.length-1
+      const testOfcurrentUser = this.props.user.indexOf(currentUser)
+      if(currentUser && (testOfcurrentUser === -1) && (numberOfUser<this.props.id.passengers)){
+        showJoin = true;
+      }
+    }
+
     return(
       <div>
-        <form onSubmit={this._submitForm.bind(this)}>
-          <button type="submit" >
-            Join Trip
-          </button>
-        </form>
+        { this.props.detial && this.props.detial.map((ele, i)=>(
+          <div className="joinUser" key={i}>
+          <h1>{ele.user.first_name} joined this trip from {ele.start} to {ele.end} </h1>
+          </div>))}
+
+        { showJoin && 
+          <form onSubmit={this._submitForm.bind(this)}>
+            <button type="submit" >
+              Join Trip
+            </button>
+          </form>
+        }        
       </div>
     )
   }
@@ -115,8 +139,17 @@ class Details extends Component {
     .then(result => {
       let ride = result.data
       this.setState({ride})
-      // console.log(ride);
-      // console.log('Details', ride);
+      api.fetchJoin(ride.id)
+      .then(result => {
+        let joinUsers = result.data
+        console.log(typeof joinUsers )
+        this.setState({
+          user: joinUsers.userList,
+          detial: joinUsers.detial
+          })
+        console.log(this.state.detial)
+        
+      })
     })
 
   }
@@ -134,7 +167,7 @@ class Details extends Component {
               <div>
                 <RideDetailUI id={this.state.ride} />
                 <ChatContainer id={this.state.ride} />
-                <Jointrip id={this.state.ride}/>
+                <Jointrip id={this.state.ride} detial={this.state.detial} user={this.state.user}/>
               </div>
               :"" }
           </Left>
