@@ -48,9 +48,9 @@ const seedReviews = () => db.Promise.map([
 ], review => db.model('reviews').create(review));
 
 const seedUserTrips = () => db.Promise.map([
-  {user_id: 1, trip_id: 1},
+  {user_id: 5, trip_id: 1},
   {user_id: 1, trip_id: 3},
-  {user_id: 1, trip_id: 4},
+  {user_id: 6, trip_id: 4},
   {user_id: 1, trip_id: 2},
   {user_id: 2, trip_id: 1},
   {user_id: 3, trip_id: 3},
