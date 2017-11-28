@@ -13,12 +13,12 @@ import Message from './Message.js';
 
 
 const Container = styled.div`
-  padding-top: 65px;
+  padding-top: 60px;
 `;
 const Left = styled.div`
   float: left;
   width: 40%;
-  padding: 0 1.5em;
+  padding: 0 1.75em 0 1.5em ;
   z-index: 1;
   position: relative;
 `;
@@ -76,9 +76,10 @@ class Jointrip extends Component{
   }
 
   render(){
-    // console.log(this.props.id.driver)
+    console.log("DRIVER",this.props.id.driver)
 
     const currentUser = Number(localStorage.getItem("user_id"))
+    // const currentUser = 1;
     let showJoin = false;
     if(this.props.user){
       const numberOfUser = this.props.user.length
@@ -94,15 +95,24 @@ class Jointrip extends Component{
       // color: ${gs.golden};
       margin-left: 140px;
       margin-top: 3em;
-      font-size: 80%;
+      font-size: 90%;
       > div h1 {
       margin: 1em 0 0;}
     `;
+
+    const IconsP = styled(Icon)`
+    vertical-align: middle !important;
+    position: relative;
+    color: ${gs.golden};
+    bottom: 2px;
+    margin-right: .25em !important;
+    `
     return(
       <Join>
         { this.props.detial && this.props.detial.map((ele, i)=>(
           <div className="joinUser" key={i}>
-          <h1>{ele.user.first_name} joined this trip from {ele.start} to {ele.end} </h1>
+          
+          <h1><IconsP fitted name='point' size='large'/>{ele.user.first_name} joined this trip from {ele.start} to {ele.end} </h1>
           </div>))}
 
         { showJoin && 
