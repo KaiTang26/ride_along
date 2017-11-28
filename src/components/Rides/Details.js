@@ -136,7 +136,7 @@ const RideDetailUI = (props) => {
     <br></br>
     <p>Some text in paragraph form</p>
     <br></br>
-      {/* <DisplayCondition user={currentUser} statements={props.id.agreements} isDriver={isDriver}/> */}
+      <DisplayCondition user={currentUser} statements={props.id.agreements} isDriver={isDriver}/>
       {isDriver
         ? <AddCondition tripId={props.id.id}/>
         : null}
@@ -186,7 +186,7 @@ class Details extends Component {
         <Menu/>
         <Container>
           <Left>
-          {this.state?
+          {this.state.ride.agreements?
               <div>
                 <RideDetailUI id={this.state.ride} driver={this.state.userInfo} />
                 <ChatContainer id={this.state.ride} />
