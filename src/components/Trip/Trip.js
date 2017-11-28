@@ -7,11 +7,48 @@ import api from '../utils/api';
 import browserHistory from '../../history';
 import Menu from '../Menu';
 import styled from 'styled-components';
+import gs from '../GlobalStyles.js';
 
 const Container = styled.div`
-    margin-top: 65px;
+    margin-top: 60px;
+    overflow: hidden;
+`;
+const Left = styled.div`
+  float: left;
+  width: 40%;
+  padding: 0 1.85em 0 1.5em ;
+  z-index: 1;
+  position: relative;
+`;
+const Right = styled.div`
+  float: right;
+  width: 60%;
+  position: fixed;
+  right: 0;
+
+`;
+const Form = styled.div`
+    margin: 2em 0;
+`;
+const Info = styled.div`
+margin: 2em 0;
 `;
 
+const Label = styled.p`
+font-size: 75%;
+// letter-spacing: .5px;
+font-family: Lato;
+text-transform: uppercase;
+margin-bottom: .85em;
+color: ${gs.golden};
+display: inline-block;
+margin-right: .25em;
+font-weight: bold;
+`;
+
+const Field = styled.div`
+margin: .5em 0;
+`;
 export default class Trip extends Component {
 
   constructor(props){
@@ -40,23 +77,37 @@ export default class Trip extends Component {
 
     <Menu />
       <Container>
-         <form onSubmit={this._submitForm.bind(this)}>
+          <Left>
+             
+         <Form onSubmit={this._submitForm.bind(this)}>
             <CalculateGeocode updateAddress={this._handleLocationSearch}/>
-            <label>
+
+            <Info>
+
+                <Field>
+            <Label>
                 Total Distance: {this.state.distance}
-            </label>
-            <label>
+            </Label>
+            </Field>
+            <Field>
+            <Label>
                 Total Duration: {this.state.duration}
-            </label>
-            <label>
+            </Label></Field>
+            <Field>
+            
+            <Label>
             Date:
             <input type="date"  name='date' value={this.state.date} onChange={this._handleInputChange}/>
-            </label>
-            <label>
+            </Label></Field>
+            <Field>
+            
+            <Label>
             Time:
             <input type="time"  name="time" value={this.state.time} onChange={this._handleInputChange}/>
-            </label>
-            <label>
+            </Label></Field>
+            <Field>
+            
+            <Label>
             Number of Passengers:
             <input name="passengers"
                    type="number"
@@ -65,23 +116,38 @@ export default class Trip extends Component {
                    step="1"
                    value={this.state.numberOfPassenger}
                    onChange={this._handleInputChange} />
-            </label>
-            <label>
+            </Label></Field>
+            <Field>
+            
+            <Label>
             Price:
             <input name="price"
                    type="number"
                    value={this.state.numberOfPassenger}
                    onChange={this._handleInputChange} />
-            </label>
-            <label>
+            </Label></Field>
+            <Field>
+            
+            <Label>
             About:
             <input type="text" name="description" onChange={this._handleInputChange}/>
-            </label>
+            </Label></Field>
+            <Field>
+            
             <button type="submit" disabled={!(this.state.passengers && this.state.time && this.state.date && this.state.start_location && this.state.end_location)}>
                 Submit
             </button>
-        </form> 
+            </Field>
+            
+            
+            </Info>
+        </Form> 
+        </Left>
+
+        <Right>
         <Map origin={this.state.origin} destination={this.state.destination} handleDistanceDuration={this._handleDistanceDuration}/>
+
+        </Right>
         </Container>
       </div>
     );
