@@ -53,7 +53,7 @@ class Jointrip extends Component{
     const currentUser = Number(localStorage.getItem("user_id"))
     let showJoin = false;
     if(this.props.user){
-      const numberOfUser = this.props.user.length-1
+      const numberOfUser = this.props.user.length
       const testOfcurrentUser = this.props.user.indexOf(currentUser)
       const location = localStorage.getItem("end") && localStorage.getItem("start")
       const notDriver = !(this.props.id.driver === currentUser)
