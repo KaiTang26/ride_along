@@ -198,11 +198,12 @@ const RideDetailUI = (props) => {
 
     <RideContainer>
     <Leftside>
-    <IMG src={`/images/Bill.jpg`}/>
+    <IMG src={'/images/'+props.driver.picture}/>
     <Field>
      
       <Label>Driver:</Label> 
       <Driver>{props.driver.first_name}</Driver>
+      
       
     </Field>
     </Leftside>
