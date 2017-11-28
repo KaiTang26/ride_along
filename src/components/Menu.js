@@ -49,7 +49,7 @@ const ProfilePic = styled.div`
   height: 45px;
   border-radius: 50%;
   background-size: cover;
-  margin: .5em;
+  margin: .5em 1em;
   display: inline-block;
 `;
 

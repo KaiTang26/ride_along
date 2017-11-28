@@ -16,7 +16,7 @@ const Left = styled.div`
   width: 40%;
   z-index: 1;
   position: relative;
-  padding-left: 1.25em;
+  padding: 0px 1.75em 0 1.45em;
   line-height: 1.5;
 `;
 const Right = styled.div`
@@ -29,9 +29,7 @@ const Right = styled.div`
 
 const H1 = styled.h1`
   font-weight: 900;
-  color: #444;
-  // color: ${gs.blue};
-  font-size: 111%;
+  font-size: 120%;
   margin: 2em 0 1.5em !important;
 
 `;
@@ -89,19 +87,22 @@ const RideDetailUI = (props) => {
     <Field>
     <Label>Time:</Label><P>{props.id.time}</P>
     </Field>
-    {/* <Field> */}
+    <Field>
     <Label>Name</Label> <P>{props.id.driver}></P>
     <div>Image placeholder</div>
-    <br></br>
-    <h3>{props.id.driver} is looking to have {props.id.passengers} passengers join the ride.</h3>
-    <br></br>
-    <p>Some text in paragraph form</p>
-    <br></br>
+    </Field>
+    <Field>
+    <P>{props.id.driver} NAME is looking to have {props.id.passengers} passengers join the ride.</P>
+    <P>Some text in paragraph form</P>
+    </Field>
+    <Field>
       <DisplayCondition user={currentUser} statements={props.id.agreements} isDriver={isDriver}/>
       {isDriver
         ? <AddCondition tripId={props.id.id}/>
         : null}
+     </Field>
     </div>
+
   )
 }
 
