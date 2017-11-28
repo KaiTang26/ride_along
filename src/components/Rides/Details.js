@@ -8,6 +8,7 @@ import styled from 'styled-components';
 import gs from '../GlobalStyles.js';
 import Menu from '../Menu';
 
+
 const Container = styled.div`
   padding-top: 60px;
 `;

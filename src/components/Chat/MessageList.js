@@ -15,7 +15,7 @@ const Header = styled.h2`
   font-family: Lato;
   text-transform: uppercase;
   color: ${gs.coral};
-  border-bottom: 1px solid;
+  border-bottom: 2px solid;
 `;
 
 const ProfilePic = styled.div`
@@ -34,6 +34,8 @@ const Content = styled.div`
 `;
 const Username = styled.h3`
   font-weight: bold;
+  font-style: italic;
+  color: ${gs.blue};
   margin-bottom: .2em;
 `;
 
