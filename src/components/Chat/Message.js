@@ -6,6 +6,14 @@ import api from '../utils/api';
 
 let current = new Date();
 
+function hours(time) {
+  return ((time + 11) % 12 + 1);
+}
+
+function suffix(time) {
+  return (time >= 12)? 'pm' : 'am';
+}
+
 const ChatMessage = styled.div`
   overflow: hidden;
   margin: 1em 0;
@@ -28,7 +36,6 @@ const Username = styled.h3`
   margin-bottom: .2em;
 `;
 
-
 console.log(this.props);
 class Message extends Component {
 
@@ -49,6 +56,15 @@ class Message extends Component {
           {this.state?
             <Content>
               <Username>{this.state.user.first_name}</Username>
+              <div>{`
+                ${current.getDate()}/
+                ${current.getMonth()}/
+                ${current.getFullYear()}
+                ${hours(current.getHours())}:
+                ${current.getUTCMinutes()}
+                ${suffix(current.getHours())}
+              `}
+              </div>
               <div className="message-content">{this.props.content}</div>
             </Content>
           :null
