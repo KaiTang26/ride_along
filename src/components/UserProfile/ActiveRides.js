@@ -1,6 +1,19 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 
+import gs from '../GlobalStyles.js';
+import styled from 'styled-components';
+
+const Time = styled.p`
+  font-style: italic;
+  font-size: 90%;
+`;
+const Where = styled.p`
+font-weight: bold;
+margin-bottom: .25em;
+
+`;
+
 class ActiveRides extends Component {
 
   render() {
@@ -11,13 +24,14 @@ class ActiveRides extends Component {
           {new Date(ride.trip.date) > new Date()?
             <div className="profileRide-container" key={ride.trip.id}>
               <br></br>
-              <div>{ride.trip.date}</div>
-              <div>From: {ride.trip.start_location} To: {ride.trip.end_location} </div>
-              {this.props.users?
+              <Where>{ride.trip.start_location} – {ride.trip.end_location} </Where>
+              <Time>{ride.trip.date}</Time>
+              
+              {/* {this.props.users?
                 <div>Driver: {this.props.users[ride.trip.driver-1].first_name}</div>
               :
                 null
-              }
+              } */}
             </div>
           :
            null
