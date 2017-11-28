@@ -54,6 +54,7 @@ class MessageList extends Component {
           <ProfilePic />
           <Content>
             <Username>Bill</Username>
+            <div>26 / 10/ 2017 2: 34 pm</div>
             <div>Is it alright if I bring my dog?</div>
           </Content>
         </ChatMessage>
