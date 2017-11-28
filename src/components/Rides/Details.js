@@ -89,9 +89,17 @@ class Jointrip extends Component{
         showJoin = true;
       }
     }
-
+    const Join = styled.div`
+      font-style: italic;
+      // color: ${gs.golden};
+      margin-left: 140px;
+      margin-top: 3em;
+      font-size: 80%;
+      > div h1 {
+      margin: 1em 0 0;}
+    `;
     return(
-      <div>
+      <Join>
         { this.props.detial && this.props.detial.map((ele, i)=>(
           <div className="joinUser" key={i}>
           <h1>{ele.user.first_name} joined this trip from {ele.start} to {ele.end} </h1>
@@ -106,7 +114,7 @@ class Jointrip extends Component{
         } 
 
         {this.state.open && <Message id={this.props.id.id}/>}       
-      </div>
+      </Join>
     )
   }
 
@@ -277,8 +285,11 @@ class Details extends Component {
           {this.state.ride.agreements?
               <div>
                 <RideDetailUI id={this.state.ride} driver={this.state.userInfo} />
-                <ChatContainer id={this.state.ride} />
+                
                 <Jointrip id={this.state.ride} detial={this.state.detial} user={this.state.user}/>
+
+                <ChatContainer id={this.state.ride} />
+                
               </div>
               :"" }
           </Left>
