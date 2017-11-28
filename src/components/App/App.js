@@ -62,8 +62,10 @@ font-family: Merriweather;
 font-weight: bold;
 text-align: center;
 width: 33%;
+font-size: 150%;
 overflow: hidden;
-padding: 0 3em 8em;
+line-height: 1.3;
+padding: 0 3em 5em;
 `
 const P = styled.p`
 

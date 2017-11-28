@@ -21,6 +21,7 @@ const Left = styled.div`
   padding: 0 1.75em 0 1.5em ;
   z-index: 1;
   position: relative;
+  font-size: 110%;
 `;
 const Right = styled.div`
   float: right;

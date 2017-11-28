@@ -38,11 +38,31 @@ const Username = styled.h3`
   font-style: italic;
   color: ${gs.blue};
   margin-bottom: .2em;
+  float: left;
 `;
 
 const ChatMessage = styled.div`
   overflow: hidden;
   margin: 1em 0;
+`;
+
+const Date = styled.p`
+  color: #888;
+  font-size: 80%;
+  margin: 0.15em 1em;
+  font-style: italic;
+  float: left;
+`;
+
+const HeaderMsg = styled.div`
+  overflow: hidden;
+  float: left;
+`;
+
+const Msg = styled.div`
+clear: both;
+position: relative;
+top: -1em;
 `;
 
 class MessageList extends Component {
@@ -54,9 +74,11 @@ class MessageList extends Component {
         <ChatMessage>
           <ProfilePic />
           <Content>
+            <HeaderMsg>
             <Username>Bill</Username>
-            <div>26 / 10/ 2017 2: 34 pm</div>
-            <div>Is it alright if I bring my dog?</div>
+            <Date>26 / 10/ 2017 2: 34 pm</Date>
+            </HeaderMsg>
+            <Msg>Is it alright if I bring my dog?</Msg>
           </Content>
         </ChatMessage>
         <div></div>

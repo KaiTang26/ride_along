@@ -33,7 +33,27 @@ const Content = styled.div`
 `;
 const Username = styled.h3`
   font-weight: bold;
+  float: left;
   margin-bottom: .2em;
+  color: ${gs.blue};
+  font-style: italic;
+`;
+
+const Header = styled.div`
+  overflow: hidden;
+  float: left;
+`;
+const When = styled.p`
+color: #888;
+font-size: 80%;
+margin: 0.15em 1em;
+font-style: italic;
+float: left;
+`;
+const Msg = styled.div`
+  clear: both;
+  position: relative;
+  top: -1em;
 `;
 
 console.log(this.props);
@@ -55,8 +75,10 @@ class Message extends Component {
           <ProfilePic />
           {this.state?
             <Content>
+              <Header>
               <Username>{this.state.user.first_name}</Username>
-              <div>{`
+              
+              <When>{`
                 ${current.getDate()}/
                 ${current.getMonth()}/
                 ${current.getFullYear()}
@@ -64,8 +86,11 @@ class Message extends Component {
                 ${current.getUTCMinutes()}
                 ${suffix(current.getHours())}
               `}
-              </div>
-              <div className="message-content">{this.props.content}</div>
+              </When>
+              
+              </Header>
+
+              <Msg >{this.props.content}</Msg>
             </Content>
           :null
           }
