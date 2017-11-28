@@ -2,6 +2,7 @@ import React from 'react';
 import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
+import browserHistory from '../../history';
 
 /**
  * Dialog with action buttons. The actions are passed in as an array of React objects,
@@ -19,7 +20,8 @@ export default class DialogExampleSimple extends React.Component {
   };
 
   handleClose = () => {
-    this.setState({open: false});
+    // this.setState({open: false});
+    window.location.reload();
   };
 
   render() {

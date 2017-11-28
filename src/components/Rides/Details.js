@@ -8,6 +8,8 @@ import styled from 'styled-components';
 import gs from '../GlobalStyles.js';
 import Menu from '../Menu';
 import { join } from 'path';
+import Message from './Message.js';
+
 
 const Container = styled.div`
   padding-top: 65px;
@@ -46,12 +48,16 @@ class Jointrip extends Component{
   }
 
   render(){
+    // console.log(this.props.id.driver)
+
     const currentUser = Number(localStorage.getItem("user_id"))
     let showJoin = false;
     if(this.props.user){
       const numberOfUser = this.props.user.length-1
       const testOfcurrentUser = this.props.user.indexOf(currentUser)
-      if(currentUser && (testOfcurrentUser === -1) && (numberOfUser<this.props.id.passengers)){
+      const location = localStorage.getItem("end") && localStorage.getItem("start")
+      const notDriver = !(this.props.id.driver === currentUser)
+      if(currentUser && (testOfcurrentUser === -1) && (numberOfUser<this.props.id.passengers)&&location&&notDriver){
         showJoin = true;
       }
     }
@@ -69,7 +75,9 @@ class Jointrip extends Component{
               Join Trip
             </button>
           </form>
-        }        
+        } 
+
+        {this.state.open && <Message id={this.props.id.id}/>}       
       </div>
     )
   }
@@ -89,7 +97,11 @@ class Jointrip extends Component{
     api.postJoin(id,joinTrip)
     .then((response)=>{
         if(response.status===200){
-          console.log(response.data)     
+          console.log(response.data) 
+          
+          this.setState({
+            open:true
+          })
         }
     })
   }
@@ -179,9 +191,9 @@ class Details extends Component {
             : <h1>Loading </h1>}
             {this.state? <ChatContainer id={this.state.ride} />
               : <h1>Loading </h1>} */}
-          {this.state? 
+          {this.state &&
           <RideMap id={this.state.ride} />
-            : ""}            
+            }            
 
           </Right>
         </Container>

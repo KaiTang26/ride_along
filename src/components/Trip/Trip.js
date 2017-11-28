@@ -103,18 +103,13 @@ export default class Trip extends Component {
 
     _submitForm(event){
         event.preventDefault();
-        const id = localStorage.getItem("user_id")
+        const id = Number(localStorage.getItem("user_id"))
         const tripInfor = this.state;
         api.postTrip(id,tripInfor)
         .then((response)=>{
-            if(response.status===200){
-
-                browserHistory.push("/ride/"+response.data.id)
+            if(response.status===200){      
+            browserHistory.push("/ride/"+response.data.id)             
             }
-
-            console.log(response.data)
-
-
         })
     }
 

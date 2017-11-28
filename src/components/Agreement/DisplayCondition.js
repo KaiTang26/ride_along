@@ -37,7 +37,7 @@ export default class DisplayCondition extends Component {
 
     return (
       <div>
-        {this.props.statements.map((condition) => (
+        {this.props.statements && this.props.statements.map((condition) => (
           <div>
             <p>{condition.statement}</p> 
             {this.props.isDriver
