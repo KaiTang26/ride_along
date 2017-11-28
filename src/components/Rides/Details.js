@@ -34,6 +34,10 @@ const RideMap = (props) => {
 }
 
 const RideDetailUI = (props) => {
+
+
+
+
   // console.log(props.id.origin)
   // const currentUser = localStorage.getItem("user_id");
 
@@ -42,6 +46,7 @@ const RideDetailUI = (props) => {
   {currentUser === props.id.driver
     ? isDriver = true
     : isDriver = false}
+
 
   return(
     <div>
@@ -58,7 +63,7 @@ const RideDetailUI = (props) => {
     <br></br>
     <p>Some text in paragraph form</p>
     <br></br>
-      <DisplayCondition user={currentUser} statements={props.id.agreements} isDriver={isDriver}/>
+      {/* <DisplayCondition user={currentUser} statements={props.id.agreements} isDriver={isDriver}/> */}
       {isDriver
         ? <AddCondition tripId={props.id.id}/>
         : null}
@@ -69,19 +74,33 @@ const RideDetailUI = (props) => {
 class Details extends Component {
   constructor(props) {
     super(props);
-    // this.state = {ride: {}};
-    // console.log(this.state)
+    this.state = {
+      users: "",
+      driver: "",
+      ride:{driver:0}
+    };
+
     api.getRide(this.props.match.params.id)
     .then(result => {
       let ride = result.data
       this.setState({ride})
-      // console.log(ride);
-      // console.log('Details', ride);
     })
+    .then(api.userInfo(this.state.ride.driver)
+      .then(results => {
+        console.log('results', results)
+        this.setState({
+          users:results
+        })
+      })
+    )
 
   }
-  // Can use if result.status to do condition rendering
-  // componentWillMount() {
+
+  componentDidMount() {
+
+  }
+
+
 
   // }
   render() {
@@ -92,7 +111,8 @@ class Details extends Component {
           <Left>
           {this.state?
               <div>
-                <RideDetailUI id={this.state.ride} />
+                {console.log(this.state)}
+                <RideDetailUI id={this.state.ride}/>
                 <ChatContainer id={this.state.ride} />
               </div>
               :"" }
