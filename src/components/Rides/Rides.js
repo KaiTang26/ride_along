@@ -46,6 +46,8 @@ const Right = styled.div`
 `;
 const Find = styled.div`
   overflow: hidden;
+  position: relative;
+  min-height: 400px;
 `;
 const H1 = styled.h1`
   font-weight: 900;
@@ -133,14 +135,19 @@ export default class Rides extends Component {
     <Background>
       <Menu />
       <Container>
+
         <Find>
-          <H1>Find a Ride</H1>
-          
-          <CalculateGeocode updateAddress={this._handleLocationSearch}/>
+          <Left>
+
+          <H1>Find a Ride</H1>          
+          <CalculateGeocode updateAddress={this._handleLocationSearch}/>        </Left>
+
+        <Right>
+            {/* image */}
+        </Right>
 
           </Find>
         <Bottom>
-          <Left>
           {this.state.showAll 
             ? <Posts rides = {this.state.rides} />
             : <div>
@@ -149,11 +156,7 @@ export default class Rides extends Component {
               </div>
           }
          
-        </Left>
 
-        <Right>
-            {/* image */}
-        </Right>
         </Bottom>
       </Container>
     </Background>

@@ -19,9 +19,9 @@ const Field = styled.div`
     font-weight: bold;
     width: 100%
     }
-    width: 45%;
-    padding-right: 1em;
-    float: left;
+    // width: 45%;
+    // padding-right: 1em;
+    // float: left;
 `;
 
 const Button = styled.button`

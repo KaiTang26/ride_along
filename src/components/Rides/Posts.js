@@ -48,20 +48,20 @@ const RideInfo = styled.div`
 `;
 
 const Button = styled.button`
-  background: ${gs.golden};
+  background: #eba224;
   color: white;
   border: none;
   font-family: Lato;
-  font-size: 75%;
+  font-size: 70%;
   padding: .75em .8em;
   border-radius: 5px;
   font-weight: bold;
-  border-bottom: 2px solid #a87010;
+  border-bottom: 1px solid #c98613;
   &:hover {
     cursor: pointer;
-    background: #d28c14;
+    background: #db9214;
     border-bottom: #a87010;
-    border-top: 2px solid white;
+    border-top: 1px solid white;
   }
 `;
 const Section = styled.div`
