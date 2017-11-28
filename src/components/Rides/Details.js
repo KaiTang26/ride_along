@@ -108,6 +108,25 @@ class Jointrip extends Component{
     bottom: 2px;
     margin-right: .25em !important;
     `
+
+    const JoinButton = styled.button`
+    background: ${gs.green} ;
+    color: white ;
+    border: none;
+    font-family: Lato;
+    margin-top: 2em;
+    padding: .75em ;
+    border-radius: 5px;
+    font-weight: bold;
+    border-bottom: 1px solid #1a7452 ;
+    &:hover {
+      cursor: pointer;
+      background: #239a6c ;
+      border-bottom: #1a7452 ;
+      border-top: 1px solid white ;
+    }
+    `;
+
     return(
       <Join>
         { this.props.detial && this.props.detial.map((ele, i)=>(
@@ -118,9 +137,9 @@ class Jointrip extends Component{
 
         { showJoin && 
           <form onSubmit={this._submitForm.bind(this)}>
-            <button type="submit" >
+            <JoinButton type="submit" >
               Join Trip
-            </button>
+            </JoinButton>
           </form>
         } 
 
