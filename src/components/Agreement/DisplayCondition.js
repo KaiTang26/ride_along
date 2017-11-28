@@ -30,11 +30,16 @@ const Label = styled.p`
  `
  const Float = styled.div`
   float: left;
+  padding-left: 1.5em;
  `;
 
  const Container = styled.div`
   margin: 0 0 .5em;
  `;
+ const Iconb = styled(Icon)`
+ vertical-align: top !important;
+ margin-right: .35em !important;
+ `
 export default class DisplayCondition extends Component {
 
   constructor(props) {
@@ -61,6 +66,7 @@ export default class DisplayCondition extends Component {
     return (
       <div>
         <Label>
+        <Iconb fitted name='checkmark box' size='large'/>        
           Conditions:
         </Label>
         {this.props.statements.map((condition) => (

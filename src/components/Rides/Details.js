@@ -7,7 +7,7 @@ import DisplayCondition from '../Agreement/DisplayCondition';
 import styled from 'styled-components';
 import gs from '../GlobalStyles.js';
 import Menu from '../Menu';
-
+import { Icon } from 'semantic-ui-react';
 
 const Container = styled.div`
   padding-top: 60px;
@@ -62,6 +62,12 @@ const RideMap = (props) => {
   )
 }
 
+const Icons = styled(Icon)`
+vertical-align: top !important;
+margin-right: .55em !important;
+`
+
+
 const RideDetailUI = (props) => {
   // console.log(props.id.origin)
   // const currentUser = localStorage.getItem("user_id");
@@ -75,26 +81,47 @@ const currentUser = 2;
   return(
     <div>
     <H1>{props.id.start_location} to {props.id.end_location} </H1>
+
+
     <Field>
-    <Label>Total distance:</Label> <P>{props.id.distance}</P>
+      <Label>Name:</Label> <P>{props.id.driver}></P>
+      <div>Image placeholder</div>
     </Field>
+
+
     <Field>
-    <Label>Total duration:</Label> <P>{props.id.duration}</P>
+      <Label>
+      <Icons fitted name='calendar' size='large'/>
+        Leaving:</Label> <P>{props.id.date} </P>
     </Field>
+    
     <Field>
-    <Label>Leaving:</Label> <P>{props.id.date} </P>
+      <Label>
+      <Icons fitted name='time' size='large'/>
+    Time:</Label><P>{props.id.time}</P>
     </Field>
+      
+
     <Field>
-    <Label>Time:</Label><P>{props.id.time}</P>
+      <Label>
+      <Icons fitted name='road' size='large'/>
+        Total distance:</Label> <P>{props.id.distance}</P>
     </Field>
+    
     <Field>
-    <Label>Name:</Label> <P>{props.id.driver}></P>
-    <div>Image placeholder</div>
+      <Label>
+      <Icons fitted name='hourglass end' size='large'/>
+      Total duration:</Label> <P>{props.id.duration}</P>
     </Field>
+
     <Field>
-    <P>{props.id.driver} NAME is looking to have {props.id.passengers} passengers join the ride.</P>
-    <P>Some text in paragraph form</P>
+      <Label>
+      <Icons fitted name='users' size='large'/>
+     Passengers:</Label>
+     <P>Looking for {props.id.passengers} passengers to join</P>
+     
     </Field>
+
     <Field>
       <DisplayCondition user={currentUser} statements={props.id.agreements} isDriver={isDriver}/>
       {isDriver
