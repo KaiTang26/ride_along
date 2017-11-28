@@ -39,11 +39,10 @@ const Right = styled.div`
 // background-size: cover;
   background: url(${road}) no-repeat;
   width: 45%;
-  height: 66%;
+  height: 400px;
   background-position: right;
-  position: fixed;
-  right: 0;
-  margin-right: -3em;
+  position: absolute;
+  right: -3.5em;
 `;
 const Find = styled.div`
   overflow: hidden;
@@ -58,6 +57,25 @@ const H1 = styled.h1`
 const Bottom = styled.div`
   overflow: hidden;
   position: relative;
+  min-height: 400px;
+`;
+const Button = styled.button`
+  margin-top: 4em;
+  background: ${gs.green};
+  color: white;
+  border: none;
+  font-family: Lato;
+  font-size: 75%;
+  padding: .75em .8em;
+  border-radius: 5px;
+  font-weight: bold;
+  border-bottom: 2px solid #155b40;
+  &:hover {
+    cursor: pointer;
+    background: #239a6c;
+    border-bottom: #155b40;
+    border-top: 2px solid white;
+  }
 `;
 const Search = (props) => (
   <form onSubmit={props._handleSubmit}>
@@ -110,8 +128,6 @@ export default class Rides extends Component {
   render () {
     const { className, ...props } = this.props;
 
-    const Button = styled.button`
-    `;
 
     return (
     <Background>

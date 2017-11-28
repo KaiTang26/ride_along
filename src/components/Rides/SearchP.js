@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 import { Route } from 'react-router'
 import { Link } from 'react-router-dom';
+import gs from '../GlobalStyles.js';
 
 // import CalculateGeocode from '../Trip/Calculategeo.js';
 
@@ -16,21 +17,61 @@ const Results = styled.div`
 const Info = styled.p`
 `;
 const H2 = styled.h2`
+  font-weight: 900;
+  // color: ${gs.blue};
+  font-size: 124%;
+  margin: 3em 0 1.5em !important;
 `;
 
 const Ride = styled.div`
-  border: 2px solid black;
 `;
 
 const Label = styled.h4`
-  font-size: 80%;
+  font-size: 75%;
+  font-family: Lato;
   text-transform: uppercase;
-  margin: 2em 0 .5em;
-  font-style: Lato;
+  margin-bottom: .85em;
+  color: ${gs.golden};
+  display: inline-block;
+  margin-right: .5em;
+  font-weight: bold;
 `
 const ResultsText = styled.div`
 `;
 
+const Field = styled.div`
+margin: .5em 0;
+`;
+
+const To = Label.extend`
+  margin-left: .5em;
+  margin-right: .3em;
+`
+
+const P = styled.p`
+  display: inline-block;
+  > em {
+    font-weight: 900;
+  }
+`;
+
+const Button = styled.button`
+  background: ${gs.golden};
+  color: white;
+  border: none;
+  font-family: Lato;
+  font-size: 75%;
+  padding: .75em .8em;
+  border-radius: 5px;
+  font-weight: bold;
+  border-bottom: 2px solid #a87010;
+  &:hover {
+    cursor: pointer;
+    background: #d28c14;
+    border-bottom: #a87010;
+    border-top: 2px solid white;
+  }
+`;
 // the pnpoly algorithm
 function testInside (point, vs) {
   var x = point[0], y = point[1];
@@ -117,10 +158,18 @@ const SearchResults = (props) => {
           { (matchArr)&&
             matchArr.map((ride) => (
             <Ride key={ride.id}>
-              <Label>Leaving:</Label> {ride.date}
-              <Label>Time</Label> {ride.time}
-              <Label>From:</Label> {ride.start_location} To: {ride.end_location}
-              <Link to={`/ride/${ride.id}`}><button>View Details</button></Link>
+            
+            <Field>
+              <Label>Leaving</Label> <P>{ride.date}</P>
+            </Field>
+            <Field>
+              <Label>Time</Label> <P>{ride.time}</P>
+            </Field>
+            <Field>              
+              <Label>From</Label> <P><em>{ride.start_location}</em> </P><To>To</To> <P><em>{ride.end_location}</em></P>
+            </Field>
+            
+              <Link to={`/ride/${ride.id}`}><Button>View Details</Button></Link>
             </Ride>
           ))}
         </Results>

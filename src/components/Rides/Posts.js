@@ -14,20 +14,24 @@ const H1 = styled.h1`
 
 const Label = styled.p`
   font-size: 75%;
-  // letter-spacing: .5px;
   font-family: Lato;
   text-transform: uppercase;
   margin-bottom: .85em;
   color: ${gs.golden};
   display: inline-block;
-  margin-right: .25em;
+  margin-right: .5em;
   font-weight: bold;
 `;
+
+const To = Label.extend`
+margin-left: .4em;
+margin-right: .35em;
+`
 
 const P = styled.p`
   display: inline-block;
   > em {
-    font-weight: bold;
+    font-weight: 900;
   }
 `;
 
@@ -72,12 +76,13 @@ class Post extends Component {
           <RideInfo key={ride.id} _details={this.props.onClick}>
             {console.log(this.props)}
           <Section>
+       
+            <Field>
+              <Label>From</Label> <P><em>{ride.start_location}  <To> to</To> {ride.end_location}</em></P> 
+            </Field>
             <Field>
               <Label>Leaving</Label><P> {ride.date}</P>
-            </Field>        
-            <Field>
-              <Label>From</Label> <P><em>{ride.start_location}  <Label> to</Label> {ride.end_location}</em></P> 
-            </Field>
+            </Field> 
             <Field>
               <Label>Time</Label><P>{ride.time}</P>
             </Field>
@@ -88,7 +93,7 @@ class Post extends Component {
             <Label>User</Label> <P>'Example' Rating: '1-5'</P>
             </Field>
             <Field>            
-              <Label>Number of Passengers <P>{ride.passengers}</P></Label>
+              <Label>Number of Passengers </Label><P>{ride.passengers}</P>
             </Field>
             <Field>            
               <Label>Price</Label> <P>${ride.price}</P>
