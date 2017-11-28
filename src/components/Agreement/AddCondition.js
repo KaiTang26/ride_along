@@ -27,12 +27,12 @@ font-size: 85% !important;
 padding: .5em .45em !important;
 border-radius: 5px;
 font-weight: bold;
-border-bottom: 1px solid #1a7452 !important;
+// border-bottom: 1px solid #1a7452 !important;
 &:hover {
   cursor: pointer;
   background: #239a6c !important;
-  border-bottom: #1a7452 !important;
-  border-top: 1px solid white !important;
+  // border-bottom: #1a7452 !important;
+  // border-top: 1px solid white !important;
 }
 `;
 

@@ -18,7 +18,7 @@ const Input = styled(TextField)`
 `;
 
 const Buttons = styled(Button)`
-  margin: 0 .5em !important;
+  margin: 0 .5em  0 -1.5em !important;
   background: #eba224 !important;
   color: white !important;
   border: none;
@@ -27,7 +27,7 @@ const Buttons = styled(Button)`
   padding: .5em .45em !important;
   border-radius: 5px;
   font-weight: bold;
-  border-bottom: 1px solid #c98613 !important;
+  // border-bottom: 1px solid #c98613 !important;
   &:hover {
     cursor: pointer;
     background: #db9214 !important;

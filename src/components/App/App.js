@@ -118,7 +118,7 @@ class App extends Component {
           <FrontHeader />
 
           {/* <Link to='profile'><button>USER PROFILE PAGE</button></Link> */}
-          {/* <Container>
+          <Container>
             <SearchGif/>
             
             
@@ -141,10 +141,10 @@ class App extends Component {
           <P><Icons fitted name='chevron right' size='tiny'/>
         <Icons fitted name='chevron right' size='tiny'/>  Enjoy the ride!</P>
         </Container>
-         */}
+         
 
           
-{/* <Footer>
+<Footer>
   <Iconss  name='facebook square ' size='large'/>
   <Iconss  name='twitter ' size='large'/>
   <Iconss  name='instagram' size='large'/>
@@ -171,7 +171,7 @@ class App extends Component {
   </ul>
 
   <p>© 2017  Ride Along Inc.</p>
-</Footer> */}
+</Footer>
         
        
 

@@ -198,7 +198,7 @@ export default class Rides extends Component {
         </Bottom>
       </Container>
                 
-{/* <Footer>
+<Footer>
   <Iconss  name='facebook square ' size='large'/>
   <Iconss  name='twitter ' size='large'/>
   <Iconss  name='instagram' size='large'/>
@@ -225,7 +225,7 @@ export default class Rides extends Component {
   </ul>
 
   <p>© 2017  Ride Along Inc.</p>
-</Footer>  */}
+</Footer> 
     </Background>
     );}
 
