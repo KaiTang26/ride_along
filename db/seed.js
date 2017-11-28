@@ -4,7 +4,9 @@ const seedUsers = () => db.Promise.map([
   {first_name: "Bill", last_name:"Murray", email: "bill@billmurray.com", about:"I'm Bill and I love company on long drives.", picture: "Bill.jpg"},
   {first_name: "Ben", last_name:"Folds", email: "ben@folds.com", about:"My hobbies include driving", picture: "Bill.jpg"},
   {first_name: "Sara", last_name:"Zoo", email: "zoo@sara.com", about:"Sara here. I live to drive people places.",  picture: "bill_gb.jpg"},
-  {first_name: "Sebastian", last_name:"Namek", email: "seb.namek@gmail.com", about:"Admin account.", password: "$2a$10$peWZvceD9MBu6e.SpAww2.Hu/XvoLpp7AFfXj44SE9waYND0aPGpy", drivers_license: "111111111",  picture: "bill_gb.jpg"}
+  {first_name: "Raymond", last_name:"Stantz", email: "raymond@gmail.com", about:"good man", password: "$2a$10$OycYmMS1SyPHYKAOOhaQ5OMtvZ6lW0d1YggupsABcN.RI.8kkvCqO", drivers_license: "111",  picture: "raymond.jpg"},
+  {first_name: "Peter", last_name:"Venkman", email: "raymond@gmail.com", about:"good man", password: "$2a$10$B1t70OrcmkNqFViSLAeNc.sdEmtXmMqFSKA/3fvEiswKQSBdPXtYu", drivers_license: "111",  picture: "peter.jpg"},
+  {first_name: "Janine", last_name:"Melnitz", email: "janine@gmail.com", about:"best designer", password: "$2a$10$dViazNqPYQ/nXQH0dY1bwe/Ijj3bRnSRfLc2LJO4h04sjLApcTONi", drivers_license: "111",  picture: "janine.jpg"}
 ], user => db.model('users').create(user));
 
 const seedTrips = () => db.Promise.map([
