@@ -5,12 +5,11 @@ import gs from '../GlobalStyles.js';
 import api from '../utils/api';
 
 const H1 = styled.h1`
-  font-weight: 900;
-  color: #444;
-  // color: ${gs.blue};
-  font-size: 111%;
-  margin: 3em 0 1.5em !important;
-
+  font-weight: bold;
+  font-style: italic;
+  color: ${gs.golden};
+  font-size: 110%;
+  padding-top: 1em;
 `;
 
 const Label = styled.p`
@@ -41,9 +40,10 @@ const Field = styled.div`
 `;
 
 const RideInfo = styled.div`
-  margin: 3em 0;
+  margin: 1.5em 0;
   // background-color: ${gs.golden};
   // padding: 0 1em;
+  border-top: 1px solid #f5d398;
   overflow: hidden;
 `;
 

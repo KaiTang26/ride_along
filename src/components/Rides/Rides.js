@@ -16,7 +16,7 @@ const Background = styled.div`
   background: #dfe7e3;
   width: 100%;
   height: auto;
-  padding-bottom: 13em;
+  // padding-bottom: 13em;
 `;
 
 const Container = styled.div`
@@ -48,6 +48,7 @@ const Find = styled.div`
   overflow: hidden;
   position: relative;
   min-height: 400px;
+  padding-top: 1em;
 `;
 const H1 = styled.h1`
   font-weight: 900;
@@ -71,12 +72,12 @@ const Button = styled.button`
   padding: .75em .8em;
   border-radius: 5px;
   font-weight: bold;
-  border-bottom: 2px solid #155b40;
+  border-bottom: 1px solid #155b40;
   &:hover {
     cursor: pointer;
     background: #239a6c;
     border-bottom: #155b40;
-    border-top: 2px solid white;
+    border-top: 1px solid white;
   }
 `;
 const Search = (props) => (

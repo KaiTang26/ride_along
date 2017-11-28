@@ -18,12 +18,16 @@ const Info = styled.p`
 `;
 const H2 = styled.h2`
   font-weight: 900;
-  // color: ${gs.blue};
   font-size: 124%;
+  color: ${gs.golden};
+  font-size: 110%;
+  font-style: italic;
   margin: 3em 0 1.5em !important;
 `;
 
 const Ride = styled.div`
+  padding: .8em 0;
+  border-top: 1px solid #f5d398;
 `;
 
 const Label = styled.h4`
@@ -64,12 +68,12 @@ const Button = styled.button`
   padding: .75em .8em;
   border-radius: 5px;
   font-weight: bold;
-  border-bottom: 2px solid #a87010;
+  border-bottom: 1px solid #a87010;
   &:hover {
     cursor: pointer;
     background: #d28c14;
     border-bottom: #a87010;
-    border-top: 2px solid white;
+    border-top: 1px solid white;
   }
 `;
 // the pnpoly algorithm
@@ -134,7 +138,7 @@ const SearchResults = (props) => {
     <div> 
 
       <ResultsText>
-        <H2>Search Results:</H2>
+        <H2>Search Results</H2>
         {/* <Text>You searched for 
           <br/>From ----- {props.params.start_location}
           <br/>To ------ {props.params.end_location}

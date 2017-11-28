@@ -2,7 +2,7 @@ const gs = {
   sansSerif: "Lato, Arial",
   serif: "Merriweather, Times",
   green: "#29b37e",
-  golden: "#e59915",
+  golden: "#ea9e1a",
   coral: "#eb4159",
   blue: "#4183c4"
 
