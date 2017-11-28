@@ -8,6 +8,7 @@ const ReviewUI = (props) => {
   return(
 
     <div>
+      <img src={`/images/${props.users[props.data.user_id-1].picture}`}/>
       <h1>{props.users[props.data.user_id-1].first_name}</h1>
       {props.data.review_text}
       <h2>{props.data.rating}</h2>
