@@ -186,7 +186,7 @@ export default class UserProfile extends Component {
           </Name>
         :
           <Name>
-            Welcome to {this.state.first_name}'s profile'!
+            {this.state.first_name}
           </Name>
         }
 

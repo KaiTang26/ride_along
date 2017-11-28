@@ -8,6 +8,7 @@ const user_id = localStorage.getItem("user_id");
 
 const Time = styled.p`
 font-style: italic;
+margin: .25em 0;
 font-size: 90%;
 `;
 const Where = styled.p`
