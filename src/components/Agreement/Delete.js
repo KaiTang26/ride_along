@@ -1,7 +1,27 @@
 import React, { Component } from 'react';
 import api from '../utils/api';
+import styled from 'styled-components';
+import gs from '../GlobalStyles.js';
 
 import { Button, Popup } from 'semantic-ui-react'
+
+const Buttons = styled(Button)`
+margin-top: 4em;
+background: ${gs.coral} !important;
+color: white !important;
+border: none;
+font-family: Lato;
+font-size: 70% !important;
+padding: .5em .45em !important;
+border-radius: 5px;
+font-weight: bold;
+border-bottom: 1px solid #b91329 !important;
+&:hover {
+  cursor: pointer;
+  background: #d11a2f !important;
+}
+`;
+
 
 
 class Delete extends Component {
@@ -15,8 +35,8 @@ class Delete extends Component {
     return (
 
       <Popup
-        trigger={<Button content='Delete' />}
-        content={<Button 
+        trigger={<Buttons content='Delete' />}
+        content={<Buttons 
           color='green' 
           content='Confirm delete' 
           onClick={this.handleDelete}

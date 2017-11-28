@@ -102,13 +102,13 @@ class Post extends Component {
                     null
                   }
             <Field>
-              <Label>From</Label> <P><em>{ride.start_location}  <To> to</To> {ride.end_location}</em></P> 
+              <Label>From:</Label> <P><em>{ride.start_location}  <To> to</To> {ride.end_location}</em></P> 
             </Field>
             <Field>
-              <Label>Leaving</Label><P> {ride.date}</P>
+              <Label>Leaving:</Label><P> {ride.date}</P>
             </Field> 
             <Field>
-              <Label>Time</Label><P>{ride.time}</P>
+              <Label>Time:</Label><P>{ride.time}</P>
             </Field>
 
           </Section>
@@ -117,10 +117,10 @@ class Post extends Component {
             <Label>User</Label> <P>'Example' Rating: '1-5'</P>
             </Field>
             <Field>            
-              <Label>Number of Passengers </Label><P>{ride.passengers}</P>
+              <Label>Number of Passengers: </Label><P>{ride.passengers}</P>
             </Field>
             <Field>            
-              <Label>Price</Label> <P>${ride.price}</P>
+              <Label>Price:</Label> <P>${ride.price}</P>
             </Field>      
           
             <Link to={`/ride/${ride.id}`}><Button>View Details</Button></Link>

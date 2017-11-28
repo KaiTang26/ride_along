@@ -17,6 +17,53 @@ const Statement = styled.p`
 const Input = styled(TextField)`
 `;
 
+const Buttons = styled(Button)`
+  margin: 0 .5em !important;
+  background: #eba224 !important;
+  color: white !important;
+  border: none;
+  font-family: Lato;
+  font-size: 70% !important;
+  padding: .5em .45em !important;
+  border-radius: 5px;
+  font-weight: bold;
+  border-bottom: 1px solid #c98613 !important;
+  &:hover {
+    cursor: pointer;
+    background: #db9214 !important;
+  }
+`;
+
+const ButtonM = styled(Button)`
+background: ${gs.coral} !important;
+color: white !important;
+border: none;
+font-family: Lato;
+border-radius: 5px;
+font-weight: bold;
+border-bottom: 1px solid #b91329 !important;
+&:hover {
+  cursor: pointer;
+  background: #d11a2f !important;
+  border-bottom: #b91329 !important;
+  border-top: 1px solid white !important;
+}
+`;
+const ButtonSub = styled(Button)`
+background: ${gs.green} !important;
+color: white !important;
+border: none;
+font-family: Lato;
+border-radius: 5px;
+font-weight: bold;
+border-bottom: 1px solid #1a7452 !important;
+&:hover {
+  cursor: pointer;
+  background: #239a6c !important;
+  border-bottom: #1a7452 !important;
+  border-top: 1px solid white !important;
+}
+`;
 
 export default class EditCondition extends Component {
   
@@ -52,7 +99,7 @@ export default class EditCondition extends Component {
 
     return (
       <div>
-        <Button onClick={this.closeConfigShow(true, false)}>Edit Condition</Button>
+        <Buttons onClick={this.closeConfigShow(true, false)}>Edit Condition</Buttons>
 
         <Modal
           open={open}
@@ -75,8 +122,8 @@ export default class EditCondition extends Component {
           </Modal.Description>
           </Modal.Content>
           <Modal.Actions>
-            <Button negative onClick={this.close}>Cancel</Button>
-            <Button positive labelPosition='right' icon='checkmark' content='Submit' onClick={this.handleSubmit} />
+            <ButtonM negative onClick={this.close}>Cancel</ButtonM>
+            <ButtonSub positive labelPosition='right' icon='checkmark' content='Submit' onClick={this.handleSubmit} />
           </Modal.Actions>
         </Modal>
       </div>

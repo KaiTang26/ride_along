@@ -28,7 +28,13 @@ const Label = styled.p`
   position: relative;
   bottom: 1px;
  `
+ const Float = styled.div`
+  float: left;
+ `;
 
+ const Container = styled.div`
+  margin: 0 0 .5em;
+ `;
 export default class DisplayCondition extends Component {
 
   constructor(props) {
@@ -58,17 +64,19 @@ export default class DisplayCondition extends Component {
           Conditions:
         </Label>
         {this.props.statements.map((condition) => (
-          <div>
+          <Container>
+            <Float>
               <p><Icons fitted name='chevron right' size='tiny'/>
               <Icons fitted name='chevron right' size='tiny'/>  {condition.statement}</p> 
-        
+        </Float>
             {this.props.isDriver
               ? <div>
-                <EditCondition
+                <Float>
+                  <EditCondition
                   tripId={condition.trip_id}
                   id={condition.id}
                   statement={condition.statement}/>
-
+                </Float>
 
                 {/* <Delete
                   onClick={ e => {
@@ -86,17 +94,18 @@ export default class DisplayCondition extends Component {
             // <CheckAgree user={this.props.user} tripId={condition.trip_id} condition={condition.id}
             // id={condition.id}/>
 
-            <EditEx
-            user={this.props.user} tripId={condition.trip_id} condition={condition.id}
-            id={condition.id}
+            // <EditEx
+            // user={this.props.user} tripId={condition.trip_id} condition={condition.id}
+            // id={condition.id}
 
               // find={api.findPassengerAgreement(condition.trip_id, condition.id, this.props.user)}
-            />
+            // />
+            null
               // <RadioToggle toggle user={this.props.user} tripId={condition.trip_id} condition={condition.id}
               // id={condition.id} />
               }
 
-        </div>
+        </Container>
 
       ))}
     </div>

@@ -26,7 +26,7 @@ const Container = styled.div`
   overflow: hidden;
   max-width: 900px;
   margin: 0 auto 4em;
-  background: white;
+  background: #fefefe;
   min-height: 900px;
 `;
 

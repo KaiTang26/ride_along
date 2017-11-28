@@ -66,7 +66,7 @@ const RideDetailUI = (props) => {
   // console.log(props.id.origin)
   // const currentUser = localStorage.getItem("user_id");
 
-// const currentUser = 1;
+const currentUser = 2;
   let isDriver;
   {currentUser === props.id.driver
     ? isDriver = true
@@ -74,7 +74,6 @@ const RideDetailUI = (props) => {
 
   return(
     <div>
-
     <H1>{props.id.start_location} to {props.id.end_location} </H1>
     <Field>
     <Label>Total distance:</Label> <P>{props.id.distance}</P>
@@ -89,7 +88,7 @@ const RideDetailUI = (props) => {
     <Label>Time:</Label><P>{props.id.time}</P>
     </Field>
     <Field>
-    <Label>Name</Label> <P>{props.id.driver}></P>
+    <Label>Name:</Label> <P>{props.id.driver}></P>
     <div>Image placeholder</div>
     </Field>
     <Field>
