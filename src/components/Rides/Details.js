@@ -130,7 +130,7 @@ const RideDetailUI = (props) => {
     <br></br>
     {/* <getDriverName/> */}
     <h2>{props.driver.first_name}</h2>
-    <img src={`/images/${props.driver.picture}`}/>
+    <img src={`/images/Bill.jpg`}/>
     <br></br>
     <h3>{props.driver.first_name} is looking to have {props.id.passengers} passengers join the ride.</h3>
     <br></br>
@@ -148,29 +148,35 @@ class Details extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      user: "",
+      userInfo: "",
       ride:{driver:0}
     };
 
     api.getRide(this.props.match.params.id)
     .then(result => {
       let ride = result.data
-      // alert(result.data.driver)
+      // console.log(result.data)
       this.setState({ride})
+
+      api.userInfo(ride.driver)
+      .then(results => {
+        this.setState({
+          userInfo:results.data
+        })
+      })
       api.fetchJoin(ride.id)
       .then(result => {
         let joinUsers = result.data
-        console.log(typeof joinUsers )
+        // console.log(typeof joinUsers )
         this.setState({
           user: joinUsers.userList,
           detial: joinUsers.detial
           })
-        console.log(this.state.detial)
+        console.log("state",this.state)
         
       })
     })
   }
-
 
 
   // }
@@ -182,7 +188,7 @@ class Details extends Component {
           <Left>
           {this.state?
               <div>
-                <RideDetailUI id={this.state.ride} driver={this.state.user} />
+                <RideDetailUI id={this.state.ride} driver={this.state.userInfo} />
                 <ChatContainer id={this.state.ride} />
                 <Jointrip id={this.state.ride} detial={this.state.detial} user={this.state.user}/>
               </div>
@@ -196,7 +202,7 @@ class Details extends Component {
             : <h1>Loading </h1>}
             {this.state? <ChatContainer id={this.state.ride} />
               : <h1>Loading </h1>} */}
-          {this.state &&
+          {this.state.ride.origin &&
           <RideMap id={this.state.ride} />
             }            
 

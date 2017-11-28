@@ -58,7 +58,7 @@ export default class DisplayCondition extends Component {
           <Label>
             Conditions:
           </Label>
-          {this.props.statements && this.props.statements.map((condition) => (
+          { this.props.statements.map((condition) => (
             <div>
               <p><Icons fitted name='chevron right' size='tiny'/>
               <Icons fitted name='chevron right' size='tiny'/>  {condition.statement}</p> 
