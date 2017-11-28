@@ -13,11 +13,12 @@ import Message from './Message.js';
 
 
 const Container = styled.div`
-  padding-top: 65px;
+  padding-top: 60px;
 `;
 const Left = styled.div`
   float: left;
   width: 40%;
+  padding: 0 1.75em 0 1.5em ;
   z-index: 1;
   position: relative;
 `;
@@ -75,9 +76,10 @@ class Jointrip extends Component{
   }
 
   render(){
-    // console.log(this.props.id.driver)
+    console.log("DRIVER",this.props.id.driver)
 
     const currentUser = Number(localStorage.getItem("user_id"))
+    // const currentUser = 1;
     let showJoin = false;
     if(this.props.user){
       const numberOfUser = this.props.user.length
@@ -88,12 +90,29 @@ class Jointrip extends Component{
         showJoin = true;
       }
     }
+    const Join = styled.div`
+      font-style: italic;
+      // color: ${gs.golden};
+      margin-left: 140px;
+      margin-top: 3em;
+      font-size: 90%;
+      > div h1 {
+      margin: 1em 0 0;}
+    `;
 
+    const IconsP = styled(Icon)`
+    vertical-align: middle !important;
+    position: relative;
+    color: ${gs.golden};
+    bottom: 2px;
+    margin-right: .25em !important;
+    `
     return(
-      <div>
+      <Join>
         { this.props.detial && this.props.detial.map((ele, i)=>(
           <div className="joinUser" key={i}>
-          <h1>{ele.user.first_name} joined this trip from {ele.start} to {ele.end} </h1>
+          
+          <h1><IconsP fitted name='point' size='large'/>{ele.user.first_name} joined this trip from {ele.start} to {ele.end} </h1>
           </div>))}
 
         { showJoin && 
@@ -105,7 +124,7 @@ class Jointrip extends Component{
         } 
 
         {this.state.open && <Message id={this.props.id.id}/>}       
-      </div>
+      </Join>
     )
   }
 
@@ -139,8 +158,29 @@ const Icons = styled(Icon)`
 vertical-align: top !important;
 margin-right: .55em !important;
 `
+const Driver = styled.h2`
+// display: inline-block;
+font-weight: bold;
+font-size: 120%;
+font-style: italic;
+`;
 
+const IMG = styled.img`
+  width: 100px;
+  margin-top: .65em;
+`;
 
+const RideContainer = styled.div`
+  overflow: hidden;
+`;
+
+const Leftside = styled.div`
+  float: left;
+  width: 140px;
+`;
+const Rightside = styled.div`
+  float: left;
+`;
 const RideDetailUI = (props) => {
   // console.log(props.id.origin)
   // const currentUser = localStorage.getItem("user_id");
@@ -155,15 +195,17 @@ const RideDetailUI = (props) => {
     <div>
     <H1>{props.id.start_location} to {props.id.end_location} </H1>
 
-
+    <RideContainer>
+    <Leftside>
+    <IMG src={`/images/Bill.jpg`}/>
     <Field>
-      <Label>Name:</Label> <P>{props.id.driver}></P>
-      <div>Image placeholder</div>
-      <h2>{props.driver.first_name}</h2>
-      <img src={`/images/Bill.jpg`}/>
+     
+      <Label>Driver:</Label> 
+      <Driver>{props.driver.first_name}</Driver>
+      
     </Field>
-
-
+    </Leftside>
+    <Rightside>
     <Field>
       <Label>
       <Icons fitted name='calendar' size='large'/>
@@ -202,6 +244,8 @@ const RideDetailUI = (props) => {
         ? <AddCondition tripId={props.id.id}/>
         : null}
       </Field>
+      </Rightside>
+      </RideContainer>
     </div>
   )
 }
@@ -251,8 +295,11 @@ class Details extends Component {
           {this.state.ride.agreements?
               <div>
                 <RideDetailUI id={this.state.ride} driver={this.state.userInfo} />
-                <ChatContainer id={this.state.ride} />
+                
                 <Jointrip id={this.state.ride} detial={this.state.detial} user={this.state.user}/>
+
+                <ChatContainer id={this.state.ride} />
+                
               </div>
               :"" }
           </Left>

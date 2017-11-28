@@ -11,8 +11,9 @@ const Container = styled.div`
 const Header = styled.h2`
   font-size: 75%;
   letter-spacing: .5px;
-  font-weight: bold;
+  font-weight: 900;
   font-family: Lato;
+  padding-bottom: .1em;
   text-transform: uppercase;
   color: ${gs.coral};
   border-bottom: 2px solid;

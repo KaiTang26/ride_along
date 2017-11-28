@@ -117,7 +117,7 @@ class App extends Component {
         <div>
           <FrontHeader />
 
-          {/* <Container>
+          <Container>
             <SearchGif/>
             
             
@@ -139,7 +139,7 @@ class App extends Component {
           <Car/>
           <P><Icons fitted name='chevron right' size='tiny'/>
         <Icons fitted name='chevron right' size='tiny'/>  Enjoy the ride!</P>
-        </Container> */}
+        </Container> 
          
 
           
