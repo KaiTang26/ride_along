@@ -55,10 +55,10 @@ const Label = styled.p`
   margin: .5em 0;
 `;
 
+const currentUser = localStorage.getItem("user_id");
 
 const RideMap = (props) => {
-  // console.log(props.id.origin)
-  return(
+    return(
     <Map origin={props.id.origin} destination={props.id.destination} start_location={props.id.start_location} end_location={props.id.end_location}/>
   )
 }
@@ -66,7 +66,8 @@ const RideMap = (props) => {
 const RideDetailUI = (props) => {
   // console.log(props.id.origin)
   // const currentUser = localStorage.getItem("user_id");
-  const currentUser = 1;
+
+// const currentUser = 1;
   let isDriver;
   {currentUser === props.id.driver
     ? isDriver = true
@@ -143,9 +144,9 @@ class Details extends Component {
             : <h1>Loading </h1>}
             {this.state? <ChatContainer id={this.state.ride} />
               : <h1>Loading </h1>} */}
-          {this.state? 
+          {this.state?
           <RideMap id={this.state.ride} />
-            : ""}            
+            : ""}
 
           </Right>
         </Container>

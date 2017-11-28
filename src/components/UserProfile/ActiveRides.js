@@ -13,14 +13,17 @@ class ActiveRides extends Component {
               <br></br>
               <div>{ride.trip.date}</div>
               <div>From: {ride.trip.start_location} To: {ride.trip.end_location} </div>
-              <div>Driver: {ride.trip.driver}</div>
+              {this.props.users?
+                <div>Driver: {this.props.users[ride.trip.driver-1].first_name}</div>
+              :
+                null
+              }
             </div>
-
-            : null}
+          :
+           null
+          }
           </div>
-        ))
-        }
-
+        ))}
       </div>
     );
   }

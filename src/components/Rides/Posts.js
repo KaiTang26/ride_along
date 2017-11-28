@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import gs from '../GlobalStyles.js';
+import api from '../utils/api';
 
 const H1 = styled.h1`
   font-weight: 900;
@@ -68,6 +69,23 @@ const Section = styled.div`
   // float: left;
 `;
 class Post extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      users:"",
+      drive:""
+    }
+  };
+  
+  componentDidMount() {
+    api.getUsers()
+    .then(results =>
+      this.setState({
+        users:results
+      })
+    );
+  }
+  
   render() {
     return (
       <div className="post">
@@ -76,7 +94,13 @@ class Post extends Component {
           <RideInfo key={ride.id} _details={this.props.onClick}>
             {console.log(this.props)}
           <Section>
-       
+                {this.state.users?
+                    <div>
+                      <img src={`images/${this.state.users.data[ride.driver-1].picture}`}/> 
+                    </div>
+                  :  
+                    null
+                  }
             <Field>
               <Label>From</Label> <P><em>{ride.start_location}  <To> to</To> {ride.end_location}</em></P> 
             </Field>

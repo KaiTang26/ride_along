@@ -65,7 +65,7 @@ export default class Login extends Component {
 
   handleSubmit = () => {
     this.handleClose();
-    api.postReview(this.state.trip_id, this.state)
+    api.postReview(this.state.trip_id, localStorage.getItem("user_id"), this.state)
     .then()
   }
 

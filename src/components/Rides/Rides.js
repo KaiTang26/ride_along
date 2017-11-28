@@ -160,7 +160,7 @@ export default class Rides extends Component {
     );}
 
   _handleAll = e => {
-    this.setState({ 
+    this.setState({
       showAll: true
     });
   }

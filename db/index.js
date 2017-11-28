@@ -22,12 +22,12 @@ const dbOptions = {
     timestamps: true,        // automatically include timestamp columns
   }
 }
-if (user && pw) {
-  dbOptions.dialect='postgres';
-  var db = module.exports = new Sequelize(name, user, pw, dbOptions);
-} else {
+// if (user && pw) {
+//   dbOptions.dialect='postgres';
+//   var db = module.exports = new Sequelize(name, user, pw, dbOptions);
+// } else {
   var db = module.exports = new Sequelize(url, dbOptions);
-}
+// }
 
 // pull in our models
 require('./models')
@@ -44,5 +44,3 @@ function sync(retries=0, maxRetries=5) {
 }
 
 db.didSync = sync()
-
-// {force:true}

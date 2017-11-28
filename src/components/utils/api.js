@@ -18,8 +18,8 @@ export default {
       })
     },
 
-    postReview: function(trip_id, req){
-      const encodedURI = window.encodeURI("http://localhost:3000/api/reviews/"+trip_id);
+    postReview: function(trip_id, user_id, req){
+      const encodedURI = window.encodeURI(`http://localhost:3000/api/reviews/${trip_id}/${user_id}`);
       console.log(encodedURI)
       return axios.post(encodedURI, req)
       .then((response)=> {
