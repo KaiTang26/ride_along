@@ -13,8 +13,8 @@ const Nav = styled.div`
   width: 100%;
   background: rgba(255,255,255, .97);
   z-index: 100;
-  box-shadow: 0px 5px 6px -6px #9c9b9b;
   box-shadow: 0px 0px 8px 0px #c3c2c2;
+  box-shadow: 0px 0px 13px 0px #c3c2c2;
 `;
 
 const Logotype = styled.h1`
