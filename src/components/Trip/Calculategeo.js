@@ -1,6 +1,48 @@
 import React, { Component } from 'react';
 import api from '../utils/api';
 import Map from './map.js';
+import styled from 'styled-components';
+import gs from '../GlobalStyles.js';
+import TextField from 'material-ui/TextField';
+
+
+const Field = styled.div`
+    > label {
+    font-size: 75%;
+    // letter-spacing: .5px;
+    font-family: Lato;
+    text-transform: uppercase;
+    margin-bottom: .85em;
+    color: ${gs.coral};
+    display: inline-block;
+    margin-right: .25em;
+    font-weight: bold;
+    width: 100%
+    }
+    // width: 45%;
+    // padding-right: 1em;
+    // float: left;
+`;
+
+const Button = styled.button`
+    background: ${gs.coral};
+    color: white;
+    border: none;
+    font-family: Lato;
+    padding: .5em .75em;
+    border-radius: 5px;
+    position: relative;
+    top: 1em;
+    font-weight: bold;
+    border-bottom: 2px solid #b91329;
+    &:hover {
+        cursor: pointer;
+        background: #d11a2f;
+        border-bottom: #b91329;
+        border-top: 2px solid white;
+    }
+`;
+
 
 export default class CalculateGeocode extends Component {
     constructor(props){
@@ -14,15 +56,19 @@ export default class CalculateGeocode extends Component {
     render(){
         return(
             <div>   
+                <Field>
                     <label>
                         From:
-                        <input type="text" name="start_location" onChange={this._handleInputChange}/>
+                        <TextField fullWidth={true} type="text" name="start_location" onChange={this._handleInputChange}/>
                     </label>
+                    </Field>
+                    <Field>
                     <label>
                         To:
-                        <input type="text" name="end_location" onChange={this._handleInputChange}/>
+                        <TextField type="text" fullWidth={true}name="end_location" onChange={this._handleInputChange}/>
                     </label>
-                    <input type="submit" value="Search" disabled={!( this.state.start_location && this.state.end_location)} onClick={this._submit.bind(this)}/>          
+                    </Field>
+                    <Button type="submit" value="Search" disabled={!( this.state.start_location && this.state.end_location)} onClick={this._submit.bind(this)}>Search</Button>       
             </div>
         )
     }
