@@ -65,12 +65,11 @@ const Bottom = styled.div`
   min-height: 400px;
 `;
 const Button = styled.button`
-  margin-top: 4em;
+  margin: 4em 0 3em;
   background: ${gs.green};
   color: white;
   border: none;
   font-family: Lato;
-  font-size: 75%;
   padding: .75em .8em;
   border-radius: 5px;
   font-weight: bold;
