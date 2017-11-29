@@ -49,7 +49,7 @@ const ChatMessage = styled.div`
 const Date = styled.p`
   color: #888;
   font-size: 80%;
-  margin: 0.15em 1em;
+  margin: 0.13em 1em 0;
   font-style: italic;
   float: left;
 `;
