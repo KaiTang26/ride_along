@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import styled from 'styled-components';
 import gs from '../GlobalStyles.js';
-import UserPic from '../UserProfile/Bill.jpg';
+import UserPic from '../UserProfile/Raymond.png';
 import api from '../utils/api';
 
 let current = new Date();
