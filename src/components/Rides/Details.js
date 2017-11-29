@@ -129,11 +129,21 @@ class Jointrip extends Component{
 
     return(
       <Join>
-        { this.props.detial && this.props.detial.map((ele, i)=>(
-          <div className="joinUser" key={i}>
-          
-          <h1><IconsP fitted name='point' size='large'/>{ele.user.first_name} joined this trip from {ele.start} to {ele.end} </h1>
-          </div>))}
+        {this.props.user && this.props.user.length >= this.props.id.passengers ?
+        
+          <h1><IconsP fitted name='point' size='large'/> Trip is full </h1>:
+
+          <div>
+          { this.props.detial && this.props.detial.map((ele, i)=>(
+            <div className="joinUser" key={i}>
+            
+            <h1><IconsP fitted name='point' size='large'/>{ele.user.first_name} joined this trip from {ele.start} to {ele.end} </h1>
+            </div>))}
+            </div>
+
+      
+            }
+        
 
         { showJoin && 
           <form onSubmit={this._submitForm.bind(this)}>
