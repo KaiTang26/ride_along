@@ -33,7 +33,22 @@ const seedTrips = () => db.Promise.map([
             [43.653226, -76.4859544],
             [44.2311717, -76.4859544],
             [44.2311717, -79.3831843] ],
-            direction: 2, distance:'265 km', duration:'2 hours 42 mins'}
+            direction: 2, distance:'265 km', duration:'2 hours 42 mins'},
+  {date: new Date(2017, 11, 30), time: `13:30:00 GMT`, start_location: "Toronto", end_location: "Calgary,ab", passengers: 3, origin:[43.6532259999999965,-79.3831842999999964], destination:[51.0486150999999992,-114.070845899999995] , price:100, description:'road trip for 5 days', driver:5,
+  polygon:[[43.6532259999999965,-114.070845899999995],
+           [43.6532259999999965,-79.3831842999999964],
+           [51.0486150999999992,-79.3831842999999964],
+           [51.0486150999999992,-114.070845899999995]],
+            direction: 1, distance:'3,419 km', duration:'1 day 8 hours'},
+  {date: new Date(2017, 11, 30), time: `16:10:00 GMT`, start_location: "Ottawa", end_location: "Toronto", passengers: 1, origin:[45.4215295999999995,-75.6971930999999927], destination:[43.6532259999999965,-79.3831842999999964] , price:30, description:'one day road trip', driver:5,
+  polygon:[[43.6532259999999965,-79.3831842999999964],[43.6532259999999965,-75.6971930999999927],[45.4215295999999995,-75.6971930999999927],[45.4215295999999995,-79.3831842999999964]],
+            direction: 2, distance:'450 km', duration:'4 hours 14 mins'},
+  {date: new Date(2017, 12, 01), time: `14:20:00 GMT`, start_location: "Ottawa", end_location: "Toronto", passengers: 2, origin:[45.4215295999999995,-75.6971930999999927], destination:[43.6532259999999965,-79.3831842999999964] , price:30, description:'one day road trip', driver:5,
+  polygon:[[43.6532259999999965,-79.3831842999999964],[43.6532259999999965,-75.6971930999999927],[45.4215295999999995,-75.6971930999999927],[45.4215295999999995,-79.3831842999999964]],
+            direction: 2, distance:'450 km', duration:'4 hours 14 mins'},
+  {date: new Date(2017, 12, 11), time: `13:30:00 GMT`, start_location: "Toronto", end_location: "Montreal", passengers: 3, origin:[43.6532259999999965,-79.3831842999999964], destination:[45.5016888999999978,-73.5672560000000004], price:40, description:'good trip', driver:5,
+  polygon:[[43.6532259999999965,-79.3831842999999964],[43.6532259999999965,-73.5672560000000004],[45.5016888999999978,-73.5672560000000004],[45.5016888999999978,-79.3831842999999964]],
+            direction: 0, distance:'551 km', duration:'5 hours 31 mins'}
 ], trip => db.model('trips').create(trip));
 
 const seedReviews = () => db.Promise.map([
@@ -57,7 +72,10 @@ const seedUserTrips = () => db.Promise.map([
   {user_id: 4, trip_id: 1, start: "Toronto" , end: "Ottawa"},
   {user_id: 4, trip_id: 2, start: "Montreal", end: "Hamilton"},
   {user_id: 4, trip_id: 3, start: "Kingston", end: "Toronto"},
-  {user_id: 4, trip_id: 4, start: "Kingston", end: "Toronto" }
+  {user_id: 4, trip_id: 4, start: "Kingston", end: "Toronto" },
+  {user_id: 6, trip_id: 6, start: "Toronto", end: "Ottawa"},
+  {user_id: 6, trip_id: 7, start: "Toronto", end: "Ottawa"},
+  {user_id: 6, trip_id: 8, start: "Port Hope,on", end: "Kingston,on"}
 
 ], user_trip => db.model('user_trips').create(user_trip));
 const seedAgreements = () => db.Promise.map([
