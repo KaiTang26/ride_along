@@ -229,8 +229,8 @@ const Rightside = styled.div`
 `;
 const RideDetailUI = (props) => {
   // console.log(props.id.origin)
-  // const currentUser = localStorage.getItem("user_id");
-  const currentUser =2; 
+  const currentUser = localStorage.getItem("user_id");
+  // const currentUser =2; 
   // const currentUser = Number(localStorage.getItem("user_id"));
   let isDriver=false;
   

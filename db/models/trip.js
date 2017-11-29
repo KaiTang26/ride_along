@@ -34,7 +34,7 @@ const Trip = db.define('trips', {
     allowNull: false
   },
   price:{
-    type:Sequelize.FLOAT,
+    type:Sequelize.INTEGER,
     allowNull: false
   },
   description:{
