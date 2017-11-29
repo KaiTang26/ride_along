@@ -125,7 +125,7 @@ export default class Trip extends Component {
       <Container>
           <Left>
              
-         <Form onSubmit={this._submitForm.bind(this)}>
+         <form onSubmit={this._submitForm}>
             <CalculateGeocode updateAddress={this._handleLocationSearch}/>
 
             <Info>
@@ -194,7 +194,7 @@ export default class Trip extends Component {
             
             
             </Info>
-        </Form> 
+        </form> 
         </Left>
 
         <Right>
@@ -230,7 +230,7 @@ export default class Trip extends Component {
         })      
     }
 
-    _submitForm(event){
+    _submitForm=(event)=>{
         event.preventDefault();
         const id = Number(localStorage.getItem("user_id"))
         const tripInfor = this.state;
