@@ -4,7 +4,13 @@ import Map from './map.js';
 import styled from 'styled-components';
 import gs from '../GlobalStyles.js';
 import TextField from 'material-ui/TextField';
+import { Icon } from 'semantic-ui-react';
 
+
+const Icons = styled(Icon)`
+margin-right: .55em !important;
+vertical-align: top !important;
+`
 
 const Field = styled.div`
     > label {
@@ -68,7 +74,8 @@ export default class CalculateGeocode extends Component {
                         <TextField type="text" fullWidth={true}name="end_location" onChange={this._handleInputChange}/>
                     </label>
                     </Field>
-                    <Button type="submit" value="Search" disabled={!( this.state.start_location && this.state.end_location)} onClick={this._submit.bind(this)}>Search</Button>       
+                    <Button type="submit" value="Search" disabled={!( this.state.start_location && this.state.end_location)} onClick={this._submit.bind(this)}>Search
+      </Button>       
             </div>
         )
     }

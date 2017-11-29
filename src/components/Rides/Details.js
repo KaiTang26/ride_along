@@ -108,6 +108,13 @@ class Jointrip extends Component{
     bottom: 2px;
     margin-right: .25em !important;
     `
+    const IconsF = styled(Icon)`
+    vertical-align: middle !important;
+    position: relative;
+    color: #444;
+    bottom: 2px;
+    margin-right: .2em !important;
+    `
 
     const JoinButton = styled.button`
     background: ${gs.green} ;
@@ -127,11 +134,20 @@ class Jointrip extends Component{
     }
     `;
 
+    const Full = styled.p`
+      font-weight: bold;
+      font-size: 110%;
+      font-family: Merriweather;
+      color: ${gs.golden}
+      > IconsF {
+        color: #444;
+      }
+    `;
     return(
       <Join>
         {this.props.user && this.props.user.length >= this.props.id.passengers ?
         
-          <h1><IconsP fitted name='point' size='large'/> Trip is full </h1>:
+          <Full><IconsF fitted name='minus circle' size='large'/> This trip is full </Full>:
 
           <div>
           { this.props.detial && this.props.detial.map((ele, i)=>(

@@ -9,6 +9,12 @@ import Menu from '../Menu';
 import styled from 'styled-components';
 import gs from '../GlobalStyles.js';
 import TextField from 'material-ui/TextField';
+import { Icon } from 'semantic-ui-react';
+
+const Icons = styled(Icon)`
+margin-right: .55em !important;
+`
+
 
 const Container = styled.div`
     margin-top: 60px;
@@ -64,8 +70,9 @@ const Input = styled.input`
 const About = styled.input`
 padding: .25em;
 margin-left: .25em;
-font-size: 150%;
+font-size: 140%;
 font-family: Lato;
+font-weight: bold;
 border: none;
 border-bottom: 1px solid #ddd;
 // border-bottom: 1px solid ${gs.golden};
@@ -124,29 +131,34 @@ export default class Trip extends Component {
             <Info>
 
                 <Field>
-            <Label>
+            <Label><Icons fitted name='road' size='large'/>
+      
                 Total Distance:</Label> {this.state.distance}
             
             </Field>
             <Field>
-            <Label>
+            <Label><Icons fitted name='hourglass end' size='large'/>
+      
                 Total Duration:</Label> {this.state.duration}
             </Field>
             <Field>
             
-            <Label>
+            <Label><Icons fitted name='calendar' size='large'/>
+      
             Date:
             <Input type="date"  name='date' value={this.state.date} onChange={this._handleInputChange}/>
             </Label></Field>
             <Field>
             
             <Label>
+            <Icons fitted name='time' size='large'/>
             Time:
             <Input type="time"  name="time" value={this.state.time} onChange={this._handleInputChange}/>
             </Label></Field>
             <Field>
             
             <Label>
+            <Icons fitted name='users' size='large'/>
             Number of Passengers:
             <Input name="passengers"
                    type="number"
@@ -158,7 +170,8 @@ export default class Trip extends Component {
             </Label></Field>
             <Field>
             
-            <Label>
+            <Label> <Icons fitted name='money' size='large'/>
+      
             Price:
             <Input name="price"
                    type="number"
@@ -167,7 +180,8 @@ export default class Trip extends Component {
             </Label></Field>
             <Field>
             
-            <Label>
+            <Label><Icons fitted name='info circle' size='large'/>
+      
             About:
             <About type="text" name="description" onChange={this._handleInputChange}/>
             </Label></Field>
