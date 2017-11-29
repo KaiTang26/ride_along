@@ -73,12 +73,12 @@ const Button = styled.button`
   padding: .75em .8em;
   border-radius: 5px;
   font-weight: bold;
-  border-bottom: 1px solid #155b40;
+  border-bottom: 2px solid #155b40;
   &:hover {
     cursor: pointer;
     background: #239a6c;
     border-bottom: #155b40;
-    border-top: 1px solid white;
+    border-top: 2px solid white;
   }
 `;
 

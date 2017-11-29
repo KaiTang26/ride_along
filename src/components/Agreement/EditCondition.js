@@ -18,7 +18,7 @@ const Input = styled(TextField)`
 `;
 
 const Buttons = styled(Button)`
-  margin: 0 .5em  0 -1.5em !important;
+  margin: 0 .5em  0 0 !important;
   background: #eba224 !important;
   color: white !important;
   border: none;
