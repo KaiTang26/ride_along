@@ -115,15 +115,15 @@ class Jointrip extends Component{
     border: none;
     font-family: Lato;
     margin-top: 2em;
-    padding: .75em ;
+    padding: .75em .8em;
     border-radius: 5px;
     font-weight: bold;
-    border-bottom: 1px solid #1a7452 ;
+    border-bottom: 2px solid #1a7452 ;
     &:hover {
       cursor: pointer;
       background: #239a6c ;
       border-bottom: #1a7452 ;
-      border-top: 1px solid white ;
+      border-top: 2px solid white ;
     }
     `;
 
