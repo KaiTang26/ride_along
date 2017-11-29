@@ -11,6 +11,7 @@ const Nav = styled.div`
   position: fixed;
   top: 0;
   width: 100%;
+  padding: 0 1em;
   background: rgba(255,255,255, .97);
   z-index: 100;
   box-shadow: 0px 0px 8px 0px #c3c2c2;

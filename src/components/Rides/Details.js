@@ -18,7 +18,7 @@ const Container = styled.div`
 const Left = styled.div`
   float: left;
   width: 40%;
-  padding: 0 1.75em 0 1.5em ;
+  padding: 0 2.5em 0 2em ;
   z-index: 1;
   position: relative;
   font-size: 110%;
