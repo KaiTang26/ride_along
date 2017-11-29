@@ -22,17 +22,17 @@ const Buttons = styled(Button)`
   color: white !important;
   border: none;
   font-family: Lato;
-  margin: 0em 0 2em 1.75em !important;
+  margin: 0em 0 2em 1.5em !important;
   font-size: 85% !important;
   padding: .5em .45em !important;
   border-radius: 5px;
   font-weight: bold;
-  // border-bottom: 1px solid #1a7452 !important;
+  border-bottom: 2px solid #1a7452 !important;
   &:hover {
     cursor: pointer;
     background: #239a6c !important;
-    // border-bottom: #1a7452 !important;
-    // border-top: 1px solid white !important;
+    border-bottom: #1a7452 !important;
+    border-top: 2px solid white !important;
   }
 `;
 

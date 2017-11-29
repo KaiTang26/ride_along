@@ -26,19 +26,23 @@ const Label = styled.p`
  const Icons = styled(Icon)`
   color: ${gs.golden};
   position: relative;
-  bottom: 1px;
+  
+  vertical-align: middle;
  `
  const Float = styled.div`
-  float: left;
-  padding-left: 1.5em;
+  // float: left;
+  display: inline-block;
+  > p {
+    margin-right: 2em;
+  }
  `;
 
  const Container = styled.div`
-  margin: 0 0 .5em;
+  margin: 0 0 .5em 1.5em;
   overflow: hidden;
  `;
  const Iconb = styled(Icon)`
- vertical-align: top !important;
+//  vertical-align: top !important;
  margin-right: .35em !important;
  `
 
@@ -80,7 +84,7 @@ export default class DisplayCondition extends Component {
 
 
             {this.props.isDriver
-              ? <div>
+              ? <Float>
                 <Float>
                   <EditCondition
                   tripId={condition.trip_id}
@@ -94,12 +98,15 @@ export default class DisplayCondition extends Component {
                   }
                 }
                 >Delete</Delete> */}
-                <Delete
-                  tripId={condition.trip_id}
-                  id={condition.id}
-                />
 
-              </div>
+                <Float>
+                  <Delete
+                    tripId={condition.trip_id}
+                    id={condition.id}
+                  />
+                </Float>
+
+              </Float>
             :
             // <CheckAgree user={this.props.user} tripId={condition.trip_id} condition={condition.id}
             // id={condition.id}/>

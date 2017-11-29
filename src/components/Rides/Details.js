@@ -201,7 +201,7 @@ class Jointrip extends Component{
 }
 
 const Icons = styled(Icon)`
-vertical-align: top !important;
+// vertical-align: top !important;
 margin-right: .55em !important;
 `
 const Driver = styled.h2`
@@ -230,7 +230,8 @@ const Rightside = styled.div`
 const RideDetailUI = (props) => {
   // console.log(props.id.origin)
   // const currentUser = localStorage.getItem("user_id");
-  const currentUser = Number(localStorage.getItem("user_id"));
+  const currentUser =2; 
+  // const currentUser = Number(localStorage.getItem("user_id"));
   let isDriver=false;
   
   {currentUser === props.id.driver

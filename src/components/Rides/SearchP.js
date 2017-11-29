@@ -68,12 +68,12 @@ const Button = styled.button`
   padding: .75em .8em;
   border-radius: 5px;
   font-weight: bold;
-  border-bottom: 1px solid #a87010;
+  border-bottom: 2px solid #a87010;
   &:hover {
     cursor: pointer;
     background: #d28c14;
     border-bottom: #a87010;
-    border-top: 1px solid white;
+    border-top: 2px solid white;
   }
 `;
 // the pnpoly algorithm
