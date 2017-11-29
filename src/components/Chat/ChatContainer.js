@@ -13,14 +13,14 @@ const Container = styled.div`
   margin-top: 3em;
 `;
 
-const user_id = localStorage.getItem("user_id");
+// const user_id = localStorage.getItem("user_id");
 
 class ChatContainer extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      currentUser: user_id,
+      currentUser: localStorage.getItem("user_id"),
       messages: [],
       trip: ""
     }
