@@ -65,7 +65,7 @@ width: 33%;
 font-size: 150%;
 overflow: hidden;
 line-height: 1.3;
-padding: 0 3em 5em;
+padding: 0 3em 4.5em;
 `
 const P = styled.p`
 
