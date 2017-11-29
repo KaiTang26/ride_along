@@ -36,7 +36,7 @@ const Name = styled.h2`
   font-size: 275%;
   font-weight: bold;
   text-align: center;
-  margin: -3.25em 0 1em 1em;
+  margin: -3.25em 0 1em 3.5em;
   font-weight: 900;
   font-family: Lato;
   padding: .5em;
@@ -84,7 +84,7 @@ const Img = styled.img`
 
 const Left = styled.div`
   float: left;
-  width: 290px;
+  width: 320px;
   font-size: 130%;
   text-align: center;
   > section p
@@ -92,9 +92,9 @@ const Left = styled.div`
 `;
 
 const Right = styled.div`
-  float: right;
+  float: left;
   font-size: 130%;
-  width: 65%;
+  width: 60%;
 `;
 
 const EditButton = styled.button`
@@ -218,25 +218,6 @@ export default class UserProfile extends Component {
               <LeftText>95%</LeftText>
             </Section>
 
-
-          </Left>
-
-          <Right>
-            <Section>
-              <H3>About</H3>
-              <Text>{this.state.about}</Text>
-            </Section>
-
-
-            <Section>
-              <H3>Reviews</H3>
-              {this.state?
-                <div>
-                  <Reviews reviews={this.state.reviews}/>
-                </div>
-                : null}
-            </Section>
-
             <Section>
 
                 {this.state.trip?
@@ -259,6 +240,23 @@ export default class UserProfile extends Component {
 
             </Section>
 
+          </Left>
+
+          <Right>
+            <Section>
+              <H3>About</H3>
+              <Text>{this.state.about}</Text>
+            </Section>
+
+
+            <Section>
+              <H3>Reviews</H3>
+              {this.state?
+                <div>
+                  <Reviews reviews={this.state.reviews}/>
+                </div>
+                : null}
+            </Section>
 
           </Right>
         </Info>
