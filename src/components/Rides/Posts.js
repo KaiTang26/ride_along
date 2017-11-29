@@ -8,7 +8,7 @@ const H1 = styled.h1`
   font-weight: bold;
   font-style: italic;
   color: ${gs.golden};
-  font-size: 110%;
+  font-size: 140%;
   padding-top: 1em;
 `;
 
@@ -46,6 +46,7 @@ const RideInfo = styled.div`
   border-top: 1px solid #f5d398;
   // max-width: 580px;
   overflow: hidden;
+  font-size: 130%;
 `;
 
 const Button = styled.button`
@@ -57,12 +58,12 @@ const Button = styled.button`
   padding: .75em .8em;
   border-radius: 5px;
   font-weight: bold;
-  border-bottom: 1px solid #c98613;
+  border-bottom: 2px solid #c98613;
   &:hover {
     cursor: pointer;
     background: #db9214;
     border-bottom: #a87010;
-    border-top: 1px solid white;
+    border-top: 2px solid white;
   }
 `;
 const Section = styled.div`
@@ -88,7 +89,7 @@ const Info = styled.div`
 
 const Inner = styled.div`
   // max-width: 580px;
-  margin: 3.2em auto 2em;
+  margin: 2em auto 0em;
   overflow: hidden;
 `;
 

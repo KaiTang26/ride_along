@@ -12,9 +12,13 @@ margin-right: .55em !important;
 vertical-align: top !important;
 `
 
+const TextFields = styled(TextField)`
+font-size: 150% !important;
+`
+
 const Field = styled.div`
     > label {
-    font-size: 75%;
+    font-size: 89%;
     // letter-spacing: .5px;
     font-family: Lato;
     text-transform: uppercase;
@@ -36,6 +40,7 @@ const Button = styled.button`
     border: none;
     font-family: Lato;
     padding: .5em .75em;
+    font-size: 120%;
     border-radius: 5px;
     position: relative;
     top: 1em;
@@ -65,13 +70,13 @@ export default class CalculateGeocode extends Component {
                 <Field>
                     <label>
                         From:
-                        <TextField fullWidth={true} type="text" name="start_location" onChange={this._handleInputChange}/>
+                        <TextFields fullWidth={true} type="text" name="start_location" onChange={this._handleInputChange}/>
                     </label>
                     </Field>
                     <Field>
                     <label>
                         To:
-                        <TextField type="text" fullWidth={true}name="end_location" onChange={this._handleInputChange}/>
+                        <TextFields type="text" fullWidth={true}name="end_location" onChange={this._handleInputChange}/>
                     </label>
                     </Field>
                     <Button type="submit" value="Search" disabled={!( this.state.start_location && this.state.end_location)} onClick={this._submit.bind(this)}>Search

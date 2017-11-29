@@ -21,7 +21,7 @@ const Left = styled.div`
   padding: 0 2.5em 0 2em ;
   z-index: 1;
   position: relative;
-  font-size: 110%;
+  font-size: 120%;
 `;
 const Right = styled.div`
   float: right;
@@ -95,7 +95,6 @@ class Jointrip extends Component{
       font-style: italic;
       // color: ${gs.golden};
       margin-left: 140px;
-      margin-top: 3em;
       font-size: 90%;
       > div h1 {
       margin: 1em 0 0;}
@@ -137,6 +136,7 @@ class Jointrip extends Component{
     const Full = styled.p`
       font-weight: bold;
       font-size: 110%;
+      margin-top: 1em !important;
       font-family: Merriweather;
       color: ${gs.golden}
       > IconsF {

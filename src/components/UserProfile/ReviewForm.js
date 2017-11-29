@@ -30,7 +30,9 @@ const Button = styled(RaisedButton)`
   > button div div span {
     color: ${gs.green} !important;
     text-transform: none !important;
-    font-size: 1rem !important;
+    font-size: 1.15rem !important;
+    font-weight: bold !important;
+    margin-left: .25em !important;
   }
   > button div div span:hover {
     color: ${gs.green} !important;

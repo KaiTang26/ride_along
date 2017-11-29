@@ -22,14 +22,14 @@ const Container = styled.div`
 `;
 const Left = styled.div`
   float: left;
-  width: 40%;
-  padding: 3em 1.85em 0 2.25em ;
+  width: 25%;
+  padding: 3em 2.25em 0 2.25em ;
   z-index: 1;
   position: relative;
 `;
 const Right = styled.div`
   float: right;
-  width: 60%;
+  width: 75%;
   position: fixed;
   right: 0;
 
@@ -38,7 +38,8 @@ const Form = styled.div`
     margin: 3em 0;
 `;
 const Info = styled.div`
-margin: 5em 0;
+    margin: 5em 0;
+    font-size: 115%;
 `;
 
 const Label = styled.p`

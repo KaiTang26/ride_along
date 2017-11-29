@@ -31,6 +31,8 @@ const Button = styled(RaisedButton)`
     color: white !important;
     text-transform: none !important;
     font-size: 1rem !important;
+    position: relative !important;
+    bottom: .15em
 `;
 
 /**

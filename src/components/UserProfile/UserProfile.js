@@ -85,6 +85,7 @@ const Img = styled.img`
 const Left = styled.div`
   float: left;
   width: 290px;
+  font-size: 130%;
   text-align: center;
   > section p
     font-style: italic;
@@ -92,6 +93,7 @@ const Left = styled.div`
 
 const Right = styled.div`
   float: right;
+  font-size: 130%;
   width: 65%;
 `;
 

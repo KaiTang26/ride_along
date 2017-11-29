@@ -22,7 +22,7 @@ const Background = styled.div`
 
 const Container = styled.div`
   margin-top: 60px;
-  padding: 3em;
+  padding: 0.75em 3em 0;
   overflow: hidden;
   max-width: 900px;
   margin: 0 auto 4em;
@@ -44,6 +44,7 @@ const Right = styled.div`
   background-position: right;
   position: absolute;
   right: -3.5em;
+  top: 2.25em;
 `;
 const Find = styled.div`
   overflow: hidden;
@@ -55,7 +56,7 @@ const H1 = styled.h1`
   font-weight: 900;
   // color: #444;
   // color: ${gs.red};
-  font-size: 150%;
+  font-size: 170%;
   margin: 3em 0 1.5em !important;
 `;
 const Bottom = styled.div`
