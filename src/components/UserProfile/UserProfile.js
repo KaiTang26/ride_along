@@ -176,8 +176,10 @@ export default class UserProfile extends Component {
       <Menu/>
       <CoverPic/>
       <Profile>
-      
-        <ProfilePic />
+
+        {/* <ProfilePic /> */}
+
+        <img src={`/images/${this.state.picture}`}/>
         {console.log(this.state)}
         {localStorage.getItem("user_id") == this.props.match.params.id?
 
@@ -211,7 +213,7 @@ export default class UserProfile extends Component {
               <LeftText>95%</LeftText>
             </Section>
 
-          
+
           </Left>
 
           <Right>
@@ -231,25 +233,25 @@ export default class UserProfile extends Component {
             </Section>
 
             <Section>
-              
+
                 {this.state.trip?
                   <div>
                     <H3>Active Rides</H3>
                     <ActiveRides rides={this.state.trip} users={this.state.users.data}  />
                   </div>
                   : null}
-              
+
             </Section>
 
             <Section>
-              
+
                 {this.state.trip?
                   <div>
                     <H3>Completed Rides</H3>
                     <CompletedRides param={this.props.match.params.id} rides={this.state.trip} users={this.state.users.data}  />
                   </div>
                   : null}
-              
+
             </Section>
 
 
