@@ -5,7 +5,7 @@ import splash from './splash.jpg';
 import gs from '../GlobalStyles.js';
 import Login from '../Login';
 import Register from '../Register';
-
+import { Icon } from 'semantic-ui-react';
 
 const Header = styled.section`
   height: 600px;
@@ -55,6 +55,18 @@ const UserNav = styled.div`
     float: right;
 `;
 
+const Icons = styled(Icon)`
+vertical-align: top !important;
+margin-left: .1em !important;
+font-size: .6em !important;
+position: relative;
+top: .6em;
+`
+const Icond = Icons.extend`
+ margin-right: .2em !important;
+ margin-left: 0 !important;
+`
+
 const FrontHeader = () => (
   <Header>
     <Darken>
@@ -69,7 +81,10 @@ const FrontHeader = () => (
         <Logotype>Ride Along</Logotype>
 
         
-        <Tagline>Get there <span>>></span> together</Tagline>
+        <Tagline>Get there <Icons fitted name='chevron right' size='small'/>
+        <Icond fitted name='chevron right' size='small'/> 
+           {/* <span>>></span>  */}
+             together</Tagline>
     </Darken>
   </Header>
 )
