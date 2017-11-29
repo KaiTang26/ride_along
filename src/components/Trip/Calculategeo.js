@@ -40,11 +40,11 @@ const Button = styled.button`
     position: relative;
     top: 1em;
     font-weight: bold;
-    border-bottom: 2px solid #b91329;
+    border-bottom: 2px solid #941021;
     &:hover {
         cursor: pointer;
         background: #d11a2f;
-        border-bottom: #b91329;
+        border-bottom: #941021;
         border-top: 2px solid white;
     }
 `;

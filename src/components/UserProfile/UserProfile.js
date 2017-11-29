@@ -35,9 +35,8 @@ const Profile = styled.section`
 const Name = styled.h2`
   font-size: 275%;
   font-weight: bold;
-  margin: 1em;
   text-align: center;
-  margin: -3.25em auto 1em;
+  margin: -3.25em 0 1em 1em;
   font-weight: 900;
   font-family: Lato;
   padding: .5em;
@@ -77,6 +76,10 @@ const LeftText = Text.extend`
 
 const Info = styled.div`
   overflow: hidden;
+`;
+const Img = styled.img`
+  width: 280px;
+  margin-right: 10px;
 `;
 
 const Left = styled.div`
@@ -179,7 +182,7 @@ export default class UserProfile extends Component {
 
         {/* <ProfilePic /> */}
 
-        <img src={`/images/${this.state.picture}`}/>
+        <Img src={`/images/${this.state.picture}`}/>
         {console.log(this.state)}
         {localStorage.getItem("user_id") == this.props.match.params.id?
 
