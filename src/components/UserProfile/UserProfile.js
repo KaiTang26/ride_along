@@ -176,7 +176,7 @@ export default class UserProfile extends Component {
       <Menu/>
       <CoverPic/>
       <Profile>
-
+      
         <ProfilePic />
         {console.log(this.state)}
         {localStorage.getItem("user_id") == this.props.match.params.id?

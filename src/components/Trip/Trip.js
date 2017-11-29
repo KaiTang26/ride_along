@@ -23,7 +23,7 @@ const Container = styled.div`
 const Left = styled.div`
   float: left;
   width: 40%;
-  padding: 0 1.85em 0 1.5em ;
+  padding: 3em 1.85em 0 2.25em ;
   z-index: 1;
   position: relative;
 `;
@@ -82,7 +82,7 @@ background: #eba224;
 color: white;
 border: none;
 font-family: Lato;
-// margin: 0em 0 2em 1.75em;
+// margin-bottom: -1.75em;
 padding: .5em .75em;
 border-radius: 5px;
 font-weight: bold;
