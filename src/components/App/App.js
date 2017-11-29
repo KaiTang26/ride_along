@@ -21,7 +21,7 @@ const SearchGif = styled.div`
   height: 240px;
   margin: 0 auto;
   position: relative;
-  right: 1em;
+  right: .5em;
 `;
 const Icons = styled(Icon)`
 color: ${gs.green};
@@ -37,7 +37,7 @@ width: 290px;
 height: 230px;
 margin: 0 auto;
 position: relative;
-right: 1em;
+right: .25em;
 `;
 const Car = styled.div`
 background: url(${car}) no-repeat;
@@ -46,7 +46,7 @@ width: 280px;
 height: 230px;
 margin: 0 auto;
 position: relative;
-right: 1em;
+right: .5em;
 `;
 // const Map = styled.div`
 // background: url(${map}) no-repeat;
