@@ -27,7 +27,7 @@ const Buttons = styled(Button)`
   padding: .5em .45em !important;
   border-radius: 5px;
   font-weight: bold;
-  // border-bottom: 1px solid #c98613 !important;
+  border-bottom: 2px solid #c98613 !important;
   &:hover {
     cursor: pointer;
     background: #db9214 !important;

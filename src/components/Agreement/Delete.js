@@ -15,7 +15,7 @@ font-size: 70% !important;
 padding: .5em .45em !important;
 border-radius: 5px;
 font-weight: bold;
-// border-bottom: 1px solid #b91329 !important;
+border-bottom: 2px solid #b91329 !important;
 &:hover {
   cursor: pointer;
   background: #d11a2f !important;
