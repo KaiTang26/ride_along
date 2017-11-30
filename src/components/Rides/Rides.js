@@ -65,21 +65,20 @@ const Bottom = styled.div`
   min-height: 400px;
 `;
 const Button = styled.button`
-  margin-top: 4em;
+  margin: 4em 0 3em;
   background: ${gs.green};
   color: white;
   border: none;
   font-family: Lato;
-  font-size: 75%;
   padding: .75em .8em;
   border-radius: 5px;
   font-weight: bold;
-  border-bottom: 1px solid #155b40;
+  border-bottom: 2px solid #155b40;
   &:hover {
     cursor: pointer;
     background: #239a6c;
     border-bottom: #155b40;
-    border-top: 1px solid white;
+    border-top: 2px solid white;
   }
 `;
 
@@ -89,13 +88,14 @@ color: white;
 font-family: Merriweather;
 font-weight: bold;
 width: 100%;
+font-size: 115%;
 padding: 1.15em 1.5em;
 overflow: hidden;
 position: relative;
 z-index: 6;
 text-align: center;
 >ul {
-  margin: .8em 0 1.15em; 
+  margin: 1.25em 0 1.35em; 
   font-family: Lato;}
 >ul li {
   display: inline-block;
