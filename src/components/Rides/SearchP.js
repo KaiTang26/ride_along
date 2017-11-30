@@ -5,13 +5,21 @@ import { Link } from 'react-router-dom';
 import gs from '../GlobalStyles.js';
 
 // import CalculateGeocode from '../Trip/Calculategeo.js';
+const Container = styled.div`
+  font-size: 130%;
+`;
 
 const Text = styled.p`
   margin: 1em 0;
+  > em {
+    font-weight: bold;
+    color: ${gs.green};
+  }
 `;
 
 const Results = styled.div`
   margin-top: 2em;
+  
 `;
 
 const Info = styled.p`
@@ -68,6 +76,7 @@ const Button = styled.button`
   padding: .75em .8em;
   border-radius: 5px;
   font-weight: bold;
+  margin-bottom: .95em;
   border-bottom: 2px solid #a87010;
   &:hover {
     cursor: pointer;
@@ -76,6 +85,7 @@ const Button = styled.button`
     border-top: 2px solid white;
   }
 `;
+
 // the pnpoly algorithm
 function testInside (point, vs) {
   var x = point[0], y = point[1];
@@ -135,7 +145,7 @@ const SearchResults = (props) => {
 
   return (
 
-    <div> 
+    <Container> 
 
       <ResultsText>
         <H2>Search Results</H2>
@@ -149,7 +159,7 @@ const SearchResults = (props) => {
             <Text>
             Please try another search.
           </Text></div>
-            : <div><Text>There are {resultsNum} available rides that overlap with your trip! </Text>
+            : <div><Text>There are <em>{resultsNum} available rides</em> that overlap with your trip! </Text>
             <Text>
             Contact the driver on the trip's page to negotiate arrangements.
           </Text></div>
@@ -178,7 +188,7 @@ const SearchResults = (props) => {
           ))}
         </Results>
          
-    </div>) 
+    </Container>) 
 }
 
 export default SearchResults;

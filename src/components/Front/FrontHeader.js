@@ -60,7 +60,7 @@ vertical-align: top !important;
 margin-left: .1em !important;
 font-size: .6em !important;
 position: relative;
-top: .6em;
+top: .55em;
 `
 const Icond = Icons.extend`
  margin-right: .2em !important;

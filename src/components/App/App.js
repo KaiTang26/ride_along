@@ -26,7 +26,7 @@ const SearchGif = styled.div`
 const Icons = styled(Icon)`
 color: ${gs.green};
 position: relative;
-bottom: 2px;
+bottom: 4px;
 `
 
 
@@ -76,13 +76,14 @@ const Footer = styled.div`
   font-family: Merriweather;
   font-weight: bold;
   width: 100%;
-  padding: 1.15em 1.5em;
+  font-size: 115%;
+  padding: 1.6em 2.25em;
   overflow: hidden;
   position: relative;
   z-index: 6;
   text-align: center;
   >ul {
-    margin: .8em 0 1.15em; 
+    margin: 1.25em 0 1.35em;
     font-family: Lato;}
   >ul li {
     display: inline-block;
