@@ -1,7 +1,7 @@
 const db = require('../db')
 
 const seedUsers = () => db.Promise.map([
-  {first_name: "Bill", last_name:"Murray", email: "bill@billmurray.com", about:"I'm Bill and I love company on long drives.", picture: "Janine.png"},
+  {first_name: "Bill", last_name:"Murray", email: "bill@billmurray.com", about:"I'm Bill and I love company on long drives.", picture: "Winston.png"},
   {first_name: "Ben", last_name:"Folds", email: "ben@folds.com", about:"My hobbies include driving", picture: "Raymond.png"},
   {first_name: "Sara", last_name:"Zoo", email: "zoo@sara.com", about:"Sara here. I live to drive people places.",  picture: "Janine.png"},
   {first_name: "Raymond", last_name:"Stantz", email: "raymond@gmail.com", about:"Hi I’m Ray! I am the CEO of a successful startup out of New York city. We deal mostly with advanced technology and the supernatural. I like to go on long trips and I’m also looking for someone to carpool with to work. Check out my trips if you’d like to take a rid in the Ecto-1!", password: "$2a$10$OycYmMS1SyPHYKAOOhaQ5OMtvZ6lW0d1YggupsABcN.RI.8kkvCqO", drivers_license: "111",  picture: "Raymond.png"},
