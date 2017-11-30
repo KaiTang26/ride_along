@@ -35,7 +35,7 @@ const seedTrips = () => db.Promise.map([
   polygon:[[43.6532259999999965,-79.3831842999999964],[43.6532259999999965,-75.6971930999999927],[45.4215295999999995,-75.6971930999999927],[45.4215295999999995,-79.3831842999999964]],
             direction: 2, distance:'450 km', duration:'4 hours 14 mins'},
 
-  {date: new Date(2017, 6, 04), time: `18:45:21 GMT`, start_location: "Kingston", end_location: "Toronto", passengers: 3, origin:[44.2311717, -76.4859544], destination:[43.653226, -79.3831843] , price:28, description:'good trip pls join us', driver:4,
+  {date: new Date(2017, 6, 04), time: `18:45:21 GMT`, start_location: "Kingston", end_location: "Toronto", passengers: 4, origin:[44.2311717, -76.4859544], destination:[43.653226, -79.3831843] , price:28, description:'good trip pls join us', driver:4,
   polygon:[ [43.653226, -79.3831843],
             [43.653226, -76.4859544],
             [44.2311717, -76.4859544],
@@ -57,23 +57,23 @@ const seedReviews = () => db.Promise.map([
   {rating: 1, review_text: "Really rude, bad taste in music", trip_id:2, user_id: 1},
   {rating: 1, review_text: "Was late and dropped me off far from agreed point ", trip_id:1, user_id: 2},
   {rating: 5, review_text: "Amazing trip. Nice, funny and on time!", trip_id:2, user_id: 3},
-  {rating: 2, review_text: "It was okay. Nothing special but good enough", trip_id:3, user_id: 4},
+  {rating: 2, review_text: "It was okay. Nothing special but good enough", trip_id:2, user_id: 4},
   {rating: 3, review_text: "Could have been better", trip_id:4, user_id: 1},
   {rating: 3, review_text: "Drove pretty slow", trip_id:4, user_id: 2},
-  {rating: 4, review_text: "Nice guy and fair price for the ride", trip_id:4, user_id: 1},
-  {rating: 4, review_text: "Had a great time with Bill", trip_id:1, user_id: 4}
+  {rating: 4, review_text: "Nice guy and fair price for the ride", trip_id:6, user_id: 1},
+  {rating: 4, review_text: "Had a great time with Raymond", trip_id:6, user_id: 6}
 ], review => db.model('reviews').create(review));
 
 const seedUserTrips = () => db.Promise.map([
   {user_id: 5, trip_id: 1, start: "Toronto" , end: "Ottawa"},
   {user_id: 1, trip_id: 3, start: "Kingston", end: "Toronto"},
-  {user_id: 6, trip_id: 4, start: "Kingston", end: "Toronto"},
-  {user_id: 1, trip_id: 2, start: "Montreal", end: "Hamilton"},
+  {user_id: 1, trip_id: 6, start: "Kingston", end: "Toronto"},
+  {user_id: 1, trip_id: 2, start: "Ottawa", end: "Toronto"},
   {user_id: 2, trip_id: 1, start: "Toronto", end: "Ottawa"},
   {user_id: 3, trip_id: 3, start: "Kingston", end: "Toronto"},
   {user_id: 4, trip_id: 1, start: "Toronto" , end: "Ottawa"},
-  {user_id: 4, trip_id: 2, start: "Montreal", end: "Hamilton"},
   {user_id: 4, trip_id: 3, start: "Kingston", end: "Toronto"},
+  {user_id: 4, trip_id: 6, start: "Kingston", end: "Toronto"},
   {user_id: 4, trip_id: 4, start: "Kingston", end: "Toronto" },
   {user_id: 6, trip_id: 6, start: "Toronto", end: "Ottawa"},
   {user_id: 6, trip_id: 7, start: "Toronto", end: "Ottawa"},
