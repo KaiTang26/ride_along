@@ -49,7 +49,7 @@ const Right = styled.div`
 const Find = styled.div`
   overflow: hidden;
   position: relative;
-  min-height: 400px;
+  min-height: 350px;
   padding-top: 1em;
 `;
 const H1 = styled.h1`
@@ -176,15 +176,9 @@ export default class Rides extends Component {
       <Container>
 
         <Find>
-          <Left>
 
           <H1>Find a Ride</H1>          
-          <CalculateGeocode updateAddress={this._handleLocationSearch}/>        </Left>
-
-        <Right>
-            {/* image */}
-        </Right>
-
+          <CalculateGeocode updateAddress={this._handleLocationSearch}/>        
           </Find>
         <Bottom>
           {this.state.showAll 

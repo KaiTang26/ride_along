@@ -54,7 +54,14 @@ const Button = styled.button`
     }
 `;
 
-
+const Left = styled.div `
+    float: left;
+    width: 80%;
+`;
+const Right = styled.div `
+    float: left;
+    margin: 4em 0 0 2em;
+`;
 export default class CalculateGeocode extends Component {
     constructor(props){
         super(props);
@@ -67,20 +74,24 @@ export default class CalculateGeocode extends Component {
     render(){
         return(
             <div>   
+            <Left>
                 <Field>
                     <label>
                         From:
                         <TextFields fullWidth={true} type="text" name="start_location" onChange={this._handleInputChange}/>
                     </label>
-                    </Field>
+                </Field>
                     <Field>
                     <label>
                         To:
                         <TextFields type="text" fullWidth={true}name="end_location" onChange={this._handleInputChange}/>
                     </label>
                     </Field>
+                </Left>
+                <Right>
                     <Button type="submit" value="Search" disabled={!( this.state.start_location && this.state.end_location)} onClick={this._submit.bind(this)}>Search
-      </Button>       
+                </Button>       
+                </Right>
             </div>
         )
     }

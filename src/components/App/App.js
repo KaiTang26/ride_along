@@ -65,7 +65,7 @@ width: 33%;
 font-size: 150%;
 overflow: hidden;
 line-height: 1.3;
-padding: 0 3em 4.5em;
+padding: 1.5em 3em 3.75em;
 `
 const P = styled.p`
 
@@ -121,7 +121,7 @@ class App extends Component {
           <FrontHeader />
 
           <Container>
-            <SearchGif/>
+            {/* <SearchGif/> */}
             
             
         <A><Icons fitted name='chevron right' size='tiny'/>
@@ -134,12 +134,12 @@ class App extends Component {
 
           </Container>
         <Container>
-          <Chat/>
+          {/* <Chat/> */}
           <P><Icons fitted name='chevron right' size='tiny'/>
         <Icons fitted name='chevron right' size='tiny'/>  Negotiate the terms with your fellow travellers</P>
         </Container>
         <Container>
-          <Car/>
+          {/* <Car/> */}
           <P><Icons fitted name='chevron right' size='tiny'/>
         <Icons fitted name='chevron right' size='tiny'/>  Enjoy the ride!</P>
         </Container> 
