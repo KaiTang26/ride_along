@@ -35,7 +35,7 @@ require('./models')
 // sync the db, creating it if necessary
 function sync(retries=0, maxRetries=5) {
   return db.sync(
-    // {force: true}
+    {force: true}
     )
     .then(ok => console.log(`Synced models to db ${url}`))
     .catch(fail => {
