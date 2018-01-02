@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import Posts from './Posts';
+import Load from '../Load';
 import SearchResults from './SearchP';
 import api from '../utils/api';
 import { Route, Redirect } from 'react-router';
@@ -95,7 +96,7 @@ position: relative;
 z-index: 6;
 text-align: center;
 >ul {
-  margin: 1.25em 0 1.35em; 
+  margin: 1.25em 0 1.35em;
   font-family: Lato;}
 >ul li {
   display: inline-block;
@@ -107,7 +108,7 @@ text-align: center;
 >p {
   font-size: 90%}
 `
-const A = styled.a` 
+const A = styled.a`
 margin: 0 .25em 0 .5em;
 >a {
 color: ${gs.green} !important;
@@ -153,7 +154,8 @@ export default class Rides extends Component {
       destination:[],
       direction: '',
       detail: 'all',
-      showAll: true
+      showAll: true,
+      loading: false,
     }
   }
 
@@ -177,22 +179,23 @@ export default class Rides extends Component {
 
         <Find>
 
-          <H1>Find a Ride</H1>          
-          <CalculateGeocode updateAddress={this._handleLocationSearch}/>        
+          <H1>Find a Ride</H1>
+          <CalculateGeocode updateAddress={this._handleLocationSearch}/>
           </Find>
-        <Bottom>
-          {this.state.showAll 
-            ? <Posts rides = {this.state.rides} />
-            : <div>
-            <SearchResults params={this.state}/> 
-              <Button onClick={this._handleAll}>Show All</Button>
-              </div>
-          }
-         
-
-        </Bottom>
+        {this.state.loading?
+          <Bottom>
+            {this.state.showAll
+              ? <Posts rides = {this.state.rides} />
+              : <div>
+              <SearchResults params={this.state}/>
+                <Button onClick={this._handleAll}>Show All</Button>
+                </div>
+            }
+          </Bottom>
+          :<Load/>
+        }
       </Container>
-                
+
 <Footer>
   <Iconss  name='facebook square ' size='large'/>
   <Iconss  name='twitter ' size='large'/>
@@ -210,7 +213,7 @@ export default class Rides extends Component {
     </li>
     <li>
         Press
-    </li>    
+    </li>
     <li>
         Jobs
     </li>
@@ -220,7 +223,7 @@ export default class Rides extends Component {
   </ul>
 
   <p>© 2017  Ride Along Inc.</p>
-</Footer> 
+</Footer>
     </Background>
     );}
 
