@@ -40,7 +40,7 @@
   "scripts": {
     "start": "concurrently \"react-scripts start\" \"nodemon server\"",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "jest",
     "eject": "react-scripts eject",
     "seed": "node db/seed.js",
     "dev": "webpack-dev-server --content-base src --inline --hot"
